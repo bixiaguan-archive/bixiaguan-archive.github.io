@@ -1,0 +1,9 @@
+# Generated index (built by CI)
+bixiaguan_search/search_index.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

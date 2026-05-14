@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壁下观 · 全文检索</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:     #2c2c2c;
+    --ink2:    #444;
+    --ink3:    #888;
+    --paper:   #faf8f5;
+    --paper2:  #fdfcfa;
+    --accent:  #c44;
+    --accent2: #a83a3a;
+    --line:    #e8e2da;
+    --hit-bg:  #fff3e8;
+    --hit-mark:#c44;
+    --radius:  4px;
+    --shadow:  0 2px 12px rgba(0,0,0,.08);
+  }
+
+  html { font-size: 16px; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 2.5rem 1rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .site-title {
+    font-size: .9rem;
+    letter-spacing: 0;
+    color: var(--ink3);
+    margin-top: .5rem;
+    font-weight: 400;
+  }
+  .site-name {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #3a3a3a;
+    letter-spacing: .15em;
+    margin-bottom: .5rem;
+  }
+
+  .search-section {
+    padding: 1.2rem 1rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .search-wrap {
+    --search-height: 44px;
+    display: flex;
+    align-items: center;
+    max-width: 760px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  #ep-select {
+    height: var(--search-height);
+    padding: 0 10px;
+    font-size: .85rem;
+    font-family: inherit;
+    border: 1.5px solid var(--line);
+    border-right: none;
+    border-radius: var(--radius) 0 0 var(--radius);
+    background: var(--paper2);
+    color: var(--ink2);
+    outline: none;
+    cursor: pointer;
+    max-width: 180px;
+  }
+  #ep-select:focus { border-color: var(--accent2); }
+
+  #q {
+    flex: 1;
+    height: var(--search-height);
+    padding: 0 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1.5px solid var(--line);
+    border-right: none;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+  }
+  #q:focus { border-color: var(--accent2); }
+  #q::placeholder { color: var(--ink3); }
+
+  #btn-search {
+    height: var(--search-height);
+    padding: 0 18px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: .9rem;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: .06em;
+    transition: background .2s;
+    white-space: nowrap;
+  }
+  #btn-search:hover { background: var(--accent2); }
+
+  .search-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-size: .78rem;
+    color: var(--ink3);
+  }
+
+  nav {
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper2);
+  }
+  nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #666;
+    font-size: .9rem;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.active { color: var(--accent); font-weight: 600; }
+
+  main {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 14px 20px 60px;
+  }
+
+  #status {
+    font-size: .85rem;
+    color: var(--ink3);
+    margin-bottom: 14px;
+    min-height: 1.4em;
+    letter-spacing: .02em;
+  }
+  #status b { color: var(--accent); }
+  #status a { color: var(--accent); text-decoration: none; }
+  #status a:hover { text-decoration: underline; }
+
+  .list-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .sort-buttons { display: flex; gap: 0; }
+  .sort-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink3);
+    font-size: .82rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .sort-btn:first-child { border-radius: 4px 0 0 4px; }
+  .sort-btn:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+  .sort-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .sort-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+  .result-count { font-size: .78rem; color: var(--ink3); margin-left: auto; }
+
+  .timeline {
+    --timeline-indent: 1.8rem;
+    --timeline-line-x: 5px;
+    --timeline-center-x: calc(var(--timeline-line-x) + 1px);
+    position: relative;
+    padding-left: var(--timeline-indent);
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: var(--timeline-line-x);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
+  .year-marker {
+    position: relative;
+    margin: 1.5rem 0 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    padding-left: 0.4rem;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .year-marker .year-arrow {
+    display: inline-block;
+    font-size: .65rem;
+    transition: transform .2s;
+    line-height: 1;
+  }
+  .year-marker.collapsed .year-arrow {
+    transform: rotate(-90deg);
+  }
+  .year-marker::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--timeline-center-x) - var(--timeline-indent));
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .year-group {
+    overflow: hidden;
+  }
+  .year-group.collapsed {
+    display: none;
+  }
+
+  .ep-item {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .ep-item:hover {
+    box-shadow: var(--shadow);
+    border-color: #ddd;
+  }
+  .ep-item::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--timeline-center-x) - var(--timeline-indent) - 1px);
+    top: 1rem;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+  }
+
+  .ep-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .ep-head .ep-num-tag {
+    font-size: .72rem;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .ep-head .ep-title-text {
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--ink);
+    flex: 1;
+  }
+  .ep-head .ep-title-text a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .ep-head .ep-title-text a:hover { color: var(--accent); }
+
+  .ep-meta {
+    display: flex;
+    gap: 0.8rem;
+    font-size: .75rem;
+    color: var(--ink3);
+    margin-bottom: 0.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .ep-cast {
+    display: inline-flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+  .cast-tag {
+    display: inline-block;
+    padding: 1px 5px;
+    background: var(--paper2);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .7rem;
+    transition: all .2s;
+  }
+  .cast-tag:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .ep-desc {
+    font-size: .82rem;
+    color: var(--ink2);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    max-height: 4.2em;
+    overflow: hidden;
+    transition: max-height .3s;
+  }
+  .ep-desc.expanded { max-height: none; }
+  .ep-expand {
+    font-size: .75rem;
+    color: var(--accent);
+    cursor: pointer;
+    margin-top: 2px;
+    display: inline-block;
+  }
+  .ep-expand:hover { text-decoration: underline; }
+
+  .ep-links {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .ep-link {
+    font-size: .73rem;
+    color: var(--ink3);
+    text-decoration: none;
+    padding: 2px 6px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    transition: all .2s;
+    cursor: pointer;
+  }
+  .ep-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  #results { display: flex; flex-direction: column; gap: 14px; }
+
+  .search-distribution {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    padding: 14px 16px 16px;
+  }
+  .distribution-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .distribution-title {
+    font-size: .96rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .distribution-note {
+    font-size: .76rem;
+    color: var(--ink3);
+    white-space: nowrap;
+  }
+  .distribution-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dist-row {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .dist-ep {
+    color: var(--accent);
+    font-size: .78rem;
+    font-family: 'Courier New', monospace;
+    text-decoration: none;
+  }
+  .dist-ep:hover { text-decoration: underline; }
+  .dist-main { min-width: 0; }
+  .dist-meta {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    min-width: 0;
+    margin-bottom: 4px;
+  }
+  .dist-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .82rem;
+    color: var(--ink2);
+  }
+  .dist-track {
+    height: 5px;
+    background: var(--paper);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .dist-bar {
+    height: 100%;
+    min-width: 2px;
+    background: linear-gradient(90deg, var(--accent), #df8a62);
+    border-radius: 999px;
+  }
+  .dist-count {
+    color: var(--accent2);
+    font-size: .8rem;
+    white-space: nowrap;
+  }
+
+  .ep-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .ep-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper2);
+    cursor: pointer;
+    user-select: none;
+  }
+  .ep-card-header .ep-num { font-size: .75rem; color: var(--ink3); font-family: 'Courier New', monospace; flex-shrink: 0; }
+  .ep-card-header .ep-title { font-size: .95rem; font-weight: 600; color: var(--ink); flex: 1; }
+  .ep-count { font-size: .78rem; color: var(--accent2); flex-shrink: 0; }
+  .ep-toggle { font-size: .8rem; color: var(--ink3); flex-shrink: 0; transition: transform .2s; }
+  .ep-card.collapsed .ep-toggle { transform: rotate(-90deg); }
+  .ep-hits { padding: 4px 0 8px; }
+  .ep-card.collapsed .ep-hits { display: none; }
+
+  .hit-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--paper2);
+    transition: background .15s;
+  }
+  .hit-row:last-child { border-bottom: none; }
+  .hit-row:hover { background: var(--hit-bg); }
+
+  .hit-time {
+    flex-shrink: 0;
+    font-size: .78rem;
+    font-family: 'Courier New', monospace;
+    color: var(--accent);
+    line-height: 1.75;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px dashed var(--accent2);
+  }
+  .hit-time:hover { color: var(--accent2); }
+
+  .hit-text {
+    font-size: .9rem;
+    line-height: 1.75;
+    color: var(--ink2);
+    flex: 1;
+  }
+  .hit-text mark {
+    background: var(--hit-bg);
+    color: var(--hit-mark);
+    font-weight: 600;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  .transcript-view {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .transcript-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper2);
+  }
+  .transcript-header h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .transcript-header .meta {
+    font-size: .8rem;
+    color: var(--ink3);
+  }
+  .transcript-header .meta a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .transcript-body {
+    padding: 14px 18px;
+    max-height: 72vh;
+    overflow-y: auto;
+  }
+  .transcript-seg {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f5f0ea;
+    line-height: 1.8;
+  }
+  .transcript-seg:last-child { border-bottom: none; }
+  .transcript-seg .ts {
+    flex-shrink: 0;
+    font-size: .73rem;
+    font-family: 'Courier New', monospace;
+    color: var(--accent);
+    line-height: 1.8;
+    cursor: pointer;
+    border-bottom: 1px dashed var(--accent2);
+  }
+  .transcript-seg .ts:hover { color: var(--accent2); }
+  .transcript-seg .txt {
+    font-size: .88rem;
+    color: var(--ink2);
+    flex: 1;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 50px 0;
+    color: var(--ink3);
+    font-size: .9rem;
+    line-height: 2;
+  }
+  .empty .big { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+
+  #loading {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--ink3);
+  }
+  .spinner {
+    width: 28px; height: 28px;
+    border: 3px solid var(--line);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    font-size: .75rem;
+    color: var(--ink3);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 640px) {
+    .search-wrap { flex-wrap: wrap; gap: 8px; }
+    #ep-select {
+      flex: 1 1 100%;
+      max-width: none;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      font-size: .82rem;
+    }
+    #q {
+      flex: 1 1 0;
+      min-width: 0;
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+    #btn-search { padding: 10px 14px; }
+    .timeline {
+      --timeline-indent: 1.4rem;
+      padding-left: var(--timeline-indent);
+    }
+    .ep-meta .ep-cast { display: none; }
+    .distribution-head { flex-direction: column; gap: 4px; }
+    .distribution-note { white-space: normal; }
+    .dist-row { grid-template-columns: 52px minmax(0, 1fr); }
+    .dist-count { grid-column: 2; justify-self: end; margin-top: -2px; }
+    .dist-meta { flex-direction: column; gap: 2px; }
+    .transcript-body { max-height: 65vh; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-name">壁下观</div>
+  <div class="site-title">全集文字检索 · 节目索引</div>
+</header>
+
+<nav>
+  <a href="index.html" class="active">首页</a>
+  <a href="cast.html">登场人物</a>
+</nav>
+
+<section class="search-section">
+  <div class="search-wrap">
+    <select id="ep-select"><option value="">全部期数</option></select>
+    <input id="q" type="search" placeholder="筛选节目，或输入关键词全文检索…" autocomplete="off" spellcheck="false">
+    <button id="btn-search">全文检索</button>
+  </div>
+  <div class="search-hint">默认输入会筛选节目列表 · 点击全文检索或按 Enter 搜索转录文本 · 只选期数可浏览全文</div>
+</section>
+
+<main>
+  <div id="loading">
+    <div class="spinner"></div>
+    正在加载数据……
+  </div>
+  <div id="status" style="display:none"></div>
+  <div id="results"></div>
+</main>
+
+<footer>壁下观 · IPN 播客网络 · 全集文字检索工具</footer>
+
+<script>
+// ── 工具函数 ──────────────────────────────────────────────────────────
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function fmtTime(s) {
+  s = Math.floor(s);
+  const h = Math.floor(s/3600), m = Math.floor((s%3600)/60), sec = s%60;
+  if (h > 0) return h+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');
+  return m+':'+String(sec).padStart(2,'0');
+}
+
+function matchSegment(text, queryTokens) {
+  const lower = text.toLowerCase();
+  return queryTokens.every(function(qt) { return lower.includes(qt.toLowerCase()); });
+}
+
+function escapeRegExp(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function countTokenOccurrences(text, token) {
+  if (!token) return 0;
+  var matches = text.match(new RegExp(escapeRegExp(token), 'gi'));
+  return matches ? matches.length : 0;
+}
+
+function getEpisodeKeywordCounts(ep, queryTokens) {
+  var fullText = ep.segments.map(function(seg) { return seg.text || ''; }).join('\n');
+  var tokens = [];
+  var total = 0;
+
+  for (var i = 0; i < queryTokens.length; i++) {
+    var token = queryTokens[i];
+    var count = countTokenOccurrences(fullText, token);
+    tokens.push({ word: token, count: count });
+    total += count;
+  }
+
+  return { total: total, tokens: tokens };
+}
+
+function highlight(text, queryTokens) {
+  var sorted = queryTokens.slice().sort(function(a,b) { return b.length - a.length; });
+  var result = escapeHtml(text);
+  for (var i = 0; i < sorted.length; i++) {
+    var qt = sorted[i];
+    if (!qt) continue;
+    var escaped = escapeRegExp(escapeHtml(qt));
+    result = result.replace(new RegExp(escaped, 'gi'), '<mark>$&</mark>');
+  }
+  return result;
+}
+
+function openPlayer(ytId, startSec) {
+  var t = Math.max(0, Math.floor(startSec) - 2);
+  window.open('https://www.youtube.com/watch?v='+ytId+'&t='+t+'s', '_blank');
+}
+
+// ── 数据 & 状态 ──────────────────────────────────────────────────────
+var INDEX = null;
+var EPISODES = null;
+var listOrder = 'asc';
+var listFilter = '';
+var currentView = 'list';
+
+async function loadData() {
+  var responses = await Promise.all([
+    fetch('search_index.json'),
+    fetch('episodes.json')
+  ]);
+  INDEX = await responses[0].json();
+  EPISODES = await responses[1].json();
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('status').style.display = 'block';
+
+  // 填充期号下拉
+  var select = document.getElementById('ep-select');
+  for (var i = 0; i < EPISODES.length; i++) {
+    var ep = EPISODES[i];
+    var opt = document.createElement('option');
+    opt.value = ep.ep;
+    var shortTitle = ep.title.replace(/^《壁下观》Episode\s*\d+\s*/, '');
+    opt.textContent = 'EP'+String(ep.ep).padStart(3,'0')+' '+shortTitle;
+    select.appendChild(opt);
+  }
+}
+
+// ── 核心路由 ──────────────────────────────────────────────────────────
+function doAction() {
+  var raw = document.getElementById('q').value.trim();
+  var epVal = document.getElementById('ep-select').value;
+  var epFilter = epVal ? parseInt(epVal, 10) : null;
+
+  if (!INDEX) return;
+
+  if (!raw && !epFilter) {
+    listFilter = '';
+    showEpisodeList();
+    return;
+  }
+
+  if (!raw && epFilter) {
+    showFullTranscript(epFilter);
+    return;
+  }
+
+  doSearch(raw, epFilter);
+}
+
+function backToList() {
+  document.getElementById('ep-select').value = '';
+  document.getElementById('q').value = '';
+  listFilter = '';
+  doAction();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── 节目列表（默认视图）──────────────────────────────────────────────
+function showEpisodeList() {
+  currentView = 'list';
+  var statusEl = document.getElementById('status');
+  statusEl.innerHTML = '';
+
+  var container = document.getElementById('results');
+
+  var html = '<div class="list-toolbar">' +
+    '<div class="sort-buttons">' +
+    '<button class="sort-btn'+(listOrder==='asc'?' active':'')+'" data-order="asc">正序 &#8595;</button>' +
+    '<button class="sort-btn'+(listOrder==='desc'?' active':'')+'" data-order="desc">倒序 &#8593;</button>' +
+    '</div>' +
+    '<span class="result-count" id="list-count"></span>' +
+    '</div>';
+
+  html += '<div class="timeline" id="timeline"></div>';
+
+  container.innerHTML = html;
+  renderTimeline();
+  setupListEvents();
+  updateUrl({ includeQuery: false });
+}
+
+function renderTimeline() {
+  var episodes = EPISODES.slice();
+
+  if (listFilter) {
+    var kw = listFilter.toLowerCase();
+    episodes = episodes.filter(function(ep) {
+      return (ep.title && ep.title.toLowerCase().includes(kw)) ||
+             (ep.description && ep.description.toLowerCase().includes(kw));
+    });
+  }
+
+  episodes.sort(function(a, b) { return listOrder === 'desc' ? b.ep - a.ep : a.ep - b.ep; });
+
+  var countEl = document.getElementById('list-count');
+  if (countEl) countEl.textContent = episodes.length + ' 期';
+
+  var container = document.getElementById('timeline');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (episodes.length === 0) {
+    container.innerHTML = '<div class="empty"><span class="big">&#128269;</span>没有匹配的节目<br>换个标题、人物或简介里的关键词试试</div>';
+    return;
+  }
+
+  var currentGroup = '';
+  var currentGroupEl = null;
+  for (var i = 0; i < episodes.length; i++) {
+    var ep = episodes[i];
+    var yearGroup = ep.date ? ep.date.slice(0, 4) : '未知';
+    if (yearGroup !== currentGroup) {
+      currentGroup = yearGroup;
+      var marker = document.createElement('div');
+      marker.className = 'year-marker';
+      marker.innerHTML = '<span class="year-arrow">&#9662;</span>' + yearGroup + ' 年';
+      container.appendChild(marker);
+
+      currentGroupEl = document.createElement('div');
+      currentGroupEl.className = 'year-group';
+      container.appendChild(currentGroupEl);
+    }
+
+    var item = document.createElement('div');
+    item.className = 'ep-item';
+
+    var displayTitle = (ep.title || '').replace(/^《壁下观》\s*Episode\s*\d+\s*/i, '').trim() || ep.title;
+
+    // 清理描述（仅过滤 ListenNotes 链接）
+    var desc = ep.description || '';
+    var lines = desc.split('\n');
+    var cleanLines = [];
+    for (var j = 0; j < lines.length; j++) {
+      if (lines[j].match(/listennotes\.com/i)) continue;
+      cleanLines.push(lines[j]);
+    }
+    desc = cleanLines.join('\n').trim();
+    if (!desc && ep.description) desc = ep.description.split('\n').slice(0, 4).join('\n');
+    var needExpand = desc.length > 150;
+
+    var castHtml = '';
+    if (ep.cast && ep.cast.length) {
+      castHtml = '<span class="ep-cast">';
+      for (var k = 0; k < ep.cast.length; k++) {
+        castHtml += '<a href="cast.html#'+encodeURIComponent(ep.cast[k].name)+'" class="cast-tag">'+escapeHtml(ep.cast[k].name)+'</a>';
+      }
+      castHtml += '</span>';
+    }
+
+    item.innerHTML =
+      '<div class="ep-head">' +
+        '<span class="ep-num-tag">EP'+String(ep.ep).padStart(3,'0')+'</span>' +
+        '<span class="ep-title-text"><a href="https://www.youtube.com/watch?v='+ep.ytId+'" target="_blank">'+escapeHtml(displayTitle)+'</a></span>' +
+      '</div>' +
+      '<div class="ep-meta">' +
+        '<span>'+(ep.date||'')+'</span>' +
+        '<span>'+(ep.duration_min ? ep.duration_min+' 分钟' : '')+'</span>' +
+        castHtml +
+      '</div>' +
+      (desc ? '<div class="ep-desc'+(needExpand ? '' : ' expanded')+'">'+escapeHtml(desc)+'</div>' : '') +
+      (needExpand ? '<span class="ep-expand">展开 &#9662;</span>' : '') +
+      '<div class="ep-links">' +
+        '<a class="ep-link" href="https://www.youtube.com/watch?v='+ep.ytId+'" target="_blank">&#9654; YouTube</a>' +
+        '<a class="ep-link browse-link" data-ep="'+ep.ep+'">&#128214; 浏览全文</a>' +
+        '<a class="ep-link search-link" data-ep="'+ep.ep+'">&#128269; 搜索文本</a>' +
+      '</div>';
+
+    currentGroupEl.appendChild(item);
+  }
+
+  // 年份折叠事件
+  container.querySelectorAll('.year-marker').forEach(function(marker) {
+    marker.addEventListener('click', function() {
+      marker.classList.toggle('collapsed');
+      var group = marker.nextElementSibling;
+      if (group) group.classList.toggle('collapsed');
+    });
+  });
+
+  // 绑定事件
+  container.querySelectorAll('.ep-expand').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var descEl = btn.previousElementSibling;
+      descEl.classList.toggle('expanded');
+      btn.innerHTML = descEl.classList.contains('expanded') ? '收起 &#9652;' : '展开 &#9662;';
+    });
+  });
+
+  container.querySelectorAll('.browse-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var epNum = parseInt(link.dataset.ep, 10);
+      document.getElementById('q').value = '';
+      listFilter = '';
+      document.getElementById('ep-select').value = epNum;
+      doAction();
+    });
+  });
+
+  container.querySelectorAll('.search-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var epNum = parseInt(link.dataset.ep, 10);
+      document.getElementById('ep-select').value = epNum;
+      document.getElementById('q').value = '';
+      listFilter = '';
+      renderTimeline();
+      currentView = 'scope';
+      document.getElementById('q').focus();
+      updateUrl();
+    });
+  });
+}
+
+function setupListEvents() {
+  var buttons = document.querySelectorAll('.sort-btn');
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      listOrder = btn.dataset.order;
+      renderTimeline();
+    });
+  });
+}
+
+// ── 全文浏览 ──────────────────────────────────────────────────────────
+function showFullTranscript(epNum) {
+  currentView = 'transcript';
+  var epData = INDEX.find(function(e) { return e.ep === epNum; });
+  var epMeta = EPISODES.find(function(e) { return e.ep === epNum; });
+  if (!epData) return;
+
+  var shortTitle = (epMeta ? epMeta.title : epData.title).replace(/^《壁下观》Episode\s*\d+\s*/, '');
+
+  var statusEl = document.getElementById('status');
+  statusEl.innerHTML = '<a href="#" onclick="event.preventDefault();backToList()">&#8592; 返回列表</a>　浏览 <b>EP'+String(epNum).padStart(3,'0')+'</b> 全文，共 '+epData.segments.length+' 个片段';
+
+  var container = document.getElementById('results');
+
+  var html = '<div class="transcript-view">' +
+    '<div class="transcript-header">' +
+      '<h2>EP'+String(epNum).padStart(3,'0')+'　'+escapeHtml(shortTitle)+'</h2>' +
+      '<div class="meta">' +
+        (epMeta && epMeta.date ? epMeta.date+'　' : '') +
+        (epMeta && epMeta.duration_min ? epMeta.duration_min+'分钟　' : '') +
+        '<a href="https://www.youtube.com/watch?v='+epData.ytId+'" target="_blank">YouTube &#8599;</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="transcript-body">';
+
+  for (var i = 0; i < epData.segments.length; i++) {
+    var seg = epData.segments[i];
+    html += '<div class="transcript-seg">' +
+      '<span class="ts" onclick="openPlayer(\''+epData.ytId+'\','+seg.start+')">'+fmtTime(seg.start)+'</span>' +
+      '<span class="txt">'+escapeHtml(seg.text)+'</span>' +
+    '</div>';
+  }
+
+  html += '</div></div>';
+  container.innerHTML = html;
+  updateUrl();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── 搜索 ──────────────────────────────────────────────────────────────
+function doSearch(raw, epFilter) {
+  currentView = 'search';
+  var queryParts = raw.split(/\s+/).filter(Boolean);
+  var matchTokens = queryParts;
+
+  var t0 = performance.now();
+  var epResults = [];
+  var searchScope = epFilter ? INDEX.filter(function(ep) { return ep.ep === epFilter; }) : INDEX;
+
+  for (var i = 0; i < searchScope.length; i++) {
+    var ep = searchScope[i];
+    var hits = [];
+    for (var j = 0; j < ep.segments.length; j++) {
+      if (matchSegment(ep.segments[j].text, matchTokens)) {
+        hits.push(ep.segments[j]);
+      }
+    }
+    if (hits.length > 0) {
+      epResults.push({
+        ep: ep,
+        hits: hits,
+        keywordCounts: getEpisodeKeywordCounts(ep, matchTokens)
+      });
+    }
+  }
+
+  var elapsed = ((performance.now() - t0) / 1000).toFixed(3);
+  var totalHits = epResults.reduce(function(s, r) { return s + r.hits.length; }, 0);
+  var totalOccurrences = epResults.reduce(function(s, r) { return s + r.keywordCounts.total; }, 0);
+
+  var statusEl = document.getElementById('status');
+  if (epResults.length === 0) {
+    statusEl.innerHTML = '<a href="#" onclick="event.preventDefault();backToList()">&#8592; 返回列表</a>　未找到包含 <b>「'+escapeHtml(raw)+'」</b> 的内容。';
+    document.getElementById('results').innerHTML = '<div class="empty"><span class="big">&#128269;</span>没有找到相关内容<br>试试换个关键词，或拆分成更短的词组</div>';
+    updateUrl();
+    return;
+  }
+
+  var scopeInfo = epFilter ? '（限定 EP'+String(epFilter).padStart(3,'0')+'）' : '';
+  statusEl.innerHTML = '<a href="#" onclick="event.preventDefault();backToList()">&#8592; 返回列表</a>　找到 <b>'+epResults.length+'</b> 期节目，共 <b>'+totalHits+'</b> 个匹配片段、<b>'+totalOccurrences+'</b> 次关键词出现'+scopeInfo+'，用时 '+elapsed+'s';
+
+  renderResults(epResults, matchTokens);
+  updateUrl();
+}
+
+// ── 渲染搜索结果 ──────────────────────────────────────────────────────
+function renderResults(epResults, matchTokens) {
+  var container = document.getElementById('results');
+  container.innerHTML = '';
+  renderSearchDistribution(container, epResults, matchTokens);
+
+  for (var i = 0; i < epResults.length; i++) {
+    var ep = epResults[i].ep;
+    var hits = epResults[i].hits;
+    var keywordCounts = epResults[i].keywordCounts;
+
+    var card = document.createElement('div');
+    card.className = 'ep-card';
+    card.id = 'ep-result-' + ep.ep;
+
+    var header = document.createElement('div');
+    header.className = 'ep-card-header';
+    header.innerHTML =
+      '<span class="ep-num">EP.'+String(ep.ep).padStart(3,'0')+'</span>' +
+      '<span class="ep-title">'+escapeHtml(ep.title)+'</span>' +
+      '<span class="ep-count">'+hits.length+' 个片段 · '+keywordCounts.total+' 次</span>' +
+      '<span class="ep-toggle">&#9662;</span>';
+    header.addEventListener('click', (function(c) { return function() { c.classList.toggle('collapsed'); }; })(card));
+    card.appendChild(header);
+
+    var hitsDiv = document.createElement('div');
+    hitsDiv.className = 'ep-hits';
+
+    for (var j = 0; j < hits.length; j++) {
+      var seg = hits[j];
+      var row = document.createElement('div');
+      row.className = 'hit-row';
+      row.innerHTML =
+        '<a class="hit-time" href="#" onclick="event.preventDefault();openPlayer(\''+ep.ytId+'\','+seg.start+')">'+fmtTime(seg.start)+'</a>' +
+        '<div class="hit-text">'+highlight(seg.text, matchTokens)+'</div>';
+      hitsDiv.appendChild(row);
+    }
+
+    card.appendChild(hitsDiv);
+    container.appendChild(card);
+  }
+}
+
+function renderSearchDistribution(container, epResults, matchTokens) {
+  var rows = epResults
+    .map(function(r) { return { ep: r.ep, keywordCounts: r.keywordCounts }; })
+    .filter(function(r) { return r.keywordCounts.total > 0; })
+    .sort(function(a, b) {
+      return b.keywordCounts.total - a.keywordCounts.total || a.ep.ep - b.ep.ep;
+    });
+
+  if (rows.length === 0) return;
+
+  var maxCount = rows[0].keywordCounts.total;
+  var panel = document.createElement('div');
+  panel.className = 'search-distribution';
+
+  var tokenLabel = matchTokens.map(function(t) { return '「' + escapeHtml(t) + '」'; }).join('、');
+  var html = '<div class="distribution-head">' +
+    '<div class="distribution-title">关键词分布：'+tokenLabel+'</div>' +
+    '<div class="distribution-note">基于完整转录子串匹配 · 按出现次数排序</div>' +
+    '</div><div class="distribution-list">';
+
+  for (var i = 0; i < rows.length; i++) {
+    var ep = rows[i].ep;
+    var counts = rows[i].keywordCounts;
+    var width = maxCount > 0 ? (counts.total / maxCount * 100).toFixed(1) : 0;
+    html += '<div class="dist-row">' +
+      '<a class="dist-ep" href="#ep-result-'+ep.ep+'">EP'+String(ep.ep).padStart(3,'0')+'</a>' +
+      '<div class="dist-main">' +
+        '<div class="dist-meta">' +
+          '<div class="dist-title">'+escapeHtml(ep.title)+'</div>' +
+        '</div>' +
+        '<div class="dist-track"><div class="dist-bar" style="width:'+width+'%"></div></div>' +
+      '</div>' +
+      '<div class="dist-count">'+counts.total+' 次</div>' +
+    '</div>';
+  }
+
+  html += '</div>';
+  panel.innerHTML = html;
+  container.appendChild(panel);
+}
+
+// ── URL 同步 ──────────────────────────────────────────────────────────
+function updateUrl(options) {
+  options = options || {};
+  var includeQuery = options.includeQuery !== false;
+  var url = new URL(window.location);
+  var q = document.getElementById('q').value.trim();
+  var ep = document.getElementById('ep-select').value;
+  if (includeQuery && q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+  if (ep) url.searchParams.set('ep', ep); else url.searchParams.delete('ep');
+  history.replaceState(null, '', url);
+}
+
+function handleMainInput() {
+  if (currentView !== 'list' || document.getElementById('ep-select').value) return;
+  listFilter = document.getElementById('q').value.trim();
+  renderTimeline();
+  updateUrl({ includeQuery: false });
+}
+
+// ── 事件绑定 ──────────────────────────────────────────────────────────
+document.getElementById('btn-search').addEventListener('click', doAction);
+document.getElementById('q').addEventListener('input', handleMainInput);
+document.getElementById('q').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') doAction();
+});
+document.getElementById('ep-select').addEventListener('change', function() {
+  listFilter = '';
+  doAction();
+});
+
+// ── 启动 ──────────────────────────────────────────────────────────────
+loadData().then(function() {
+  var params = new URLSearchParams(window.location.search);
+
+  var epParam = params.get('ep');
+  if (epParam) {
+    var epNum = parseInt(epParam, 10);
+    if (epNum >= 1 && epNum <= 200) {
+      document.getElementById('ep-select').value = epNum;
+    }
+  }
+
+  var q = params.get('q');
+  if (q) {
+    document.getElementById('q').value = q;
+  }
+
+  doAction();
+});
+</script>
+</body>
+</html>

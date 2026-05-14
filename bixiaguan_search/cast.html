@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壁下观 · 登场人物</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif;
+    background: #faf8f5;
+  color: #2c2c2c;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #e8e2da;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #3a3a3a;
+}
+
+.header .subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+nav {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e8e2da;
+  background: #fdfcfa;
+}
+
+nav a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+nav a:hover, nav a.active {
+  color: #c44;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* 人物总览 */
+.cast-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #ece8e2;
+  border-radius: 4px;
+}
+
+.cast-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: #faf8f5;
+  border: 1px solid #e8e2da;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.cast-chip:hover {
+  border-color: #c44;
+  color: #c44;
+  background: #fff;
+}
+
+.cast-chip .chip-count {
+  font-size: 0.72rem;
+  background: #ece8e2;
+  color: #888;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  min-width: 1.4rem;
+  text-align: center;
+}
+
+.cast-chip:hover .chip-count {
+  background: #c44;
+  color: #fff;
+}
+
+/* 人物详情 */
+.person-section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 2rem;
+}
+
+.person-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #c44;
+}
+
+.person-name {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.person-role {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.person-stats {
+  font-size: 0.8rem;
+  color: #999;
+  margin-left: auto;
+}
+
+/* 节目列表 */
+.ep-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ep-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1rem;
+  background: #fff;
+  border: 1px solid #ece8e2;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.ep-row:hover {
+  border-color: #ddd;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.ep-row .ep-num {
+  font-size: 0.75rem;
+  color: #c44;
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 3.5rem;
+  text-decoration: none;
+}
+.ep-row .ep-num:hover {
+  text-decoration: underline;
+}
+
+.ep-row .ep-date {
+  font-size: 0.75rem;
+  color: #999;
+  white-space: nowrap;
+  min-width: 5.5rem;
+}
+
+.ep-row .ep-title {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.ep-row .ep-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ep-row .ep-title a:hover {
+  color: #c44;
+}
+
+.ep-row .ep-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ep-row .ep-link {
+  font-size: 0.72rem;
+  color: #888;
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #e8e2da;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.ep-row .ep-link:hover {
+  color: #c44;
+  border-color: #c44;
+}
+
+/* 共同出演 */
+.co-cast {
+  margin-top: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: #fdfcfa;
+  border: 1px solid #ece8e2;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: #666;
+}
+
+.co-cast-title {
+  font-size: 0.78rem;
+  color: #999;
+  margin-bottom: 0.4rem;
+}
+
+.co-cast a {
+  color: #8b6b3f;
+  text-decoration: none;
+  margin-right: 0.6rem;
+}
+
+.co-cast a:hover {
+  color: #c44;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 1.5rem 1rem; }
+  .person-header { flex-wrap: wrap; }
+  .person-stats { margin-left: 0; width: 100%; }
+  .ep-row { flex-wrap: wrap; }
+  .ep-row .ep-links { width: 100%; margin-top: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>壁下观 · 登场人物</h1>
+  <p class="subtitle">17 位主播与嘉宾 · 按出场频次索引</p>
+</div>
+
+<nav>
+<a href="index.html">首页</a>
+<a href="cast.html" class="active">登场人物</a>
+</nav>
+
+<div class="container">
+  <div class="cast-overview" id="cast-overview"></div>
+  <div id="cast-sections"></div>
+  <p class="loading" id="loading">正在加载数据...</p>
+</div>
+
+<script>
+let allEpisodes = [];
+
+async function init() {
+  const resp = await fetch('episodes.json');
+  allEpisodes = await resp.json();
+  document.getElementById('loading').style.display = 'none';
+
+  // 构建人物索引
+  const people = buildPeopleIndex();
+  renderOverview(people);
+  renderSections(people);
+
+  // 如果 URL 有 hash，滚动到对应人物
+  if (window.location.hash) {
+    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  }
+}
+
+function buildPeopleIndex() {
+  const map = {};
+
+  for (const ep of allEpisodes) {
+    if (!ep.cast || !ep.cast.length) continue;
+    for (const person of ep.cast) {
+      const name = person.name;
+      if (!map[name]) {
+        map[name] = { name, role: person.role, episodes: [] };
+      }
+      // 更新 role（取最新的非空值）
+      if (person.role && !map[name].role) {
+        map[name].role = person.role;
+      }
+      map[name].episodes.push(ep);
+    }
+  }
+
+  // 按出场次数排序
+  return Object.values(map).sort((a, b) => b.episodes.length - a.episodes.length);
+}
+
+function renderOverview(people) {
+  const container = document.getElementById('cast-overview');
+  container.innerHTML = people.map(p =>
+    `<a class="cast-chip" href="#${encodeURIComponent(p.name)}">
+      ${escapeHtml(p.name)}
+      <span class="chip-count">${p.episodes.length}</span>
+    </a>`
+  ).join('');
+}
+
+function renderSections(people) {
+  const container = document.getElementById('cast-sections');
+
+  for (const person of people) {
+    const section = document.createElement('div');
+    section.className = 'person-section';
+    section.id = person.name;
+
+    // 计算共同出演关系
+    const coCast = {};
+    for (const ep of person.episodes) {
+      for (const p of ep.cast) {
+        if (p.name === person.name) continue;
+        if (!coCast[p.name]) coCast[p.name] = 0;
+        coCast[p.name]++;
+      }
+    }
+    const topCoCast = Object.entries(coCast)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8);
+
+    section.innerHTML = `
+      <div class="person-header">
+        <span class="person-name">${escapeHtml(person.name)}</span>
+        <span class="person-role">${escapeHtml(person.role)}</span>
+        <span class="person-stats">参与 ${person.episodes.length} 期</span>
+      </div>
+      <div class="ep-list">
+        ${person.episodes.map(ep => {
+          let title = ep.title || '';
+          title = title.replace(/^《壁下观》\s*Episode\s*\d+\s*/i, '').trim();
+          if (!title) title = ep.title;
+          return `
+            <div class="ep-row">
+              <a class="ep-num" href="index.html?ep=${ep.ep}">EP${String(ep.ep).padStart(3, '0')}</a>
+              <span class="ep-date">${ep.date || ''}</span>
+              <span class="ep-title"><a href="index.html?ep=${ep.ep}">${escapeHtml(title)}</a></span>
+              <span class="ep-links">
+                <a class="ep-link" href="https://www.youtube.com/watch?v=${ep.ytId}" target="_blank">▶</a>
+                <a class="ep-link" href="index.html?ep=${ep.ep}">🔍</a>
+              </span>
+            </div>`;
+        }).join('')}
+      </div>
+      ${topCoCast.length ? `
+        <div class="co-cast">
+          <div class="co-cast-title">常共同出演</div>
+          ${topCoCast.map(([name, count]) => `<a href="#${encodeURIComponent(name)}">${escapeHtml(name)} (${count})</a>`).join('')}
+        </div>
+      ` : ''}
+    `;
+
+    container.appendChild(section);
+  }
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+init();
+</script>
+</body>
+</html>
