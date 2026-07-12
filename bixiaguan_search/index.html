@@ -819,6 +819,7 @@
 
 <footer>壁下观 · IPN 播客网络 · 全集文字检索工具</footer>
 
+<script src="crowd-report-config.js"></script>
 <script>
 // ── 工具函数 ──────────────────────────────────────────────────────────
 function escapeHtml(s) {
@@ -1607,6 +1608,14 @@ loadData().then(function() {
 
   doAction();
 });
+</script>
+<script src="reader-report.js"></script>
+<script>
+if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '::1') {
+  var editorScript = document.createElement('script');
+  editorScript.src = 'proofreading-editor.js';
+  document.body.appendChild(editorScript);
+}
 </script>
 </body>
 </html>

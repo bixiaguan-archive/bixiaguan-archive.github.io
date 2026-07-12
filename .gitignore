@@ -7,3 +7,7 @@ bixiaguan_search/search_index.json
 # Python
 __pycache__/
 *.pyc
+
+# Cloudflare Wrangler local D1 state
+.wrangler/
+crowd-report-worker/.wrangler/

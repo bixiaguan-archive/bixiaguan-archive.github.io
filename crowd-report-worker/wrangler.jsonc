@@ -1,0 +1,15 @@
+{
+  "name": "bixiaguan-crowd-reports",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-12",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bixiaguan-crowd-reports",
+      "database_id": "0f00f147-442b-441e-b2fa-4399563d3c9d"
+    }
+  ],
+  "vars": {
+    "SITE_ORIGIN": "https://bixiaguan-archive.github.io"
+  }
+}
