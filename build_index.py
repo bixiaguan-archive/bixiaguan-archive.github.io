@@ -10,6 +10,60 @@ TRANSCRIPTS_DIR = Path(__file__).parent / "bixiaguan_transcripts"
 OUTPUT = Path(__file__).parent / "bixiaguan_search" / "search_index.json"
 OUTPUT.parent.mkdir(exist_ok=True)
 
+# ── Notes 读取（从结构化的 JSON 文件）─────────
+NOTES_JSON = TRANSCRIPTS_DIR / "notes" / "annotations.json"
+
+NOTES_OUT = Path(__file__).parent / "bixiaguan_search" / "notes.json"
+
+def _time_to_sec(t):
+    """hh:mm:ss(.fff|,fff|:ff) -> int seconds"""
+    parts = t.replace(",", ":").split(":")
+    h = int(parts[0])
+    m = int(parts[1])
+    s = int(parts[2])  # ignore frames/milliseconds if present
+    return h*3600 + m*60 + s
+
+_all_notes_pre = []
+keywords_by_ep = {}
+if NOTES_JSON.exists():
+    notes_data = json.loads(NOTES_JSON.read_text(encoding="utf-8"))
+    # 遍历 annotations（附注）
+    for a in notes_data.get("annotations", []):
+        for ep_entry in a.get("episodes", []):
+            _all_notes_pre.append({
+                "type": "annotation",
+                "ep": ep_entry["ep"],
+                "subtitle": str(ep_entry.get("subtitle", "")),
+                "time": ep_entry.get("timecode", "00:00:00"),
+                "start": _time_to_sec(ep_entry.get("timecode", "00:00:00")),
+                "label": a.get("label", ""),
+                "keyword": a.get("keyword", ""),
+                "explanation": a.get("explanation", ""),
+                "source": a.get("source", ""),
+            })
+    # 遍历 errata（勘误）
+    for e in notes_data.get("errata", []):
+        _all_notes_pre.append({
+            "type": "errata",
+            "ep": e["ep"],
+            "subtitle": str(e.get("subtitle", "")),
+            "time": e.get("timecode", "00:00:00"),
+            "start": _time_to_sec(e.get("timecode", "00:00:00")),
+            "label": e.get("label", ""),
+            "keyword": e.get("keyword", ""),
+            "original": e.get("original", ""),
+            "correct": e.get("correct", ""),
+            "source": e.get("source", ""),
+            "status": "fact-error",
+        })
+    # 构建 keywords_by_ep
+    for _n in _all_notes_pre:
+        kw = _n.get("keyword", "")
+        if kw:
+            kw_clean = kw.replace("《", "").replace("》", "")
+            if kw_clean:
+                keywords_by_ep.setdefault(_n["ep"], []).append(kw_clean)
+
 # YouTube ID 映射
 YOUTUBE_IDS = {
     1:"a1cjeKAHNAc",2:"lOyDBOMwKJE",3:"Ghi60u-r5XA",4:"0j1I4NcU-V0",
@@ -46,8 +100,13 @@ def srt_time_to_seconds(t):
     s, ms = s.split(",")
     return int(h)*3600 + int(m)*60 + int(s) + int(ms)/1000
 
-def parse_srt(path):
-    """解析 SRT，返回 [{start, end, text}, ...]，每条约合并4个字幕块"""
+def parse_srt(path, keywords=None):
+    """解析 SRT，返回 [{start, end, text}, ...]，每条约合并4个字幕块。
+
+    合并逻辑：达到约50字或句末标点时断开，配对符号（《》""（）「」）未闭合时推迟断开。
+    keyword 参数保留兼容但不影响合并——跨段 keyword 由前端处理。
+    """
+    MAX_BUF = 300
     text = path.read_text(encoding="utf-8")
     blocks = re.split(r'\n\n+', text.strip())
     raw = []
@@ -55,7 +114,6 @@ def parse_srt(path):
         lines = block.strip().splitlines()
         if len(lines) < 3:
             continue
-        # lines[0] = 序号, lines[1] = 时间, lines[2+] = 文本
         time_match = re.match(r'(\S+)\s*-->\s*(\S+)', lines[1])
         if not time_match:
             continue
@@ -64,7 +122,16 @@ def parse_srt(path):
         txt   = "".join(lines[2:])
         raw.append({"start": start, "end": end, "text": txt})
 
-    # 合并成约 60 字左右的段落，便于展示
+    PAIR_OPEN = set('《“（「『')
+    PAIR_CLOSE = set('》”）」』')
+
+    def has_unclosed_pair(t):
+        depth = 0
+        for ch in t:
+            if ch in PAIR_OPEN: depth += 1
+            elif ch in PAIR_CLOSE: depth = max(0, depth - 1)
+        return depth > 0
+
     merged = []
     buf_text, buf_start, buf_end = "", None, None
     for r in raw:
@@ -73,10 +140,28 @@ def parse_srt(path):
         buf_text += r["text"]
         buf_end = r["end"]
         if len(buf_text) >= 50 or r["text"].endswith(("。", "？", "！", "…")):
+            if has_unclosed_pair(buf_text) and len(buf_text) < MAX_BUF:
+                continue
             merged.append({"start": buf_start, "end": buf_end, "text": buf_text})
             buf_text, buf_start, buf_end = "", None, None
     if buf_text:
         merged.append({"start": buf_start, "end": buf_end, "text": buf_text})
+
+    # 标点前移：segment 不应以句读/闭括号开头，移到上一段末尾
+    LEADING_PUNCT = set('，。、；：？！…》）」』】〉"’')
+    for i in range(1, len(merged)):
+        cur = merged[i]
+        prev = merged[i - 1]
+        strip_len = 0
+        for ch in cur["text"]:
+            if ch in LEADING_PUNCT:
+                strip_len += 1
+            else:
+                break
+        if strip_len > 0:
+            prev["text"] += cur["text"][:strip_len]
+            cur["text"] = cur["text"][strip_len:]
+
     return merged
 
 episodes = []
@@ -88,7 +173,7 @@ for srt_path in srt_files:
     ep_num = int(m.group(1))
     title  = m.group(2)
     yt_id  = YOUTUBE_IDS.get(ep_num, "")
-    segments = parse_srt(srt_path)
+    segments = parse_srt(srt_path, keywords=keywords_by_ep.get(ep_num, []))
     episodes.append({
         "ep": ep_num,
         "title": title,
@@ -100,3 +185,11 @@ for srt_path in srt_files:
 OUTPUT.write_text(json.dumps(episodes, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
 size_mb = OUTPUT.stat().st_size / 1024 / 1024
 print(f"\n✅ 索引已生成: {OUTPUT}  ({size_mb:.1f} MB, {len(episodes)} 期)")
+
+# ── 生成注释索引 notes.json ───────────────────────────────────────────
+errata_count = sum(1 for n in _all_notes_pre if n["type"] == "errata")
+annot_count = sum(1 for n in _all_notes_pre if n["type"] == "annotation")
+print(f"  勘误: {errata_count} 条（展开后）")
+print(f"  附注: {annot_count} 条（展开后）")
+NOTES_OUT.write_text(json.dumps(_all_notes_pre, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+print(f"✅ 注释已生成: {NOTES_OUT}  ({len(_all_notes_pre)} 条)")

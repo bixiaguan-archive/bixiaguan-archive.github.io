@@ -527,6 +527,7 @@
   }
   .transcript-seg {
     display: flex;
+    align-items: center;
     gap: 12px;
     padding: 5px 0;
     border-bottom: 1px solid #f5f0ea;
@@ -538,8 +539,9 @@
     font-size: .73rem;
     font-family: 'Courier New', monospace;
     color: var(--accent);
-    line-height: 1.8;
+    line-height: 1.4;
     cursor: pointer;
+    align-self: center;
     border-bottom: 1px dashed var(--accent2);
   }
   .transcript-seg .ts:hover { color: var(--accent2); }
@@ -547,6 +549,172 @@
     font-size: .88rem;
     color: var(--ink2);
     flex: 1;
+  }
+
+  /* 注释徽章（勘误 + 附注） */
+  .note-keyword {
+    border-bottom: 1px dashed;
+    cursor: help;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .note-keyword.errata {
+    background: #fff3e8;
+    border-color: #e28b55;
+  }
+  .note-keyword.annotation {
+    background: #e4f7f5;
+    border-color: #108a93;
+  }
+  .note-badge {
+    display: inline-block;
+    font-size: .62rem;
+    padding: 0 4px;
+    margin: 0 0 0 2px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: super;
+    line-height: 1.5;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .note-badge.note-errata {
+    background: #fff3e8;
+    color: var(--accent2);
+    border: 1px solid #e8c4a8;
+  }
+  .note-badge.note-errata:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .note-badge.note-annotation {
+    background: #0f8b8d;
+    color: #fff;
+    border: 1px solid #0b6f71;
+    box-shadow: 0 1px 4px rgba(15, 139, 141, .35);
+    font-weight: 600;
+  }
+  .note-badge.note-annotation:hover {
+    background: #0b6f71;
+    color: #fff;
+    border-color: #0b6f71;
+  }
+  /* 注释 popup（行内定位） */
+  .note-popup {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .18);
+    max-width: 400px;
+    width: 90vw;
+    overflow: hidden;
+    animation: note-pop .12s ease-out;
+  }
+  .note-popup.open { display: block; }
+  @keyframes note-pop {
+    from { transform: translateY(-6px); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+  }
+  .note-popup-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper2);
+  }
+  .note-popup-title {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: .04em;
+  }
+  .note-popup-close {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--ink3);
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color .15s;
+  }
+  .note-popup-close:hover { color: var(--accent); }
+  .note-popup-body {
+    padding: 12px 14px 14px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .note-item {
+    font-size: .85rem;
+    line-height: 1.75;
+    color: var(--ink2);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--paper2);
+  }
+  .note-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .note-item:first-child { padding-top: 0; }
+  .note-item-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .note-tag {
+    display: inline-block;
+    font-size: .68rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .note-tag-errata {
+    background: var(--accent);
+    color: #fff;
+  }
+  .note-errata-unverified .note-tag-errata {
+    background: #f0e8d8;
+    color: #8a7a5a;
+  }
+  .note-tag-annotation {
+    background: #0f8b8d;
+    color: #fff;
+  }
+  .note-label {
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+  }
+  .note-time {
+    font-size: .72rem;
+    font-family: 'Courier New', monospace;
+    color: var(--ink3);
+    flex-shrink: 0;
+  }
+  .note-line {
+    margin-top: 3px;
+    color: var(--ink2);
+  }
+  .note-line b {
+    color: var(--accent2);
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  .note-explanation {
+    color: var(--ink2);
+    line-height: 1.8;
+  }
+  .note-note {
+    color: var(--ink3);
+    font-size: .8rem;
+  }
+  .note-source {
+    color: var(--ink3);
+    font-size: .76rem;
+    font-style: italic;
   }
 
   .empty {
@@ -640,6 +808,15 @@
   <div id="results"></div>
 </main>
 
+<!-- 注释 popup（行内定位） -->
+<div id="note-popup" class="note-popup">
+  <div class="note-popup-head">
+    <span class="note-popup-title">附注</span>
+    <button class="note-popup-close" onclick="closeNotesPopup()" aria-label="关闭">&times;</button>
+  </div>
+  <div id="note-popup-content" class="note-popup-body"></div>
+</div>
+
 <footer>壁下观 · IPN 播客网络 · 全集文字检索工具</footer>
 
 <script>
@@ -705,6 +882,8 @@ function openPlayer(ytId, startSec) {
 // ── 数据 & 状态 ──────────────────────────────────────────────────────
 var INDEX = null;
 var EPISODES = null;
+var NOTES = null;              // 全部注释（errata + annotation）
+var NOTES_BY_EP = {};          // {epNum: [noteEntry, ...]}
 var listOrder = 'asc';
 var listFilter = '';
 var currentView = 'list';
@@ -712,10 +891,19 @@ var currentView = 'list';
 async function loadData() {
   var responses = await Promise.all([
     fetch('search_index.json'),
-    fetch('episodes.json')
+    fetch('episodes.json'),
+    fetch('notes.json').catch(function() { return null; })
   ]);
   INDEX = await responses[0].json();
   EPISODES = await responses[1].json();
+  if (responses[2]) {
+    NOTES = await responses[2].json();
+    for (var i = 0; i < NOTES.length; i++) {
+      var n = NOTES[i];
+      if (!NOTES_BY_EP[n.ep]) NOTES_BY_EP[n.ep] = [];
+      NOTES_BY_EP[n.ep].push(n);
+    }
+  }
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('status').style.display = 'block';
@@ -957,18 +1145,275 @@ function showFullTranscript(epNum) {
     '</div>' +
     '<div class="transcript-body">';
 
-  for (var i = 0; i < epData.segments.length; i++) {
-    var seg = epData.segments[i];
-    html += '<div class="transcript-seg">' +
+  // ── 注释匹配：在全文中定位 keyword，映射回 segment ───────────────────
+  var epNotes = (NOTES_BY_EP[epNum] || []).slice().sort(function(a, b) { return a.start - b.start; });
+  window._currentNotes = [];
+
+  // 构建全文和偏移表
+  var segs = epData.segments;
+  var segTexts = segs.map(function(s) { return s.text; });
+  var segOffsets = [0];
+  for (var si = 0; si < segTexts.length; si++) {
+    segOffsets.push(segOffsets[si] + segTexts[si].length);
+  }
+  var fullText = segTexts.join('');
+
+  // 为每条 note 在全文中找 keyword 出现位置；同 keyword 合并到同一 match
+  var matches = []; // {noteIdxs:[ni,...], kwPos, kwLen, startSegIdx, endSegIdx, relStart, relEnd}
+  for (var ni = 0; ni < epNotes.length; ni++) {
+    var note = epNotes[ni];
+    var kw = (note.keyword || note.label).replace(/《|》/g, '');
+    if (!kw) continue;
+
+    // 从 note 时间码对应的 segment 偏移开始搜索
+    var hintSeg = 0;
+    for (var si2 = 0; si2 < segs.length; si2++) {
+      if (segs[si2].start <= note.start) hintSeg = si2;
+      else break;
+    }
+
+    // 找到可用位置：同 keyword 则合并，不同 keyword 则跳过
+    function findUsablePos(startPos) {
+      var p = fullText.indexOf(kw, startPos);
+      while (p >= 0) {
+        var target = null, blocked = false;
+        for (var mi = 0; mi < matches.length; mi++) {
+          var m = matches[mi];
+          var mKw = (epNotes[m.noteIdxs[0]].keyword || epNotes[m.noteIdxs[0]].label).replace(/《|》/g, '');
+          if (p >= m.kwPos && p < m.kwPos + m.kwLen) {
+            if (mKw === kw) { target = m; }
+            else { blocked = true; }
+            break;
+          }
+        }
+        if (target || !blocked) return {pos: p, mergeInto: target};
+        p = fullText.indexOf(kw, p + 1);
+      }
+      return {pos: -1, mergeInto: null};
+    }
+
+    var result = findUsablePos(segOffsets[hintSeg]);
+    if (result.pos < 0) result = findUsablePos(0);
+    if (result.pos < 0) continue; // 全文都找不到可用位置，跳过
+
+    // 同 keyword 合并：追加 noteIdx
+    if (result.mergeInto) {
+      result.mergeInto.noteIdxs.push(ni);
+      continue;
+    }
+
+    var kwPos = result.pos;
+    var kwEnd = kwPos + kw.length;
+    // 映射回 segment
+    var startSegIdx = 0, endSegIdx = 0;
+    for (var si3 = 0; si3 < segs.length; si3++) {
+      if (segOffsets[si3] <= kwPos) startSegIdx = si3;
+      if (segOffsets[si3] < kwEnd) endSegIdx = si3;
+    }
+    var relStart = kwPos - segOffsets[startSegIdx];
+    var relEnd = kwEnd - segOffsets[endSegIdx];
+    matches.push({
+      noteIdxs: [ni],
+      kwPos: kwPos, kwLen: kw.length,
+      startSegIdx: startSegIdx, endSegIdx: endSegIdx,
+      relStart: relStart, relEnd: relEnd
+    });
+  }
+
+  // 按 segment 分组：每个 segment 记录它参与的 match（作为 startSeg 或 endSeg 或中间段）
+  var segMatchRoles = []; // segMatchRoles[i] = [{match, role: 'start'|'end'|'middle'}]
+  for (var si4 = 0; si4 < segs.length; si4++) segMatchRoles.push([]);
+  for (var mi = 0; mi < matches.length; mi++) {
+    var m = matches[mi];
+    segMatchRoles[m.startSegIdx].push({ match: m, role: 'start' });
+    if (m.endSegIdx !== m.startSegIdx) {
+      segMatchRoles[m.endSegIdx].push({ match: m, role: 'end' });
+      // 中间段（跨3段以上，极少见）
+      for (var mid = m.startSegIdx + 1; mid < m.endSegIdx; mid++) {
+        segMatchRoles[mid].push({ match: m, role: 'middle' });
+      }
+    }
+  }
+
+  // 渲染每个 segment
+  for (var i = 0; i < segs.length; i++) {
+    var seg = segs[i];
+    var roles = segMatchRoles[i];
+
+    var textHtml = escapeHtml(seg.text);
+
+    if (roles.length > 0) {
+      // 收集需要插入的位置：{pos, type, badge}
+      // pos 是在 escaped HTML 中的位置（中文不会被 escapeHtml 改变，位置一致）
+      var inserts = [];
+      for (var ri = 0; ri < roles.length; ri++) {
+        var r = roles[ri];
+        var mm = r.match;
+        // 从 noteIdxs 构建 notes 数组（同 keyword 多附注合并到同一位置）
+        var notes = [];
+        for (var nj = 0; nj < mm.noteIdxs.length; nj++) {
+          notes.push(epNotes[mm.noteIdxs[nj]]);
+        }
+        var noteCount = mm.noteIdxs.length;
+        // 以第一条 note 的类型决定 keyword span 样式
+        var kwClass = notes[0].type === 'errata' ? 'errata' : 'annotation';
+        // noteIdx2: 跨段时 endSeg 复用 startSeg 已分配的索引
+        var noteIdx2 = (r.role === 'end' && typeof mm._startNoteIdx === 'number')
+          ? mm._startNoteIdx
+          : window._currentNotes.length;
+        var hasBadge = (r.role === 'end' || (r.role === 'start' && mm.startSegIdx === mm.endSegIdx));
+
+        if (r.role === 'start') {
+          var kwStartPos = mm.relStart;
+          var kwEndPos = (mm.startSegIdx === mm.endSegIdx) ? mm.relEnd : segTexts[i].length;
+          var kwSlice = textHtml.slice(kwStartPos, kwEndPos);
+          var kwSpan = '<span class="note-keyword ' + kwClass + '" data-note-start="' + noteIdx2 + '" data-note-count="' + noteCount + '">' + kwSlice + '</span>';
+          var badgeHtml = '';
+          if (hasBadge) {
+            for (var nb = 0; nb < notes.length; nb++) {
+              var bn = notes[nb];
+              // 每个徽章只指向自己那条 note，点关键词才展示全部
+              badgeHtml += '<span class="note-badge ' + (bn.type === 'errata' ? 'note-errata' : 'note-annotation') + '" data-note-start="' + (noteIdx2 + nb) + '" data-note-count="1">' + (bn.type === 'errata' ? '勘误' : '注') + '</span>';
+            }
+            for (var np = 0; np < notes.length; np++) { window._currentNotes.push(notes[np]); }
+          }
+          if (!hasBadge) {
+            // 跨段：记录索引供 endSeg 复用
+            mm._startNoteIdx = noteIdx2;
+            for (var nq = 0; nq < notes.length; nq++) { window._currentNotes.push(notes[nq]); }
+            mm._noteAlreadyPushed = true;
+          }
+          inserts.push({ pos: kwStartPos, endPos: kwEndPos, replacement: kwSpan + badgeHtml });
+        } else if (r.role === 'end') {
+          var kwEndPos2 = mm.relEnd;
+          var kwSlice2 = textHtml.slice(0, kwEndPos2);
+          if (!mm._noteAlreadyPushed) {
+            for (var nr = 0; nr < notes.length; nr++) { window._currentNotes.push(notes[nr]); }
+          }
+          var kwSpan2 = '<span class="note-keyword ' + kwClass + '" data-note-start="' + noteIdx2 + '" data-note-count="' + noteCount + '">' + kwSlice2 + '</span>';
+          var badgeSpan = '';
+          for (var ns = 0; ns < notes.length; ns++) {
+            var en = notes[ns];
+            // 每个徽章只指向自己那条 note
+            badgeSpan += '<span class="note-badge ' + (en.type === 'errata' ? 'note-errata' : 'note-annotation') + '" data-note-start="' + (noteIdx2 + ns) + '" data-note-count="1">' + (en.type === 'errata' ? '勘误' : '注') + '</span>';
+          }
+          inserts.push({ pos: 0, endPos: kwEndPos2, replacement: kwSpan2 + badgeSpan });
+        } else {
+          // middle: 整段加下划线，无徽章
+          inserts.push({ pos: 0, endPos: textHtml.length, replacement: '<span class="note-keyword ' + kwClass + '" data-note-start="' + noteIdx2 + '" data-note-count="' + noteCount + '">' + textHtml + '</span>' });
+        }
+      }
+
+      // 从后往前应用 inserts，避免位置偏移
+      inserts.sort(function(a, b) { return b.pos - a.pos; });
+      for (var ii = 0; ii < inserts.length; ii++) {
+        var ins = inserts[ii];
+        textHtml = textHtml.slice(0, ins.pos) + ins.replacement + textHtml.slice(ins.endPos);
+      }
+    }
+
+    html += '<div class="transcript-seg' + (roles.length ? ' has-notes' : '') + '">' +
       '<span class="ts" onclick="openPlayer(\''+epData.ytId+'\','+seg.start+')">'+fmtTime(seg.start)+'</span>' +
-      '<span class="txt">'+escapeHtml(seg.text)+'</span>' +
+      '<span class="txt">'+textHtml + '</span>' +
     '</div>';
   }
 
   html += '</div></div>';
   container.innerHTML = html;
+
+  // 绑定徽章和关键词点击 → 打开 popup
+  container.querySelectorAll('.note-badge, .note-keyword').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // keyword 和 badge 都自带 data-note-start / data-note-count
+      var startIdx = parseInt(el.dataset.noteStart, 10);
+      var count = parseInt(el.dataset.noteCount, 10);
+      if (isNaN(startIdx)) return;
+      openNotesPopup(window._currentNotes.slice(startIdx, startIdx + count), el);
+    });
+  });
+
   updateUrl();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── 注释 popup（行内定位）─────────────────────────────────────────────
+function openNotesPopup(noteList, anchorEl) {
+  var popup = document.getElementById('note-popup');
+  var content = document.getElementById('note-popup-content');
+  var titleEl = popup.querySelector('.note-popup-title');
+
+  // 根据 noteList 的类型决定标题
+  var hasErrata = noteList.some(function(n) { return n.type === 'errata'; });
+  var hasAnnot = noteList.some(function(n) { return n.type === 'annotation'; });
+  titleEl.textContent = (hasErrata && hasAnnot) ? '勘误与附注' : (hasAnnot ? '附注' : '勘误');
+
+  var html = '';
+  for (var i = 0; i < noteList.length; i++) {
+    var item = noteList[i];
+    if (item.type === 'errata') {
+      var tagText = item.status === 'unverified' ? '待核实' : '勘误';
+      html += '<div class="note-item note-errata-' + item.status + '">' +
+        '<div class="note-item-head">' +
+          '<span class="note-tag note-tag-errata">' + tagText + '</span>' +
+          '<span class="note-label">' + escapeHtml(item.label) + '</span>' +
+          '<span class="note-time">' + escapeHtml(item.time) + '</span>' +
+        '</div>' +
+        (item.original ? '<div class="note-line"><b>原文</b>：' + escapeHtml(item.original) + '</div>' : '') +
+        (item.correct ? '<div class="note-line"><b>正确</b>：' + escapeHtml(item.correct) + '</div>' : '') +
+        (item.note ? '<div class="note-line note-note">' + escapeHtml(item.note) + '</div>' : '') +
+        (item.source ? '<div class="note-line note-source">依据：' + escapeHtml(item.source) + '</div>' : '') +
+      '</div>';
+    } else {  // annotation
+      html += '<div class="note-item note-annotation-item">' +
+        '<div class="note-item-head">' +
+          '<span class="note-tag note-tag-annotation">注</span>' +
+          '<span class="note-label">' + escapeHtml(item.label) + '</span>' +
+          '<span class="note-time">' + escapeHtml(item.time) + '</span>' +
+        '</div>' +
+        (item.explanation ? '<div class="note-line note-explanation">' + escapeHtml(item.explanation) + '</div>' : '') +
+        (item.source ? '<div class="note-line note-source">依据：' + escapeHtml(item.source) + '</div>' : '') +
+      '</div>';
+    }
+  }
+  content.innerHTML = html;
+  popup.classList.add('open');
+
+  // 定位 popup 到锚点旁边
+  if (anchorEl) {
+    var rect = anchorEl.getBoundingClientRect();
+    var popupWidth = Math.min(400, window.innerWidth * 0.9);
+    // 先显示以获取高度
+    popup.style.visibility = 'hidden';
+    popup.style.left = '0px';
+    popup.style.top = '0px';
+    var popupHeight = popup.offsetHeight;
+
+    // 水平：尽量左对齐锚点，不溢出右边界
+    var left = rect.left + window.scrollX;
+    if (left + popupWidth > window.innerWidth - 8) {
+      left = window.innerWidth - popupWidth - 8 + window.scrollX;
+    }
+    if (left < 8) left = 8;
+
+    // 垂直：默认在锚点下方，空间不足则上方
+    var top;
+    var spaceBelow = window.innerHeight - rect.bottom;
+    if (spaceBelow >= popupHeight + 8 || spaceBelow >= window.innerHeight * 0.4) {
+      top = rect.bottom + window.scrollY + 6;
+    } else {
+      top = rect.top + window.scrollY - popupHeight - 6;
+    }
+
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+    popup.style.visibility = '';
+  }
+}
+
+function closeNotesPopup() {
+  var popup = document.getElementById('note-popup');
+  popup.classList.remove('open');
 }
 
 // ── 搜索 ──────────────────────────────────────────────────────────────
@@ -1129,6 +1574,18 @@ document.getElementById('q').addEventListener('keydown', function(e) {
 document.getElementById('ep-select').addEventListener('change', function() {
   listFilter = '';
   doAction();
+});
+
+// 注释 popup：点击外部关闭、ESC 关闭
+document.addEventListener('click', function(e) {
+  var popup = document.getElementById('note-popup');
+  if (!popup.classList.contains('open')) return;
+  if (!popup.contains(e.target) && !e.target.classList.contains('note-badge') && !e.target.classList.contains('note-keyword')) {
+    closeNotesPopup();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeNotesPopup();
 });
 
 // ── 启动 ──────────────────────────────────────────────────────────────
