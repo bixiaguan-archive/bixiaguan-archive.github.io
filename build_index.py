@@ -40,6 +40,7 @@ if NOTES_JSON.exists():
                 "keyword": a.get("keyword", ""),
                 "explanation": a.get("explanation", ""),
                 "source": a.get("source", ""),
+                "note": ep_entry.get("note", ""),
             })
     # 遍历 errata（勘误）
     for e in notes_data.get("errata", []):

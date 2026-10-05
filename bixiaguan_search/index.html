@@ -711,6 +711,15 @@
     color: var(--ink3);
     font-size: .8rem;
   }
+  .note-ep-note {
+    margin-top: 6px;
+    padding: 5px 9px;
+    border-left: 2px solid var(--accent2);
+    background: var(--paper2);
+    color: var(--ink2);
+    font-size: .8rem;
+    line-height: 1.7;
+  }
   .note-source {
     color: var(--ink3);
     font-size: .76rem;
@@ -824,6 +833,18 @@
 // ── 工具函数 ──────────────────────────────────────────────────────────
 function escapeHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function linkify(s) {
+  // 先转义，再统一处理 [描述](url) 和裸 URL（单次替换避免嵌套匹配）
+  var escaped = escapeHtml(s);
+  return escaped.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)|(https?:\/\/[^\s"<>。；，）】)…]+)/g,
+    function(match, mdText, mdUrl, rawUrl) {
+      if (mdUrl) return '<a href="' + mdUrl + '" target="_blank" rel="noopener">' + mdText + '</a>';
+      return '<a href="' + rawUrl + '" target="_blank" rel="noopener">' + rawUrl + '</a>';
+    }
+  );
 }
 
 function fmtTime(s) {
@@ -1157,65 +1178,83 @@ function showFullTranscript(epNum) {
   for (var si = 0; si < segTexts.length; si++) {
     segOffsets.push(segOffsets[si] + segTexts[si].length);
   }
-  var fullText = segTexts.join('');
+  var fullTextRaw = segTexts.join('');
+  // 去掉书名号后的归一化全文，用于 keyword 模糊匹配
+  var fullText = fullTextRaw.replace(/《|》/g, '');
+  // 双向 position 映射
+  var toRaw = [];               // normPos → rawPos
+  var toNorm = new Array(fullTextRaw.length);  // rawPos → normPos
+  for (var ri = 0; ri < fullTextRaw.length; ri++) {
+    if (fullTextRaw[ri] !== '《' && fullTextRaw[ri] !== '》') {
+      toNorm[ri] = toRaw.length;
+      toRaw.push(ri);
+    }
+  }
+  function normToRaw(p) { return p >= 0 && p < toRaw.length ? toRaw[p] : -1; }
+  function rawToNorm(p) { return toNorm[p] != null ? toNorm[p] : -1; }
 
-  // 为每条 note 在全文中找 keyword 出现位置；同 keyword 合并到同一 match
-  var matches = []; // {noteIdxs:[ni,...], kwPos, kwLen, startSegIdx, endSegIdx, relStart, relEnd}
+  // 为每条 note 在全文中找 keyword 出现位置；不同 keyword 在同一位置重叠则合并
+  var matches = []; // {noteIdxs:[ni,...], kwRawPos, kwRawLen, startSegIdx, endSegIdx, relStart, relEnd}
   for (var ni = 0; ni < epNotes.length; ni++) {
     var note = epNotes[ni];
     var kw = (note.keyword || note.label).replace(/《|》/g, '');
     if (!kw) continue;
 
-    // 从 note 时间码对应的 segment 偏移开始搜索
+    // 从 note 时间码对应的 segment 偏移开始搜索（归一化起始位置）
     var hintSeg = 0;
     for (var si2 = 0; si2 < segs.length; si2++) {
       if (segs[si2].start <= note.start) hintSeg = si2;
       else break;
     }
+    var startNorm = rawToNorm(segOffsets[hintSeg]);
+    if (startNorm < 0) startNorm = 0;
 
-    // 找到可用位置：同 keyword 则合并，不同 keyword 则跳过
-    function findUsablePos(startPos) {
-      var p = fullText.indexOf(kw, startPos);
-      while (p >= 0) {
-        var target = null, blocked = false;
-        for (var mi = 0; mi < matches.length; mi++) {
-          var m = matches[mi];
-          var mKw = (epNotes[m.noteIdxs[0]].keyword || epNotes[m.noteIdxs[0]].label).replace(/《|》/g, '');
-          if (p >= m.kwPos && p < m.kwPos + m.kwLen) {
-            if (mKw === kw) { target = m; }
-            else { blocked = true; }
-            break;
-          }
+    // 找到可用位置：重叠则合并（不同 keyword 可以共享锚点）
+    function findUsablePos(fromNorm) {
+      var p = fullText.indexOf(kw, fromNorm);
+      if (p < 0) return {pos: -1, rawPos: -1, mergeInto: null};
+      var rawP = normToRaw(p);
+      for (var mi = 0; mi < matches.length; mi++) {
+        var m = matches[mi];
+        if (rawP >= m.kwRawPos && rawP < m.kwRawPos + m.kwRawLen) {
+          return {pos: p, rawPos: rawP, mergeInto: m};  // 重叠 → 合并
         }
-        if (target || !blocked) return {pos: p, mergeInto: target};
-        p = fullText.indexOf(kw, p + 1);
       }
-      return {pos: -1, mergeInto: null};
+      return {pos: p, rawPos: rawP, mergeInto: null};
     }
 
-    var result = findUsablePos(segOffsets[hintSeg]);
+    var result = findUsablePos(startNorm);
     if (result.pos < 0) result = findUsablePos(0);
-    if (result.pos < 0) continue; // 全文都找不到可用位置，跳过
+    if (result.pos < 0) continue;
 
-    // 同 keyword 合并：追加 noteIdx
+    // 合并到已有 match
     if (result.mergeInto) {
       result.mergeInto.noteIdxs.push(ni);
       continue;
     }
 
-    var kwPos = result.pos;
-    var kwEnd = kwPos + kw.length;
+    // 新建 match：用 raw 坐标定位
+    var kwRawPos = result.rawPos;
+    // 计算 raw 文本中的实际跨度（跳过《》）
+    var kwRawEnd = kwRawPos;
+    var matchedNorm = 0;
+    while (matchedNorm < kw.length && kwRawEnd < fullTextRaw.length) {
+      var ch = fullTextRaw[kwRawEnd];
+      if (ch !== '《' && ch !== '》') matchedNorm++;
+      kwRawEnd++;
+    }
+    var kwRawLen = kwRawEnd - kwRawPos;
     // 映射回 segment
     var startSegIdx = 0, endSegIdx = 0;
     for (var si3 = 0; si3 < segs.length; si3++) {
-      if (segOffsets[si3] <= kwPos) startSegIdx = si3;
-      if (segOffsets[si3] < kwEnd) endSegIdx = si3;
+      if (segOffsets[si3] <= kwRawPos) startSegIdx = si3;
+      if (segOffsets[si3] < kwRawEnd) endSegIdx = si3;
     }
-    var relStart = kwPos - segOffsets[startSegIdx];
-    var relEnd = kwEnd - segOffsets[endSegIdx];
+    var relStart = kwRawPos - segOffsets[startSegIdx];
+    var relEnd = kwRawEnd - segOffsets[endSegIdx];
     matches.push({
       noteIdxs: [ni],
-      kwPos: kwPos, kwLen: kw.length,
+      kwRawPos: kwRawPos, kwRawLen: kwRawLen,
       startSegIdx: startSegIdx, endSegIdx: endSegIdx,
       relStart: relStart, relEnd: relEnd
     });
@@ -1362,8 +1401,8 @@ function openNotesPopup(noteList, anchorEl) {
         '</div>' +
         (item.original ? '<div class="note-line"><b>原文</b>：' + escapeHtml(item.original) + '</div>' : '') +
         (item.correct ? '<div class="note-line"><b>正确</b>：' + escapeHtml(item.correct) + '</div>' : '') +
-        (item.note ? '<div class="note-line note-note">' + escapeHtml(item.note) + '</div>' : '') +
-        (item.source ? '<div class="note-line note-source">依据：' + escapeHtml(item.source) + '</div>' : '') +
+        (item.note ? '<div class="note-line note-ep-note"><b>本期说明</b>：' + escapeHtml(item.note) + '</div>' : '') +
+        (item.source ? '<div class="note-line note-source">依据：' + linkify(item.source) + '</div>' : '') +
       '</div>';
     } else {  // annotation
       html += '<div class="note-item note-annotation-item">' +
@@ -1372,8 +1411,9 @@ function openNotesPopup(noteList, anchorEl) {
           '<span class="note-label">' + escapeHtml(item.label) + '</span>' +
           '<span class="note-time">' + escapeHtml(item.time) + '</span>' +
         '</div>' +
-        (item.explanation ? '<div class="note-line note-explanation">' + escapeHtml(item.explanation) + '</div>' : '') +
-        (item.source ? '<div class="note-line note-source">依据：' + escapeHtml(item.source) + '</div>' : '') +
+        (item.explanation ? '<div class="note-line note-explanation">' + linkify(item.explanation) + '</div>' : '') +
+        (item.note ? '<div class="note-line note-ep-note"><b>本期说明</b>：' + escapeHtml(item.note) + '</div>' : '') +
+        (item.source ? '<div class="note-line note-source">依据：' + linkify(item.source) + '</div>' : '') +
       '</div>';
     }
   }
