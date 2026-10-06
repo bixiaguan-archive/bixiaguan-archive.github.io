@@ -1,0 +1,91 @@
+[
+ {
+  "ep": 85,
+  "subtitle": 47,
+  "find": "这个“帽”怎么翻",
+  "replace": "这个“Mall”怎么翻",
+  "kind": "asr",
+  "evidence": "上下文即在讨论华盛顿国家广场 The Mall 的中文译名（下句「那片叫做“The Mall”是吧」）；ASR 把 Mall 记成「帽」。a 轮已把同类误听「大漠」改成「Mall」（ep085_a.json 第 146 字幕），此处漏改。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 51,
+  "find": "“shopping帽”的“帽”",
+  "replace": "“shopping Mall”的“Mall”",
+  "kind": "asr",
+  "evidence": "同句即「就跟国内讲的这个 shopping Mall 的 Mall 是一个概念」，与上一条同为 The Mall 的误听（帽/Mall）。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 190,
+  "find": "取消",
+  "replace": "瞿侠",
+  "kind": "asr",
+  "evidence": "主播名「瞿侠」；本期 ASR 屡将「瞿侠」误作「徐霞」「徐家根」「徐先生」（ep085_a.json 247/755/1244 已改），此处「取消」（qǔxiāo）是同一误听的漏网处，句子为打断语「那个瞿侠，我这儿打断，稍微打断你一下」。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 258,
+  "find": "收藏预期",
+  "replace": "收藏玉器",
+  "kind": "asr",
+  "evidence": "温索普（Grenville L. Winthrop）以玉器收藏著称，藏品遗赠哈佛福格美术馆：ep027「卢芹斋几乎就把大概百分之九十五以上的金村的玉器都卖给了温索普……又把他这些玉器都捐给了现在的哈佛」。「玉器」误作同音的「预期」，原句「哈佛的那个收藏预期的那个温索普」讲不通。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 299,
+  "find": "斯密sonian",
+  "replace": "史密森尼",
+  "kind": "asr",
+  "evidence": "半中半英的「斯密sonian」不成词；本期统一作「史密森尼（Smithsonian）」（第 32、45、112、758 等字幕），此处指弗利尔经罗斯福夫妇牵线与史密森尼谈判。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 323,
+  "find": "展称",
+  "replace": "展陈",
+  "kind": "asr",
+  "evidence": "「展陈」为博物馆陈列术语，「展称」不成词；本期其余四处均作「展陈」（如「你去看他的这个展陈」「展陈布置」），全库亦仅此处作「展称」。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 352,
+  "find": "金宝",
+  "replace": "金贝尔",
+  "all": true,
+  "kind": "asr",
+  "evidence": "指路易斯·康设计的金贝尔美术馆（Kimbell Art Museum）：本期附注「金贝尔美术馆」条已注明「转录作『金宝』」，ep064、ep102 亦均作「金贝尔」。串词中四处「金宝」均需改（351/352/353）。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 759,
+  "find": "史密森尼尔",
+  "replace": "史密森尼",
+  "kind": "asr",
+  "evidence": "本期统一作「史密森尼（Smithsonian）」；「尔」为衍字，「他和史密森尼尔谈的条件」应为「他和史密森尼谈的条件」。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 955,
+  "find": "就是萨克勒出一部分钱",
+  "replace": "就是赛克勒出一部分钱",
+  "kind": "asr",
+  "evidence": "指赛克勒（Arthur M. Sackler）；本期其余 33 处及统一索引关键词均作「赛克勒」，此句为「就是赛克勒出一部分钱，然后另外一部分钱是由馆方筹的」（跨块 955/956）。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 1195,
+  "find": "西山秋霁图",
+  "replace": "溪山秋霁图",
+  "kind": "asr",
+  "evidence": "弗利尔美术馆藏 F1916.538「北宋（传）郭熙 谿山秋霁图卷」（Clearing Autumn Skies over Mountains and Valleys），与同句「也是端方旧藏」及郭熙相合；「西山」为「溪山」的同音误听。"
+ },
+ {
+  "ep": 85,
+  "subtitle": 1227,
+  "find": "李文璋",
+  "replace": "李军的文章",
+  "kind": "asr",
+  "evidence": "上下文（1209 起）讲中央美院李军的论文《丝绸之路上的跨文化文艺复兴——安布罗乔·洛伦采蒂〈好政府的寓言〉与楼璹〈耕织图〉再研究》，本期附注亦立「李军」条；「李军的文章」被误听为同音的「李文璋」。"
+ }
+]
