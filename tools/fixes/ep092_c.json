@@ -1,0 +1,10 @@
+[
+ {
+  "ep": 92,
+  "subtitle": 1085,
+  "find": "流行通讯",
+  "replace": "流行通信",
+  "kind": "asr",
+  "evidence": "片尾 IPN 节目名单。该节目官方名为《流行通信》（popdispat.ch，主持龙荻；Apple Podcasts id940780392），本库各期片尾共 84 处，其中 83 处作「流行通信」，仅 ep089、ep092 两处误作「流行通讯」（见 ep016_c.json 同名单先例）。"
+ }
+]
