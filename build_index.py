@@ -41,6 +41,7 @@ if NOTES_JSON.exists():
                 "explanation": a.get("explanation", ""),
                 "source": a.get("source", ""),
                 "note": ep_entry.get("note", ""),
+                "anchor": ep_entry.get("anchor", ""),
             })
     # 遍历 errata（勘误）
     for e in notes_data.get("errata", []):
@@ -56,6 +57,7 @@ if NOTES_JSON.exists():
             "correct": e.get("correct", ""),
             "source": e.get("source", ""),
             "status": "fact-error",
+            "anchor": e.get("anchor", ""),
         })
     # 构建 keywords_by_ep
     for _n in _all_notes_pre:

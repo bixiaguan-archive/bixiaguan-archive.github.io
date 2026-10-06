@@ -1179,13 +1179,20 @@ function showFullTranscript(epNum) {
     segOffsets.push(segOffsets[si] + segTexts[si].length);
   }
   var fullTextRaw = segTexts.join('');
-  // 去掉书名号后的归一化全文，用于 keyword 模糊匹配
-  var fullText = fullTextRaw.replace(/《|》/g, '');
+  // 归一化：忽略书名号、间隔号与空白，避免「丹曼·罗斯 / 丹曼罗斯」这类差异导致锚点丢失
+  var NORM_SKIP_CHARS = '《》·・‧\u00b7\u30fb \t\r\n\u3000';
+  function isSkipChar(ch) { return NORM_SKIP_CHARS.indexOf(ch) >= 0; }
+  function normStr(s) {
+    var o = '';
+    for (var qi = 0; qi < s.length; qi++) { if (!isSkipChar(s[qi])) o += s[qi]; }
+    return o;
+  }
+  var fullText = normStr(fullTextRaw);
   // 双向 position 映射
   var toRaw = [];               // normPos → rawPos
   var toNorm = new Array(fullTextRaw.length);  // rawPos → normPos
   for (var ri = 0; ri < fullTextRaw.length; ri++) {
-    if (fullTextRaw[ri] !== '《' && fullTextRaw[ri] !== '》') {
+    if (!isSkipChar(fullTextRaw[ri])) {
       toNorm[ri] = toRaw.length;
       toRaw.push(ri);
     }
@@ -1197,7 +1204,7 @@ function showFullTranscript(epNum) {
   var matches = []; // {noteIdxs:[ni,...], kwRawPos, kwRawLen, startSegIdx, endSegIdx, relStart, relEnd}
   for (var ni = 0; ni < epNotes.length; ni++) {
     var note = epNotes[ni];
-    var kw = (note.keyword || note.label).replace(/《|》/g, '');
+    var kw = normStr(note.anchor || note.keyword || note.label);
     if (!kw) continue;
 
     // 从 note 时间码对应的 segment 偏移开始搜索（归一化起始位置）
@@ -1240,7 +1247,7 @@ function showFullTranscript(epNum) {
     var matchedNorm = 0;
     while (matchedNorm < kw.length && kwRawEnd < fullTextRaw.length) {
       var ch = fullTextRaw[kwRawEnd];
-      if (ch !== '《' && ch !== '》') matchedNorm++;
+      if (!isSkipChar(ch)) matchedNorm++;
       kwRawEnd++;
     }
     var kwRawLen = kwRawEnd - kwRawPos;
