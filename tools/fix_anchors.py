@@ -129,14 +129,23 @@ def candidate_strings(kw):
     # 首/尾片段：由长到短，最短 2 字（短词如「素和氏」「金冠」很需要这一档）
     if len(kw) >= 3:
         for size in range(min(len(kw) - 1, 8), 1, -1):
+            if kw[:size].rstrip("的") in STOP or kw[-size:].rstrip("的") in STOP:
+                continue
+            if kw[:size][0] in EDGE_BAD or kw[:size][-1] in EDGE_BAD:
+                continue
+            if kw[-size:][0] in EDGE_BAD or kw[-size:][-1] in EDGE_BAD:
+                continue
             yield kw[:size], 2
             yield kw[-size:], 2
     if len(kw) >= 5:
         for size in range(len(kw) - 1, 2, -1):
             for i in range(len(kw) - size + 1):
-                yield kw[i:i + size], 3
-        for i in range(len(kw) - 1):          # 最后退到 2 字词芯（如「西晋辟雍碑」→「辟雍」）
-            yield kw[i:i + 2], 3
+                sub = kw[i:i + size]
+                if sub[0] in EDGE_BAD or sub[-1] in EDGE_BAD:
+                    continue
+                if set(sub) & set("个这那一的了是就都也还很不太在把被其之等和与及对从为以于并且但"):
+                    continue
+                yield sub, 3
 
 
 BARE = {"博物馆", "美术馆", "大学", "学院", "建筑", "展厅", "艺术", "文化", "遗址",
@@ -178,10 +187,53 @@ def short_span(text, token_re, maxlen=14):
     return seg.strip("，。、；： ") or None
 
 
-def choose(ep, kw, hint):
-    """返回 (anchor_text, block_idx, confidence)。优先就近、优先短而准。"""
+STOP = {"宁波", "泉州", "中国", "日本", "韩国", "美国", "王朝", "时期", "时代", "文化", "艺术",
+        "历史", "建筑", "博物馆", "展览", "研究", "问题", "地方", "地区", "城市", "人物",
+        "作品", "一个", "这个", "什么", "情况", "内容", "部分", "著名", "重要", "主要", "特别",
+        "非常", "当时", "后来", "影响", "关系", "特点", "传统", "发展", "开始", "出现", "认为",
+        "表示", "方法", "方式", "过程", "结果", "原因", "条件", "基础", "中心", "代表", "意义",
+        "价值", "作用", "国家", "民族", "宗教", "佛教", "道教", "绘画", "造像", "寺院", "佛像",
+        "收藏", "文物", "发现", "记载", "文献", "资料", "学者", "先生", "老师", "主播", "本期",
+        "节目", "我们", "他们", "以及", "包括", "通过", "由于", "因为", "所以", "但是", "而且",
+        "前面", "后面", "里面", "外面", "上面", "下面", "中间", "以后", "以前", "之后", "之前",
+        "这样", "那样", "怎么", "就是", "可以", "没有", "那个", "你们", "自己", "大家", "时候",
+        "东西", "样子", "感觉", "印象", "名字", "大概", "关于", "对于", "其中", "同时", "这些", "那些",
+        "比较", "影响", "文化", "日本", "时代", "方面", "基础", "背景", "条件", "阶段", "情况", "变化"}
+EDGE_BAD = set("的了也而就之等和与及是在把被这那其对从为以于并且但")
+FUNC_CHARS = set("的了在是把被而就也都还很不太这那其之等和与及以为上下面里中前后时候个一二三四五六七八九十")
+
+
+def content_terms(extras):
+    """从标签/解释/本期说明里抽出「这条附注真正在讲的那个词」。"""
+    out = []
+    for src in extras or []:
+        for chunk in re.split(r"[的与和、：:（）()「」《》，。；？!！]", src or ""):
+            chunk = chunk.strip()
+            if 2 <= len(chunk) <= 12:
+                out.append(chunk)
+    seen, res = set(), []
+    for t in sorted(out, key=len, reverse=True):
+        if t in seen or t in STOP:
+            continue
+        if not any(ch not in FUNC_CHARS for ch in t):
+            continue
+        seen.add(t)
+        res.append(t)
+    return res
+
+
+def choose(ep, kw, hint, extras=None):
+    """返回 (anchor_text, block_idx, confidence)。优先就近、优先短而准。
+
+    顺序：词本身 → 部件/去后缀 → 首尾片段 → 内容词（标签/本期说明里真正在讲的词）
+    → 任意子串 → 就近模糊 → 整条字幕兜底。
+    """
     best = None
-    for text, rank in candidate_strings(kw):
+    texts = list(candidate_strings(kw))
+    # 内容词作为 rank 3（比任意子串更贴近这条附注真正在讲的东西）
+    # 内容词/任意子串两档噪音较大，不再启用：改由下面的最长公共片段兜底
+
+    for text, rank in texts:
         if rank > 0 and not ok_fragment(text):
             continue
         occ = ep.occurrences(text)
@@ -200,13 +252,13 @@ def choose(ep, kw, hint):
         blk = ep.blocks[hint] if ep.blocks else None
         if blk is None:
             return None, None, "none"
-        return trim_anchor(blk[2], 16), hint, "block"
+        return trim_anchor(blk[2], 18), hint, "block"
     (rank, far, dist, _), text, pick = best
     anchor = ep.raw[pick[0]:pick[1]]
     if rank > 0 and norm(anchor) in BARE:
         blk = ep.blocks[hint] if ep.blocks else None
         if blk is not None:
-            return trim_anchor(blk[2], 16), hint, "block"
+            return trim_anchor(blk[2], 18), hint, "block"
     conf = "high" if rank == 0 else ("mid" if far == 0 else "low")
     return anchor, pick[2], conf
 
@@ -323,7 +375,7 @@ def main():
         return EPS[n]
 
     stat = {"ann_total": 0, "ann_anchor_high": 0, "ann_anchor_mid": 0, "ann_anchor_low": 0,
-            "ann_anchor_fuzzy": 0, "ann_anchor_block": 0, "ann_unresolved": 0, "ann_dedup": 0, "ann_tc_moved": 0, "ann_kept": 0,
+            "ann_anchor_fuzzy": 0, "ann_anchor_block": 0, "ann_anchor_content": 0, "ann_anchor_quote": 0, "ann_unresolved": 0, "ann_dedup": 0, "ann_tc_moved": 0, "ann_kept": 0,
             "err_total": 0, "err_high": 0, "err_mid": 0, "err_block": 0, "err_unresolved": 0, "err_tc_moved": 0}
     review = []
 
@@ -356,7 +408,7 @@ def main():
             if not args.force and prev_a and ep.occurrences(prev_a):
                 stat["ann_kept"] = stat.get("ann_kept", 0) + 1
                 continue
-            anchor, blk, conf = choose(ep, kw, hint)
+            anchor, blk, conf = choose(ep, kw, hint, [a.get("label"), e.get("note")])
             if anchor is None:
                 stat["ann_unresolved"] += 1
                 review.append(("ANN", e["ep"], kw, old_sub, "未解析"))
