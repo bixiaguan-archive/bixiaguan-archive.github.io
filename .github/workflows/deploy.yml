@@ -6,6 +6,7 @@ on:
       - 'bixiaguan_transcripts/**'
       - 'build_index.py'
       - 'bixiaguan_search/**'
+      - 'ancient-buildings-map.html'
     branches:
       - main
 
@@ -44,6 +45,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Copy standalone pages into artifact
+        run: cp ancient-buildings-map.html bixiaguan_search/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
