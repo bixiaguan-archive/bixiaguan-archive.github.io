@@ -1,0 +1,239 @@
+{
+ "annotations": [
+  {
+   "keyword": "考夫曼",
+   "label": "考夫曼家族（Kaufmann）",
+   "explanation": "流水别墅的业主。老埃德加·考夫曼（Edgar J. Kaufmann Sr., 1885—1955）是匹兹堡考夫曼百货公司老板，与妻子莉莲、儿子小埃德加·考夫曼（Edgar Kaufmann jr., 1910—1989）都热衷艺术收藏。小考夫曼曾赴塔里埃森随赖特学习，后长期任教于哥伦比亚大学并研究赖特，1963年把流水别墅托付给西宾夕法尼亚保护协会。",
+   "source": "Fallingwater 官网「The Kaufmanns & Fallingwater」；Wikipedia「Edgar Kaufmann Jr.」",
+   "ep": 100,
+   "subtitle": "501",
+   "timecode": "00:25:39"
+  },
+  {
+   "keyword": "菲利普·约翰逊",
+   "label": "菲利普·约翰逊（Philip Johnson, 1906—2005）",
+   "explanation": "美国建筑师，曾任纽约现代艺术博物馆建筑部主任，与希区柯克合著《国际风格》一书，后成为后现代建筑的先行者，代表作有「玻璃屋」、AT&T 大楼等。他晚年仍活跃于校园项目，2005年1月去世，享年98岁；本期主播把他与赖特并举，感叹建筑师长寿。",
+   "source": "Wikipedia「Philip Johnson」；ABC News 讣闻（2005-01-27）",
+   "ep": 100,
+   "subtitle": "155",
+   "timecode": "00:07:56"
+  },
+  {
+   "keyword": "库哈斯",
+   "label": "雷姆·库哈斯（Rem Koolhaas, 1944— ）",
+   "explanation": "荷兰建筑师、理论家，OMA 事务所创始人，1978年以《癫狂的纽约》成名，代表作有西雅图中央图书馆、北京 CCTV 总部等。本期主播以他为例，说明古根海姆式螺旋坡道展厅后来少有成功复制。",
+   "source": "Wikipedia「Rem Koolhaas」",
+   "ep": 100,
+   "subtitle": "1281",
+   "timecode": "01:04:47"
+  },
+  {
+   "keyword": "巴拉甘",
+   "label": "路易斯·巴拉甘（Luis Barragán, 1902—1988）",
+   "explanation": "墨西哥建筑师，1980年普利兹克奖得主，以高饱和色彩的墙面、光影与极简几何著称，代表作有墨西哥城自宅与工作室（世界文化遗产）、圣克里斯特巴尔马厩等。本期嘉宾提到其故居周边实行限高，以保证从宅内向外望只见天空。",
+   "source": "Wikipedia「Luis Barragán」；UNESCO 世界遗产名录",
+   "ep": 100,
+   "subtitle": "804",
+   "timecode": "00:40:51"
+  },
+  {
+   "keyword": "凤凰殿",
+   "label": "凤凰殿（鳳凰殿，Hōōden）",
+   "explanation": "1893年芝加哥世界哥伦布博览会（万国博览会）的日本馆，以京都宇治平等院凤凰堂为蓝本建造的木构建筑，展后一度移建至芝加哥杰克逊公园。学界一般认为它让赖特得以近距离接触日本建筑，与后来的帝国饭店设计相关。",
+   "source": "日本建筑学会论文《1893年シカゴ万国博における鳳凰殿の建設経緯について》；Wikipedia「Ho-o-den」",
+   "ep": 100,
+   "subtitle": "411",
+   "timecode": "00:21:00"
+  },
+  {
+   "keyword": "芝加哥大火",
+   "label": "芝加哥大火（1871）",
+   "explanation": "1871年10月8—10日的大火烧毁芝加哥约3.3平方公里市区、逾1.7万栋建筑，约300人死亡、9万人无家可归。灾后重建催生了钢框架高层建筑与「芝加哥学派」，也为赖特一代建筑师提供了大量机会。",
+   "source": "Wikipedia「Great Chicago Fire」",
+   "ep": 100,
+   "subtitle": "171",
+   "timecode": "00:08:48"
+  },
+  {
+   "keyword": "塔里埃森",
+   "label": "塔里埃森（Taliesin / Taliesin West）",
+   "explanation": "赖特在威斯康星州春绿镇（Spring Green）的居所兼工作室（1911年建，两度失火后重建），以及1937年在亚利桑那州斯科茨代尔沙漠中建造的冬季驻地塔里埃森西。1932年起赖特在此设立「塔里埃森学社」（Taliesin Fellowship），以师徒制培养建筑师。",
+   "source": "Wikipedia「Taliesin」「Taliesin West」",
+   "ep": 100,
+   "subtitle": "1311",
+   "timecode": "01:06:15"
+  },
+  {
+   "keyword": "广亩城市",
+   "label": "广亩城市（Broadacre City）",
+   "explanation": "赖特1932年在《消失的城市》中提出的城市规划构想：每户至少占地一英亩，以汽车和公路连接，居民分散在广阔土地上，以此对抗大城市的集中化。赖特晚年曾制作巨幅模型公开展出。本期嘉宾以此说明赖特背后有一套完整的理论系统。",
+   "source": "Wikipedia「Broadacre City」",
+   "ep": 100,
+   "subtitle": "1159",
+   "timecode": "00:58:32"
+  },
+  {
+   "keyword": "博物馆一英里",
+   "label": "博物馆一英里（Museum Mile）",
+   "explanation": "纽约第五大道82街至105街的一段，长约一英里（约1.6公里），沿线集中大都会艺术博物馆、古根海姆博物馆、库珀·休伊特设计博物馆、犹太博物馆等近十家机构，1978年起由这些机构共同推广这一名称。",
+   "source": "Wikipedia「Museum Mile, Fifth Avenue」",
+   "ep": 100,
+   "subtitle": "1219",
+   "timecode": "01:01:31"
+  },
+  {
+   "keyword": "乌得勒支",
+   "label": "乌得勒支与施罗德住宅",
+   "explanation": "荷兰乌得勒支市以里特维尔德1924年设计的施罗德住宅（Rietveld Schröder House）闻名，该宅是「风格派」（De Stijl）建筑的代表作、世界文化遗产，以可变隔墙与红蓝黄三原色构件著称。本期嘉宾以欧洲小住宅为例，说明细节设计要以具体使用场景为依据。",
+   "source": "Wikipedia「Rietveld Schröder House」；UNESCO 世界遗产名录",
+   "ep": 100,
+   "subtitle": "995",
+   "timecode": "00:50:01"
+  }
+ ],
+ "ep_notes": [
+  {
+   "keyword": "赖特",
+   "ep": 100,
+   "subtitle": "54",
+   "note": "本期为《壁下观》第一百期，主播与嘉宾（哥伦比亚大学建筑学背景的璟璐）专谈赖特与流水别墅，属于节目预告过的「建筑师」类新题。主播提到2017年是赖特诞辰150周年，纽约 MoMA 当年举办赖特手稿与项目特展（Frank Lloyd Wright at 150: Unpacking the Archive）。"
+  },
+  {
+   "keyword": "流水别墅",
+   "ep": 100,
+   "subtitle": "64",
+   "note": "两位主播都亲访过流水别墅：古村二十多年前在美求学时的秋季首访，璟璐则在录制前约一个月（初冬）到访。现在参观须预约跟团，每批约十到十二人；导览会带游客到能拍出海报经典角度的观景点。冬季瀑布会结成冰瀑。"
+  },
+  {
+   "keyword": "罗比住宅",
+   "ep": 100,
+   "subtitle": "235",
+   "note": "主播指出罗比住宅（芝加哥大学旁）周边环境与赖特设计时已天差地别，早年附近街区一度破败（run down），后经修整；以此对比流水别墅周边环境的完整保存。他还留意到罗比住宅墙面勾缝横宽竖窄，远看强化了水平线条。"
+  },
+  {
+   "keyword": "古根海姆",
+   "ep": 100,
+   "subtitle": "1201",
+   "note": "本期详论古根海姆的螺旋坡道：璟璐认为它重新定义了展览流线与观展模式，但批评者指出坡道使画作无法水平悬挂、走动人流与观展者互相干扰；主播认为它只是为博物馆空间提供了一种 option，并未成为主流。"
+  },
+  {
+   "keyword": "帝国饭店",
+   "ep": 100,
+   "subtitle": "147",
+   "note": "主播感慨1967年东京帝国饭店被拆是「日本人犯的大错」，并提到旧馆一部分（门厅与水池）被移建到爱知县明治村博物馆保存，原址如今是高楼。赖特在日本的建成作品并非只有帝国饭店，还有自由学园明日馆（1921）、山邑邸（1924）等（见本期勘误）。"
+  },
+  {
+   "keyword": "有机建筑",
+   "ep": 100,
+   "subtitle": "345",
+   "note": "本期强调赖特的有机建筑不只是「师法自然」，还包括结构与材料上「从场地中生长出来」的工程性一面（如流水别墅的悬挑）；璟璐认为赖特同时是极出色的结构工程师，其风格始终随混凝土、玻璃等技术条件而变。"
+  },
+  {
+   "keyword": "沙利文",
+   "ep": 100,
+   "subtitle": "167",
+   "note": "本期讲了赖特在沙利文事务所学徒期间私接住宅设计、因所建住宅离沙利文自宅很近而被发现、最终于五年合约期满解约的八卦；并讨论当代美国建筑师不得接私活、但可以参加设计竞赛。"
+  },
+  {
+   "keyword": "西宾夕法尼亚",
+   "ep": 100,
+   "subtitle": "743",
+   "note": "主播提到该组织不仅管理流水别墅本身，还一并保护熊溪（Bear Run）的水源与周边林地，所以别墅的「流水」景观得以完整；悬挑结构因年久沉降，后世多次做结构加固（2002年那次规模最大）。"
+  },
+  {
+   "keyword": "制蜡工公司",
+   "ep": 100,
+   "subtitle": "1088",
+   "note": "本期以约翰逊制蜡公司总部（威斯康星州拉辛）为例，说明赖特后期风格与草原时期的罗比住宅大不相同；节目中同时出现「约翰逊制蜡公司」「江森」等叫法。主播把它与古根海姆并列为赖特晚期代表作。"
+  },
+  {
+   "keyword": "Usonia",
+   "ep": 100,
+   "subtitle": "682",
+   "note": "主播用「美国风」（Usonian）解释流水别墅室内尺度偏紧凑的观感，但指出流水别墅造价远超预算，与 Usonian 面向中产阶级的低造价取向并不相同；Usonian 紧凑经济的做法后来成为美国郊区住宅的常见类型。"
+  }
+ ],
+ "updates": [],
+ "errata": [
+  {
+   "keyword": "菲利普·约翰逊年龄",
+   "label": "菲利普·约翰逊「活到一百多岁」",
+   "original": "像那个菲利普·约翰逊，好像活到一百多岁，好像",
+   "correct": "菲利普·约翰逊（Philip Johnson, 1906—2005）2005年1月去世，享年98岁，并非一百多岁。",
+   "source": "Wikipedia「Philip Johnson」；ABC News 讣闻（2005-01-27）",
+   "ep": 100,
+   "subtitle": "155",
+   "timecode": "00:07:56"
+  },
+  {
+   "keyword": "赖特在威斯康星大学的专业",
+   "label": "麦迪逊分校「学的建筑学」",
+   "original": "他是在那Wisconsin的麦迪逊分校，呃，学的建筑学，但好像没有毕业",
+   "correct": "赖特1885年入威斯康星大学麦迪逊分校，注册的是土木工程（civil engineering）而非建筑学，1887年未取得学位即离校赴芝加哥。",
+   "source": "Wikipedia「Frank Lloyd Wright」；威斯康星大学麦迪逊分校官网“Busted: Frank Lloyd Wright ‘Failed to Appear in Class’”",
+   "ep": 100,
+   "subtitle": "163",
+   "timecode": "00:08:23"
+  },
+  {
+   "keyword": "帝国饭店在亚洲的唯一性",
+   "label": "帝国饭店是「唯一的一个在亚洲的作品」",
+   "original": "这个呢是呃，wright的一个，就是应该是唯一的一个在亚洲的作品",
+   "correct": "赖特在日本有多件建成作品，除东京帝国饭店外还有自由学园明日馆（1921，东京）、山邑邸（1924，芦屋）等，其日本建成作品共六件，并非唯一。",
+   "source": "Wikipedia「Imperial Hotel, Tokyo」（『one of six Wright designs for Japan that was actually built』）；Wikipedia「自由学園明日館」",
+   "ep": 100,
+   "subtitle": "398",
+   "timecode": "00:20:20"
+  },
+  {
+   "keyword": "流水别墅造价",
+   "label": "「大概用了十三万美元」",
+   "original": "就流水别墅以前的造价大概可能是三万美元预算……后来这个结束了以后，大概用了十三万美元",
+   "correct": "据流水别墅官方资料，最初预算为3.5万美元，主体工程最终造价约14.8万美元，另加约1.13万美元设计费。",
+   "source": "Fallingwater 官网「Fallingwater Facts」：『The original estimate for the house was $35,000. The final total cost of construction was approximately $148,000 with an additional $11,300 in architect’s fees.』",
+   "ep": 100,
+   "subtitle": "722",
+   "timecode": "00:36:42"
+  },
+  {
+   "keyword": "古根海姆设计年龄",
+   "label": "「设计时七十八岁、八十岁」",
+   "original": "他设计那个古根海姆的，设计就是年纪很大了，七十八岁了吧，特别晚，一九四三，八十岁",
+   "correct": "赖特生于1867年，1943年接受古根海姆委托时约76岁；博物馆1959年10月开馆时他已去世（同年4月去世，享年91岁）。",
+   "source": "Wikipedia「Solomon R. Guggenheim Museum」「Frank Lloyd Wright」",
+   "ep": 100,
+   "subtitle": "1270",
+   "timecode": "01:04:16"
+  },
+  {
+   "keyword": "Museum Mile 长度",
+   "label": "「第五大道上有一公里」",
+   "original": "它那一公里对第五大道上有一公里叫做呃，Museum Mile",
+   "correct": "Museum Mile 是第五大道82街至105街之间长约一英里（约1.6公里）的一段，不是一公里。",
+   "source": "Wikipedia「Museum Mile, Fifth Avenue」（『a mile-long stretch on Fifth Avenue』）",
+   "ep": 100,
+   "subtitle": "1219",
+   "timecode": "01:01:31"
+  },
+  {
+   "keyword": "1893年博览会日本馆名称",
+   "label": "日本馆「凤凰宫」",
+   "original": "万国博览会的那个日本馆叫做凤凰宫，那个凤凰宫可能就是",
+   "correct": "该馆名为「凤凰殿」（鳳凰殿，Hōōden），以京都宇治平等院凤凰堂为蓝本建造。",
+   "source": "日本建筑学会论文《1893年シカゴ万国博における鳳凰殿の建設経緯について》；Wikipedia「Ho-o-den」",
+   "ep": 100,
+   "subtitle": "411",
+   "timecode": "00:21:00"
+  },
+  {
+   "keyword": "赖特门生",
+   "label": "赖特学生「没有什么太出名的」",
+   "original": "但他的disciple，他的这个学学生里面，好像的确是没有什么太多，好像非常出名的，就或者是能够超出老师的人士",
+   "correct": "塔里埃森学徒（Taliesin Fellowship）出身的知名建筑师不少，如约翰·劳特纳（John Lautner）、E. 费伊·琼斯（E. Fay Jones，1990年AIA金奖得主）、保罗·索莱里（Paolo Soleri）等，不能说出名者寥寥。",
+   "source": "Wikipedia「Taliesin Fellowship」「John Lautner」「E. Fay Jones」",
+   "ep": 100,
+   "subtitle": "1313",
+   "timecode": "01:06:20"
+  }
+ ]
+}

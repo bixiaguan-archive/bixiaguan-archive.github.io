@@ -124,6 +124,10 @@ def candidate_strings(kw):
                 yield kw[i:i + size], 2
 
 
+BARE = {"博物馆", "美术馆", "大学", "学院", "建筑", "展厅", "艺术", "文化", "遗址",
+        "石窟", "图书馆", "公园", "城墙", "石刻", "造像", "壁画", "遗址群", "古城"}
+
+
 def choose(ep, kw, hint):
     """返回 (anchor_text, block_idx, confidence)。优先就近匹配。"""
     best = None
@@ -150,6 +154,10 @@ def choose(ep, kw, hint):
         return blk[2], hint, "block"
     (rank, far, dist, _), text, pick = best
     anchor = ep.raw[pick[0]:pick[1]]
+    if rank > 0 and norm(anchor) in BARE:
+        blk = ep.blocks[hint] if ep.blocks else None
+        if blk is not None:
+            return blk[2], hint, "block"
     conf = "high" if rank == 0 else ("mid" if far == 0 else "low")
     return anchor, pick[2], conf
 
@@ -183,7 +191,7 @@ def main():
         return EPS[n]
 
     stat = {"ann_total": 0, "ann_anchor_high": 0, "ann_anchor_mid": 0, "ann_anchor_low": 0,
-            "ann_anchor_fuzzy": 0, "ann_anchor_block": 0, "ann_unresolved": 0, "ann_dedup": 0, "ann_tc_moved": 0,
+            "ann_anchor_fuzzy": 0, "ann_anchor_block": 0, "ann_unresolved": 0, "ann_dedup": 0, "ann_tc_moved": 0, "ann_kept": 0,
             "err_total": 0, "err_high": 0, "err_mid": 0, "err_block": 0, "err_unresolved": 0, "err_tc_moved": 0}
     review = []
 
@@ -212,6 +220,10 @@ def main():
             ep = ep_of(e["ep"])
             hint = ep.hint_block(e.get("subtitle"))
             old_sub = e.get("subtitle")
+            prev_a = e.get("anchor")
+            if prev_a and ep.occurrences(prev_a):
+                stat["ann_kept"] = stat.get("ann_kept", 0) + 1
+                continue
             anchor, blk, conf = choose(ep, kw, hint)
             if anchor is None:
                 stat["ann_unresolved"] += 1

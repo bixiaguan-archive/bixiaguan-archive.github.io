@@ -1,0 +1,274 @@
+{
+  "annotations": [
+    {
+      "keyword": "文物普查",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "298",
+      "timecode": "00:15:44"
+    },
+    {
+      "keyword": "郑振铎",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "328",
+      "timecode": "00:17:19"
+    },
+    {
+      "keyword": "八大辽构",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "479",
+      "timecode": "00:25:08"
+    },
+    {
+      "keyword": "晋东南",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "844",
+      "timecode": "00:44:33"
+    },
+    {
+      "keyword": "上党",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "935",
+      "timecode": "00:49:24"
+    },
+    {
+      "keyword": "镇国寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "619",
+      "timecode": "00:32:54"
+    },
+    {
+      "keyword": "华林寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "634",
+      "timecode": "00:33:42"
+    },
+    {
+      "keyword": "保国寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "667",
+      "timecode": "00:35:34"
+    },
+    {
+      "keyword": "保圣寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "719",
+      "timecode": "00:38:15"
+    },
+    {
+      "keyword": "杨惠之",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "770",
+      "timecode": "00:40:51"
+    },
+    {
+      "keyword": "太符观",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "848",
+      "timecode": "00:44:48"
+    },
+    {
+      "keyword": "阁院寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "521",
+      "timecode": "00:27:28"
+    },
+    {
+      "keyword": "奉国寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "515",
+      "timecode": "00:27:04"
+    },
+    {
+      "keyword": "西溪二仙庙",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "1813",
+      "timecode": "01:32:48"
+    },
+    {
+      "keyword": "如翚斯飞",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "1857",
+      "timecode": "01:35:13"
+    },
+    {
+      "keyword": "济渎庙",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "1463",
+      "timecode": "01:15:36"
+    },
+    {
+      "keyword": "张驭寰",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "1047",
+      "timecode": "00:54:54"
+    },
+    {
+      "keyword": "广胜寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "2439",
+      "timecode": "02:03:43"
+    },
+    {
+      "keyword": "永宁寺塔",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "2350",
+      "timecode": "01:59:21"
+    },
+    {
+      "keyword": "佛光寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "305",
+      "timecode": "00:16:05"
+    },
+    {
+      "keyword": "南禅寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "304",
+      "timecode": "00:16:01"
+    },
+    {
+      "keyword": "天台庵",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "477",
+      "timecode": "00:25:02"
+    },
+    {
+      "keyword": "五龙庙",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "478",
+      "timecode": "00:25:04"
+    },
+    {
+      "keyword": "独乐寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "516",
+      "timecode": "00:27:07"
+    },
+    {
+      "keyword": "应县木塔",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "511",
+      "timecode": "00:26:48"
+    },
+    {
+      "keyword": "华严寺",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "497",
+      "timecode": "00:26:05"
+    },
+    {
+      "keyword": "营造法式",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "671",
+      "timecode": "00:35:47"
+    },
+    {
+      "keyword": "梁思成",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "94",
+      "timecode": "00:05:29"
+    },
+    {
+      "keyword": "刘敦桢",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "500",
+      "timecode": "00:26:16"
+    },
+    {
+      "keyword": "伯施曼",
+      "label": "",
+      "explanation": "",
+      "source": "",
+      "ep": 6,
+      "subtitle": "597",
+      "timecode": "00:31:44"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+ {
+  "keyword": "乐奇",
+  "ep": 85,
+  "explanation": "John Ellerton Lodge（1876—1954），美国东方艺术学者，弗利尔美术馆首任馆长（1920—1942）。此前曾任职波士顿美术馆，师从费诺罗萨和冈仓觉三。乐奇对中国早期青铜器有浓厚兴趣，在其任内为弗利尔美术馆系统购藏了大批重要的中国青铜器，奠定了该馆青铜器收藏的基础。",
+  "note": "讲乐奇（John E. Lodge）任内为弗利尔购藏大批中国青铜器；弗利尔 1946 年出版《A Descriptive and Illustrative Catalogue of Chinese Bronzes: Acquired during the Administration of John Ellerton Lodge》。",
+  "fix_explanation": false,
+  "fix_note": true
+ },
+ {
+  "keyword": "孟嗣徽",
+  "ep": 85,
+  "explanation": "孟嗣徽，故宫博物院学者，著有《晋南元代寺观壁画研究》。该书系统考察了以广胜寺、兴化寺、青龙寺、永乐宫为代表的晋南元代寺观壁画，分析了炽盛光佛与药师佛并置配置与 1303 年地震的关联，是该领域的重要研究。",
+  "note": "孟嗣徽等中国学者曾获弗利尔美术馆研究基金赴美研究（转录作「孟思辉」，已改）。",
+  "fix_explanation": false,
+  "fix_note": true
+ },
+ {
+  "keyword": "敦煌",
+  "ep": 85,
+  "explanation": "敦煌位于甘肃省河西走廊西端，是丝绸之路上的重要枢纽。莫高窟（千佛洞）现存492个洞窟，保存大量4—14世纪的壁画和彩塑，是世界上规模最大、延续时间最长的佛教艺术宝库。本期讨论敦煌壁画中的「耕织图」题材对意大利锡耶纳文艺复兴壁画的影响。",
+  "note": "",
+  "fix_explanation": true,
+  "fix_note": false
+ },
+ {
+  "keyword": "高欢",
+  "ep": 85,
+  "explanation": "北齐奠基人（496–547），渤海蓨县人，鲜卑化汉人。东魏权臣，实际掌控朝政，长期以晋阳（太原）为根据地遥控邺城朝局。生前未称帝，死后追尊神武帝。其妻娄昭君、诸子高洋等建立北齐，本期讨论的娄睿墓、徐显秀墓等皆位于其经营数百年的晋阳周边。",
+  "note": "",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]
