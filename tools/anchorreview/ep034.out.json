@@ -1,0 +1,44 @@
+[
+ {
+  "id": "ann|废佛毁释|1026",
+  "anchor": "大量的文物这样流流失",
+  "changed": true,
+  "reason": "附注（label_text）讲明治维新之际旧家族寺院衰落、历代文物大量流入市场，正对应正文这句「大量的文物这样流流失」；原 anchor 跨句号「。」且一路截到「大德寺」，落点不对。"
+ },
+ {
+  "id": "ann|福格美术馆|731",
+  "anchor": "福格",
+  "changed": false,
+  "reason": "正文此处即「只能借给哈佛的那个那个福格」，「福格」是附注所讲的哈佛福格美术馆在本期的唯一称名，短而具体，保留。"
+ },
+ {
+  "id": "err|Bowdoin University|89",
+  "anchor": "Bowdoin University",
+  "changed": true,
+  "reason": "主播把鲍登学院说成「Bowdoin University啊」，错在 University 这一称谓（应为 Bowdoin College）；原 anchor「n University啊」从词中间切入、又以语气词「啊」收尾，取完整错称（与前面正确的「Bowdoin College啊」相区别）。"
+ },
+ {
+  "id": "err|离东大寺应该不太远|442",
+  "anchor": "离东大寺应该不太远",
+  "changed": true,
+  "reason": "勘误纠正的是主播「离东大寺应该不太远」这句错话（大德寺在京都、东大寺在奈良），原 anchor「大德寺」在正文出现十七次且本身没说错。"
+ },
+ {
+  "id": "err|波士顿倾茶事件|103",
+  "anchor": "印度去",
+  "changed": true,
+  "reason": "主播错说被倾入海的茶叶「就从印度去的」（实为中国茶），锚点落在错误来源上；原 anchor「那波士顿倾茶事件，」以虚词「那」起头、以逗号结尾，未落到错处。"
+ },
+ {
+  "id": "err|大都会|202",
+  "anchor": "当年年底他就开馆",
+  "changed": true,
+  "reason": "勘误纠正的是主播「当年年底他就开馆了」这句（大都会实为 1872 年 2 月才对外开放）；原 anchor 划在并没大错的「一八七零年建馆」那句上，未落在错处。"
+ },
+ {
+  "id": "err|贞观政要|898",
+  "anchor": "唐太宗搞写了一编了一个",
+  "changed": true,
+  "reason": "勘误纠正的是把《贞观政要》说成唐太宗自编（实为唐吴兢所撰），故划主播这句错误归属的原话；原 anchor 只划书名「贞观政要」，未点住说错之处。"
+ }
+]
