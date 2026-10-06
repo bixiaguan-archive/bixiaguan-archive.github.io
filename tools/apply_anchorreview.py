@@ -26,13 +26,15 @@ def main():
     args = ap.parse_args()
 
     d = json.loads(NOTES.read_text(encoding="utf-8"))
-    ann = {}
+    ann, ann2 = {}, {}
     for a in d["annotations"]:
         for e in a["episodes"]:
             ann[(a["keyword"], e["ep"], str(e.get("subtitle")))] = e
-    err = {}
+            ann2.setdefault((a["keyword"], e["ep"]), e)   # 词条每期只有一条，subtitle 变了也能对上
+    err, err2 = {}, {}
     for e in d["errata"]:
         err[(e["keyword"], e["ep"], str(e.get("subtitle")))] = e
+        err2.setdefault((e["keyword"], e["ep"]), e)
 
     st = {"files": 0, "items": 0, "changed": 0, "same": 0, "bad_anchor": 0,
           "not_found": 0, "missing": 0}
@@ -63,7 +65,8 @@ def main():
             kind, kw, sub = parts[0], parts[1], parts[2]
             key = (kw, epn, sub)
             seen.add(key)
-            ent = ann.get(key) if kind == "ann" else err.get(key)
+            ent = (ann.get(key) if kind == "ann" else err.get(key)) or \
+                  ((ann2.get((kw, epn)) if kind == "ann" else err2.get((kw, epn))))
             if ent is None:
                 st["not_found"] += 1
                 problems.append(f"{f.name}: 找不到条目 {i!r}")
