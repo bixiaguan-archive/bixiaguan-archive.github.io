@@ -1216,32 +1216,16 @@ function showFullTranscript(epNum) {
     var startNorm = rawToNorm(segOffsets[hintSeg]);
     if (startNorm < 0) startNorm = 0;
 
-    // 找到可用位置：重叠则合并（不同 keyword 可以共享锚点）
-    function findUsablePos(fromNorm) {
+    // 在全文里从这个位置往后找 keyword（找不到则从头再找）
+    function findPos(fromNorm) {
       var p = fullText.indexOf(kw, fromNorm);
-      if (p < 0) return {pos: -1, rawPos: -1, mergeInto: null};
-      var rawP = normToRaw(p);
-      for (var mi = 0; mi < matches.length; mi++) {
-        var m = matches[mi];
-        if (rawP >= m.kwRawPos && rawP < m.kwRawPos + m.kwRawLen) {
-          return {pos: p, rawPos: rawP, mergeInto: m};  // 重叠 → 合并
-        }
-      }
-      return {pos: p, rawPos: rawP, mergeInto: null};
+      if (p < 0) return -1;
+      return normToRaw(p);
     }
 
-    var result = findUsablePos(startNorm);
-    if (result.pos < 0) result = findUsablePos(0);
-    if (result.pos < 0) continue;
-
-    // 合并到已有 match
-    if (result.mergeInto) {
-      result.mergeInto.noteIdxs.push(ni);
-      continue;
-    }
-
-    // 新建 match：用 raw 坐标定位
-    var kwRawPos = result.rawPos;
+    var kwRawPos = findPos(startNorm);
+    if (kwRawPos < 0) kwRawPos = findPos(0);
+    if (kwRawPos < 0) continue;
     // 计算 raw 文本中的实际跨度（跳过《》）
     var kwRawEnd = kwRawPos;
     var matchedNorm = 0;
@@ -1251,6 +1235,26 @@ function showFullTranscript(epNum) {
       kwRawEnd++;
     }
     var kwRawLen = kwRawEnd - kwRawPos;
+
+    // 重叠处理（关键）：新锚点若「包含」或部分重叠已有锚点，就把已有锚点并入本锚点。
+    // 否则会出现两段互相覆盖的区间，插入 span 时会切碎标签、把 <span …> 显示成正文。
+    var mergedIdxs = [ni];
+    var hostMatch = null;
+    for (var ov = matches.length - 1; ov >= 0; ov--) {
+      var om = matches[ov];
+      if (kwRawPos < om.kwRawPos + om.kwRawLen && om.kwRawPos < kwRawEnd) {
+        if (om.kwRawPos <= kwRawPos && (om.kwRawPos + om.kwRawLen) >= kwRawEnd) {
+          hostMatch = om;   // 新锚点被已有锚点包含 → 并入已有锚点
+          break;
+        }
+        for (var oi = 0; oi < om.noteIdxs.length; oi++) mergedIdxs.push(om.noteIdxs[oi]);
+        matches.splice(ov, 1);   // 新锚点包含已有锚点 → 吸收后删除
+      }
+    }
+    if (hostMatch) {
+      hostMatch.noteIdxs.push(ni);
+      continue;
+    }
     // 映射回 segment
     var startSegIdx = 0, endSegIdx = 0;
     for (var si3 = 0; si3 < segs.length; si3++) {
@@ -1260,7 +1264,7 @@ function showFullTranscript(epNum) {
     var relStart = kwRawPos - segOffsets[startSegIdx];
     var relEnd = kwRawEnd - segOffsets[endSegIdx];
     matches.push({
-      noteIdxs: [ni],
+      noteIdxs: mergedIdxs,
       kwRawPos: kwRawPos, kwRawLen: kwRawLen,
       startSegIdx: startSegIdx, endSegIdx: endSegIdx,
       relStart: relStart, relEnd: relEnd
