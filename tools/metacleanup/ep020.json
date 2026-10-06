@@ -1,0 +1,12 @@
+[
+ {
+  "id": "ann|江心寺|1045",
+  "type": "annotation",
+  "keyword": "江心寺",
+  "label": "福州江心寺",
+  "explanation": "旧在闽江江心小岛上（今江心公园一带），是晚清福州老照片中最常被摄取的景致之一：江中一小庙、四周皆水与庙宇，构成福州「水乡」印象。该区域今已面目全非。",
+  "note": "字幕 ASR 一度误作「今上寺」。",
+  "fix_explanation": false,
+  "fix_note": true
+ }
+]

@@ -1,0 +1,12 @@
+[
+ {
+  "id": "err|加德纳|1431",
+  "type": "errata",
+  "keyword": "加德纳",
+  "label": "加德纳博物馆创办人为 Isabella Stewart Gardner，非 Gardiner",
+  "explanation": "波士顿的这家博物馆全名为 Isabella Stewart Gardner Museum（加德纳博物馆），创办人伊莎贝拉·斯图尔特·加德纳（Isabella Stewart Gardner, 1840—1924）；其收藏以文艺复兴绘画为主，代理人是贝伦森。本期前文已正确说出 Gardner Museum，后文误作 Gardiner。",
+  "note": "这个 Gardiner Museum 这个富婆，她叫 Isabella Gardiner。",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

@@ -1,0 +1,22 @@
+[
+ {
+  "id": "ann|洛克|103",
+  "type": "annotation",
+  "keyword": "洛克",
+  "label": "洛克 / 约瑟夫·洛克",
+  "explanation": "约瑟夫·洛克（Joseph Rock，1884—1962），奥地利裔美国植物学家、地理学家、民族学家，1922—1949 年定居中国云南丽江，在滇川青藏一带进行植物采集、民族调查与地理测绘。1944 年起为《国家地理》杂志撰稿，向西方介绍纳西族及其东巴文化。主播文中提到的\"洛克\"即 Joseph Rock，ASR 在 SRT 原稿中曾误识为\"弗洛克\"，已由校对脚本改正。",
+  "note": "",
+  "fix_explanation": true,
+  "fix_note": false
+ },
+ {
+  "id": "err|尕哈|985",
+  "type": "errata",
+  "keyword": "尕哈",
+  "label": "「尕哈」即克孜尔尕哈石窟，非误写",
+  "explanation": "「尕哈」是克孜尔尕哈（Kizil Caves 群之一，铜石画纹窟等）的简称，写法无误；本期上下文为龟兹地区石窟群（克孜尔、克孜尔尕哈、库木吐喇）。",
+  "note": "对，就包括其他尕哈呀，包括控土啊，就是整个龟兹地区的石窟",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

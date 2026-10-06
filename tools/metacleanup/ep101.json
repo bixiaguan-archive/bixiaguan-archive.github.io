@@ -1,0 +1,12 @@
+[
+ {
+  "id": "err|小圃晓译名|1357",
+  "type": "errata",
+  "keyword": "小圃晓译名",
+  "label": "「小浦遥」应为 Gyo Obata",
+  "explanation": "此人是日裔美国建筑师 Gyo Obata（1923–2022），HOK 三位创始人之一，圣路易斯修道院小教堂即其成名作；其父为画家小圃千浦（Chiura Obata），家族姓氏日文作「小圃」，故「小浦遥」「小普肖」「小普窑」「小普桥」「小普瑶」皆音近误写。",
+  "note": "就是他叫小浦遥……有的叫翻成小浦桥还是小浦遥，反正叫小浦遥应该是",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

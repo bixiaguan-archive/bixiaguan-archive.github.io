@@ -1,0 +1,22 @@
+[
+ {
+  "id": "ann|里芬斯塔尔|2034",
+  "type": "annotation",
+  "keyword": "里芬斯塔尔",
+  "label": "Leni Riefenstahl：纳粹宣传片导演",
+  "explanation": "Leni Riefenstahl（1902—2003），德国导演、摄影师，代表作《意志的胜利》《奥林匹亚》。",
+  "note": "讨论「政治宣传作品算不算艺术」时举其电影为例（ASR 原误「雷芬斯塔尔」，已改）。",
+  "fix_explanation": false,
+  "fix_note": true
+ },
+ {
+  "id": "err|秦汉文明展展品数|865",
+  "type": "errata",
+  "keyword": "秦汉文明展展品数",
+  "label": "大都会「秦汉文明」展展品为 282 件（套）",
+  "explanation": "「秦汉文明」展共 282 件（套）展品，来自 13 个省（自治区/直辖市）32 家文物收藏单位；本期前文也说「两百件有吧」，「两千两百件」疑为 ASR 误（或口误）。",
+  "note": "大概有两千两百件左右的这个展品",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

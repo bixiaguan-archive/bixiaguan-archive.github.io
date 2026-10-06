@@ -1,0 +1,12 @@
+[
+ {
+  "id": "err|理理|1173",
+  "type": "errata",
+  "keyword": "理理",
+  "label": "ASR 结巴重复，应为「理智社会」",
+  "explanation": "原文「中国是个理理智社会」是说话人重复音节被 ASR 照录，语义为「理智社会」，非事实性错误。",
+  "note": "中国是个理理智社会",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

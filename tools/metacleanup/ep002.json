@@ -1,0 +1,22 @@
+[
+ {
+  "id": "ann|水浴寺石窟|468",
+  "type": "annotation",
+  "keyword": "水浴寺石窟",
+  "label": "水浴寺石窟（小响堂）",
+  "explanation": "俗称小响堂，在河北邯郸峰峰矿区，与北响堂、南响堂合称响堂山石窟群。规模最小，一般认为由地方官民开凿，北齐至隋代造像，窟外有摩崖刻经与塔。",
+  "note": "主播以「北响堂—南响堂—小响堂」的等级差别说明开凿者身份：皇室、官僚贵族、普通民众。转录原误作「水峪寺」，已改。",
+  "fix_explanation": false,
+  "fix_note": true
+ },
+ {
+  "id": "ann|四至|139",
+  "type": "annotation",
+  "keyword": "四至",
+  "label": "四至",
+  "explanation": "历史地理与考古报告常用语，指一个区域（疆域、城址、遗址）东、南、西、北四个方向的边界范围。转录中常被误作「四肢」。",
+  "note": "",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]

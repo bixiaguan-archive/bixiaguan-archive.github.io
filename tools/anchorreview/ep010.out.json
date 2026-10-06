@@ -1,0 +1,50 @@
+[
+ {
+  "id": "ann|塔克希拉|54",
+  "anchor": "塔克西拉出土的金器",
+  "changed": true,
+  "reason": "附注讲塔克西拉及其出土金器，正文此句正说这批金器；原 anchor「塔克」把地名截断了。"
+ },
+ {
+  "id": "ann|洪洞县与赵城县|79",
+  "anchor": "洪洞县广胜寺镇",
+  "changed": true,
+  "reason": "附注讲洪洞与赵城的沿革及今名，正文此处正作「洪洞县广胜寺镇」，与附注结论相合。"
+ },
+ {
+  "id": "err|仿生|1123",
+  "anchor": "仿生下寺",
+  "changed": false,
+  "reason": "「仿生下寺」正是勘误所指的误写原话，current_anchor 已合适。"
+ },
+ {
+  "id": "err|萨西藏|1167",
+  "anchor": "萨西藏那个萨迦寺",
+  "changed": false,
+  "reason": "current_anchor 就是主播口误重复的原话，勘误正针对这一串。"
+ },
+ {
+  "id": "err|班次|1174",
+  "anchor": "元代皇家班次",
+  "changed": true,
+  "reason": "误词「班次」所在短语，去掉句首虚词「那个」和句尾「的」。"
+ },
+ {
+  "id": "err|时光不|329",
+  "anchor": "时光不会读",
+  "changed": true,
+  "reason": "勘误真正指的是「时光不会读」这段讹误，而不是随后的「他们是明代的」。"
+ },
+ {
+  "id": "err|广胜寺|401",
+  "anchor": "至元二年",
+  "changed": false,
+  "reason": "「至元二年」即勘误所纠正的年号，current_anchor 已合适。"
+ },
+ {
+  "id": "err|延福寺|642",
+  "anchor": "温州那边",
+  "changed": true,
+  "reason": "主播说错的地点原话是「在温州那边」，应划在错处而非更正后的「武义」。"
+ }
+]

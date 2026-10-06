@@ -1,0 +1,22 @@
+[
+ {
+  "id": "err|传产。传入|727",
+  "type": "errata",
+  "keyword": "传产。传入",
+  "label": "「传产」为「传入」误写",
+  "explanation": "原文「因为佛教艺术的传产。传入。」是 ASR 把「传入」误识为「传产」后说话人随即自纠，正文已保留自纠痕迹，可按「传入」理解。",
+  "note": "就是因为佛教艺术的传产。传入。那么印度同样",
+  "fix_explanation": true,
+  "fix_note": false
+ },
+ {
+  "id": "err|天天建天造|763",
+  "type": "errata",
+  "keyword": "天天建天造",
+  "label": "疑为「添建添造」",
+  "explanation": "「很多造像是以后在四五世纪天天建天造的」中「天天建天造」语义不通，疑为「添建添造」（后世陆续增建增造）的同音误写。",
+  "note": "世纪天天建天造的",
+  "fix_explanation": true,
+  "fix_note": false
+ }
+]
