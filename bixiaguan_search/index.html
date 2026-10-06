@@ -785,6 +785,55 @@
     .dist-meta { flex-direction: column; gap: 2px; }
     .transcript-body { max-height: 65vh; }
   }
+
+  /* ── Zen 全屏阅读 ───────────────────────────────────────────────── */
+  .transcript-header { position: relative; }
+  .zen-toggle {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .zen-toggle:hover { color: var(--accent); border-color: var(--accent2); background: #fff; }
+  .zen-toggle svg { width: 17px; height: 17px; display: block; }
+
+  body.zen > header,
+  body.zen > nav,
+  body.zen > .search-section,
+  body.zen > footer { display: none !important; }
+  body.zen { background: var(--paper); }
+  body.zen main { max-width: 1180px; padding: 26px 30px 90px; }
+  body.zen #status { max-width: 1180px; margin: 0 auto; }
+  body.zen .transcript-view {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+  }
+  body.zen .transcript-header {
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    padding: 0 46px 12px 0;
+  }
+  body.zen .transcript-header h2 { font-size: 1.18rem; }
+  body.zen .transcript-body { max-height: none; overflow: visible; padding: 18px 0 0; }
+  body.zen .transcript-seg { padding: 8px 0; }
+  body.zen .transcript-seg .txt { font-size: 1.05rem; line-height: 2.05; }
+  @media (max-width: 640px) {
+    body.zen main { padding: 14px 14px 70px; }
+    body.zen .transcript-header { padding-right: 42px; }
+  }
 </style>
 </head>
 <body>
@@ -965,12 +1014,64 @@ function doAction() {
 }
 
 function backToList() {
+  exitZen();
   document.getElementById('ep-select').value = '';
   document.getElementById('q').value = '';
   listFilter = '';
   doAction();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ── Zen 全屏阅读 ─────────────────────────────────────────────────────
+var ZEN_MAX_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+var ZEN_MIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+
+function updateZenButton() {
+  var on = document.body.classList.contains('zen');
+  var btns = document.querySelectorAll('.zen-toggle');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].innerHTML = on ? ZEN_MIN_SVG : ZEN_MAX_SVG;
+    btns[i].title = on ? '退出全屏（Esc）' : '全屏阅读（Zen 模式）';
+    btns[i].setAttribute('aria-label', on ? '退出全屏' : '全屏阅读');
+  }
+}
+
+function exitZen() {
+  if (!document.body.classList.contains('zen') && !document.fullscreenElement) return;
+  document.body.classList.remove('zen');
+  if (document.fullscreenElement && document.exitFullscreen) {
+    var p = document.exitFullscreen();
+    if (p && p.catch) p.catch(function() {});
+  }
+  updateZenButton();
+}
+
+function toggleZen() {
+  if (document.body.classList.contains('zen')) {
+    exitZen();
+    return;
+  }
+  document.body.classList.add('zen');
+  var el = document.documentElement;
+  if (el.requestFullscreen) {
+    var p = el.requestFullscreen();
+    if (p && p.catch) p.catch(function() {});
+  }
+  updateZenButton();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('fullscreenchange', function() {
+  // 用户按 Esc 或浏览器退出全屏时，同步恢复页面版式
+  if (!document.fullscreenElement) document.body.classList.remove('zen');
+  updateZenButton();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.body.classList.contains('zen') && !document.fullscreenElement) {
+    exitZen();
+  }
+});
 
 // ── 节目列表（默认视图）──────────────────────────────────────────────
 function showEpisodeList() {
@@ -1164,6 +1265,7 @@ function showFullTranscript(epNum) {
         (epMeta && epMeta.duration_min ? epMeta.duration_min+'分钟　' : '') +
         '<a href="https://www.youtube.com/watch?v='+epData.ytId+'" target="_blank">YouTube &#8599;</a>' +
       '</div>' +
+      '<button class="zen-toggle" onclick="toggleZen()" title="全屏阅读（Zen 模式）" aria-label="全屏阅读">' + ZEN_MAX_SVG + '</button>' +
     '</div>' +
     '<div class="transcript-body">';
 
