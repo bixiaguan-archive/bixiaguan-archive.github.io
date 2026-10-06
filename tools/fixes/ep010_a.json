@@ -1,0 +1,9 @@
+[
+ {"ep":10,"subtitle":2,"find":"壁下观的第十七。大家好","replace":"壁下观的第十期。大家好","evidence":"本集为第 10 期（2016-03-19），「十七」为「十期」同音误写。"},
+ {"ep":10,"subtitle":6,"find":"我们的网址是壁下观点com","replace":"我们的网址是bixiaguan.com","evidence":"各期片头均作 bixiaguan.com。"},
+ {"ep":10,"subtitle":9,"find":"博客网络旗下的节目","replace":"播客网络旗下的节目","evidence":"IPN 播客网络，「博」为「播」同音误写。"},
+ {"ep":10,"subtitle":10,"find":"关于博客客户端","replace":"关于播客客户端","evidence":"同上。"},
+ {"ep":10,"subtitle":11,"find":"请访问IPN点L I斜杠FAQ","replace":"请访问ipn.li/faq","evidence":"片头固定用语。"},
+ {"ep":10,"subtitle":54,"find":"塔克希拉出土的金器","replace":"塔克西拉出土的金器","evidence":"Taxila，ep009 已作「塔克西拉」。"},
+ {"ep":10,"subtitle":79,"find":"临汾是洪洞县广胜寺镇","replace":"临汾市洪洞县广胜寺镇","evidence":"行政区划为山西省临汾市洪洞县，「是」为「市」同音误写。"}
+]

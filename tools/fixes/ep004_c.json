@@ -1,0 +1,5 @@
+[
+ {"ep":4,"subtitle":1765,"find":"舍拉子","replace":"设拉子","evidence":"伊朗 Shiraz 通译「设拉子」。"},
+ {"ep":4,"subtitle":1543,"find":"促新","replace":"簇新","all":true,"evidence":"「簇新」＝极新；形容新修的仿古建筑。"},
+ {"ep":4,"subtitle":1270,"find":"粗新","replace":"簇新","evidence":"形容孔府旧藏明代服饰保存如新；「粗新」为同音误字。"}
+]

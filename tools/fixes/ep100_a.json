@@ -1,0 +1,178 @@
+[
+ {
+  "ep": 100,
+  "subtitle": 206,
+  "find": "接私活就接触问题来了",
+  "replace": "接私活就接出问题来了",
+  "kind": "asr",
+  "evidence": "接触（jiēchù）与「接出（jiēchū）」音近；上下文讲赖特在沙利文事务所期间私接住宅设计、被沙利文发现而解约，正是「接私活接出问题」。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 225,
+  "find": "一个中屋檐的人",
+  "replace": "一个中西部的人",
+  "kind": "asr",
+  "evidence": "下文说他「等于是 Wisconsin 那边」、早期作品集中在麦迪逊与芝加哥，指美国中西部（Midwest）；「中屋檐」系「中西部」之误。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 260,
+  "find": "身在中屋檐",
+  "replace": "身在中西部",
+  "kind": "asr",
+  "evidence": "同 225 段：草原风格（prairie）源于对美国中西部广袤平原的呼应，「中屋檐」应为「中西部」。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 266,
+  "find": "平像的话",
+  "replace": "平向的话",
+  "kind": "asr",
+  "evidence": "第 264 段作「非常水平向的一个建筑形态」，此处「水平像」应为「水平向」。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 281,
+  "find": "八七七零年代",
+  "replace": "八七零年代",
+  "kind": "asr",
+  "evidence": "与下文的「八零年代」并列，指 1870、1880 年代美国东岸民居住宅形式，衍出一个「七」。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 296,
+  "find": "屋檐大开拓",
+  "replace": "西部大开拓",
+  "kind": "asr",
+  "evidence": "指美国西进运动（Westward Expansion），与「迈向工业化」「大发展」并举；「屋檐」系「西部」之误。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 299,
+  "find": "景如刚才讲的",
+  "replace": "璟璐刚才讲的",
+  "kind": "asr",
+  "evidence": "本期嘉宾名为璟璐（全篇 30 余处均作「璟璐」），此处指璟璐刚讲的美国人不愿全盘接受欧洲文化（跨 299/300 块）。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 311,
+  "find": "呃中屋檐的广袤",
+  "replace": "呃中西部的广袤",
+  "kind": "asr",
+  "evidence": "同 225、260 段；上文并留有「有西」的口误残迹，实为「中西部」。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 361,
+  "find": "这个 sit 在",
+  "replace": "这个 site 在",
+  "kind": "asr",
+  "evidence": "同篇第 353、395、396 段均作「site」，指流水别墅的基址；英文 site 被误作 sit。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 587,
+  "find": "这个kreir",
+  "replace": "这个 career",
+  "kind": "asr",
+  "evidence": "上下文「他成人以后，他的这个 career，他成了一位研究赖特的专家」，kreir 系英文 career 的误听。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 629,
+  "find": "跟着这个兔儿去整个房子走一遍",
+  "replace": "跟着这个 tour 去整个房子走一遍",
+  "kind": "asr",
+  "evidence": "本期多处把英文 tour（导览、跟团参观）记作「托/too/拓」，如「预约 tour 的」「问那些 tour 的人」，此处「兔儿」同（跨 629/630 块）。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 666,
+  "find": "个托，然后就有人很好奇的去问那个",
+  "replace": "个 tour，然后就有人很好奇的去问那个",
+  "kind": "asr",
+  "evidence": "指参观的导览员（tour guide）；本期 tour 屡被记作「托」，如 667、903、923、924 段。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 667,
+  "find": "托，高矮的说",
+  "replace": "tour，高矮的说",
+  "kind": "asr",
+  "evidence": "同上：此处的「托」指导览员，应为 tour。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 776,
+  "find": "叫Wespen, Western Pennsylvania Conservancy",
+  "replace": "叫 Western Pennsylvania Conservancy",
+  "kind": "asr",
+  "evidence": "该机构正式名称为 Western Pennsylvania Conservancy（西宾夕法尼亚保护协会），1963 年起受考夫曼家族托付管理流水别墅；「Wespen,」是 ASR 生成的残字。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 799,
+  "find": "wrong down",
+  "replace": "run down",
+  "kind": "asr",
+  "evidence": "run down 意为破败失修，与上下文「环境的确不是非常好」「后来也经过修整」相合。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 823,
+  "find": "宾夕法尼亚州的屋檐",
+  "replace": "宾夕法尼亚州的西部",
+  "kind": "asr",
+  "evidence": "流水别墅位于宾夕法尼亚州西南部费耶特县熊溪（Bear Run），此处「屋檐」系「西部」之误。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 875,
+  "find": "完全是开场的",
+  "replace": "完全是开敞的",
+  "kind": "asr",
+  "evidence": "前文说转角窗「没有一个竖挺在那里，它就完全可以打开」，应为「开敞」；「开场」系同音误写。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 903,
+  "find": "就说你拓里面一圈",
+  "replace": "就说你 tour 里面一圈",
+  "kind": "asr",
+  "evidence": "同 629、666 段：指跟着导览在室内转一圈，「拓」系 tour 的误听。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 918,
+  "find": "这些进入设计上",
+  "replace": "这些建筑设计上",
+  "kind": "asr",
+  "evidence": "「建筑（jiànzhù）」被误作「进入（jiànrù）」；下句即说去问那些 tour（导览）的人。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 919,
+  "find": "去问那些too的人",
+  "replace": "去问那些 tour 的人",
+  "kind": "asr",
+  "evidence": "同前：too 系 tour 的误听，指参观导览员。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 924,
+  "find": "托的，就是你不可能说",
+  "replace": "tour 的，就是你不可能说",
+  "kind": "asr",
+  "evidence": "承接 923 段「你要去参观都是要预约」，此处「托」应为 tour。"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1018,
+  "find": "再悟点虚的东西",
+  "replace": "再务点虚的东西",
+  "kind": "asr",
+  "evidence": "「务虚」为常语（与「务实」相对），此处指节目由流水别墅转入理论性讨论；「悟」系同音误写。"
+ }
+]

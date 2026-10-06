@@ -1,0 +1,6 @@
+[
+ {"ep":9,"subtitle":10,"find":"ipn.li斜杠faq","replace":"ipn.li/faq","evidence":"节目固定片头用语。"},
+ {"ep":9,"subtitle":411,"find":"这个帕甲石窟上面","replace":"这个巴贾石窟上面","evidence":"Bhaja 石窟，本期他处均作「巴贾」。"},
+ {"ep":9,"subtitle":688,"find":"比如说在帕贾，在坎赫里","replace":"比如说在巴贾，在坎赫里","evidence":"同上。"},
+ {"ep":9,"subtitle":693,"find":"这个这个帕贾呀、卡尔利呀","replace":"这个这个巴贾呀、卡尔利呀","evidence":"同上。"}
+]

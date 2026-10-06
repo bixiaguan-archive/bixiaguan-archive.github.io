@@ -1,0 +1,3 @@
+[
+ {"ep":8,"subtitle":9,"find":"IPN 点 LI 斜杠 FAQ","replace":"ipn.li/faq","evidence":"节目固定片头用语（各期同），此处 ASR 逐字母误写。"}
+]

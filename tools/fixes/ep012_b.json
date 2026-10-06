@@ -1,0 +1,6 @@
+[
+ {"ep":12,"subtitle":11,"find":"上期我们讲的是思路上的","replace":"上期我们讲的是丝绸之路上的","evidence":"上期节目名《丝绸之路上的洋鬼子：德国人的故事》，「思」字脱漏。"},
+ {"ep":12,"subtitle":458,"find":"他们是沉文的历史","replace":"他们是成文的历史","evidence":"「成文的历史」，与下文「不像我们中国那么完整」相对。"},
+ {"ep":12,"find":"库木吐拉","replace":"库木吐喇","all":true,"evidence":"Kumtura 石窟通译「库木吐喇」，ep011 已作此译名。"},
+ {"ep":12,"find":"森木赛姆","replace":"森木塞姆","all":true,"evidence":"Sanjim 石窟通译「森木塞姆」。"}
+]

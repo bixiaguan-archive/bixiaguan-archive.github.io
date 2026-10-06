@@ -1,0 +1,8 @@
+[
+ {"ep":16,"subtitle":1312,"find":"泛用型博客客户端","replace":"泛用型播客客户端","evidence":"片尾固定用语。"},
+ {"ep":16,"subtitle":1313,"find":"在壁下观点com可以找到","replace":"在bixiaguan.com可以找到","evidence":"片尾固定用语。"},
+ {"ep":16,"subtitle":1318,"find":"我们的邮箱是壁下观@ipn点li","replace":"我们的邮箱是壁下观@ipn.li","evidence":"片尾固定用语。"},
+ {"ep":16,"subtitle":1320,"find":"一天世界、未知道、博物志","replace":"一天世界、味之道、博物志","evidence":"IPN 节目名为《味之道》。"},
+ {"ep":16,"subtitle":1321,"find":"流行通信、High Story、硬影像","replace":"流行通信、(Hi)Story、硬影像","evidence":"IPN 节目名为《(Hi)Story》。"},
+ {"ep":16,"subtitle":1322,"find":"无次元和选美","replace":"無次元和选·美","evidence":"IPN 节目名为《無次元》《选·美》。"}
+]

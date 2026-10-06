@@ -1,0 +1,10 @@
+[
+ {
+  "ep": 37,
+  "subtitle": 8,
+  "find": "ipn点li斜杠faq",
+  "replace": "ipn.li/faq",
+  "kind": "boilerplate",
+  "evidence": "IPN 播客网络客户端推荐页 ipn.li/faq；全库其余 23 处均作此写法。"
+ }
+]

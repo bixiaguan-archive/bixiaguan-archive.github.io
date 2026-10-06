@@ -1,0 +1,5 @@
+[
+ {"ep":6,"subtitle":11,"find":"IPN点l i斜杠f aq","replace":"ipn.li/faq","evidence":"节目固定片头用语（各期同）。"},
+ {"ep":6,"subtitle":360,"find":"南禅寺啊。南山寺，我因为我老","replace":"南禅寺啊。南禅寺，我因为我老","evidence":"上文与下文均作「南禅寺」；「山寺」为同音误写。"},
+ {"ep":6,"subtitle":694,"find":"把宝国寺","replace":"把保国寺","evidence":"宁波保国寺（北宋大殿）；前后文均作「保国寺」。"}
+]

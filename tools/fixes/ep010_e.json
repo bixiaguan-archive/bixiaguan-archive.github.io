@@ -1,0 +1,6 @@
+[
+ {"ep":10,"subtitle":1228,"find":"这个这个六三六六一年","replace":"这个这个一九六一年","evidence":"广胜寺 1961 年列入第一批全国重点文物保护单位，「六三六六一」为「一九六一」误写。"},
+ {"ep":10,"subtitle":1375,"find":"在壁下观点com可以找到","replace":"在bixiaguan.com可以找到","evidence":"片尾固定用语，各期均作 bixiaguan.com。"},
+ {"ep":10,"subtitle":1381,"find":"我们的邮箱是壁下观 at IPN 点L I","replace":"我们的邮箱是壁下观@ipn.li","evidence":"片尾固定用语（跨块）。"},
+ {"ep":10,"subtitle":1384,"find":"无次元和选·美","replace":"無次元和选·美","evidence":"IPN 节目名，各期作「無次元」。"}
+]

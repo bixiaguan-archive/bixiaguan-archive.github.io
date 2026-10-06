@@ -1,0 +1,346 @@
+[
+ {
+  "ep": 80,
+  "subtitle": 21,
+  "find": "卢金斋",
+  "replace": "卢芹斋",
+  "kind": "asr",
+  "evidence": "大古董商卢芹斋（C. T. Loo）；本期片头回顾人物专题，第 25 字幕亦作「卢芹斋」。ASR 误作「卢金斋」（跨块 20/21）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 318,
+  "find": "留步这么广",
+  "replace": "流布这么广",
+  "kind": "asr",
+  "evidence": "同段第 315 字幕已作「就是因为流布很广」；「流布」＝传播，ASR 误作「留步」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 362,
+  "find": "尖头螺风格",
+  "replace": "犍陀罗风格",
+  "kind": "asr",
+  "evidence": "上下文讨论梁思成对云冈造像「严格依照犍陀罗风格」的误解，同段第 336、357 字幕均作「犍陀罗」；ASR 误作「尖头螺」（跨块 361/362）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 352,
+  "find": "断在了一到二十几",
+  "replace": "断在了一到二世纪",
+  "kind": "asr",
+  "evidence": "巴米扬大佛早期被定在贵霜期（约二、三世纪），今据碳十四测定知在六世纪；「二世纪」被 ASR 误作「二十几」（跨块 351/352）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 513,
+  "find": "从建藏这",
+  "replace": "从鉴藏这",
+  "kind": "asr",
+  "evidence": "同段第 518 字幕作「鉴藏的工作」；「鉴藏」＝鉴赏收藏，ASR 误作「建藏」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 536,
+  "find": "边幕",
+  "replace": "编目",
+  "kind": "asr",
+  "evidence": "上下文为耶鲁请喜龙仁为意大利古画做编目、辨伪、断代、考证；第 549 字幕紧接「其实 catalog」。「编目」被 ASR 误作「边幕」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 537,
+  "find": "边尾",
+  "replace": "辨伪",
+  "kind": "asr",
+  "evidence": "同上，与「断代去考证」并举者为「辨伪」，第 522 字幕亦作「辨伪的一个能力」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 549,
+  "find": "边墓",
+  "replace": "编目",
+  "kind": "asr",
+  "evidence": "紧接下文「其实 catalog」；耶鲁请喜龙仁编目的即雅礼士（Jarves）藏画。ASR 误作「边墓」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 542,
+  "find": "Harvis",
+  "replace": "Jarves",
+  "kind": "asr",
+  "evidence": "耶鲁大学 1871 年购入的 119 幅早期意大利绘画为 James Jackson Jarves 旧藏（Jarves Collection）；喜龙仁 1916 年为其编目。ASR 误作 Harvis。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 588,
+  "find": "Giovanì Morelli",
+  "replace": "Giovanni Morelli",
+  "kind": "asr",
+  "evidence": "意大利医生、鉴藏家 Giovanni Morelli（1816—1891），以细节特征辨伪的「莫雷利鉴定法」著称，贝伦森与喜龙仁皆承其法。ASR 拼写有误。"
+ },
+ {
+  "ep": 80,
+  "find": "Enchanted by Luo Han",
+  "replace": "Enchanted by Lohans",
+  "kind": "asr",
+  "evidence": "书名全称《Enchanted by Lohans: Osvald Sirén's Journey into Chinese Art》（Minna Törmä 著，2013）；ASR 将 Lohans 误作 Luo Han（同误见第 749 字幕，两处并改）。",
+  "all": true
+ },
+ {
+  "ep": 80,
+  "subtitle": 752,
+  "find": "Minna Tomar",
+  "replace": "Minna Törmä",
+  "kind": "asr",
+  "evidence": "该书作者为芬兰艺术史家 Minna Törmä（赫尔辛基大学博士，后任教海德堡大学），亦为《Svenskt biografiskt lexikon》喜龙仁词条撰写者。ASR 误作 Tomar。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 786,
+  "find": "Charles Land Freer",
+  "replace": "Charles Lang Freer",
+  "kind": "asr",
+  "evidence": "底特律实业家、弗利尔美术馆创建者 Charles Lang Freer；1956 年首枚 Charles Lang Freer Medal 授予喜龙仁。ASR 误 Land。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 841,
+  "find": "传记作者米兰",
+  "replace": "传记作者米娜",
+  "kind": "asr",
+  "evidence": "同段第 793 字幕作「这个传记作者这个这个米娜」，指 Minna Törmä；ASR 误作「米兰」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 868,
+  "find": "席诺人",
+  "replace": "喜龙仁",
+  "kind": "asr",
+  "evidence": "上下文讲贝伦森公开鄙视、嘲讽喜龙仁抢其藏家生意；「席诺人」非人名，系 ASR 将「喜龙仁」误听（跨块 867/868）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 895,
+  "find": "弗里尔家",
+  "replace": "弗利尔家",
+  "kind": "asr",
+  "evidence": "查尔斯·朗·弗利尔（Charles Lang Freer）家在底特律；同段第 895、900 字幕均作「弗利尔」。ASR 误作「弗里尔」（跨块 894/895）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 916,
+  "find": "右边讲的追踪",
+  "replace": "页边讲的追踪",
+  "kind": "asr",
+  "evidence": "「页边」为主播名，本期多处出现；ASR 误作「右边」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1067,
+  "find": "受限那个",
+  "replace": "寿县那个",
+  "kind": "asr",
+  "evidence": "上下文为喜龙仁拟在安徽寿县发掘、因发大水作罢；「寿县」「受限」同音，ASR 误作「受限」（跨块 1066/1067）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1071,
+  "find": "养仰韶",
+  "replace": "仰韶",
+  "kind": "asr",
+  "evidence": "同段前文作「带他去渑池去发仰韶」；仰韶村在河南渑池，ASR 衍出「养」字。"
+ },
+ {
+  "ep": 80,
+  "find": "学术假值",
+  "replace": "学术价值",
+  "kind": "asr",
+  "evidence": "「学术价值」；同误见第 1392 字幕「从学术假值比这个北京城墙城门」，两处并改。",
+  "all": true
+ },
+ {
+  "ep": 80,
+  "subtitle": 1204,
+  "find": "谢格兰",
+  "replace": "谢阁兰",
+  "kind": "asr",
+  "evidence": "法国汉学家谢阁兰（Victor Segalen）1914 年考察南京六朝石刻；同段第 1207 字幕即作「谢阁兰」（跨块 1203/1204）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1202,
+  "find": "《支那佛教史记》",
+  "replace": "《支那佛教史迹》",
+  "kind": "asr",
+  "evidence": "常盘大定、关野贞编《支那佛教史迹》（1924—1927）；「史迹」「史记」同音致误（跨块 1201/1202）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1257,
+  "find": "卡尔贝格",
+  "replace": "卡尔贝克",
+  "kind": "asr",
+  "evidence": "瑞典工程师、中国古物收藏家 Orvar Karlbeck（著有 Treasure Seeker in China《中国寻宝者》）；本期第 1006—1012 字幕均作「卡尔贝克」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1284,
+  "find": "应该是三五三",
+  "replace": "应该是三五年",
+  "kind": "asr",
+  "evidence": "喜龙仁最后一次赴东亚为 1935 年（其 1918、1921—23、1929—30、1935 四次东游）；下文「就抗战前」亦指 1937 年前。ASR 衍出末字。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1485,
+  "find": "叶编也提到",
+  "replace": "页边也提到",
+  "kind": "asr",
+  "evidence": "「页边」为主播名；ASR 误作「叶编」（跨块 1484/1485）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1511,
+  "find": "在板良梁先生",
+  "replace": "再版梁先生",
+  "kind": "asr",
+  "evidence": "上下文为林洙整理、再版梁思成《中国雕塑史》；「再版梁先生」「在板良梁先生」同音致误。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1341,
+  "find": "远东古博物馆",
+  "replace": "远东古物博物馆",
+  "kind": "asr",
+  "evidence": "瑞典远东古物博物馆（Museum of Far Eastern Antiquities / Östasiatiska museet）；同段第 1336 字幕作「远东古物博物馆」，此处漏「物」字。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 717,
+  "find": "东方古物博物馆",
+  "replace": "远东古物博物馆",
+  "kind": "asr",
+  "evidence": "安特生任馆长的瑞典博物馆中文名为「远东古物博物馆」；同期第 1336、1341 字幕即作此名（跨块 716/717）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 180,
+  "find": "喜龙市",
+  "replace": "喜仁龙",
+  "kind": "asr",
+  "evidence": "上下文「有些人还把它译为叫『？』」指 1985 年燕山版《北京的城墙与城门》所用的误译「喜仁龙」；见叶公平《为何应是「喜龙仁」？》（《文汇报》2019-02-22）。（跨块 179/180）"
+ },
+ {
+  "ep": 80,
+  "subtitle": 190,
+  "find": "喜人龙",
+  "replace": "喜仁龙",
+  "kind": "asr",
+  "evidence": "上下文「关键『喜龙仁』和『？』太容易搞错了」，指正确译名与 1985 年以来的误译「喜仁龙」之别；ASR 误作「喜人龙」（跨块 189/190）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 205,
+  "find": "喜人龙",
+  "replace": "喜仁龙",
+  "kind": "asr",
+  "evidence": "上下文「一开始就知道他是喜龙仁，不叫『？』」，不叫的正是误译「喜仁龙」；ASR 误作「喜人龙」（跨块 204/205）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 105,
+  "find": "还是喜龙仁啊",
+  "replace": "还是喜仁龙啊",
+  "kind": "asr",
+  "evidence": "「到底是喜龙仁啊，还是『？』啊」须为两个不同的译名，后者即 1985 年以后的误译「喜仁龙」（跨块 104/105）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 130,
+  "find": "翻译成奥斯瓦尔德·喜龙仁",
+  "replace": "翻译成奥斯瓦尔德·喜仁龙",
+  "kind": "asr",
+  "evidence": "1985 年北京燕山出版社《北京的城墙和城门》将 Osvald Sirén 译作「奥斯伍尔德·喜仁龙」，此后以讹传讹；此处即指该误译（跨块 129/130）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 163,
+  "find": "用的是喜龙仁这个名字",
+  "replace": "用的是喜仁龙这个名字",
+  "kind": "asr",
+  "evidence": "下文紧接「对，错误的名字」，故所指为误译「喜仁龙」；见叶公平《为何应是「喜龙仁」？》（跨块 162/163）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 164,
+  "find": "还在用喜龙仁这个名字",
+  "replace": "还在用喜仁龙这个名字",
+  "kind": "asr",
+  "evidence": "同上，下文「对，错误的名字」；指误译「喜仁龙」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 178,
+  "find": "“喜龙仁”这个词儿",
+  "replace": "“喜仁龙”这个词儿",
+  "kind": "asr",
+  "evidence": "上下文说微博上转喜龙仁老照片者「都是用的『？』这个词儿」，指流传甚广的误译「喜仁龙」（跨块 177/178）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 194,
+  "find": "你搜“喜龙仁”的话",
+  "replace": "你搜“喜仁龙”的话",
+  "kind": "asr",
+  "evidence": "上文「你搜『喜龙仁』，你搜不到太多的信息」，故「就啪啪啪信息都跑出来了」的是误译「喜仁龙」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 199,
+  "find": "输入“喜龙仁”才能找到",
+  "replace": "输入“喜仁龙”才能找到",
+  "kind": "asr",
+  "evidence": "同上，能搜到大量资料的正是流行甚广的误译「喜仁龙」（跨块 198/199）。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1514,
+  "find": "一个新的名字“喜龙仁”",
+  "replace": "一个新的名字“喜仁龙”",
+  "kind": "asr",
+  "evidence": "上下文说「现在开始大家以……一个新的名字『？』的这个形式」，与梁思成等所用的「喜龙仁」相对的新名即误译「喜仁龙」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 154,
+  "find": "把它叫做《喜龙仁》",
+  "replace": "把它叫做《喜仁龙》",
+  "kind": "asr",
+  "evidence": "所谈为广东人民出版社新出译本的署名，主播指其用的是误译「喜仁龙」；下文即接「错误的名字」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1528,
+  "find": "没没写成喜龙仁",
+  "replace": "没没写成喜仁龙",
+  "kind": "asr",
+  "evidence": "《西洋镜》丛书所收喜龙仁著作中译本（《西洋镜08·中国园林》台海出版社 2017、《西洋镜16·5—14世纪中国雕塑》广东人民出版社 2019）署名均作「喜龙仁」；故此处「没写成」的是误译「喜仁龙」。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1488,
+  "find": "作为助手把请到来",
+  "replace": "把他请来作助手",
+  "kind": "asr",
+  "evidence": "高居翰 1950 年代在密歇根大学读博时赴斯德哥尔摩协助喜龙仁编纂七卷本《中国绘画：名家与原理》（见赖德霖《梁思成〈中国雕塑史〉与喜龙仁》）；原句「作为助手把请到来」为 ASR 漏字错序。"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1580,
+  "find": "呃，佛山呀",
+  "replace": "呃，驼山呀",
+  "kind": "asr",
+  "evidence": "同段列举中国石窟胜地，前文第 1218 字幕作「梁先生他们去青州，呃，驼山、云门山」；驼山石窟在山东青州，与云门山并称，此处的「佛山」当为「驼山」。"
+ }
+]

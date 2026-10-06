@@ -1,0 +1,346 @@
+[
+ {
+  "ep": 93,
+  "subtitle": 36,
+  "find": "不鸟万来讨论",
+  "replace": "不鳥萬来讨论",
+  "kind": "asr",
+  "evidence": "主持人名全库统一作「不鳥萬如一」（本期片头第4块、第73块均作「不鳥萬」），此处于36/37块交界误作简体「鸟」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 276,
+  "find": "因为它是跟那个《手冢",
+  "replace": "因为它是跟那个手冢",
+  "kind": "asr",
+  "evidence": "「《」为误录在专名前的书名号；下块接「治虫，那个铁臂阿童木」，人名不加书名号。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 277,
+  "find": "之手冢治虫》对那个铁皮铁臂阿童木",
+  "replace": "治虫，那个铁臂阿童木",
+  "kind": "asr",
+  "evidence": "《铁臂阿童木》为手冢治虫作品，「铁皮」为「铁臂」误听；本期第279、280、341、483块均作「铁臂阿童木」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 130,
+  "find": "这是尹尹树王己千的话",
+  "replace": "这是引述王己千的话",
+  "kind": "asr",
+  "evidence": "上句「我先念一下啊」表明此段系转引王己千之语，「尹尹树」当为「引述」的同音误录。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 119,
+  "find": "《这个和王世襄先生在",
+  "replace": "《和王世襄先生在",
+  "kind": "asr",
+  "evidence": "书名当作《和王世襄先生在一起的日子》（田家青著），「这个」为书名内误增的衍字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 908,
+  "find": "日本造园是个出口转内销",
+  "replace": "日本噪音是个出口转内销",
+  "kind": "asr",
+  "evidence": "全段讲噪音音乐（上句「我觉得噪音其实是这样的一种产物了」，下句接 Merzbow、Masonna），「造园」为「噪音」误听。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1186,
+  "find": "使用相声词的例子",
+  "replace": "使用象声词的例子",
+  "kind": "asr",
+  "evidence": "全段讨论日文「象声词」（第1083—1196块十余处均作「象声词」），「相声词」为同音误录。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1229,
+  "find": "トミンファスターの会",
+  "replace": "トミンファーストの会",
+  "kind": "asr",
+  "evidence": "指2017年东京都议会选举的「都民ファーストの会」（Tomin First no Kai），此处长音符误作「ス」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1598,
+  "find": "涉谷系",
+  "replace": "涩谷系",
+  "kind": "asr",
+  "evidence": "涩谷（Shibuya）为本期反复出现的东京地名（本库亦作「涩谷」），「涉谷」为常见误写。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 187,
+  "find": "大脑皮皮质",
+  "replace": "大脑皮质",
+  "kind": "asr",
+  "evidence": "解剖学名词作「大脑皮质／大脑皮层」；下块（第194块）即作「大脑皮层的皮质」，「皮皮」为衍字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 205,
+  "find": "六六七十年代",
+  "replace": "六七十年代",
+  "kind": "asr",
+  "evidence": "下文讲服食药物与迷幻音乐的时代，当作「六七十年代」，「六六」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 247,
+  "find": "主要是古古典",
+  "replace": "主要是古典",
+  "kind": "asr",
+  "evidence": "「古古典」衍一字；全期他处均作「古典艺术／古典音乐」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 259,
+  "find": "是同同样",
+  "replace": "是同样",
+  "kind": "asr",
+  "evidence": "「同同样」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 316,
+  "find": "你生生活的一部分",
+  "replace": "你生活的一部分",
+  "kind": "asr",
+  "evidence": "「生生活」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 365,
+  "find": "那么中中国确实",
+  "replace": "那么中国确实",
+  "kind": "asr",
+  "evidence": "「中中国」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 377,
+  "find": "就除除此之外",
+  "replace": "就除此之外",
+  "kind": "asr",
+  "evidence": "「除除此之外」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 522,
+  "find": "就是音音",
+  "replace": "就是音",
+  "kind": "asr",
+  "evidence": "下块接「乐的一个主要的功能和作用」，当作「音乐」，「音音」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 534,
+  "find": "这个音音乐的旋律",
+  "replace": "这个音乐的旋律",
+  "kind": "asr",
+  "evidence": "「音音乐」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 997,
+  "find": "跟语语义",
+  "replace": "跟语义",
+  "kind": "asr",
+  "evidence": "「语语义」衍一字，与下文「或者说语调」并列。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1051,
+  "find": "沙哑哑的感觉",
+  "replace": "沙哑的感觉",
+  "kind": "asr",
+  "evidence": "「沙哑哑」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1198,
+  "find": "政治宣传车车",
+  "replace": "政治宣传车",
+  "kind": "asr",
+  "evidence": "「宣传车车」衍一字；全段他处均作「政治宣传车」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 133,
+  "find": "侧坐在茶茶座上",
+  "replace": "侧坐在茶座上",
+  "kind": "asr",
+  "evidence": "讲旧时戏园茶座，「茶茶座」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1344,
+  "find": "他作作曲的这个步骤",
+  "replace": "他作曲的这个步骤",
+  "kind": "asr",
+  "evidence": "「作作曲」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1365,
+  "find": "括像像上野这种地方",
+  "replace": "括像上野这种地方",
+  "kind": "asr",
+  "evidence": "「像像」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 515,
+  "find": "然后偶偶尔突然听到",
+  "replace": "然后偶尔突然听到",
+  "kind": "asr",
+  "evidence": "「偶偶尔」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 544,
+  "find": "但比如说味味道",
+  "replace": "但比如说味道",
+  "kind": "asr",
+  "evidence": "「味味道」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 576,
+  "find": "就主主要",
+  "replace": "就主要",
+  "kind": "asr",
+  "evidence": "「主主要」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 735,
+  "find": "也不不宜过过分的进入",
+  "replace": "也不宜过分的进入",
+  "kind": "asr",
+  "evidence": "「不不宜」「过过分」两处衍字，当作「不宜过分的进入」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 779,
+  "find": "就是说让让我看一看",
+  "replace": "就是说让我看一看",
+  "kind": "asr",
+  "evidence": "「让让」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 894,
+  "find": "经经经常是一个很",
+  "replace": "经常是一个很",
+  "kind": "asr",
+  "evidence": "「经经经常」衍字，当作「经常」。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 990,
+  "find": "向向他努力",
+  "replace": "向他努力",
+  "kind": "asr",
+  "evidence": "「向向」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1008,
+  "find": "比如说换换到中国",
+  "replace": "比如说换到中国",
+  "kind": "asr",
+  "evidence": "「换换」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1395,
+  "find": "有一个渐渐的渐渐弱",
+  "replace": "有一个渐渐的渐弱",
+  "kind": "asr",
+  "evidence": "讲门铃音频收尾的 fade out，当作「渐渐的渐弱」，「渐渐弱」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1536,
+  "find": "就是音音乐的这个物",
+  "replace": "就是音乐的这个物",
+  "kind": "asr",
+  "evidence": "「音音乐」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1597,
+  "find": "的这样一个类类型",
+  "replace": "的这样一个类型",
+  "kind": "asr",
+  "evidence": "「类类型」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1724,
+  "find": "十十五年前",
+  "replace": "十五年前",
+  "kind": "asr",
+  "evidence": "「十十五年前」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1804,
+  "find": "他放了一一堆唱片",
+  "replace": "他放了一堆唱片",
+  "kind": "asr",
+  "evidence": "「一一堆」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1844,
+  "find": "这个每每个月多交",
+  "replace": "这个每个月多交",
+  "kind": "asr",
+  "evidence": "「每每个月」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1555,
+  "find": "就是层几何式",
+  "replace": "就是曾几何时",
+  "kind": "asr",
+  "evidence": "「层几何式」与「曾几何时」同音（céng jǐ hé shí），后接「我也是一个相信绝对音乐的人」，语意正合。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1220,
+  "find": "一个一幅风景",
+  "replace": "一幅风景",
+  "kind": "asr",
+  "evidence": "上句「不是赏心悦目，而是悦耳的」，当作「一幅风景」，「一个」「一幅」误叠。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 155,
+  "find": "甚至董董元啊",
+  "replace": "甚至董源啊",
+  "kind": "asr",
+  "evidence": "与上文「四王的绘画」并列者为五代画家董源，「董董元」为「董源」误叠；画史（《图画见闻志》等）作董源。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 379,
+  "find": "首先肯定定是这样了",
+  "replace": "首先肯定是这样了",
+  "kind": "asr",
+  "evidence": "「肯定定是」衍一字。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1807,
+  "find": "实际上那个行驶的功能",
+  "replace": "实际上那个行使的功能",
+  "kind": "asr",
+  "evidence": "谈唱机所起的作用，当作「行使」（行使功能）；「行驶」为同音误写。"
+ }
+]

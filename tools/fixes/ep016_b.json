@@ -1,0 +1,6 @@
+[
+ {"ep":16,"find":"轩辕关","replace":"轘辕关","all":true,"evidence":"太室、少室之间的险关为「轘辕关」（辕山），ASR 误作「轩辕关」。"},
+ {"ep":16,"subtitle":846,"find":"轩辕观，然后就进","replace":"轘辕关，然后就进","evidence":"同上。"},
+ {"ep":16,"find":"善慧寺","replace":"会善寺","all":true,"evidence":"登封会善寺（世遗组成部分），下文自纠为「会善寺」。"},
+ {"ep":16,"subtitle":857,"find":"八八二年，一个那个放","replace":"一九八二年，一个那个放","evidence":"武则天金简 1982 年在峻极峰被拾得。"}
+]

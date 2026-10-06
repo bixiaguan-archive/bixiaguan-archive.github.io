@@ -1,0 +1,12 @@
+[
+ {"ep":13,"subtitle":5,"find":"我们的网址是壁下观点com","replace":"我们的网址是bixiaguan.com","evidence":"片头固定用语。"},
+ {"ep":13,"subtitle":9,"find":"请访问IPN点li斜杠faq","replace":"请访问ipn.li/faq","evidence":"片头固定用语。"},
+ {"ep":13,"subtitle":191,"find":"刚才古村讲的这个直关陉","replace":"刚才古村讲的这个轵关陉","evidence":"八陉之一「轵关陉」，下文即自纠为「轵关陉」。"},
+ {"ep":13,"subtitle":194,"find":"他就现在还叫直","replace":"他就现在还叫轵","evidence":"济源市轵城镇，地名之「轵」。"},
+ {"ep":13,"subtitle":195,"find":"那那个址","replace":"那那个轵","evidence":"同上，「址」为「轵」误写。"},
+ {"ep":13,"subtitle":231,"find":"祭祀四毒","replace":"祭祀四渎","evidence":"四渎（江、河、淮、济），上文刚解释过「渎」。"},
+ {"ep":13,"subtitle":320,"find":"是南边的第一形之首呢","replace":"是南边的第一陉之首呢","evidence":"太行八陉之「陉」，ASR 误作「形」。"},
+ {"ep":13,"subtitle":327,"find":"因为所谓的这个直观形","replace":"因为所谓的这个轵关陉","evidence":"下文紧接「这个轵道，古书上它叫轵道」。"},
+ {"ep":13,"subtitle":328,"find":"叫轵道。直就是那个轵关陉的","replace":"叫轵道。轵就是那个轵关陉的","evidence":"释字，当作「轵」。"},
+ {"ep":13,"subtitle":382,"find":"这个太行型","replace":"这个太行陉","evidence":"八陉之二「太行陉」。"}
+]

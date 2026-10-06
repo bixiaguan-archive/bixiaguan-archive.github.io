@@ -1,0 +1,7 @@
+[
+ {"ep":12,"subtitle":5,"find":"我们的网址是壁下观点com","replace":"我们的网址是bixiaguan.com","evidence":"片头固定用语。"},
+ {"ep":12,"subtitle":10,"find":"请访问IPN点儿l i斜杠f a q","replace":"请访问ipn.li/faq","evidence":"片头固定用语（跨块）。"},
+ {"ep":12,"subtitle":16,"find":"坐壁下观的经历，啊，那么秦古村","replace":"做壁下观的经历，啊，那么请古村","evidence":"「坐／秦」为「做／请」同音误写。"},
+ {"ep":12,"subtitle":28,"find":"一个呢是资，诗文在兹的资","replace":"一个呢是兹，斯文在兹的兹","evidence":"成语为「斯文在兹」（《论语》），本期他处亦作「斯文在滋」。"},
+ {"ep":12,"subtitle":66,"find":"小的一些塔泰尔啊","replace":"小的一些台台尔啊","evidence":"台台尔石窟，龟兹地区小型石窟群之一。"}
+]

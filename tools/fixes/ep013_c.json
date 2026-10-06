@@ -1,0 +1,8 @@
+[
+ {"ep":13,"subtitle":782,"find":"河南的林林县","replace":"河南的林县","evidence":"林县即今林州市，「林林」为口吃重复。"},
+ {"ep":13,"subtitle":1008,"find":"往这个林林州走","replace":"往这个林州走","evidence":"同上。"},
+ {"ep":13,"subtitle":1152,"find":"在壁下观点com可以找到","replace":"在bixiaguan.com可以找到","evidence":"片尾固定用语。"},
+ {"ep":13,"subtitle":1157,"find":"我们的邮箱是壁下观@ipn点li","replace":"我们的邮箱是壁下观@ipn.li","evidence":"片尾固定用语。"},
+ {"ep":13,"subtitle":1158,"find":"IP公论、未知道","replace":"IT公论、味之道","evidence":"IPN 节目名为《IT公论》《味之道》。"},
+ {"ep":13,"subtitle":1160,"find":"Story、印象无次元和选美","replace":"Story、硬影像、無次元和选·美","evidence":"IPN 节目名为《硬影像》《無次元》《选·美》。"}
+]

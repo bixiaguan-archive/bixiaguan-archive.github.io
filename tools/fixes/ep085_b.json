@@ -1,0 +1,18 @@
+[
+ {
+  "ep": 85,
+  "subtitle": 13,
+  "find": "请访问陛下观点com斜杠member",
+  "replace": "请访问bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头固定用语会员网址；ASR 将「壁下观」误作「陛下观」（跨块 13/14）。"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1850,
+  "find": "灭茶苦茶点com",
+  "replace": "miechakucha.com",
+  "kind": "boilerplate",
+  "evidence": "《灭茶苦茶》为 IPN 旗下关于日本的播客，官网为 miechakucha.com（跨块 1850/1851）。"
+ }
+]

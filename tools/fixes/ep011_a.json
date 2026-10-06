@@ -1,0 +1,6 @@
+[
+ {"ep":11,"subtitle":5,"find":"我们的网址是壁下观点com","replace":"我们的网址是bixiaguan.com","evidence":"片头固定用语。"},
+ {"ep":11,"subtitle":10,"find":"请访问IPN点L I斜杠FAQ","replace":"请访问ipn.li/faq","evidence":"片头固定用语。"},
+ {"ep":11,"subtitle":420,"find":"就一个，就摩罗什塔这个啊","replace":"就一个，就鸠摩罗什塔这个啊","evidence":"西安草堂寺的鸠摩罗什舍利塔，「鸠」字脱漏。"},
+ {"ep":11,"subtitle":451,"find":"这两个塔林有盆地","replace":"这两个塔里木盆地","evidence":"塔里木盆地，本期他处均作「塔里木盆地」。"}
+]

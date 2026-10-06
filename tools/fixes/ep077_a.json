@@ -1,0 +1,82 @@
+[
+ {
+  "ep": 77,
+  "subtitle": 5,
+  "find": "我们的网址是壁下观点com",
+  "replace": "我们的网址是 bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头固定用语；与 ep076 等期一致处理（跨块 5/6）。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 14,
+  "find": "壁下观点com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头固定用语网址 bixiaguan.com/member（跨块 13/14）。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 17,
+  "find": "壁下观at幺六三点com",
+  "replace": "壁下观@163.com",
+  "kind": "boilerplate",
+  "evidence": "支付宝账号读法转写，应为 壁下观@163.com。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1637,
+  "find": "在壁下观点com可以找",
+  "replace": "在 bixiaguan.com 可以找",
+  "kind": "boilerplate",
+  "evidence": "片尾固定用语网址。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1643,
+  "find": "壁下观 at IPN 点 LI",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片尾邮箱读法转写，应为 壁下观@ipn.li。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1646,
+  "find": "壁下观点com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片尾固定用语网址 bixiaguan.com/member。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 232,
+  "find": "因为延吉山要要铺窄轨嘛",
+  "replace": "因为阎锡山要要铺窄轨嘛",
+  "kind": "asr",
+  "evidence": "同蒲铁路为阎锡山主政山西时所建窄轨铁路；《晋汾古建筑预查纪略》称『同蒲铁路正在炸山兴筑』。ASR 将「阎锡山」误作「延吉山」。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1087,
+  "find": "小排位",
+  "replace": "小牌位",
+  "kind": "asr",
+  "evidence": "祭祀用牌位，非「排位」。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1092,
+  "find": "还是个排位之类",
+  "replace": "还是个牌位之类",
+  "kind": "asr",
+  "evidence": "同上，牌位。"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1492,
+  "find": "《浴茶积略",
+  "replace": "《预查纪略",
+  "kind": "asr",
+  "evidence": "指《晋汾古建筑预查纪略》，前文多次出现「纪略」；ASR 误作「浴茶积略」。"
+ }
+]

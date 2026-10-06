@@ -1,0 +1,164 @@
+[
+ {
+  "ep": 1,
+  "subtitle": 1180,
+  "find": "壁下观@ipn点li",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 1,
+  "subtitle": 1175,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 2,
+  "subtitle": 5,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 3,
+  "subtitle": 1596,
+  "find": "壁下观at ipn点li",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 3,
+  "subtitle": 27,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 3,
+  "subtitle": 1591,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 11,
+  "subtitle": 1336,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 25,
+  "subtitle": 14,
+  "find": "壁下观点com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 29,
+  "subtitle": 1839,
+  "find": "壁下观 at ipn.li",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 30,
+  "subtitle": 1417,
+  "find": "壁下观 at ipn.li",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 53,
+  "subtitle": 5,
+  "find": "bixiaguancom",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 57,
+  "subtitle": 5,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 58,
+  "subtitle": 5,
+  "find": "壁下观点com",
+  "replace": "bixiaguan.com",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 59,
+  "subtitle": 15,
+  "find": "bixiaguan.com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 72,
+  "subtitle": 14,
+  "find": "bixiaguan.com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 73,
+  "subtitle": 1550,
+  "find": "bixiaguan.com斜杠member",
+  "replace": "bixiaguan.com/member",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 75,
+  "subtitle": 1275,
+  "find": "壁下观at ipn点l i",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ },
+ {
+  "ep": 76,
+  "subtitle": 2148,
+  "find": "壁下观at ipn点li",
+  "replace": "壁下观@ipn.li",
+  "kind": "boilerplate",
+  "evidence": "片头/片尾固定用语；与全库其余各期统一写法一致（ep001-077 二次精校时的遗漏）。",
+  "all": true
+ }
+]

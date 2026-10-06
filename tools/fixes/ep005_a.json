@@ -1,0 +1,5 @@
+[
+ {"ep":5,"subtitle":10,"find":"IPN点l i斜杠f aq","replace":"ipn.li/faq","evidence":"节目固定片头用语（各期同作「请访问ipn.li/faq」）。"},
+ {"ep":5,"find":"北华考古图谱","replace":"华北考古图谱","all":true,"evidence":"沙畹（Édouard Chavannes）1909 年巴黎出版 Mission archéologique dans la Chine septentrionale，中文通译《华北考古图谱》。"},
+ {"ep":5,"subtitle":641,"find":"未如登天","replace":"难如登天","evidence":"惯用语；上下文为「用全新体系去测绘中国木架难如登天」。"}
+]

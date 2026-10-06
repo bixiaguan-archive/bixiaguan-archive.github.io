@@ -1,0 +1,18 @@
+[
+  {"ep":76,"subtitle":135,"find":"展城呢","replace":"展陈呢","kind":"asr","evidence":"博物馆术语「展陈」；本期字幕 955「对这个展陈还是要吐一点点槽」即作「展陈」。"},
+  {"ep":76,"subtitle":343,"find":"李健的大堡子山","replace":"李县的大堡子山","kind":"asr","evidence":"大堡子山秦公墓地在今甘肃礼县；本期字幕 1502 主播也说「迁回那个李县那里」。"},
+  {"ep":76,"subtitle":524,"find":"通识展里面都有","replace":"通史展里面都有","kind":"asr","evidence":"国博常设展为「古代中国」通史陈列；「通识」为同音误听。"},
+  {"ep":76,"subtitle":858,"find":"公元前两千两百一十年","replace":"公元前二百二十一年","kind":"asr","evidence":"秦统一在公元前 221 年；大都会展副题即 221 B.C.–A.D. 220，主播下文也说「一直到公元后二百二十年」。"},
+  {"ep":76,"subtitle":1044,"find":"内见俑的确是","replace":"那件俑的确是","kind":"asr","evidence":"上下文指力士俑那件展品；「内见」为「那件」的同音误听。"},
+  {"ep":76,"subtitle":1266,"find":"他那个雷博上写的","replace":"他那个 label 上写的","kind":"asr","evidence":"指展牌（label）上所写年代；本期保留大量英文词（objects、narrative 等），「雷博」为 label 的音译误写。"},
+  {"ep":76,"subtitle":1267,"find":"一九。五六年","replace":"一九五六年","kind":"punct","evidence":"数字中间的句点为 ASR 误插；滇王之印出于 1956 年发掘。"},
+  {"ep":76,"subtitle":1208,"find":"它利益很明确","replace":"它立意很明确","kind":"asr","evidence":"下文「对他就是要，他一定要有一个 narrative」，指策展立意；「利益」为同音误听。"},
+  {"ep":76,"find":"安德洛诺沃","replace":"安德罗诺沃","kind":"asr","evidence":"Andronovo 文化通译「安德罗诺沃」；本期字幕 841 处即作「安德罗诺沃」。"},
+  {"ep":76,"find":"科纳斯","replace":"喀纳斯","kind":"asr","evidence":"新疆阿勒泰地区喀纳斯；主播说北疆阿尔泰山一带。"},
+  {"ep":76,"find":"马家园","replace":"马家塬","kind":"asr","evidence":"甘肃张家川马家塬墓地；本期其余各处均作「马家塬」。"},
+  {"ep":76,"find":"跳大绳","replace":"跳大神","kind":"asr","evidence":"北方萨满「跳大神」与天地通，对应下文「与天地通」；「跳大绳」（跳绳）不通。"},
+  {"ep":76,"find":"商商春","replace":"伤春","kind":"asr","evidence":"下文谈文人的感时伤春主题；「商」为「伤」的误听并重复。"},
+  {"ep":76,"find":"七七九八","replace":"七九八","kind":"asr","evidence":"北京 798 艺术区；下文接「或者这种 gallery」；数字重复为 ASR 误写。"},
+  {"ep":76,"find":"雷芬斯塔尔","replace":"里芬斯塔尔","kind":"asr","evidence":"Leni Riefenstahl（《意志的胜利》导演）通译「里芬斯塔尔」。"},
+  {"ep":76,"find":"《影像》和《无次元》","replace":"《硬影像》和《無次元》","kind":"asr","evidence":"IPN 节目名各集片尾均作《硬影像》《無次元》（见 ep064、065、075 等 fixlog 先例）。"}
+]

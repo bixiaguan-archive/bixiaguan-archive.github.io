@@ -1,0 +1,563 @@
+[
+ {
+  "ep": 102,
+  "subtitle": 327,
+  "find": "我们直岛有",
+  "replace": "我们知道有",
+  "kind": "asr",
+  "evidence": "自称「知道」被 ASR 写成「直岛」，与濑户内海地名「直岛」（字幕 120 等处）混淆。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 368,
+  "find": "我们都直岛",
+  "replace": "我们都知道",
+  "kind": "asr",
+  "evidence": "同上，「知道」误作「直岛」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 442,
+  "find": "就直岛日本就是",
+  "replace": "就知道日本就是",
+  "kind": "asr",
+  "evidence": "同上；上下文为明治维新，与岛屿无关。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 509,
+  "find": "不直岛吗",
+  "replace": "不知道吗",
+  "kind": "asr",
+  "evidence": "同上；男生调侃女生看不出春宫画。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 670,
+  "find": "我才直岛",
+  "replace": "我才知道",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 674,
+  "find": "后来我直岛他是",
+  "replace": "后来我知道他是",
+  "kind": "asr",
+  "evidence": "同上（跨块 674/675「直」「岛」分列两行）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 779,
+  "find": "都应该直岛",
+  "replace": "都应该知道",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 874,
+  "find": "可能都会直岛",
+  "replace": "可能都会知道",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1191,
+  "find": "大家可能都直岛啊",
+  "replace": "大家可能都知道啊",
+  "kind": "asr",
+  "evidence": "同上（跨块 1191/1192）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1220,
+  "find": "包括我直岛的",
+  "replace": "包括我知道的",
+  "kind": "asr",
+  "evidence": "同上（跨块 1220/1221）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1224,
+  "find": "最早我直岛这里",
+  "replace": "最早我知道这里",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1356,
+  "find": "大家直岛那个希腊化",
+  "replace": "大家知道那个希腊化",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1377,
+  "find": "大家也直岛啊",
+  "replace": "大家也知道啊",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1391,
+  "find": "大家直岛，在这个基督教",
+  "replace": "大家知道，在这个基督教",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1430,
+  "find": "大家直岛这个",
+  "replace": "大家知道这个",
+  "kind": "asr",
+  "evidence": "同上。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1569,
+  "find": "大家直岛，壁",
+  "replace": "大家知道，壁",
+  "kind": "asr",
+  "evidence": "同上（跨块 1569/1570）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1077,
+  "find": "牙批司呢，就是大家直岛",
+  "replace": "象牙劈丝呢，就是大家知道",
+  "kind": "asr",
+  "evidence": "上下文讲象牙劈丝编篮（前文 1073「象牙劈丝的竹篮子」、1084「象牙劈丝的提篮」），「牙批司」为「象牙劈丝」误听；「直岛」为「知道」误写。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 61,
+  "find": "兰溪道隆元继后第八年",
+  "replace": "兰溪道隆圆寂后第八年",
+  "kind": "asr",
+  "evidence": "佛教称僧侣去世为「圆寂」，ASR 同音误作「元继」；兰溪道隆卒于 1278 年。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 77,
+  "find": "禅师。元祭的祭日",
+  "replace": "禅师圆寂的祭日",
+  "kind": "asr",
+  "evidence": "同上；建长寺开山忌即兰溪道隆圆寂日（七月二十四日），句号系断句误置。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 170,
+  "find": "三向阳三会",
+  "replace": "白阳三会",
+  "kind": "asr",
+  "evidence": "西安鄠邑区公输堂（原名源远堂）为明代民间教派「白阳三会」的法堂与礼拜殿。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 171,
+  "find": "叫做公书堂",
+  "replace": "叫做公输堂",
+  "kind": "asr",
+  "evidence": "同上，「公输堂」2001 年列为第五批全国重点文物保护单位，以明代小木作佛龛著称。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 262,
+  "find": "一些走灵的朋友",
+  "replace": "一些走陵的朋友",
+  "kind": "asr",
+  "evidence": "本期下文两处均作「走陵」（走访帝陵），作「走灵」无义。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 276,
+  "find": "留布的更为广泛",
+  "replace": "流布的更为广泛",
+  "kind": "asr",
+  "evidence": "「流布」谓流传散布，无「留布」一词。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 310,
+  "find": "画出了南宋六陵",
+  "replace": "划出了南宋六陵",
+  "kind": "asr",
+  "evidence": "谓划定陵区禁伐范围，当作「划出」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 312,
+  "find": "维护宋修陵",
+  "replace": "维护宋六陵",
+  "kind": "asr",
+  "evidence": "所维护者为绍兴南宋六陵，「宋修陵」非地名。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 313,
+  "find": "日军屯兵于船工山",
+  "replace": "日军屯兵于攒宫山",
+  "kind": "asr",
+  "evidence": "宋六陵位于绍兴攒宫（攒宫山），「船工」与「攒宫」音近致误。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 314,
+  "find": "陵中的古墓被砍伐殆尽",
+  "replace": "陵中的古木被砍伐殆尽",
+  "kind": "asr",
+  "evidence": "「砍伐」的对象是树木；抗战时陵区柏树被日军砍伐一空用于修工事（见《宋六陵》相关报道）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 329,
+  "find": "叫安武堡",
+  "replace": "叫安吴堡",
+  "kind": "asr",
+  "evidence": "吴宓故里为陕西泾阳安吴堡（跨块 329/330）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 342,
+  "find": "李弘的公陵",
+  "replace": "李弘的恭陵",
+  "kind": "asr",
+  "evidence": "唐孝敬皇帝李弘墓为恭陵，在河南偃师景山（《旧唐书》：「葬于缑氏县景山之恭陵」）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 274,
+  "find": "王元佑有可能是佛光寺",
+  "replace": "王元宥有可能是佛光寺",
+  "kind": "asr",
+  "evidence": "佛光寺东大殿梁下题记「功德主故右军中尉王」，学界两说为宦官王守澄或王元宥（宣宗朝神策军右军中尉、右街功德使）；「王元宥」被误写为「王元佑」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 397,
+  "find": "横省和后宫庙",
+  "replace": "横省和庙沟后",
+  "kind": "asr",
+  "evidence": "宁波南宋石牌坊指横省石牌坊与庙沟后石牌坊，二者均列全国重点文物保护单位。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 414,
+  "find": "雕凿了的玩石",
+  "replace": "雕凿了的顽石",
+  "kind": "asr",
+  "evidence": "「顽石」指未经雕琢之石，与「玩石」无关。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 408,
+  "find": "辗转班罗",
+  "replace": "辗转搬挪",
+  "kind": "asr",
+  "evidence": "「班罗」无义，谓后世搬动挪移致石像生次序错置，当作「搬挪」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 433,
+  "find": "是博收的美术馆",
+  "replace": "是波士顿美术馆",
+  "kind": "asr",
+  "evidence": "上下文讲波士顿美术馆（MFA）的歌川国芳/国贞展（跨块 433/434）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 456,
+  "find": "是《武》这个《水浒英雄画》",
+  "replace": "是这个《水浒英雄画》",
+  "kind": "asr",
+  "evidence": "「《武》」为衍字/误听，歌川国芳成名作为《水浒英雄画》（通俗水浒传豪杰百八人）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 481,
+  "find": "国芳和国珍",
+  "replace": "国芳和国贞",
+  "kind": "asr",
+  "evidence": "歌川国贞（三代歌川丰国），本期通篇作「国贞」（跨块 481/482）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 530,
+  "find": "国贞和国国芳",
+  "replace": "国贞和国芳",
+  "kind": "asr",
+  "evidence": "「国国芳」衍一字。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 545,
+  "find": "它是怎么竖的",
+  "replace": "它是怎么梳的",
+  "kind": "asr",
+  "evidence": "上下文谈美人画的发髻，当作「梳」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 562,
+  "find": "样带带动流行",
+  "replace": "样带动流行",
+  "kind": "asr",
+  "evidence": "「带带」衍一字。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 629,
+  "find": "一个出租室我的小伙子",
+  "replace": "一个初制所的小伙子",
+  "kind": "asr",
+  "evidence": "云南茶区称茶叶初制加工场所为「初制所」；下文 646 同一场所亦误作「出租所」，「我」为衍字。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 646,
+  "find": "再回到这个出租所",
+  "replace": "再回到这个初制所",
+  "kind": "asr",
+  "evidence": "同上，麻黑村茶农的茶叶初制所。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 660,
+  "find": "麦秀村",
+  "replace": "曼秀村",
+  "kind": "asr",
+  "evidence": "易武七村八寨中有曼秀村，「麦秀」系同音误写。",
+  "all": true
+ },
+ {
+  "ep": 102,
+  "subtitle": 681,
+  "find": "古六道茶山",
+  "replace": "古六大茶山",
+  "kind": "asr",
+  "evidence": "普洱茶区称攸乐、革登、倚邦、莽枝、蛮砖、曼撒为「古六大茶山」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 702,
+  "find": "亚顶未未成的脚下",
+  "replace": "雅典卫城的脚下",
+  "kind": "asr",
+  "evidence": "小雨在雅典录制，「亚顶未未成」为「雅典卫城」误听。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 775,
+  "find": "帕提翁神庙",
+  "replace": "帕提农神庙",
+  "kind": "asr",
+  "evidence": "雅典卫城帕提农神庙；本期 791 另处已作「帕提农神庙」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 782,
+  "find": "能够直直接",
+  "replace": "能够直接",
+  "kind": "asr",
+  "evidence": "「直直」衍一字。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 787,
+  "find": "多利克",
+  "replace": "多立克",
+  "kind": "asr",
+  "evidence": "Doric order 通译「多立克柱式」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 818,
+  "find": "古人沈记的遗趣",
+  "replace": "古人神接的意趣",
+  "kind": "asr",
+  "evidence": "《壁下观》固定用语「与古人神接的意趣」（跨块 818/819）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 833,
+  "find": "Items is Fashion Modern",
+  "replace": "Items: Is Fashion Modern?",
+  "kind": "asr",
+  "evidence": "纽约现代艺术博物馆 2017 年展览原名 Items: Is Fashion Modern?。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 846,
+  "find": "Infinite Mirrors",
+  "replace": "Infinity Mirrors",
+  "kind": "asr",
+  "evidence": "草间弥生 2017 年巡展原名 Infinity Mirrors（赫什霍恩博物馆）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 856,
+  "find": "奎北克",
+  "replace": "魁北克",
+  "kind": "asr",
+  "evidence": "Quebec 通译「魁北克」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 865,
+  "find": "阿嘎康 Museum",
+  "replace": "阿迦汗博物馆",
+  "kind": "asr",
+  "evidence": "Aga Khan Museum（多伦多），通译「阿迦汗博物馆」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 867,
+  "find": "（Agio Art Gallery of Ontario）",
+  "replace": "（AGO，Art Gallery of Ontario）",
+  "kind": "asr",
+  "evidence": "Art Gallery of Ontario 简称 AGO，「Agio」系误听。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 876,
+  "find": "Estocol",
+  "replace": "Astor Court",
+  "kind": "asr",
+  "evidence": "大都会博物馆明轩的英文名为 Astor Court（阿斯特庭院）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 918,
+  "find": "追不追不，是西可奈何，于西于西奈若何",
+  "replace": "骓不逝兮可奈何，虞兮虞兮奈若何",
+  "kind": "asr",
+  "evidence": "京剧《霸王别姬》虞姬唱词出自《史记·项羽本纪》：「骓不逝兮可奈何，虞兮虞兮奈若何」（跨块 918/919）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 921,
+  "find": "毕孝观",
+  "replace": "壁下观",
+  "kind": "asr",
+  "evidence": "节目名为《壁下观》。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 938,
+  "find": "与同号出行",
+  "replace": "与同好出行",
+  "kind": "asr",
+  "evidence": "「同好」谓同好之人，「同号」无义。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 962,
+  "find": "阿塔利亚",
+  "replace": "安塔利亚",
+  "kind": "asr",
+  "evidence": "土耳其安塔利亚，与 960 处译名统一。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 963,
+  "find": "我们去了希代呀、斯潘多、斯佩尔",
+  "replace": "我们去了西代、阿斯潘多斯、佩尔盖",
+  "kind": "asr",
+  "evidence": "安塔利亚周边三大希腊罗马遗址 Side（西代）、Aspendos（阿斯潘多斯）、Perge（佩尔盖）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1059,
+  "find": "广做的",
+  "replace": "广作的",
+  "kind": "asr",
+  "evidence": "广作、苏作、京作为清代工艺流派之称，此处指广州工黑漆描金漆器。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1176,
+  "find": "我是叶边",
+  "replace": "我是页边",
+  "kind": "asr",
+  "evidence": "主播名统一作「页边」（全库 487 处作「页边」）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1340,
+  "find": "客座嘉宾的大连欢",
+  "replace": "客座嘉宾的大联欢",
+  "kind": "asr",
+  "evidence": "本期自称「大联欢」（字幕 18「暂且称之为大联欢」）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1347,
+  "find": "阿布罗蒂西亚斯",
+  "replace": "阿弗罗蒂西亚斯",
+  "kind": "asr",
+  "evidence": "土耳其古城 Aphrodisias，同句下文即作「阿弗罗蒂西亚斯」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1442,
+  "find": "贝加门博物馆的那个贝加门的宙斯",
+  "replace": "佩加蒙博物馆的那个佩加蒙的宙斯",
+  "kind": "asr",
+  "evidence": "柏林佩加蒙博物馆（Pergamon Museum）藏佩加蒙宙斯祭坛。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1452,
+  "find": "二零一八年零一八年的壁下观",
+  "replace": "二零一八年的壁下观",
+  "kind": "asr",
+  "evidence": "「零一八年」为重复误听（跨块 1452/1453）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1502,
+  "find": "没有被带当做",
+  "replace": "没有被当做",
+  "kind": "asr",
+  "evidence": "「带」为衍字。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1509,
+  "find": "近些十近十年",
+  "replace": "近十年",
+  "kind": "asr",
+  "evidence": "「近些十」为衍字/误听，当作「近十年」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1513,
+  "find": "包括像新疆的佛圣寺",
+  "replace": "包括像新绛的福胜寺",
+  "kind": "asr",
+  "evidence": "上下文讲山西同类寺院未逃过九十年代文物偷盗之风；山西新绛福胜寺 1992 年十尊元代罗汉头被盗，正在此列。「新绛」与「新疆」、「福胜寺」与「佛圣寺」皆音近致误（跨块 1513/1514）。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1600,
+  "find": "微信公共号",
+  "replace": "微信公众号",
+  "kind": "asr",
+  "evidence": "片尾固定用语，当作「微信公众号」。"
+ },
+ {
+  "ep": 102,
+  "subtitle": 395,
+  "find": "Mariner》中的诗句",
+  "replace": "Mariner 中的诗句",
+  "kind": "punct",
+  "evidence": "英文诗名后的书名号「》」为误置标点。"
+ }
+]

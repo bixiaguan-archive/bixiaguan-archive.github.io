@@ -1,0 +1,7 @@
+[
+ {"ep":15,"subtitle":10,"find":"访问IPN点L I斜杠F A Q","replace":"访问ipn.li/faq","evidence":"片头固定用语。"},
+ {"ep":15,"subtitle":45,"find":"那么白行，由于云台山","replace":"那么白陉，由于云台山","evidence":"太行八陉之「白陉」，听众来信中提及。"},
+ {"ep":15,"subtitle":66,"find":"信仰索罗亚斯德教","replace":"信仰琐罗亚斯德教","evidence":"祆教（拜火教）教主 Zoroaster 通译「琐罗亚斯德」。"},
+ {"ep":15,"subtitle":69,"find":"而是汇聚了贯横贯整个亚欧大","replace":"而是汇聚了横贯整个亚欧大","evidence":"「贯」为口吃重复。"},
+ {"ep":15,"subtitle":72,"find":"也是权拜着壁下观所赐","replace":"也是全拜着壁下观所赐","evidence":"「权」为「全」同音误写。"}
+]
