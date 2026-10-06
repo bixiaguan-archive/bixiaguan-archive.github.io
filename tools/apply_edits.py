@@ -26,6 +26,20 @@ def main():
         by[a["keyword"]] = a
 
     st = {"files": 0, "items": 0, "ex": 0, "note": 0, "missing_kw": 0, "missing_ep": 0}
+    # 先收集每个 keyword 的 explanation 候选，按期号最小者确定性取值（避免多期互相覆盖）
+    ex_cand = {}
+    for f in sorted(WR.glob("ep*.out.json")):
+        try:
+            items = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if not isinstance(items, list):
+            continue
+        for it in items:
+            ne = (it.get("new_explanation") or "").strip()
+            if ne:
+                ex_cand.setdefault(it.get("keyword"), []).append((it.get("ep") or 10 ** 9, ne))
+    ex_final = {k: min(v)[1] for k, v in ex_cand.items()}
     problems = []
     for f in sorted(WR.glob("ep*.out.json")):
         st["files"] += 1
@@ -51,15 +65,16 @@ def main():
                 st["missing_ep"] += 1
                 problems.append(f"{f.name}: {kw!r} 无 ep{ep} 实例")
                 continue
-            ne = it.get("new_explanation")
-            if ne is not None and ne.strip() and ne.strip() != (a.get("explanation") or "").strip():
-                a["explanation"] = ne.strip()
-                st["ex"] += 1
             nn = it.get("new_note")
             if nn is not None and nn.strip() and nn.strip() != (ent.get("note") or "").strip():
                 ent["note"] = nn.strip()
                 st["note"] += 1
 
+    for k, v in ex_final.items():
+        a = by.get(k)
+        if a is not None and v != (a.get("explanation") or "").strip():
+            a["explanation"] = v
+            st["ex"] += 1
     print(json.dumps(st, ensure_ascii=False, indent=1))
     # 残留检查
     left_ex = sum(1 for a in d["annotations"] if re.search(r"本期|本集|这期", a.get("explanation") or ""))
