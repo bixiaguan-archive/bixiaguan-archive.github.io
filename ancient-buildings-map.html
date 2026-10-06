@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>壁下观 · 古建筑地图 | 102 期节目里的中国古建与访古路线</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --ink:#1b1a17; --paper:#f4efe6; --paper2:#ece5d8; --line:#d8cfbe;
+  --accent:#8f3b2c; --accent2:#2f5d50; --gold:#a8791f; --muted:#6f6759;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+
+/* ---------- header ---------- */
+header.hero{
+  background:
+    radial-gradient(1200px 400px at 15% -10%, rgba(143,59,44,.14), transparent 60%),
+    radial-gradient(900px 380px at 85% 0%, rgba(47,93,80,.12), transparent 60%),
+    var(--paper);
+  border-bottom:1px solid var(--line);
+  padding:52px 0 34px;
+}
+.kicker{font-size:12px;letter-spacing:.35em;color:var(--muted);text-transform:uppercase}
+h1.title{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.15;margin:10px 0 6px;font-weight:700}
+h1.title em{font-style:normal;color:var(--accent)}
+.sub{max-width:760px;color:#4a4438;font-size:15px;line-height:1.9;margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:26px}
+.stat{border-left:3px solid var(--accent);padding-left:12px}
+.stat b{display:block;font-family:var(--serif);font-size:26px;line-height:1.1}
+.stat span{font-size:12px;color:var(--muted);letter-spacing:.08em}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:900;background:rgba(244,239,230,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:10px;padding-bottom:10px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-size:13px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;transition:.15s;user-select:none}
+.chip:hover{border-color:var(--ink)}
+.chip.off{opacity:.35;text-decoration:line-through}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.toolbar .spacer{flex:1}
+.btn{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:7px 15px;font-size:13px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.search{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;min-width:180px;background:#fff}
+
+/* ---------- map ---------- */
+#map{height:640px;width:100%;border-bottom:1px solid var(--line);background:#e9e3d7}
+/* 全屏模式：把工具栏和地图一起放进全屏容器 */
+body.map-fullscreen{overflow:hidden}
+body.map-fullscreen .toolbar{position:static}
+body.map-fullscreen #map{height:calc(100vh - 58px)}
+.leaflet-container{font-family:var(--sans)}
+.mk{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.mk.hl{width:22px!important;height:22px!important;border:2.5px solid #fff;
+  box-shadow:0 0 0 4px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center}
+.mk.hl span{color:#fff;font-size:11px;font-weight:700;line-height:1}
+tr.routehit td{background:#fbf3e3!important;box-shadow:inset 4px 0 0 var(--rc,#8f3b2c)}
+.leaflet-popup-content-wrapper{border-radius:10px;background:#fffdf8}
+.leaflet-popup-content{margin:14px 16px;min-width:230px}
+.pop h3{font-family:var(--serif);margin:0 0 2px;font-size:19px}
+.pop .era{font-size:12px;color:var(--accent);letter-spacing:.06em;margin-bottom:8px}
+.pop p{margin:0 0 8px;font-size:13px;line-height:1.75;color:#3c372e}
+.pop .eps{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px}
+.pop .eps a{color:var(--accent2)}
+.mapnote{font-size:12px;color:var(--muted);padding:8px 0 0}
+
+/* ---------- routes ---------- */
+section.block{padding:46px 0 10px}
+h2.sec{font-family:var(--serif);font-size:28px;margin:0 0 4px}
+h2.sec.toggle{cursor:pointer;user-select:none;display:flex;align-items:baseline;gap:12px}
+h2.sec.toggle:hover .tw{color:var(--accent)}
+.tw{margin-left:auto;font-family:var(--sans);font-size:13px;color:var(--muted);white-space:nowrap}
+section.block.collapsed .lead,section.block.collapsed .routes,section.block.collapsed .listwrap{display:none}
+section.block.collapsed h2.sec{margin-bottom:0}
+h2.sec .no{color:var(--accent);font-size:15px;letter-spacing:.2em;display:block;margin-bottom:6px}
+.lead{color:#4a4438;font-size:14px;line-height:1.9;max-width:820px;margin:0 0 26px}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.card{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:20px 20px 16px;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--rc,#8f3b2c)}
+.card h3{font-family:var(--serif);font-size:20px;margin:0 0 3px}
+.card .meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+.card p{font-size:13.5px;line-height:1.85;margin:0 0 12px;color:#3c372e}
+.card ol{margin:0 0 14px;padding-left:18px;font-size:13px;line-height:1.95;color:#3c372e}
+.card ol li::marker{color:var(--rc,#8f3b2c)}
+.card .acts{display:flex;gap:8px}
+.card .acts button{border:1px solid var(--rc,#8f3b2c);color:var(--rc,#8f3b2c);background:transparent;border-radius:999px;
+  padding:6px 14px;font-size:12.5px;cursor:pointer}
+.card .acts button:hover{background:var(--rc,#8f3b2c);color:#fff}
+
+/* ---------- list ---------- */
+.listwrap{margin-top:8px}
+table.list{width:100%;border-collapse:collapse;font-size:13.5px;background:#fffdf8;border:1px solid var(--line)}
+table.list th{font-family:var(--serif);text-align:left;font-size:13px;letter-spacing:.05em;background:var(--paper2);
+  padding:10px 12px;border-bottom:1px solid var(--line);position:sticky;top:0}
+table.list td{padding:9px 12px;border-bottom:1px solid #e7e0d2;vertical-align:top;line-height:1.7}
+table.list tr:hover td{background:#faf6ee}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;color:#fff;white-space:nowrap}
+.loc{color:var(--muted);white-space:nowrap}
+footer{padding:34px 0 60px;color:var(--muted);font-size:12.5px;line-height:1.9;border-top:1px solid var(--line);margin-top:40px}
+@media (max-width:760px){#map{height:480px}.stats{gap:16px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">BIXIAGUAN ARCHIVE · HERITAGE ATLAS</div>
+    <h1 class="title">壁下观 · <em>古建筑地图</em></h1>
+    <p class="sub">从 102 期播客转录文本里整理出的中国古建筑与遗址地图：每个点位标注年代、亮点与相关期数，
+    并给出六条按节目脉络编排的访古考察路线。年代与亮点主要取自节目注释（annotations）中的讲解，
+    少数条目为编者补充的通识信息。</p>
+    <div class="stats">
+      <div class="stat"><b id="stSites">–</b><span>标记点位</span></div>
+      <div class="stat"><b id="stProv">–</b><span>覆盖省区市</span></div>
+      <div class="stat"><b id="stRoutes">6</b><span>推荐路线</span></div>
+      <div class="stat"><b>102</b><span>期节目</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span id="legend" style="display:flex;flex-wrap:wrap;gap:8px"></span>
+    <span class="spacer"></span>
+    <input class="search" id="q" placeholder="搜索建筑 / 地点…">
+    <button class="btn ghost" id="btnAll">显示全部</button>
+    <button class="btn" id="btnChina">回到全国视野</button>
+    <button class="btn ghost" id="btnFull" title="全屏显示地图">⛶ 全屏地图</button>
+  </div>
+</div>
+
+<div id="map"></div>
+<div class="wrap"><div class="mapnote">提示：圆点颜色代表始建/主体年代；点击点位看详情；点击路线卡片上的「在地图上看」可高亮该条路线。地图瓦片来自高德地图（中文标注，免费），需联网。</div></div>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec toggle" data-part="routes"><span class="no">PART 01 · ROUTES</span>六条访古路线<span class="tw">▾ 收起</span></h2>
+    <p class="lead">路线按节目里反复出现的考察逻辑编排：唐代木构与营造学社的发现史、辽金木构走廊、晋东南壁画与戏台、
+    西南联大时期的学社考察、北京明代寺观壁画，以及长城与边墙。每条路线给出建议顺序与看点。</p>
+    <div class="routes" id="routes"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec toggle" data-part="index"><span class="no">PART 02 · INDEX</span>点位索引<span class="tw">▾ 收起</span></h2>
+    <p class="lead">下表与地图联动：点击任意行可在地图上定位。期数链接指向本仓库的节目索引。</p>
+    <div class="listwrap"><table class="list" id="list">
+      <thead><tr><th>名称</th><th>年代</th><th>位置</th><th>亮点</th><th>相关期数</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    数据来源：本仓库 <code>bixiaguan_transcripts/notes/annotations.json</code>（3915 条注释）与 <code>bixiaguan_search/episodes.json</code>（102 期）。
+    坐标来自 OpenStreetMap Nominatim 检索与编者校订，个别乡村小点位可能有百米级误差。
+    年代标注以现存主体遗构为准，非始建年。本页为静态文档，可直接用浏览器打开。
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ============ 年代分组 ============ */
+const ERAS = {
+  han:    {name:"汉及以前", color:"#7a4b2a"},
+  tang:   {name:"南北朝—唐", color:"#8f3b2c"},
+  liao:   {name:"五代—宋辽金", color:"#2f5d50"},
+  yuan:   {name:"元", color:"#a8791f"},
+  ming:   {name:"明", color:"#33507a"},
+  qing:   {name:"清及以后", color:"#6b6b6b"},
+  site:   {name:"遗址 / 石窟", color:"#5b3f6b"}
+};
+
+/* ============ 点位数据 ============
+   n 名称 | e era key | y 年代 | c 城市/位置 | lat,lng | d 亮点 | eps 相关期数
+*/
+const SITES = [
+  // ---- 五台 / 晋北 木构 ----
+  {n:"佛光寺", e:"tang", y:"唐大中十一年 (857)", c:"五台县豆村镇", lat:38.8689, lng:113.3873,
+   d:"梁思成、林徽因 1937 年发现的唐代木构第一例，东大殿斗拱、墨书题记与唐代塑像、壁画、舍利塔「四绝」同处一殿。", eps:[1,2,3]},
+  {n:"南禅寺", e:"tang", y:"唐建中三年 (782)", c:"五台县阳白乡李家庄", lat:38.7012, lng:113.1138,
+   d:"现存最早的木构建筑，殿内唐代塑像群保存完好，规模小但气质完整。", eps:[1,2,3]},
+  {n:"碧山寺", e:"site", y:"北魏创 / 现存明清", c:"五台山", lat:39.0231, lng:113.5998, d:"五台群山中的古寺与摩崖造像。", eps:[4]},
+  {n:"南山寺", e:"site", y:"元—清", c:"五台山", lat:38.9816, lng:113.5733, d:"依山而建的三层寺院，石雕与壁画精品。", eps:[4]},
+  {n:"岩山寺", e:"liao", y:"金 (文殊殿壁画)", c:"繁峙县天岩村", lat:39.2293, lng:113.6532,
+   d:"金代壁画《佛传故事》以北宋汴京市井为背景，是研究宋代城市与建筑的图像史料。", eps:[5,6]},
+  {n:"公主寺", e:"ming", y:"明 (壁画)", c:"繁峙县", lat:39.1481, lng:113.3739, d:"明代水陆壁画，诸神队列画得生动。", eps:[5,6]},
+  {n:"秘密寺", e:"site", y:"唐—清", c:"繁峙县岩头乡", lat:39.0778, lng:113.3414, d:"山岩间的隐修寺院与石窟。", eps:[5]},
+  {n:"觉山寺塔", e:"liao", y:"辽 (砖塔)", c:"灵丘县", lat:39.3696, lng:114.3050, d:"辽代密檐砖塔，塔内保存辽代木雕佛像与壁画。", eps:[7]},
+  {n:"阁院寺", e:"liao", y:"辽 (文殿)", c:"涞源县", lat:39.3529, lng:114.6821, d:"辽代木构大殿，与应县木塔同期，存世稀少。", eps:[7]},
+  {n:"释迦寺", e:"liao", y:"元 (大殿)", c:"蔚县", lat:39.834, lng:114.5641, d:"蔚县古城里的元代大殿。", eps:[8]},
+  {n:"常平仓", e:"ming", y:"明", c:"蔚县", lat:39.811, lng:114.4029, d:"明代官仓遗存，蔚县堡寨体系的一环。", eps:[8]},
+  {n:"独乐寺", e:"liao", y:"辽统和二年 (984)", c:"天津蓟州", lat:40.0442, lng:117.3967,
+   d:"观音阁与山门，中国最早被系统调查的辽代木构之一，梁思成《蓟县独乐寺观音阁山门考》即此。", eps:[9,10]},
+  {n:"广济寺三大士殿", e:"liao", y:"辽 (已毁)", c:"天津宝坻", lat:39.727, lng:117.2991,
+   d:"与独乐寺同代的辽构，1940 年代遭拆毁，仅存测绘记录，是学社调查史上一桩痛案。", eps:[9,10]},
+  {n:"广济寺塔", e:"liao", y:"辽", c:"锦州", lat:41.1092, lng:121.1197, d:"辽代砖塔，辽西塔群之一。", eps:[11]},
+  {n:"奉国寺", e:"liao", y:"辽开泰九年 (1020)", c:"义县", lat:41.5423, lng:121.2427,
+   d:"七佛并列的辽代大殿，面阔九间，斗拱雄大，是辽构最高等级实例。", eps:[11]},
+  {n:"万佛堂石窟", e:"site", y:"北魏", c:"义县", lat:41.5741, lng:121.1539, d:"东北最早的石窟，北魏造像与《元景造像记》。", eps:[11]},
+  {n:"北镇庙", e:"site", y:"隋创 / 明清", c:"北镇", lat:41.5943, lng:121.7562, d:"医巫闾山医巫闾山国家祀典之庙，碑刻林立。", eps:[11]},
+
+  // ---- 正定 / 河北 ----
+  {n:"隆兴寺", e:"liao", y:"宋 (摩尼殿 / 倒坐观音)", c:"正定", lat:38.1444, lng:114.5768,
+   d:"梁思成盛赞的宋代摩尼殿，十字形平面与「倒坐观音」被鲁迅称为东方美神。", eps:[12,13]},
+  {n:"开元寺", e:"liao", y:"唐—五代", c:"正定", lat:38.1399, lng:114.5649, d:"唐代钟楼与五代须弥座，正定古城四塔之一。", eps:[12,13]},
+  {n:"广惠寺华塔", e:"liao", y:"金", c:"正定", lat:38.1318, lng:114.5657, d:"花塔造型孤例，上层塑饰如花束。", eps:[12,13]},
+  {n:"天宁寺凌霄塔", e:"liao", y:"宋金", c:"正定", lat:38.1422, lng:114.5695, d:"砖木混合塔，内部木骨结构罕见。", eps:[12,13]},
+  {n:"临济寺", e:"liao", y:"唐创 / 塔为金", c:"正定", lat:38.1349, lng:114.5672, d:"临济宗祖庭，青塔。", eps:[12,13]},
+  {n:"正定城墙", e:"ming", y:"明", c:"正定", lat:38.145, lng:114.57, d:"与四座国保塔共同构成古城天际线。", eps:[12,13]},
+  {n:"北岳庙", e:"site", y:"南北朝创 / 德宁之殿为元", c:"曲阳", lat:38.621, lng:114.6911,
+   d:"元代巨殿与壁画，与隆兴寺常被并置讨论。", eps:[12,13]},
+  {n:"永通桥", e:"site", y:"唐金", c:"赵县", lat:37.754, lng:114.761, d:"与赵州桥同型的小安济桥。", eps:[14]},
+  {n:"柏林禅寺", e:"site", y:"隋创", c:"赵县", lat:37.748, lng:114.7784, d:"赵州禅师公案的发生地。", eps:[14]},
+  {n:"开元寺塔（料敌塔）", e:"liao", y:"北宋", c:"定州", lat:38.5103, lng:114.9966, d:"宋塔最高者，因瞭望辽境得名「料敌」。", eps:[14]},
+
+  // ---- 大同 / 云冈 / 恒山 ----
+  {n:"云冈石窟", e:"site", y:"北魏 (460 年起)", c:"大同西郊武州山", lat:40.1127, lng:113.1304,
+   d:"皇家石窟第一例，昙曜五窟的巨佛与中西混合的雕刻语汇。", eps:[15,16,17]},
+  {n:"方山永固陵", e:"site", y:"北魏", c:"大同方山", lat:40.2803, lng:113.3459, d:"冯太后陵，北魏丧葬制度与「思远浮屠」遗址。", eps:[15,16]},
+  {n:"华严寺", e:"liao", y:"辽 (大雄宝殿为金)", c:"大同", lat:40.0913, lng:113.288,
+   d:"辽金巨殿，殿内辽金塑像与薄伽教藏殿的壁藏天宫楼阁。", eps:[15,17,18]},
+  {n:"善化寺", e:"liao", y:"辽金", c:"大同", lat:40.0859, lng:113.2932, d:"保存最完整的辽金寺院格局。", eps:[15,17,18]},
+  {n:"法华寺", e:"liao", y:"元 (白塔)", c:"大同", lat:40.0938, lng:113.3035, d:"元代覆钵式白塔。", eps:[17,18]},
+  {n:"九龙壁", e:"ming", y:"明", c:"大同", lat:40.0918, lng:113.2968, d:"明代代王府照壁，中国最早最大的琉璃龙壁。", eps:[17,18]},
+  {n:"和阳门（大同城墙）", e:"ming", y:"明 / 2008 年重修", c:"大同", lat:40.0921, lng:113.3056,
+   d:"耿彦波主导的大同古城改造标志，争议与成效并存。", eps:[17,18]},
+  {n:"悬空寺", e:"site", y:"北魏创 / 明清重修", c:"浑源恒山金龙峡", lat:39.6597, lng:113.708,
+   d:"半空悬置的木构楼阁，三教合一。", eps:[19]},
+  {n:"浑源永安寺", e:"liao", y:"金 (传法正宗殿壁画)", c:"浑源", lat:39.7009, lng:113.6857, d:"金代大殿与明代水陆壁画。", eps:[19]},
+  {n:"圆觉寺塔", e:"liao", y:"金", c:"浑源", lat:39.6995, lng:113.6855, d:"塔顶翔凤风向标，可旋转。", eps:[19]},
+  {n:"崇福寺", e:"liao", y:"金 (弥陀殿)", c:"朔州", lat:39.314, lng:112.4256,
+   d:"金代巨殿，匾额、琉璃、塑像、壁画「五绝」俱存。", eps:[20]},
+  {n:"代县阿育王塔", e:"liao", y:"元", c:"代县", lat:39.0679, lng:112.9527, d:"元代砖塔，代县古城地标。", eps:[21]},
+  {n:"边靖楼", e:"ming", y:"明", c:"代县", lat:39.0635, lng:112.948, d:"「长城第一楼」，边镇谯楼巨制。", eps:[21]},
+  {n:"代州文庙", e:"ming", y:"元明", c:"代县", lat:39.06, lng:112.9491, d:"华北州府文庙中规模最大者之一。", eps:[21]},
+
+  // ---- 应县 ----
+  {n:"佛宫寺释迦塔（应县木塔）", e:"liao", y:"辽清宁二年 (1056)", c:"应县", lat:39.5653, lng:113.182,
+   d:"世界现存最高最古的木塔，纯木构无钉，双层环形槽层结构，倾斜与加固问题持续讨论。", eps:[22,23]},
+  {n:"净土寺", e:"liao", y:"金 (应县)", c:"应县", lat:39.5661, lng:113.1877, d:"金代天宫楼阁藻井，小木作的极致。", eps:[22,23]},
+
+  // ---- 太原 / 晋祠 / 蒙山 ----
+  {n:"晋祠", e:"site", y:"北魏创 / 圣母殿为宋", c:"太原悬瓮山下", lat:37.7082, lng:112.4351,
+   d:"圣母殿、献殿、鱼沼飞梁与难老泉，宋代木构与水系祠庙的完整样本。", eps:[24,25,26]},
+  {n:"圣母殿", e:"liao", y:"北宋", c:"晋祠内", lat:37.7088, lng:112.4346, d:"副阶周匝与廊柱盘龙，宋构典范。", eps:[24,25]},
+  {n:"鱼沼飞梁", e:"liao", y:"北宋", c:"晋祠内", lat:37.7087, lng:112.4348, d:"十字形古桥，梁思成称为孤例。", eps:[24,25]},
+  {n:"献殿", e:"liao", y:"金", c:"晋祠内", lat:37.7085, lng:112.435, d:"如亭如殿的祭献之所，结构极简。", eps:[24,25]},
+  {n:"唐叔虞祠", e:"ming", y:"元明清", c:"晋祠内", lat:37.7091, lng:112.4355, d:"晋祠早期核心区，乐楼院落。", eps:[24]},
+  {n:"水镜台", e:"ming", y:"明清", c:"晋祠内", lat:37.7081, lng:112.4357, d:"祠前戏台，明楼清台的组合。", eps:[24]},
+  {n:"天龙山石窟", e:"site", y:"东魏—唐", c:"太原西南", lat:37.7354, lng:112.3778,
+   d:"圆润写实的造像风格，20 世纪大量佛首被盗售海外。", eps:[27,28]},
+  {n:"蒙山大佛", e:"site", y:"北齐", c:"太原蒙山", lat:37.7819, lng:112.4381, d:"北齐大型摩崖佛，与邺城、晋阳的佛教政治相关。", eps:[27]},
+
+  // ---- 嵩山 / 河南 ----
+  {n:"嵩岳寺塔", e:"site", y:"北魏 (523)", c:"登封嵩山", lat:34.5015, lng:113.0159,
+   d:"现存最早的砖塔，十二角平面，印度与本土形制的交汇。", eps:[29,30]},
+  {n:"净藏禅师塔", e:"tang", y:"唐 (746)", c:"登封嵩山", lat:34.4935, lng:112.9955, d:"现存最早的八角形砖塔，仿木构细部清晰。", eps:[29,30]},
+  {n:"少林寺", e:"site", y:"北魏创 / 宋金建筑", c:"登封", lat:34.5084, lng:112.9352, d:"塔林与初祖庵，禅宗祖庭。", eps:[29,30]},
+  {n:"初祖庵", e:"liao", y:"北宋 (1127)", c:"登封少林寺旁", lat:34.5105, lng:112.9267, d:"北宋木构，梁思成调查过的重要实例。", eps:[29,30]},
+  {n:"会善寺", e:"liao", y:"北齐 / 元", c:"登封嵩山", lat:34.493, lng:112.9991, d:"元大殿与嵩山书院系统。", eps:[29,30]},
+  {n:"中岳庙", e:"site", y:"秦创 / 宋清", c:"登封", lat:34.4592, lng:113.0677, d:"五岳中规模最大的祠庙，宋代铁人。", eps:[29,31]},
+  {n:"太室阙", e:"han", y:"东汉 (118)", c:"登封", lat:34.4518, lng:113.0678, d:"汉三阙之一，仿木石阙与汉篆铭文。", eps:[29,31]},
+  {n:"启母阙", e:"han", y:"东汉 (123)", c:"登封", lat:34.4741, lng:113.0413, d:"汉阙中的铭文与画像石精品。", eps:[29,31]},
+  {n:"少室阙", e:"han", y:"东汉", c:"登封", lat:34.493, lng:112.9771, d:"汉三阙中最古的一座。", eps:[29,31]},
+  {n:"嵩阳书院", e:"site", y:"北魏创 / 清重建", c:"登封", lat:34.4818, lng:113.0272, d:"程门立雪之地，北宋碑与汉封将军柏。", eps:[29,31]},
+  {n:"周公测景台与观星台", e:"site", y:"元 (1276)", c:"登封告成", lat:34.4026, lng:113.1407, d:"郭守敬测影授时的天文台，中国现存最早天文建筑。", eps:[29,31]},
+  {n:"风穴寺", e:"liao", y:"唐—元明清", c:"汝州", lat:34.2283, lng:112.8914, d:"一座寺里集齐唐、宋、金、元、明、清木构。", eps:[32]},
+  {n:"白马寺", e:"site", y:"东汉 (68)", c:"洛阳", lat:34.7243, lng:112.5981, d:"中国第一座官办佛寺。", eps:[33]},
+  {n:"龙门石窟", e:"site", y:"北魏—唐", c:"洛阳", lat:34.5571, lng:112.4707, d:"皇家石窟第二例，奉先寺卢舍那大佛。", eps:[27,33]},
+  {n:"巩义石窟寺", e:"site", y:"北魏", c:"巩义", lat:34.8129, lng:113.0241, d:"帝后礼佛图浮雕，国内仅存。", eps:[33]},
+  {n:"关林", e:"site", y:"明", c:"洛阳", lat:34.6354, lng:112.5074, d:"关羽首级葬地，武庙规制样本。", eps:[33]},
+  {n:"修定寺塔", e:"tang", y:"唐 (776)", c:"安阳清凉山", lat:36.1958, lng:113.9984,
+   d:"塔身满嵌模制琉璃浮雕，唐代装饰艺术的孤例。", eps:[34]},
+  {n:"灵泉寺", e:"site", y:"隋—宋", c:"安阳", lat:36.0435, lng:114.0758, d:"隋代道凭与「大住圣窟」，浅浮雕门塔。", eps:[34]},
+  {n:"洪谷寺", e:"site", y:"唐—宋", c:"林州洪谷山", lat:36.0018, lng:113.7109, d:"荆浩隐居之地，塔林与摩崖。", eps:[34]},
+  {n:"娲皇宫", e:"site", y:"北齐—清", c:"涉县中皇山", lat:36.6431, lng:113.6172, d:"半壁悬空的娲阁与北齐摩崖刻经。", eps:[34]},
+
+  // ---- 晋东南 ----
+  {n:"天台庵", e:"tang", y:"唐 / 五代", c:"平顺县王曲村", lat:36.3832, lng:113.3984,
+   d:"曾定为唐构，现多断为五代，仍是极早期木构。", eps:[35,36]},
+  {n:"平顺龙门寺", e:"tang", y:"五代—清", c:"平顺县石城镇", lat:36.3902, lng:113.623,
+   d:"一座寺内自五代至清六个朝代的建筑并存，被称「中国古代建筑立体博物馆」。", eps:[35,36]},
+  {n:"大云院", e:"liao", y:"五代 (弥陀殿壁画)", c:"平顺县", lat:36.3671, lng:113.4387, d:"现存唯一的五代寺观壁画。", eps:[35,36]},
+  {n:"佛头寺", e:"liao", y:"宋", c:"平顺县", lat:36.3582, lng:113.5762, d:"北宋小殿，柱网与斗拱质朴。", eps:[35,36]},
+  {n:"原起寺", e:"liao", y:"宋 (大殿) / 唐 (经幢)", c:"潞城", lat:36.3533, lng:113.4257, d:"北宋三开间小殿与唐幢。", eps:[35]},
+  {n:"开化寺", e:"liao", y:"北宋 (大悲阁壁画)", c:"高平陈区镇", lat:35.8703, lng:113.0372,
+   d:"北宋寺观壁画最完整实例之一，山水与界画精妙。", eps:[37,38]},
+  {n:"王报村二郎庙戏台", e:"liao", y:"金 (1196)", c:"高平王报村", lat:35.8654, lng:112.8539,
+   d:"现存最早的戏台实物，金代明昌年间题记。", eps:[37,38]},
+  {n:"二仙庙", e:"liao", y:"宋金", c:"高平", lat:35.7029, lng:112.9778, d:"宋金小殿与宋代彩塑。", eps:[37,38]},
+  {n:"景德寺", e:"liao", y:"宋金", c:"泽州", lat:35.5943, lng:112.9532, d:"泽州乡村宋金木构群之一。", eps:[39,40]},
+  {n:"高都东岳庙", e:"liao", y:"宋金 (天齐殿)", c:"晋城高都镇", lat:35.6074, lng:112.9291,
+   d:"高都古镇的核心，宋金大殿与历代碑刻。", eps:[39,40]},
+  {n:"晋城玉皇庙", e:"liao", y:"宋—清 (二十八宿彩塑)", c:"晋城府城", lat:35.5468, lng:112.9369,
+   d:"元代二十八宿星君彩塑，人形与动物合体，中国雕塑史名作。", eps:[39,40]},
+  {n:"西溪二仙庙", e:"liao", y:"宋金", c:"陵川", lat:35.68, lng:112.77, d:"金代殿宇与宋碑，二仙信仰中心。", eps:[39,40]},
+  {n:"乔泽庙戏台", e:"liao", y:"元 (1295)", c:"翼城武池村", lat:35.6834, lng:111.7174, d:"现存最早的元代戏台之一。", eps:[41,42]},
+  {n:"牛王庙戏台", e:"liao", y:"元 (1283)", c:"魏村镇", lat:36.2381, lng:111.49, d:"带看楼与戏台的完整元代乐楼院落。", eps:[41,42]},
+  {n:"稷益庙", e:"ming", y:"明 (壁画)", c:"新绛", lat:35.5068, lng:111.1152, d:"明代农业题材壁画，后稷与大禹故事。", eps:[41,42]},
+  {n:"福胜寺", e:"liao", y:"元 (壁画与彩塑)", c:"新绛泽掌镇", lat:35.7527, lng:111.168, d:"元代「渡海观音」与明王壁画。", eps:[41,42]},
+  {n:"汾城城隍庙", e:"liao", y:"金—清 (戏台)", c:"襄汾汾城镇", lat:35.8197, lng:111.2717, d:"金代献殿与早期戏台。", eps:[41,42]},
+  {n:"净信寺", e:"ming", y:"明 (戏台与壁画)", c:"太谷", lat:37.4287, lng:112.6573, d:"明清戏台与完整寺院序列。", eps:[43]},
+  {n:"双林寺", e:"ming", y:"明 (彩塑)", c:"平遥", lat:37.1709, lng:112.1251, d:"两千余尊明代彩塑，被称「彩塑博物馆」。", eps:[43]},
+  {n:"镇国寺", e:"liao", y:"五代 (万佛殿)", c:"平遥", lat:37.2851, lng:112.2709, d:"五代木构与殿内五代彩塑，斗拱出挑极大。", eps:[43]},
+  {n:"太符观", e:"liao", y:"金—明", c:"汾阳杏花村", lat:37.3446, lng:111.9176, d:"金代玉皇殿与明代诸神彩塑。", eps:[43]},
+  {n:"则天庙（开栅圣母庙）", e:"liao", y:"金—清", c:"文水开栅镇", lat:37.4774, lng:112.0381, d:"武则天相关的早期祠庙记忆。", eps:[43]},
+  {n:"洪福寺", e:"liao", y:"宋金", c:"定襄留晖", lat:38.4468, lng:112.9899, d:"宋金小殿与金代彩塑。", eps:[43]},
+
+  // ---- 晋南 壁画与永乐宫 ----
+  {n:"永乐宫", e:"yuan", y:"元 (1247—1297)", c:"芮城", lat:34.7223, lng:110.6876,
+   d:"元代道观壁画《朝元图》三百余位神仙队列，因三门峡水库整体搬迁，是文物保护史上的大工程。", eps:[44,45,46]},
+  {n:"广仁王庙（五龙庙）", e:"tang", y:"唐大和五年 (831)", c:"芮城中龙泉村", lat:34.7306, lng:110.682,
+   d:"现存第三早的木构建筑，近年由设计师做过轻量整治，争议不少。", eps:[44,46]},
+  {n:"广胜下寺", e:"yuan", y:"元 (明应王殿壁画)", c:"洪洞", lat:36.3036, lng:111.8024,
+   d:"元代「杂剧图」壁画是戏曲史关键图像；部分壁画曾被卖到美国大都会博物馆。", eps:[47,48]},
+  {n:"水神庙", e:"yuan", y:"元 (壁画)", c:"洪洞广胜寺镇", lat:36.3036, lng:111.8017, d:"元代世俗题材壁画：打球、捕鱼、仪仗。", eps:[47,48]},
+  {n:"飞虹塔（广胜上寺）", e:"ming", y:"明 (琉璃塔)", c:"洪洞", lat:36.3015, lng:111.8066, d:"现存最完整的琉璃塔，《西游记》取景地。", eps:[47,48]},
+
+  // ---- 长城与关隘 ----
+  {n:"居庸关云台", e:"yuan", y:"元 (1345)", c:"北京昌平", lat:40.289, lng:116.0683,
+   d:"过街塔基座，六种文字经文与浮雕，多民族艺术样本。", eps:[49,50]},
+  {n:"居庸关", e:"ming", y:"明", c:"北京昌平", lat:40.2994, lng:116.0604, d:"太行八陉之外的关沟天险，云台在其内。", eps:[49,50]},
+  {n:"山海关", e:"ming", y:"明 (1381)", c:"秦皇岛", lat:39.9986, lng:119.7619, d:"明长城东端重镇，天下第一关。", eps:[51]},
+  {n:"嘉峪关", e:"ming", y:"明 (1372)", c:"嘉峪关", lat:39.8022, lng:98.2178, d:"明长城西端，河西走廊的门户。", eps:[51,52]},
+  {n:"雁门关", e:"ming", y:"明 (现存)", c:"代县雁门山", lat:39.1887, lng:112.8601, d:"内长城最重要的山口，「天下九塞，雁门为首」。", eps:[53,54]},
+  {n:"白草口长城", e:"ming", y:"明", c:"山阴", lat:39.1834, lng:112.7921, d:"保存极好的明长城段落，锯齿形敌楼密集。", eps:[53,54]},
+  {n:"平型关", e:"ming", y:"明", c:"繁峙 / 灵丘交界", lat:39.3211, lng:113.9232, d:"内长城关城，亦因 1937 年战役知名。", eps:[53]},
+  {n:"娘子关", e:"ming", y:"明", c:"平定", lat:37.9601, lng:113.8688, d:"井陉口要隘，长城与水乡同处一地。", eps:[55]},
+  {n:"固关", e:"ming", y:"明", c:"阳泉固关镇", lat:37.8944, lng:113.9054, d:"保存完整的关城与长城。", eps:[55]},
+  {n:"三十二长城", e:"ming", y:"明 (北长城)", c:"右玉三十二村", lat:40.1344, lng:112.2257, d:"土长城与烽燧在草原上绵延，明九边防御一线。", eps:[56,57]},
+  {n:"杀虎口", e:"ming", y:"明—清", c:"右玉", lat:40.2413, lng:112.3089, d:"走西口的关口，明蒙贸易与冲突之门。", eps:[56,57]},
+  {n:"右卫镇", e:"ming", y:"明 (卫城)", c:"右玉", lat:40.1613, lng:112.3444, d:"明代卫所城市格局残存。", eps:[56,57]},
+  {n:"老牛湾", e:"ming", y:"明 (黄河与长城交汇)", c:"偏关", lat:39.6023, lng:111.4754, d:"黄河与明长城握手之处，堡寨与望河楼。", eps:[58]},
+  {n:"偏头关", e:"ming", y:"明", c:"偏关", lat:39.4366, lng:111.492, d:"黄河三关之一。", eps:[58]},
+  {n:"宁武关", e:"ming", y:"明", c:"宁武", lat:39.0056, lng:112.3128, d:"外三关之中关。", eps:[58]},
+  {n:"鸡鸣驿", e:"ming", y:"明 (驿站)", c:"怀来", lat:40.4563, lng:115.3284, d:"现存最大的古代驿站城堡。", eps:[59]},
+  {n:"宣化城墙", e:"ming", y:"明", c:"宣化", lat:40.6037, lng:115.064, d:"明代宣府镇城，九边重镇之一。", eps:[59]},
+  {n:"独石口", e:"ming", y:"明", c:"赤城", lat:41.3021, lng:115.7126, d:"塞北口门，土木之变的现场。", eps:[59]},
+  {n:"紫荆关", e:"ming", y:"明", c:"易县", lat:39.32, lng:114.8, d:"太行陉口上的关城。", eps:[59]},
+  {n:"倒马关", e:"ming", y:"明", c:"唐县", lat:38.85, lng:114.4, d:"内三关之一。", eps:[59]},
+  {n:"永定门", e:"ming", y:"明 (2004 复建)", c:"北京", lat:39.8711, lng:116.3931, d:"北京中轴线南端标志，复建案例。", eps:[60]},
+  {n:"明城墙遗址公园", e:"ming", y:"明", c:"北京东便门", lat:39.8997, lng:116.4241, d:"北京内城城墙残段与角楼。", eps:[60]},
+  {n:"南京城墙（中华门）", e:"ming", y:"明 (1366—1393)", c:"南京", lat:32.0145, lng:118.7762,
+   d:"世界最长砖石城墙，十三门与城砖铭文可追到府县与匠人。", eps:[61,62,63]},
+  {n:"玄武门与解放门", e:"ming", y:"明 / 民国", c:"南京", lat:32.0726, lng:118.7824, d:"城墙近代开口的层积。", eps:[61,62]},
+  {n:"西安城墙", e:"ming", y:"明 (1370s)", c:"西安", lat:34.2651, lng:108.9208, d:"现存最完整的府城城墙环线。", eps:[61]},
+  {n:"开封城墙", e:"qing", y:"清 (压在明城之上)", c:"开封", lat:34.8, lng:114.35, d:"城摞城，黄河泥沙下的历代城址。", eps:[61]},
+
+  // ---- 北京 明代寺观 ----
+  {n:"智化寺", e:"ming", y:"明正统九年 (1444)", c:"北京", lat:39.9163, lng:116.4261,
+   d:"北京现存最完整的明代木构寺院之一，转轮藏与藻井；两块藻井流失于海外。", eps:[64,65]},
+  {n:"法海寺", e:"ming", y:"明正统 (1439—1443)", c:"北京石景山", lat:39.94, lng:116.1534,
+   d:"大慧寺等画士所作的《帝释梵天图》壁画，沥粉贴金，明代宫廷绘画最高水准。", eps:[64,66]},
+  {n:"大慧寺", e:"ming", y:"明 (1578)", c:"北京", lat:39.9516, lng:116.3234, d:"大悲殿二十五米巨佛与二十八诸天壁画。", eps:[66]},
+  {n:"大觉寺", e:"ming", y:"辽创 / 明清", c:"北京阳台山", lat:40.0512, lng:116.0994, d:"「八绝」：古寺、清泉、银杏、流香等。", eps:[67]},
+  {n:"真觉寺（五塔寺）", e:"ming", y:"明 (1473)", c:"北京", lat:39.9436, lng:116.3238, d:"金刚宝座塔，仿印度佛陀伽耶式样。", eps:[68]},
+  {n:"西黄寺", e:"qing", y:"清 (1652)", c:"北京", lat:39.9633, lng:116.3842, d:"达赖、班禅驻京寺院，清净化城塔。", eps:[68]},
+  {n:"雍和宫", e:"qing", y:"清 (1744 改寺)", c:"北京", lat:39.9456, lng:116.411, d:"藏传佛教寺院与三座牌楼、五百罗汉山。", eps:[68]},
+  {n:"妙应寺白塔", e:"yuan", y:"元 (1271)", c:"北京", lat:39.9236, lng:116.357, d:"尼泊尔匠人阿尼哥设计的覆钵式塔，北京最早藏式塔。", eps:[68]},
+  {n:"智珠寺", e:"qing", y:"清", c:"北京", lat:39.9268, lng:116.3974, d:"曾被占用多年后修缮活化，成为古建再利用样本。", eps:[68]},
+  {n:"碧云寺", e:"ming", y:"元明 / 金刚宝座塔为清", c:"北京香山", lat:39.9966, lng:116.1844, d:"依山六进院落与中山纪念堂。", eps:[67]},
+  {n:"卧佛寺（十方普觉寺）", e:"liao", y:"唐创 / 元铜佛", c:"北京香山", lat:40.0062, lng:116.2013, d:"元代至正年间铸造的铜卧佛。", eps:[67]},
+  {n:"恭王府", e:"qing", y:"清", c:"北京", lat:39.9353, lng:116.3801, d:"「一座恭王府，半部清代史」，花园与戏楼。", eps:[69]},
+  {n:"护国寺", e:"ming", y:"元明", c:"北京", lat:39.9337, lng:116.3667, d:"元时旧刹，今仅存碑与地名。", eps:[69]},
+
+  // ---- 承德 ----
+  {n:"普宁寺", e:"qing", y:"清 (1755)", c:"承德", lat:41.0148, lng:117.946,
+   d:"汉藏混合布局，前半汉式后半曼陀罗，大乘之阁千手观音。", eps:[70,71]},
+  {n:"普陀宗乘之庙（小布达拉宫）", e:"qing", y:"清 (1771)", c:"承德", lat:41.0114, lng:117.9276,
+   d:"仿拉萨布达拉宫，万法归一殿鎏金顶，乾隆的政治建筑宣言。", eps:[70,71]},
+  {n:"殊像寺", e:"qing", y:"清 (1778)", c:"承德", lat:41.0124, lng:117.9191, d:"仿五台殊像寺，文殊阁。", eps:[70,71]},
+  {n:"普乐寺", e:"qing", y:"清 (1766)", c:"承德", lat:40.9962, lng:117.9554, d:"旭光阁圆殿仿天坛祈年殿。", eps:[70,71]},
+  {n:"安远庙", e:"qing", y:"清 (1764)", c:"承德", lat:41.0025, lng:117.9519, d:"仿伊犁固尔扎庙，纪念达瓦齐之乱后迁来的察哈尔。", eps:[70,71]},
+  {n:"避暑山庄", e:"qing", y:"清 (1703—1792)", c:"承德", lat:40.9935, lng:117.926,
+   d:"皇帝夏都，园囿与外八庙共同构成清代多民族帝国的空间政治。", eps:[70,71]},
+
+  // ---- 青海 / 甘肃 / 河西 ----
+  {n:"瞿昙寺", e:"ming", y:"明 (1392 起)", c:"乐都", lat:36.3548, lng:102.2961,
+   d:"「小故宫」式汉式寺院，隆国殿仿奉天殿，明代壁画与御碑。", eps:[72,73]},
+  {n:"塔尔寺", e:"qing", y:"明创 / 清盛", c:"湟中", lat:36.4878, lng:101.567, d:"宗喀巴诞生地，酥油花、壁画、堆绣三绝。", eps:[72,73]},
+  {n:"麦积山石窟", e:"site", y:"后秦—宋", c:"天水", lat:34.3517, lng:106.004,
+   d:"泥塑为主，「东方雕塑陈列馆」，西崖栈道凌空。", eps:[74,75]},
+  {n:"炳灵寺石窟", e:"site", y:"西秦 (420 年第 169 窟)", c:"永靖", lat:35.8104, lng:103.0483,
+   d:"第 169 窟有中国石窟最早的明确纪年题记。", eps:[74,75]},
+  {n:"莫高窟", e:"site", y:"前秦 (366) —元", c:"敦煌", lat:40.0373, lng:94.8042,
+   d:"千年营建的石窟群，藏经洞与壁画中的建筑图像是古建研究的重要材料。", eps:[76,77,78]},
+  {n:"榆林窟", e:"site", y:"唐—元", c:"瓜州", lat:40.0586, lng:95.9338, d:"莫高窟姊妹窟，西夏与元代壁画精品。", eps:[76,78]},
+  {n:"西千佛洞", e:"site", y:"北魏—宋", c:"敦煌", lat:39.9754, lng:94.3645, d:"党河峡谷的小石窟群。", eps:[76]},
+  {n:"玉门关", e:"han", y:"汉 (前 2 世纪)", c:"敦煌西北", lat:40.3536, lng:93.8641, d:"汉代玉门都尉遗址，小方盘城与长城塞墙。", eps:[76,79]},
+  {n:"阳关", e:"han", y:"汉", c:"敦煌西南", lat:39.9022, lng:94.0946, d:"西出阳关，烽燧与汉代屯田遗迹。", eps:[76,79]},
+
+  // ---- 新疆 ----
+  {n:"交河故城", e:"site", y:"车师—唐 (生土城)", c:"吐鲁番", lat:42.9526, lng:89.062,
+   d:"全城向下掏挖的生土城市，保存最好的古代城市遗址之一。", eps:[80,81]},
+  {n:"柏孜克里克千佛洞", e:"site", y:"唐—回鹘", c:"吐鲁番火焰山", lat:42.9565, lng:89.5391,
+   d:"回鹘高昌王窟，壁画大量被德日探险队切割运走。", eps:[80,81]},
+  {n:"克孜尔石窟", e:"site", y:"3—8 世纪", c:"拜城", lat:41.783, lng:82.5024,
+   d:"龟兹石窟最早最大者，菱格本生故事与蓝绿颜料。", eps:[82,83]},
+  {n:"库木吐喇石窟", e:"site", y:"唐—回鹘", c:"库车", lat:41.7115, lng:82.6783, d:"汉风与龟兹风并存的石窟。", eps:[82,83]},
+  {n:"七个星佛寺遗址", e:"site", y:"晋唐", c:"焉耆", lat:41.9357, lng:86.3413, d:"焉耆国佛教中心，被毁后重新发掘。", eps:[82]},
+  {n:"北庭西大寺", e:"site", y:"唐—回鹘", c:"吉木萨尔", lat:44.02, lng:89.06, d:"回鹘高昌时期寺院，壁画供养人像。", eps:[82]},
+  {n:"莫尔佛塔", e:"site", y:"唐", c:"喀什", lat:39.4721, lng:75.9876, d:"喀什绿洲边缘的佛寺与佛塔残址。", eps:[82]},
+
+  // ---- 陕西 ----
+  {n:"统万城", e:"site", y:"十六国 (419, 赫连勃勃)", c:"靖边白城子", lat:38.0005, lng:108.8515,
+   d:"大夏国都，蒸土筑成的白色城垣，城墙细密如石。", eps:[84,85]},
+  {n:"钟山石窟", e:"liao", y:"宋 (1162 起)", c:"子长", lat:37.1735, lng:109.5233, d:"万佛洞，宋代石窟寺造像群。", eps:[84]},
+  {n:"耀州文庙与碑林", e:"liao", y:"宋—清", c:"铜川耀州", lat:34.9143, lng:108.9738, d:"耀州窑与碑刻，梁思成调查过的县城。", eps:[86,87]},
+  {n:"药王山", e:"ming", y:"宋—清", c:"铜川耀州", lat:34.9055, lng:109.0013, d:"孙思邈纪念地，碑石与摩崖造像密集。", eps:[86,87]},
+  {n:"司马迁祠", e:"ming", y:"西晋创 / 宋明清", c:"韩城", lat:35.3835, lng:110.4117, d:"高岗上的祠庙序列，宋代献殿。", eps:[88,89]},
+  {n:"普照寺大殿", e:"liao", y:"元", c:"韩城", lat:35.5442, lng:110.4946, d:"元代大殿，韩城古建群之一。", eps:[88,89]},
+  {n:"梁带村芮国遗址", e:"han", y:"西周—春秋", c:"韩城", lat:35.513, lng:110.4909, d:"芮国墓地，金器与玉组佩改写两周玉器史。", eps:[88]},
+
+  // ---- 山东 / 河北 ----
+  {n:"四门塔", e:"site", y:"隋 (大业七年)", c:"济南柳埠", lat:36.453, lng:117.1297,
+   d:"中国现存最早的大型单层石塔，方形青石塔身。", eps:[90,91]},
+  {n:"灵岩寺", e:"liao", y:"东魏创 / 宋辟支塔", c:"济南长清", lat:36.3628, lng:116.9777,
+   d:"四十尊宋代彩色罗汉像，梁启超称「海内第一名塑」。", eps:[90,91]},
+  {n:"辟支塔", e:"liao", y:"北宋", c:"灵岩寺内", lat:36.3633, lng:116.9777, d:"九层八角仿木楼阁式砖塔，塔顶铁刹。", eps:[90,91]},
+
+  // ---- 江南 / 东南 ----
+  {n:"华林寺大殿", e:"liao", y:"北宋 (1062)", c:"福州", lat:26.1035, lng:119.292,
+   d:"长江以南最古老的木构大殿，斗拱雄健，1986 年整体搬迁。", eps:[92,93]},
+  {n:"保国寺", e:"liao", y:"北宋 (1013 大殿)", c:"宁波江北", lat:29.9822, lng:121.5169,
+   d:"江南最完整北宋木构，「鸟不栖、虫不入、梁上无灰」的巧妙构造。", eps:[94,95]},
+  {n:"天一阁", e:"ming", y:"明 (1561)", c:"宁波", lat:29.8738, lng:121.536,
+   d:"现存最古老的私家藏书楼，六间二层与防火设计；乾隆据此建四库七阁。", eps:[96,97]},
+  {n:"天童寺", e:"site", y:"西晋创 / 宋清", c:"宁波", lat:29.8073, lng:121.7906, d:"禅宗五山之一，日本曹洞宗祖源。", eps:[94]},
+  {n:"阿育王寺", e:"site", y:"西晋创", c:"宁波", lat:29.8485, lng:121.7382, d:"舍利塔与「阿育王寺」名号来源。", eps:[94]},
+  {n:"天封塔", e:"liao", y:"唐创 / 宋重建", c:"宁波", lat:29.8679, lng:121.5468, d:"宁波古城天际线，宋塔身与明重修。", eps:[94,95]},
+  {n:"延庆寺", e:"liao", y:"五代 / 宋", c:"宁波", lat:29.8626, lng:121.5466, d:"北宋舍利塔与义波宗师范式。", eps:[94]},
+  {n:"网师园", e:"qing", y:"宋创 / 清乾隆格局", c:"苏州", lat:31.3004, lng:120.6298,
+   d:"小园极致，殿春簃被复制为纽约大都会「明轩」，中国园林出海第一例。", eps:[98,99]},
+  {n:"拙政园", e:"ming", y:"明 (1509 起)", c:"苏州", lat:31.3264, lng:120.6247, d:"以水为脉的士人园林母本。", eps:[98,99]},
+  {n:"留园", e:"qing", y:"明创 / 清盛", c:"苏州", lat:31.3176, lng:120.588, d:"冠云峰与空间序列的转折。", eps:[98,99]},
+  {n:"沧浪亭", e:"liao", y:"北宋 (1041)", c:"苏州", lat:31.2967, lng:120.6214, d:"现存最古老的苏州园林，未入园先借园外之水。", eps:[98,99]},
+  {n:"狮子林", e:"liao", y:"元 (1342)", c:"苏州", lat:31.3231, lng:120.6249, d:"元代禅寺与太湖石假山迷宫。", eps:[98,99]},
+  {n:"保圣寺", e:"liao", y:"唐创 / 宋塑", c:"甪直", lat:31.2722, lng:120.8671,
+   d:"传为杨惠之所作的北宋塑壁罗汉，古物保存所早期案例。", eps:[100]},
+  {n:"罗汉院双塔", e:"liao", y:"北宋 (981)", c:"苏州", lat:31.3089, lng:120.6296, d:"双塔对峙，宋代砖塔仿木细部清晰。", eps:[100]},
+  {n:"玄妙观三清殿", e:"liao", y:"南宋 (1171)", c:"苏州", lat:31.3143, lng:120.622,
+   d:"江南最大的宋代木构殿堂，梁思成调查记录。", eps:[100]},
+  {n:"斜塘土地庙", e:"liao", y:"南宋", c:"苏州园区", lat:31.2792, lng:120.7218, d:"民间小殿，宋构样本，已迁建保护。", eps:[100]},
+  {n:"紫金庵", e:"liao", y:"南宋 (彩塑罗汉)", c:"苏州东山", lat:31.0616, lng:120.3813, d:"雷潮夫妇塑十六罗汉，「精神超忽，呼之欲活」。", eps:[100]},
+  {n:"虎丘", e:"site", y:"东晋创 / 宋塔", c:"苏州", lat:31.3313, lng:120.4291, d:"虎丘塔倾斜如比萨，二山门为宋构。", eps:[100]},
+  {n:"开元寺双塔", e:"liao", y:"宋—元", c:"泉州", lat:24.9173, lng:118.5811,
+   d:"泉州东西塔，中国现存最高石构仿木塔，塔身雕刻一部宋代石作手册。", eps:[101,102]},
+  {n:"清净寺", e:"site", y:"宋 (1009)", c:"泉州", lat:24.9057, lng:118.5871, d:"中国现存最古老的伊斯兰寺院之一，叙利亚式石构。", eps:[101,102]},
+  {n:"清源山", e:"site", y:"宋 (老君岩)", c:"泉州", lat:24.9572, lng:118.6035, d:"宋代巨型石雕老子，泉州宗教石刻群。", eps:[101,102]},
+  {n:"伊斯兰圣墓", e:"site", y:"唐—宋", c:"泉州灵山", lat:24.9127, lng:118.6124, d:"相传为唐代来华穆罕默德门徒之墓。", eps:[101,102]},
+
+  // ---- 西南 ----
+  {n:"昆明真庆观", e:"ming", y:"元—清", c:"昆明", lat:25.0373, lng:102.7246,
+   d:"紫微殿是云南罕见的大型元明木构，营造学社调查记录。", eps:[103,104]},
+  {n:"崇圣寺三塔", e:"site", y:"南诏—宋", c:"大理", lat:25.7086, lng:100.1466,
+   d:"千寻塔与南北小塔，大理国佛教王国标志，地震后仍存。", eps:[103,104]},
+  {n:"白沙古镇（琉璃殿与大宝积宫）", e:"ming", y:"明 (壁画)", c:"丽江", lat:26.9572, lng:100.2172,
+   d:"白沙壁画融合汉、藏、纳西与道教图像，木氏土司的宗教拼图。", eps:[103,104]},
+  {n:"七曲山大庙", e:"liao", y:"元—清", c:"梓潼", lat:31.6973, lng:105.1938,
+   d:"文昌帝君祖庭，元代家庙式大殿与古蜀道翠云廊。", eps:[105,106]},
+  {n:"鹫峰寺塔", e:"liao", y:"宋", c:"蓬溪", lat:30.7769, lng:105.704, d:"四川宋塔典型，十三层砖塔。", eps:[105,106]},
+  {n:"平阳府君阙", e:"han", y:"东汉—南朝", c:"绵阳", lat:31.4818, lng:104.7692,
+   d:"汉阙中雕刻最丰富者，南阙北阙与梁代造像龛。", eps:[105,106]},
+  {n:"高颐阙", e:"han", y:"东汉 (209)", c:"雅安", lat:30.0233, lng:103.0528,
+   d:"保存最完整的东汉石阙，仿木构与石兽，学社西南考察重点。", eps:[105,106]},
+
+  // ---- 西藏 ----
+  {n:"布达拉宫", e:"qing", y:"7 世纪创 / 1645 重建", c:"拉萨", lat:29.6576, lng:91.117,
+   d:"白宫与红宫的垂直城市，五世达赖以来的政教中枢。", eps:[107,108]},
+  {n:"大昭寺", e:"site", y:"7 世纪 (唐)", c:"拉萨", lat:29.6529, lng:91.1318,
+   d:"觉沃佛与唐尼泊尔多重殿宇，拉萨转经网络的中心。", eps:[107,108]},
+  {n:"桑耶寺", e:"site", y:"吐蕃 (779)", c:"扎囊", lat:29.3266, lng:91.5024,
+   d:"西藏第一座佛法僧俱全寺院，三层分别仿汉、藏、印样式。", eps:[107,108]},
+  {n:"托林寺", e:"site", y:"10 世纪末", c:"札达", lat:31.4834, lng:79.7978,
+   d:"古格王国佛教复兴起点，仿桑耶寺布局，壁画存克什米尔风格。", eps:[107,109]},
+  {n:"白居寺", e:"ming", y:"明 (1427)", c:"江孜", lat:28.9247, lng:89.5949,
+   d:"十万佛塔（菩提塔）十层，萨迦、夏鲁、格鲁共处的罕见格局。", eps:[109,110]},
+  {n:"夏鲁寺", e:"yuan", y:"宋创 / 元扩建 (1306)", c:"日喀则", lat:29.1274, lng:88.9923,
+   d:"汉式琉璃瓦顶与藏式墙体结合，布顿大师与元代匠作往来证据。", eps:[109,110]},
+  {n:"萨迦寺", e:"site", y:"1073 起", c:"萨迦", lat:28.9054, lng:88.0179,
+   d:"萨迦派祖庭，南北两寺与号称十万卷的经书墙。", eps:[109,110]},
+  {n:"丹萨替寺", e:"site", y:"1158 起", c:"山南", lat:29.3004, lng:91.9721, d:"帕竹噶举祖庭，灵塔（绒康）形制独特。", eps:[109]},
+  {n:"色拉寺", e:"ming", y:"明 (1419)", c:"拉萨", lat:29.6979, lng:91.1329, d:"格鲁派三大寺之一，辩经场与马头明王殿。", eps:[111]},
+  {n:"甘丹寺", e:"ming", y:"明 (1409)", c:"拉萨达孜", lat:29.7587, lng:91.4763, d:"宗喀巴亲建，格鲁派祖寺。", eps:[111]},
+  {n:"扎什伦布寺", e:"ming", y:"明 (1447)", c:"日喀则", lat:29.2683, lng:88.87, d:"历代班禅驻锡地，强巴佛大铜像。", eps:[111]},
+
+  // ---- 日本（东亚对照）----
+  {n:"法隆寺", e:"site", y:"飞鸟 (607 创 / 现存 7 世纪)", c:"奈良斑鸠", lat:34.614, lng:135.736,
+   d:"世界现存最古老的木构建筑群，金堂与五重塔的「飞云肘木」。", eps:[112,113]},
+  {n:"中宫寺", e:"site", y:"飞鸟—奈良", c:"奈良斑鸠", lat:34.615, lng:135.7398, d:"梦殿内的救世观音，飞鸟「弥勒面」之美。", eps:[112,113]},
+  {n:"四天王寺", e:"site", y:"593 创 (现代重建)", c:"大阪", lat:34.6547, lng:135.5168, d:"圣德太子所建，日本最早官寺的轴线布局。", eps:[112]},
+  {n:"药师寺", e:"site", y:"680 创 / 1970 重建", c:"奈良", lat:34.6686, lng:135.7846, d:"东院金堂与鉴真相关，白凤文化造像。", eps:[112,113]},
+  {n:"东大寺", e:"site", y:"奈良 (752 大佛 / 1203 重建)", c:"奈良", lat:34.6882, lng:135.8398,
+   d:"卢舍那大佛与宋代「大佛样」重建的大佛殿，日本木构尺度之最。", eps:[112,113]},
+  {n:"唐招提寺", e:"site", y:"唐—日 (759, 鉴真)", c:"奈良", lat:34.68, lng:135.78,
+   d:"鉴真东渡所建，金堂是奈良时代木构最纯粹样本，梁思成曾专程考察。", eps:[112,113]},
+  {n:"法起寺", e:"site", y:"奈良 (706 塔)", c:"奈良", lat:34.617, lng:135.742, d:"法隆寺一塔，奈良时代小塔。", eps:[112]},
+  {n:"建仁寺", e:"site", y:"宋—日 (1202)", c:"京都", lat:35.0003, lng:135.7737, d:"临济宗祖庭，宋代禅寺「禅宗样」传入地。", eps:[114,115]},
+  {n:"东福寺", e:"site", y:"宋—日 (1236)", c:"京都", lat:34.9772, lng:135.7746, d:"禅宗五山之一，三门为日本最大木构门楼。", eps:[114,115]},
+  {n:"大德寺", e:"site", y:"宋—日 (1315)", c:"京都", lat:35.0428, lng:135.7466, d:"茶道与禅的交汇，千利休与大德寺的公案。", eps:[114,115]},
+  {n:"五山十刹图", e:"site", y:"宋—日 (13 世纪测绘)", c:"南宋—日本", lat:30.27, lng:120.15,
+   d:"日本僧人在南宋寺院实测的图录，保存了中国已毁寺院的比例与做法，古建研究的关键文献。", eps:[114,115]}
+];
+
+/* ============ 路线 ============ */
+const ROUTES = [
+  {name:"唐代木构线 · 寻找梁思成的 1937", color:"#8f3b2c", days:"5–6 天",
+   why:"沿营造学社的发现顺序走一遍：从五台佛光寺的唐代大殿，到更早的南禅寺，再到晋南芮城的五龙庙。三座唐构（含准唐构）之间，是「中国有唐代木构」这一论断的诞生过程。",
+   stops:["南禅寺","佛光寺","天台庵","平顺龙门寺","广仁王庙（五龙庙）","永乐宫"]},
+  {name:"辽金木构走廊 · 从蓟县到义县", color:"#2f5d50", days:"6–7 天",
+   why:"华北到辽西的辽构分布带：独乐寺观音阁起头，经宝坻（已毁，看测绘记录）、正定四塔、大同华严寺与善化寺，到应县木塔与义县奉国寺。这条线能建立「大木作」的断代直觉。",
+   stops:["独乐寺","广济寺三大士殿","隆兴寺","开元寺","佛宫寺释迦塔（应县木塔）","华严寺","善化寺","奉国寺","万佛堂石窟"]},
+  {name:"晋东南壁画与戏台线", color:"#a8791f", days:"5 天",
+   why:"晋东南是乡村古建密度最高的区域：宋金小殿、金元戏台、元明壁画层层叠压。从开化寺北宋壁画到王报村金代戏台，再到晋城玉皇庙的元代二十八宿。",
+   stops:["开化寺","王报村二郎庙戏台","晋城玉皇庙","高都东岳庙","大云院","佛头寺","广胜下寺","水神庙","飞虹塔（广胜上寺）"]},
+  {name:"营造学社西南考察线", color:"#33507a", days:"7–9 天",
+   why:"1938—1940 年内迁路线的复盘：汉阙、元明道观、南诏佛塔与纳西壁画。汉阙是《中国建筑史》图像系统的基石，也是西南线最容易被忽略的遗存。",
+   stops:["平阳府君阙","高颐阙","鹫峰寺塔","七曲山大庙","昆明真庆观","崇圣寺三塔","白沙古镇（琉璃殿与大宝积宫）"]},
+  {name:"北京明代寺观与壁画线", color:"#7a4b2a", days:"3–4 天",
+   why:"城里被低估的一群：智化寺的明代木构与流失藻井、法海寺的宫廷壁画、大慧寺的诸天、五塔寺的金刚宝座塔。适合一天两点的城市漫步。",
+   stops:["智化寺","法海寺","大慧寺","真觉寺（五塔寺）","妙应寺白塔","雍和宫","恭王府"]},
+  {name:"长城与边墙线 · 从居庸关到杀虎口", color:"#5b3f6b", days:"6–8 天",
+   why:"把长城当建筑而非遗址来看：元代的居庸关云台、明代的关城与卫所、右玉草原上的土长城与烽燧，最后在老牛湾看黄河与边墙握手。",
+   stops:["居庸关云台","雁门关","白草口长城","平型关","三十二长城","右卫镇","杀虎口","老牛湾"]}
+];
+
+/* ============ 地图 ============ */
+const map = L.map('map', {zoomControl:true, scrollWheelZoom:true, worldCopyJump:true});
+/* 底图：高德在线路网瓦片（中文标注，无需 key）。
+   高德瓦片是 GCJ-02 坐标系，我们的坐标是 WGS-84，因此所有点位先经 wgs2gcj 转换。 */
+const tiles = L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+  subdomains: ['1','2','3','4'],
+  maxZoom: 18,
+  attribution: '&copy; 高德地图'
+});
+
+/* WGS-84 -> GCJ-02（标准偏移算法，误差 <1m；境外点不偏移） */
+function wgs2gcj(lat, lon){
+  const a=6378245.0, ee=0.00669342162296594323;
+  if(!(72.004<=lon<=137.8347 && 0.8293<=lat<=55.8271)) return [lat,lon];
+  const tLat=x=>{let r=-100+2*x+3*x*x+0.2*x*x*x+0.1*x*x*x*x+2*Math.sin(20*x*Math.PI/180)*6
+    +2*Math.sin(10*x*Math.PI/180)*20+2*Math.sin(x*Math.PI/180)*10+2*Math.sin(x*Math.PI/90*Math.PI/180)*10;
+    r+=(44*Math.sin(x*Math.PI/180)*20+16*Math.sin(x*Math.PI/90*Math.PI/180)*20+1*Math.sin(x*Math.PI/45*Math.PI/180)*32)*2/3; return r;};
+  const tLon=x=>{let r=300+x+2*x*x+0.1*x*x*x+0.1*x*x*x*x+2*Math.sin(20*x*Math.PI/180)*6
+    +2*Math.sin(10*x*Math.PI/180)*20+2*Math.sin(x*Math.PI/180)*10+2*Math.sin(x*Math.PI/30*Math.PI/180)*10;
+    r+=(20*Math.sin(x*Math.PI/180)*6+2*Math.sin(x*Math.PI/30*Math.PI/180)*10+2*Math.sin(x*Math.PI/60*Math.PI/180)*10+2*Math.sin(x*Math.PI/120*Math.PI/180)*20)*2/3; return r;};
+  let dLat=tLat((lon-105)*Math.PI/180), dLon=tLon((lat-35)*Math.PI/180);
+  const radLat=lat*Math.PI/180; let magic=Math.sin(radLat); magic=1-ee*magic*magic;
+  const sqrtMagic=Math.sqrt(magic);
+  dLat=(dLat*180)/((a*(1-ee))/(magic*sqrtMagic)*Math.PI);
+  dLon=(dLon*180)/(a/sqrtMagic*Math.cos(radLat)*Math.PI);
+  return [lat+dLat, lon+dLon];
+}
+tiles.addTo(map);
+tiles.on('tileerror', function(){
+  document.getElementById('tilewarn') || (function(){
+    const d=document.createElement('div'); d.id='tilewarn'; d.className='mapnote';
+    d.textContent='⚠ 地图瓦片加载失败（离线或网络受限）。下方索引与路线仍可用。';
+    document.querySelector('.mapnote').after(d);
+  })();
+});
+map.setView([36.6, 113.5], 5);
+
+const layers = {};
+Object.keys(ERAS).forEach(k => layers[k] = L.layerGroup().addTo(map));
+const allMarkers = [];
+
+function markerIcon(color){
+  return L.divIcon({className:'', html:`<div class="mk" style="width:14px;height:14px;background:${color}"></div>`,
+    iconSize:[14,14], iconAnchor:[7,7]});
+}
+
+SITES.forEach((s, i) => {
+  s._i = i;
+  s._p = wgs2gcj(s.lat, s.lng);
+  const m = L.marker(s._p, {icon: markerIcon(ERAS[s.e].color), title:s.n});
+  const eps = (s.eps||[]).map(e => `<a href="bixiaguan_search/index.html" target="_blank" rel="noopener">第 ${e} 期</a>`).join(' · ');
+  m.bindPopup(`<div class="pop"><h3>${s.n}</h3><div class="era">${s.y}</div><p>${s.d}</p>`+
+    `<div class="loc" style="font-size:12px;color:#6f6759;margin-bottom:6px">📍 ${s.c}</div>`+
+    (eps?`<div class="eps">${eps}</div>`:'')+`</div>`);
+  m._site = s;
+  m.addTo(layers[s.e]);
+  allMarkers.push(m);
+});
+
+/* ============ 图例 / 过滤 ============ */
+const legend = document.getElementById('legend');
+const active = {};
+Object.entries(ERAS).forEach(([k,v])=>{
+  active[k]=true;
+  const c=document.createElement('span');
+  c.className='chip'; c.dataset.k=k;
+  c.innerHTML=`<span class="dot" style="background:${v.color}"></span>${v.name}`;
+  c.onclick=()=>{ active[k]=!active[k]; c.classList.toggle('off',!active[k]);
+    active[k]?layers[k].addTo(map):map.removeLayer(layers[k]); };
+  legend.appendChild(c);
+});
+
+/* ============ 搜索 ============ */
+const q = document.getElementById('q');
+q.addEventListener('input', ()=>{
+  const t=q.value.trim().toLowerCase();
+  allMarkers.forEach(m=>{
+    const s=m._site;
+    const hit = !t || (s.n+s.c+s.y+s.d).toLowerCase().includes(t);
+    if(hit){ if(!map.hasLayer(m)) m.addTo(layers[s.e]); }
+    else map.removeLayer(m);
+  });
+  renderList(t);
+});
+
+/* ============ 路线 ============ */
+const routesEl = document.getElementById('routes');
+let routeLayer = null;
+ROUTES.forEach((r, idx)=>{
+  const card=document.createElement('div');
+  card.className='card'; card.style.setProperty('--rc', r.color);
+  card.innerHTML = `<h3>${r.name}</h3><div class="meta">${r.days} · ${r.stops.length} 个点位</div>`+
+    `<p>${r.why}</p><ol>${r.stops.map(s=>`<li>${s}</li>`).join('')}</ol>`+
+    `<div class="acts"><button data-r="${idx}">在地图上看</button><button class="g" data-r="${idx}">清除高亮</button></div>`;
+  routesEl.appendChild(card);
+});
+routesEl.addEventListener('click', e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  const idx=+b.dataset.r;
+  if(b.classList.contains('g')){ clearRoute(); return; }
+  clearRoute();
+  routeLayer=L.layerGroup().addTo(map);
+  const r=ROUTES[idx], pts=[];
+  r.stops.forEach((name,i)=>{
+    const s=SITES.find(x=>x.n===name); if(!s) return; pts.push(s._p);
+    L.circleMarker(s._p,{radius:7,color:r.color,weight:2,fillColor:'#fff',fillOpacity:1})
+      .bindPopup(`<div class="pop"><h3>${s.n}</h3><div class="era">${s.y}</div><p>${s.d}</p></div>`).addTo(routeLayer);
+    // 高亮：路线经过的点位在地图上放大加光环，索引表对应行同步高亮
+    const mk = allMarkers.find(m=>m._site===s);
+    if(mk){
+      if(!map.hasLayer(mk)) mk.addTo(layers[s.e]);
+      mk._origIcon = mk.options.icon;
+      mk.setIcon(highlightIcon(r.color, i+1));
+      if(mk.setZIndexOffset) mk.setZIndexOffset(10000);
+      highlighted.push(mk);
+    }
+    const tr = rowMap[s.n];
+    if(tr){ tr.classList.add('routehit'); tr.style.setProperty('--rc', r.color); highlightedRows.push(tr); }
+  });
+  if(pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.18));
+  document.getElementById('map').scrollIntoView({behavior:'smooth', block:'start'});
+  // 先用直线占位，再向 OSRM 请求实际道路几何，成功后替换为沿路折线
+  const line = L.polyline(pts,{color:r.color,weight:3,opacity:.75,dashArray:'6 6'}).addTo(routeLayer);
+  const myLayer = routeLayer;
+  fetchRouteGeometry(pts).then(path=>{
+    if(routeLayer!==myLayer || !path) return;
+    map.removeLayer(line);
+    L.polyline(path,{color:r.color,weight:4,opacity:.8}).addTo(routeLayer);
+  });
+});
+
+function highlightIcon(color, n){
+  return L.divIcon({className:'',
+    html:`<div class="mk hl" style="background:${color}"><span>${n}</span></div>`,
+    iconSize:[22,22], iconAnchor:[11,11]});
+}
+function clearRoute(){
+  if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
+  highlighted.forEach(m=>{ if(m._origIcon) m.setIcon(m._origIcon); if(m.setZIndexOffset) m.setZIndexOffset(0); delete m._origIcon; });
+  highlighted = [];
+  highlightedRows.forEach(tr=>tr.classList.remove('routehit'));
+  highlightedRows = [];
+}
+let highlighted = [], highlightedRows = [];
+
+/* OSRM 公共路由：按站点顺序规划驾车路线，返回沿道路的坐标序列；失败返回 null（保留直线） */
+async function fetchRouteGeometry(pts){
+  const coords = pts.map(p=>p[1].toFixed(5)+','+p[0].toFixed(5)).join(';');
+  try{
+    const res = await fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`);
+    const data = await res.json();
+    if(!data.routes || !data.routes.length) return null;
+    return data.routes[0].geometry.coordinates.map(c=>[c[1],c[0]]);
+  }catch(err){ return null; }
+}
+
+/* ============ 索引表 ============ */
+const tbody = document.querySelector('#list tbody');
+const rowMap = {};
+function renderList(t){
+  t=(t||'').trim().toLowerCase();
+  tbody.innerHTML='';
+  Object.keys(rowMap).forEach(k=>delete rowMap[k]);
+  SITES.filter(s=>!t || (s.n+s.c+s.y+s.d).toLowerCase().includes(t))
+    .forEach(s=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML = `<td><b>${s.n}</b></td>`+
+        `<td><span class="tag" style="background:${ERAS[s.e].color}">${s.y}</span></td>`+
+        `<td class="loc">${s.c}</td><td>${s.d}</td>`+
+        `<td class="loc">${(s.eps||[]).map(e=>'#'+e).join(' ')||'—'}</td>`;
+      tr.style.cursor='pointer';
+      tr.onclick=()=>{
+        map.setView(s._p, 12);
+        allMarkers.forEach(m=>{ if(m._site===s){ if(!map.hasLayer(m))m.addTo(layers[s.e]); m.openPopup(); }});
+        document.getElementById('map').scrollIntoView({behavior:'smooth', block:'center'});
+      };
+      rowMap[s.n]=tr;
+      tbody.appendChild(tr);
+    });
+}
+renderList('');
+
+/* ============ 折叠 / 展开 ============ */
+document.querySelectorAll('h2.sec.toggle').forEach(h=>{
+  const sec = h.closest('section.block');
+  h.addEventListener('click', ()=>{
+    const collapsed = sec.classList.toggle('collapsed');
+    h.querySelector('.tw').textContent = collapsed ? '▸ 展开' : '▾ 收起';
+  });
+});
+
+/* ============ 统计 ============ */
+document.getElementById('stSites').textContent = SITES.length;
+document.getElementById('stProv').textContent = new Set(SITES.map(s=>s.c.split(/[,，\/]/)[0])).size;
+
+document.getElementById('btnAll').onclick=()=>{ q.value=''; renderList('');
+  Object.keys(ERAS).forEach(k=>{active[k]=true;layers[k].addTo(map);});
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('off'));
+  allMarkers.forEach(m=>m.addTo(layers[m._site.e])); };
+document.getElementById('btnChina').onclick=()=>{ map.setView([36.6,113.5],5); };
+
+/* ============ 全屏地图 ============ */
+const btnFull = document.getElementById('btnFull');
+const toolbarEl = document.querySelector('.toolbar');
+const mapEl = document.getElementById('map');
+const fsHost = document.createElement('div'); // 全屏时承载工具栏+地图的容器
+let inFullscreen = false;
+function enterFullscreen(){
+  inFullscreen = true;
+  document.body.classList.add('map-fullscreen');
+  btnFull.textContent = '✕ 退出全屏';
+  fsHost.id = 'fsHost';
+  fsHost.style.cssText = 'position:fixed;inset:0;z-index:2000;background:var(--paper)';
+  document.body.appendChild(fsHost);
+  fsHost.appendChild(toolbarEl);
+  fsHost.appendChild(mapEl);
+  setTimeout(()=>map.invalidateSize(), 60);
+}
+function exitFullscreen(){
+  inFullscreen = false;
+  document.body.classList.remove('map-fullscreen');
+  btnFull.textContent = '⛶ 全屏地图';
+  if(fsHost.parentNode){
+    const anchor = fsHost;
+    anchor.parentNode.insertBefore(toolbarEl, anchor);
+    anchor.parentNode.insertBefore(mapEl, toolbarEl.nextSibling);
+    anchor.remove();
+  }
+  setTimeout(()=>map.invalidateSize(), 60);
+}
+btnFull.onclick=()=>{
+  const inNativeFs = !!(document.fullscreenElement||document.webkitFullscreenElement);
+  if(inNativeFs){
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    return;
+  }
+  if(inFullscreen){ exitFullscreen(); return; }
+  const req = document.body.requestFullscreen || document.body.webkitRequestFullscreen;
+  if(!req){ enterFullscreen(); return; }
+  const p = req.call(document.body);
+  if(p && p.catch) p.catch(()=>{
+    // 浏览器策略拒绝（如自动化环境）时，退化为页内全屏
+    enterFullscreen();
+  });
+};
+const onFsChange=()=>{ (document.fullscreenElement||document.webkitFullscreenElement) ? enterFullscreen() : exitFullscreen(); };
+document.addEventListener('fullscreenchange', onFsChange);
+document.addEventListener('webkitfullscreenchange', onFsChange);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.body.classList.contains('map-fullscreen') && !(document.fullscreenElement||document.webkitFullscreenElement)) exitFullscreen(); });
+</script>
+</body>
+</html>
