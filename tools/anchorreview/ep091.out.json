@@ -1,0 +1,68 @@
+[
+ {
+  "id": "ann|白灵安|1169",
+  "anchor": "白铃安他策了一个宋代的展",
+  "changed": true,
+  "reason": "附注讲的是白铃安在波士顿美术馆策划宋代展，正文原话即「白铃安他策了一个宋代的展」；原锚点从「年二零一六年的时候」划起，既长又偏。"
+ },
+ {
+  "id": "ann|王后谷|963",
+  "anchor": "皇后谷",
+  "changed": true,
+  "reason": "附注解释的就是这个王后墓葬区，正文只在「他是皇后谷（Queen's Valley）的项目」提到，故划中文名「皇后谷」；英文名「Queen's Valley」留给同期那条名称勘误。"
+ },
+ {
+  "id": "ann|预防性保护|1066",
+  "anchor": "预防性",
+  "changed": false,
+  "reason": "正文只有「还有一种叫预防性的。保护也是一个课题」这一处讲预防性保护，而「预防性的」以「的」收尾不合规范，最贴切的原样片段就是「预防性」，原锚点保留。"
+ },
+ {
+  "id": "ann|Dyes in History and Archaeology|1012",
+  "anchor": "D H A的会",
+  "changed": true,
+  "reason": "附注讲的是染料学者每年小聚的 DHA 会议，正文原话「所以我们染料就有一个D H A的会」；原锚点「esin」其实来自别处的 Studies in Conservation，划错了地方。"
+ },
+ {
+  "id": "ann|X射线荧光分析|558",
+  "anchor": "荧光分析",
+  "changed": false,
+  "reason": "附注讲的是与电镜、红外、紫外并列的 XRF，正文「就是那个嗯荧光分析的」里的「荧光分析」正指该设备，划得合适，原样保留。"
+ },
+ {
+  "id": "ann|拉曼光谱|573",
+  "anchor": "拉曼谱图",
+  "changed": true,
+  "reason": "正文是「红外谱图、拉曼谱图」并列，划完整的「拉曼谱图」比只划「拉曼」更能说明是这种谱学检测手段。"
+ },
+ {
+  "id": "err|brass（黄铜）|101",
+  "anchor": "brass，就是那种红铜",
+  "changed": true,
+  "reason": "勘误纠正的正是主播把 brass 说成红铜，原话为「或者是那种brass，就是那种红铜」；原锚点从「者是那种」中间截断，改划这句错误等式本身。"
+ },
+ {
+  "id": "err|碳十四年代与宋金|1305",
+  "anchor": "宋的晚期",
+  "changed": false,
+  "reason": "勘误针对的正是主播把一零三一至一一五三一概称作「宋的晚期」，原锚点就是这句错话的关键片段，保留。"
+ },
+ {
+  "id": "err|皇后谷（Queen's Valley）|963",
+  "anchor": "Queen's Valley",
+  "changed": true,
+  "reason": "勘误指出该墓区英文通称 Valley of the Queens、并无「Queen's Valley」之名，故划在正文说错的英文名上，中文「皇后谷」留给同期的王后谷附注，两条不相叠。"
+ },
+ {
+  "id": "err|IIC 全名|994",
+  "anchor": "International",
+  "changed": true,
+  "reason": "主播把全名说成「International Institute of Conservation」（正确为 International Institute for Conservation of Historic and Artistic Works）；整套英文名超出锚点20字上限，故划在错误名称开头处，弹窗说明正确全名。"
+ },
+ {
+  "id": "err|绿色颜料「氧化铜」|1472",
+  "anchor": "氧化铜是绿铜绿",
+  "changed": false,
+  "reason": "勘误纠正的正是「氧化铜是绿铜绿」这句说法（氧化铜是黑色，绿色铜颜料应为碱式氯化铜），原锚点就是这句错话，保留。"
+ }
+]
