@@ -1,4 +1,10 @@
 [
- {"ep":4,"subtitle":1171,"find":"藩贡体系","replace":"朝贡体系","evidence":"东亚国际秩序通称「朝贡体系」；下文即讨论越南、琉球等朝贡国。"},
- {"ep":4,"subtitle":1152,"find":"小中华情节","replace":"小中华情结","evidence":"「情结」（psychological complex）为规范写法，本期主题即朝鲜的「小中华情结／小中华思想」。"}
+ {"ep":4,"subtitle":386,"find":"思维菩萨","replace":"思惟菩萨","kind":"term","all":true,
+  "evidence":"佛教美术术语作「思惟菩萨」（半跏思惟），全库 ep022、ep097 亦作「思惟」，本期两处误作「思维」。"},
+ {"ep":4,"subtitle":388,"find":"思维菩萨","replace":"思惟菩萨","kind":"term","all":true,
+  "evidence":"同上，佛教美术术语「思惟菩萨」。"},
+ {"ep":22,"subtitle":532,"find":"思维菩萨","replace":"思惟菩萨","kind":"term","all":true,
+  "evidence":"同上；本期他处已作「思惟菩萨」。"},
+ {"ep":22,"subtitle":536,"find":"太子思维","replace":"太子思惟","kind":"term","all":true,
+  "evidence":"「太子思惟」为佛教美术固定题材名。"}
 ]

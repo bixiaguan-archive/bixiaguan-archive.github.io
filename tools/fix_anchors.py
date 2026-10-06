@@ -14,6 +14,7 @@
     python3 tools/fix_anchors.py --write           # 写回 annotations.json
 """
 import argparse
+import difflib
 import json
 import re
 from pathlib import Path
@@ -87,8 +88,11 @@ class Ep:
         return self.index.get(int(m.group(1)), 0)
 
 
+BARE = {"博物馆", "美术馆", "大学", "学院", "建筑", "展厅", "艺术", "文化", "遗址",
+        "石窟", "图书馆", "公园", "城墙", "石刻", "造像", "壁画", "遗址群", "古城"}
+
 WINDOW = 14
-FUNC = "的了的与和及之其等被把而就都也还很不太这个一上下里中时对从为以，。、（）「」"
+FUNC = "的了的在是把被而就也都还很不太这那其之等，。、（）「」"
 
 
 def ok_fragment(s):
@@ -105,7 +109,11 @@ def trim_anchor(s, limit=40):
 
 
 def candidate_strings(kw):
-    """按可信度从高到低给出候选锚点字串：(text, rank)。"""
+    """按可信度从高到低给出候选锚点字串：(text, rank)。
+
+    rank 0 = 词本身；1 = 词的部件/去后缀核心；2 = 词的首尾片段（短而准，如「素和氏」→「素和」）；
+    3 = 一般子串。原则：宁可短而准，也不要划住一大片无关内容。
+    """
     if not kw:
         return
     yield kw, 0
@@ -115,21 +123,63 @@ def candidate_strings(kw):
             yield p, 1
     core = kw
     for suf in GENERIC_SUFFIX:
-        if core.endswith(suf) and len(core) - len(suf) >= 3:
+        if core.endswith(suf) and len(core) - len(suf) >= 2:
             yield core[: -len(suf)], 1
             break
+    # 首/尾片段：由长到短，最短 2 字（短词如「素和氏」「金冠」很需要这一档）
+    if len(kw) >= 3:
+        for size in range(min(len(kw) - 1, 8), 1, -1):
+            yield kw[:size], 2
+            yield kw[-size:], 2
     if len(kw) >= 5:
         for size in range(len(kw) - 1, 2, -1):
             for i in range(len(kw) - size + 1):
-                yield kw[i:i + size], 2
+                yield kw[i:i + size], 3
+        for i in range(len(kw) - 1):          # 最后退到 2 字词芯（如「西晋辟雍碑」→「辟雍」）
+            yield kw[i:i + 2], 3
 
 
 BARE = {"博物馆", "美术馆", "大学", "学院", "建筑", "展厅", "艺术", "文化", "遗址",
         "石窟", "图书馆", "公园", "城墙", "石刻", "造像", "壁画", "遗址群", "古城"}
 
+WINDOW = 14
+FUNC = "的了的在是把被而就也都还很不太这那其之等，。、（）「」"
+# 勘误锚点优先划在这些「可疑词」周围（数字、绝对化表述、否定）
+HOT = re.compile(r"[0-9０-９]|最|唯一|第一|全都|全部|完全|从来|一直|一定|不是|没有|并非|都")
+
+
+def ok_fragment(s):
+    """碎片不能只是虚词，否则锚到「的欣赏」这类无意义片段上。"""
+    t = s.strip(FUNC)
+    return len(t) >= 2
+
+
+def trim_anchor(s, limit=40):
+    if len(s) <= limit:
+        return s
+    cut = max(s.rfind("，", 0, limit), s.rfind("。", 0, limit), s.rfind("、", 0, limit))
+    return s[: cut + 1] if cut >= 8 else s[:limit]
+
+
+def short_span(text, token_re, maxlen=14):
+    """在 text 里围绕 token_re 命中的位置取一个短窗口（≤ maxlen）。"""
+    m = token_re.search(text)
+    if not m:
+        return None
+    half = maxlen // 2
+    lo = max(0, m.start() - half)
+    hi = min(len(text), lo + maxlen)
+    lo = max(0, hi - maxlen)
+    seg = text[lo:hi]
+    for sep in ("，", "。", "、", "；", "："):
+        i = seg.find(sep)
+        if 0 <= i < len(seg) - 2:
+            seg = seg[i + 1:]
+    return seg.strip("，。、；： ") or None
+
 
 def choose(ep, kw, hint):
-    """返回 (anchor_text, block_idx, confidence)。优先就近匹配。"""
+    """返回 (anchor_text, block_idx, confidence)。优先就近、优先短而准。"""
     best = None
     for text, rank in candidate_strings(kw):
         if rank > 0 and not ok_fragment(text):
@@ -147,22 +197,99 @@ def choose(ep, kw, hint):
         if best[0][0] == 0 and best[0][1] == 0:
             break
     if best is None:
-        # 兜底：锚定该时间码所在的整条字幕
         blk = ep.blocks[hint] if ep.blocks else None
         if blk is None:
             return None, None, "none"
-        return blk[2], hint, "block"
+        return trim_anchor(blk[2], 16), hint, "block"
     (rank, far, dist, _), text, pick = best
     anchor = ep.raw[pick[0]:pick[1]]
     if rank > 0 and norm(anchor) in BARE:
         blk = ep.blocks[hint] if ep.blocks else None
         if blk is not None:
-            return blk[2], hint, "block"
+            return trim_anchor(blk[2], 16), hint, "block"
     conf = "high" if rank == 0 else ("mid" if far == 0 else "low")
     return anchor, pick[2], conf
 
 
-def errata_anchor(ep, original, hint, label=""):
+QUOTED = re.compile(r"[「『\"“]([^」』\"”]{2,20})[」』\"”]|\*\*([^*]{2,20})\*\*|《([^》]{2,20})》")
+# 勘误锚点优先划在这些「可疑词」周围（数字、绝对化表述）
+HOT = re.compile(r"[0-9０-９]|最|唯一|第一|从来|一直|全都|完全")
+
+
+def _terms(label, correct, original):
+    """从标签/正确说明里抽出「被质疑的那个词」的候选。"""
+    out = []
+    for src in (label or "", correct or "", original or ""):
+        for m in QUOTED.finditer(src):
+            t = (m.group(1) or m.group(2) or m.group(3) or "").strip()
+            if 2 <= len(t) <= 20:
+                out.append(t)
+    # 标签形如「打虎亭汉墓的位置」「沙畹著作中文译名」→ 取「的」前的名词短语
+    lab = (label or "").strip()
+    for sep in ("的", "是", "（", "(", "：", ":"):
+        i = lab.find(sep)
+        if 4 <= i <= 14:
+            out.append(lab[:i])
+            break
+    out = [t for t in out if t]
+    # 出现在 original 里的（主播真说过的）优先，其次按长度
+    out.sort(key=lambda t: (0 if (original and t in original) else 1, -len(t)))
+    return out
+
+
+def _fuzzy_span(ep, term, hint, minratio=0.6, minlen=4):
+    """词项在正文里没有原样出现时，就近找相似窗（如「北华考古图谱」↔正文「华北考古图谱」）。"""
+    lo = max(0, hint - WINDOW)
+    hi = min(len(ep.blocks), hint + WINDOW + 1)
+    if lo >= hi:
+        return None
+    base = sum(len(b[2]) for b in ep.blocks[:lo])
+    text = ep.raw[base:base + sum(len(b[2]) for b in ep.blocks[lo:hi])]
+    nt = norm(term)
+    if len(nt) < minlen:
+        return None
+    best = None
+    for size in range(max(minlen, len(nt) - 2), len(nt) + 3):
+        for i in range(0, max(1, len(text) - size + 1)):
+            w = text[i:i + size]
+            nw = norm(w)
+            if len(nw) < minlen:
+                continue
+            r = difflib.SequenceMatcher(None, nt, nw).ratio()
+            if r >= minratio and (best is None or r > best[0]):
+                best = (r, base + i, base + i + size)
+    if best is None:
+        return None
+    # 向两侧扩到汉字词边界（如命中的是「考古图谱」，扩成正文实际的「华北考古图谱」）
+    rs, re_ = best[1], best[2]
+    CJK = re.compile(r"[\u4e00-\u9fff]")
+    for _ in range(4):
+        if rs - 1 >= 0 and CJK.match(ep.raw[rs - 1]):
+            rs -= 1
+        else:
+            break
+    for _ in range(4):
+        if re_ < len(ep.raw) and CJK.match(ep.raw[re_]):
+            re_ += 1
+        else:
+            break
+    return (best[0], rs, re_)
+
+
+def errata_anchor(ep, original, hint, label="", correct=""):
+    """勘误锚点：优先划在「被质疑的那个词」上，而不是整句原文。"""
+    for t in _terms(label, correct, original):
+        occ = ep.occurrences(t)
+        if not occ:
+            fz = _fuzzy_span(ep, t, hint)
+            if fz:
+                return ep.raw[fz[1]:fz[2]], ep.block_of_raw[fz[1]], "fuzzy"
+            continue
+        near = [o for o in occ if abs(o[2] - hint) <= WINDOW]
+        pool = near or occ
+        after = [o for o in pool if o[2] >= hint] or pool
+        return ep.raw[after[0][0]:after[0][1]], after[0][2], "quote"
+
     parts = [p.strip() for p in re.split(r"[……]+|\.\.\.", original or "") if p.strip()]
     parts.sort(key=len, reverse=True)
     for p in parts:
@@ -170,10 +297,14 @@ def errata_anchor(ep, original, hint, label=""):
         if len(p2) < 4:
             continue
         occ = ep.occurrences(p2)
-        if occ:
-            after = [o for o in occ if o[2] >= hint]
-            pick = after[0] if after else occ[0]
-            return trim_anchor(ep.raw[pick[0]:pick[1]]), pick[2], "high"
+        if not occ:
+            continue
+        after = [o for o in occ if o[2] >= hint] or occ
+        rs, re_, blk = after[0]
+        text = ep.raw[rs:re_]
+        span = short_span(text, HOT, 12) if len(text) > 16 else trim_anchor(text, 16)
+        return span or trim_anchor(text, 16), blk, "high"
+
     return choose(ep, label or original, hint)
 
 
@@ -181,6 +312,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--force", action="store_true", help="重新推导全部锚点（默认沿用已能定位的）")
     args = ap.parse_args()
 
     d = json.loads(NOTES.read_text(encoding="utf-8"))
@@ -221,7 +353,7 @@ def main():
             hint = ep.hint_block(e.get("subtitle"))
             old_sub = e.get("subtitle")
             prev_a = e.get("anchor")
-            if prev_a and ep.occurrences(prev_a):
+            if not args.force and prev_a and ep.occurrences(prev_a):
                 stat["ann_kept"] = stat.get("ann_kept", 0) + 1
                 continue
             anchor, blk, conf = choose(ep, kw, hint)
@@ -245,7 +377,7 @@ def main():
         ep = ep_of(e["ep"])
         hint = ep.hint_block(e.get("subtitle"))
         old_sub = e.get("subtitle")
-        anchor, blk, conf = errata_anchor(ep, e.get("original", ""), hint, e.get("label", ""))
+        anchor, blk, conf = errata_anchor(ep, e.get("original", ""), hint, e.get("label", ""), e.get("correct", ""))
         if anchor is None:
             stat["err_unresolved"] += 1
             review.append(("ERR", e["ep"], e.get("keyword"), old_sub, "未解析"))
