@@ -232,6 +232,9 @@ for r in routes:
     for stop in r["stops"]:
         if stop not in place_names:
             map_errors.append(f"路线「{r['name']}」的站点不在地点表里：{stop}")
+    for cover in (SITE_DIR / "route-covers" / r["cover"], SITE_DIR / "route-covers" / "thumb" / r["cover"]):
+        if not cover.is_file():
+            map_errors.append(f"路线「{r['name']}」的封面文件缺失：{cover.relative_to(SITE_DIR)}")
 if map_errors:
     raise SystemExit("❌ 访古地图数据有误：\n" + "\n".join(map_errors))
 write_json(SITE_DIR / "map.json", {"places": map_places, "routes": routes, "titles": episode_titles})

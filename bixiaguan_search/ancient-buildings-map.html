@@ -188,6 +188,13 @@
     border-left: 4px solid var(--c);
     cursor: pointer;
   }
+  #route-list .route-item {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 0 12px;
+    align-items: start;
+  }
+  #route-list .route-item img { grid-row: 1 / 4; width: 60px; height: 81px; border-radius: 2px; background: var(--line2); }
   .route-item:hover { background: var(--hit-bg); }
   .route-item h3 { margin: 0 0 3px; font-size: 1rem; font-weight: 600; }
   .route-item .meta { font-size: .75rem; color: var(--ink3); }
@@ -253,6 +260,7 @@
   .ep-moment:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
   .near .place-item { padding-left: 0; padding-right: 0; }
   .route-why { margin: 10px 0 0; font-size: .86rem; line-height: 1.9; color: var(--ink2); }
+  .route-cover { display: block; width: 100%; height: auto; aspect-ratio: 480 / 651; margin: 8px 0 14px; border-radius: 2px; background: var(--line2); }
   .stop {
     display: flex;
     align-items: baseline;
@@ -419,6 +427,8 @@
     .panel:not(.open) .summary { display: none; }
     .panel[data-view="detail"] .panel-head { display: none; }
     .leaflet-bottom { bottom: var(--peek); }
+    .route-cover { float: right; width: 120px; margin: 6px 0 8px 14px; }
+    .sec-title { clear: both; }
   }
 </style>
 </head>
@@ -811,6 +821,7 @@ function renderRoutes() {
   document.getElementById('route-list').innerHTML = ROUTES.map(function(r, i) {
     var group = i === 0 || ROUTES[i - 1].region !== r.region ? '<li class="route-group">' + escapeHtml(r.region) + '</li>' : '';
     return group + '<li class="route-item" data-r="' + i + '" style="--c:' + r.color + '">' +
+      '<img src="route-covers/thumb/' + r.cover + '" alt="" width="60" height="81" loading="lazy">' +
       '<h3>' + escapeHtml(r.name) + '</h3>' +
       '<div class="meta">' + escapeHtml(r.days) + ' · ' + r.stops.length + ' 站</div>' +
       '<p>' + escapeHtml(r.why) + '</p>' +
@@ -840,6 +851,7 @@ function showRoute(i, push) {
   var detail = document.getElementById('detail');
   detail.innerHTML = '<button class="back">&#8592; 返回路线</button>' +
     '<div class="detail-body">' +
+      '<img class="route-cover" src="route-covers/' + r.cover + '" alt="' + escapeHtml(r.name) + ' 封面" width="480" height="651">' +
       '<h2>' + escapeHtml(r.name) + '</h2>' +
       '<div class="aka">' + escapeHtml(r.days) + ' · ' + stops.length + ' 站</div>' +
       '<p class="route-why">' + escapeHtml(r.why) + '</p>' +

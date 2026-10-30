@@ -159,6 +159,19 @@ def test_map_route_draws_path_and_lists_stops(page, base_url):
     expect(page.locator(".leaflet-overlay-pane path").first).to_be_attached()
 
 
+def test_map_routes_show_cover_posters(page, base_url):
+    loaded = "img => img.complete && img.naturalWidth > 0"
+    page.goto(base_url + MAP + "?route=1")
+    cover = page.locator("#detail .route-cover")
+    expect(cover).to_be_visible()
+    expect(cover).to_have_attribute("alt", re.compile("^唐五代木构"))
+    page.wait_for_function(f"({loaded})(document.querySelector('#detail .route-cover'))")
+    page.locator("#detail .back").click()
+    thumbs = page.locator("#route-list .route-item img")
+    expect(thumbs).to_have_count(page.locator("#route-list .route-item").count())
+    page.wait_for_function(f"({loaded})(document.querySelector('#route-list .route-item img'))")
+
+
 def test_map_place_lists_routes_through_it(page, base_url):
     page.goto(base_url + MAP + "?place=" + quote("佛光寺"))
     route = page.locator("#detail .route-item", has_text="唐五代木构")
