@@ -1,5 +1,6 @@
-# Generated index (built by CI)
+# Generated data (built by CI: build_index.py)
 bixiaguan_search/search_index.json
+bixiaguan_search/ep/
 
 # macOS
 .DS_Store

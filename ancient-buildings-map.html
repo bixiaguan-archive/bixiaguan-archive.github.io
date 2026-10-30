@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>壁下观 · 古建筑地图 | 102 期节目里的中国古建与访古路线</title>
+<meta name="description" content="《壁下观》节目里提到的 221 处中国古建筑与遗址地图，附年代、亮点、相关期数与六条访古路线。">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{
@@ -17,6 +18,9 @@ html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-famil
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+.sitenav{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px;font-size:14px}
+.sitenav a{color:var(--muted)}
+.sitenav a:hover{color:var(--accent)}
 
 /* ---------- header ---------- */
 header.hero{
@@ -104,13 +108,14 @@ table.list tr:hover td{background:#faf6ee}
 .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;color:#fff;white-space:nowrap}
 .loc{color:var(--muted);white-space:nowrap}
 footer{padding:34px 0 60px;color:var(--muted);font-size:12.5px;line-height:1.9;border-top:1px solid var(--line);margin-top:40px}
-@media (max-width:760px){#map{height:480px}.stats{gap:16px}}
+@media (max-width:760px){#map{height:480px}.stats{gap:16px}.listwrap{overflow-x:auto}}
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
+    <nav class="sitenav"><a href="index.html">首页</a><a href="cast.html">登场人物</a></nav>
     <div class="kicker">BIXIAGUAN ARCHIVE · HERITAGE ATLAS</div>
     <h1 class="title">壁下观 · <em>古建筑地图</em></h1>
     <p class="sub">从 102 期播客转录文本里整理出的中国古建筑与遗址地图：每个点位标注年代、亮点与相关期数，
@@ -584,7 +589,7 @@ SITES.forEach((s, i) => {
   s._i = i;
   s._p = wgs2gcj(s.lat, s.lng);
   const m = L.marker(s._p, {icon: markerIcon(ERAS[s.e].color), title:s.n});
-  const eps = (s.eps||[]).map(e => `<a href="bixiaguan_search/index.html" target="_blank" rel="noopener">第 ${e} 期</a>`).join(' · ');
+  const eps = (s.eps||[]).map(e => `<a href="index.html?ep=${e}" target="_blank" rel="noopener">第 ${e} 期</a>`).join(' · ');
   m.bindPopup(`<div class="pop"><h3>${s.n}</h3><div class="era">${s.y}</div><p>${s.d}</p>`+
     `<div class="loc" style="font-size:12px;color:#6f6759;margin-bottom:6px">📍 ${s.c}</div>`+
     (eps?`<div class="eps">${eps}</div>`:'')+`</div>`);

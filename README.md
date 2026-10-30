@@ -18,7 +18,8 @@
 ## 本地校对模式
 
 完整校对工具只会在本机浏览页面时加载，不会发布到 GitHub Pages。在仓库根目录运行
-`python3 -m http.server 8765` 后，可直接访问 <http://127.0.0.1:8765/?ep=1>。
+`python3 build_index.py && python3 -m http.server 8765 -d bixiaguan_search` 后，
+可直接访问 <http://127.0.0.1:8765/?ep=1>。
 
 进入任一期全文后，直接选择转录文字即可打开标记菜单。标记仅保存在当前浏览器的
 `localStorage`，不会修改线上文本；可在「校对标记」面板中定位、删除，或导出为
@@ -39,4 +40,19 @@ JSON / Markdown 后交给 LLM 或人工整理。
 
 ## 构建
 
-提交转录稿（`bixiaguan_transcripts/*.srt`）后，GitHub Actions 会自动运行 `build_index.py` 生成搜索索引并部署到 GitHub Pages。
+提交转录稿（`bixiaguan_transcripts/*.srt`）后，GitHub Actions 会自动运行 `build_index.py` 生成数据并部署到 GitHub Pages。
+生成物不入库，页面按需加载：
+
+| 文件 | 内容 | 何时加载 |
+| --- | --- | --- |
+| `episodes.json`（入库） | 节目元数据、登场人物 | 打开首页 / 登场人物页 |
+| `ep/<期号>.json` | 单期转录 + 该期勘误与附注 | 浏览某期全文 |
+| `search_index.json` | 全部转录 | 第一次全文检索 |
+
+## 测试
+
+```bash
+python3 build_index.py && python3 -m pytest tests -q
+```
+
+用本机 Chrome（Playwright `channel="chrome"`）打开按部署结构起的本地站点，检查首页加载量、全文浏览、检索、返回键、手机宽度与访古地图的期数链接。

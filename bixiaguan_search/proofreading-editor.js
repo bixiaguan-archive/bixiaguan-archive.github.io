@@ -113,10 +113,10 @@
   function writeMarks(marks) { localStorage.setItem(STORAGE_KEY, JSON.stringify(marks)); }
   function marksForEpisode(ep) { return readMarks().filter(function(mark) { return mark.episode === ep; }); }
   function sourceForEpisode(ep) {
-    var data = (window.INDEX || []).find(function(item) { return item.ep === ep; });
+    var data = window.EPISODE_CACHE[ep];
     return data ? data.segments.map(function(segment) { return segment.text || ''; }).join('') : '';
   }
-  function episodeData(ep) { return (window.INDEX || []).find(function(item) { return item.ep === ep; }); }
+  function episodeData(ep) { return window.EPISODE_CACHE[ep]; }
 
   function closestElement(node, selector) {
     var element = node && node.nodeType === Node.ELEMENT_NODE ? node : node && node.parentElement;

@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>壁下观 · 全文检索</title>
+<meta name="description" content="艺术史播客《壁下观》102 期全文转录：关键词检索、按时间戳跳转 YouTube、逐期勘误与附注。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 字体不阻塞首屏：Google Fonts 不可达时直接用系统宋体 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" media="print" onload="this.media='all'">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -762,6 +765,7 @@
     .search-wrap { flex-wrap: wrap; gap: 8px; }
     #ep-select {
       flex: 1 1 100%;
+      min-width: 0;
       max-width: none;
       border: 1.5px solid var(--line);
       border-radius: var(--radius);
@@ -788,6 +792,7 @@
 
   /* ── Zen 全屏阅读 ───────────────────────────────────────────────── */
   .transcript-header { position: relative; }
+  .transcript-header h2 { padding-right: 40px; }
   .zen-toggle {
     position: absolute;
     top: 10px;
@@ -952,30 +957,50 @@ function openPlayer(ytId, startSec) {
 }
 
 // ── 数据 & 状态 ──────────────────────────────────────────────────────
-var INDEX = null;
-var EPISODES = null;
-var NOTES = null;              // 全部注释（errata + annotation）
-var NOTES_BY_EP = {};          // {epNum: [noteEntry, ...]}
+var EPISODES = null;           // 节目元数据，首屏唯一需要的数据
+var EPISODE_CACHE = {};        // {epNum: {ep, title, ytId, segments, notes}}，浏览全文时按期加载
+var searchIndexPromise = null; // 全部转录，第一次跨期检索时才下载
+var renderToken = 0;           // 异步加载返回时，丢弃已被后续操作取代的渲染
 var listOrder = 'asc';
 var listFilter = '';
 var currentView = 'list';
 
-async function loadData() {
-  var responses = await Promise.all([
-    fetch('search_index.json'),
-    fetch('episodes.json'),
-    fetch('notes.json').catch(function() { return null; })
-  ]);
-  INDEX = await responses[0].json();
-  EPISODES = await responses[1].json();
-  if (responses[2]) {
-    NOTES = await responses[2].json();
-    for (var i = 0; i < NOTES.length; i++) {
-      var n = NOTES[i];
-      if (!NOTES_BY_EP[n.ep]) NOTES_BY_EP[n.ep] = [];
-      NOTES_BY_EP[n.ep].push(n);
-    }
+function fetchJson(url) {
+  return fetch(url).then(function(r) {
+    if (!r.ok) throw new Error(url + ' ' + r.status);
+    return r.json();
+  });
+}
+
+function loadEpisode(epNum) {
+  if (EPISODE_CACHE[epNum]) return Promise.resolve(EPISODE_CACHE[epNum]);
+  return fetchJson('ep/' + epNum + '.json').then(function(data) {
+    EPISODE_CACHE[epNum] = data;
+    return data;
+  });
+}
+
+function loadSearchIndex() {
+  if (!searchIndexPromise) {
+    searchIndexPromise = fetchJson('search_index.json').catch(function(err) {
+      searchIndexPromise = null;
+      throw err;
+    });
   }
+  return searchIndexPromise;
+}
+
+function showPending(message) {
+  document.getElementById('status').innerHTML = '';
+  document.getElementById('results').innerHTML = '<div class="empty"><div class="spinner"></div>' + message + '</div>';
+}
+
+function showLoadError() {
+  document.getElementById('results').innerHTML = '<div class="empty">数据加载失败，请检查网络后重试。</div>';
+}
+
+async function loadData() {
+  EPISODES = await fetchJson('episodes.json');
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('status').style.display = 'block';
@@ -993,12 +1018,15 @@ async function loadData() {
 }
 
 // ── 核心路由 ──────────────────────────────────────────────────────────
-function doAction() {
+// push：用户操作新增一条浏览记录，返回键可回到上一视图；启动和返回键本身只替换
+function doAction(push) {
   var raw = document.getElementById('q').value.trim();
   var epVal = document.getElementById('ep-select').value;
   var epFilter = epVal ? parseInt(epVal, 10) : null;
 
-  if (!INDEX) return;
+  if (!EPISODES) return;
+  updateUrl(push);
+  var token = ++renderToken;
 
   if (!raw && !epFilter) {
     listFilter = '';
@@ -1007,11 +1035,21 @@ function doAction() {
   }
 
   if (!raw && epFilter) {
-    showFullTranscript(epFilter);
+    showPending('正在加载 EP' + String(epFilter).padStart(3, '0') + ' 全文……');
+    loadEpisode(epFilter).then(function() {
+      if (token === renderToken) showFullTranscript(epFilter);
+    }, showLoadError);
     return;
   }
 
-  doSearch(raw, epFilter);
+  // 限定单期时只需该期数据；跨期检索才下载全部转录
+  showPending(epFilter ? '正在检索……' : '首次全文检索需要下载全部转录文本，请稍候……');
+  var scope = epFilter
+    ? loadEpisode(epFilter).then(function(data) { return [data]; })
+    : loadSearchIndex();
+  scope.then(function(episodes) {
+    if (token === renderToken) doSearch(raw, epFilter, episodes);
+  }, showLoadError);
 }
 
 function backToList() {
@@ -1019,7 +1057,7 @@ function backToList() {
   document.getElementById('ep-select').value = '';
   document.getElementById('q').value = '';
   listFilter = '';
-  doAction();
+  doAction(true);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1095,7 +1133,6 @@ function showEpisodeList() {
   container.innerHTML = html;
   renderTimeline();
   setupListEvents();
-  updateUrl({ includeQuery: false });
 }
 
 function renderTimeline() {
@@ -1212,7 +1249,7 @@ function renderTimeline() {
       document.getElementById('q').value = '';
       listFilter = '';
       document.getElementById('ep-select').value = epNum;
-      doAction();
+      doAction(true);
     });
   });
 
@@ -1226,7 +1263,7 @@ function renderTimeline() {
       renderTimeline();
       currentView = 'scope';
       document.getElementById('q').focus();
-      updateUrl();
+      updateUrl(false);
     });
   });
 }
@@ -1247,7 +1284,7 @@ function setupListEvents() {
 // ── 全文浏览 ──────────────────────────────────────────────────────────
 function showFullTranscript(epNum) {
   currentView = 'transcript';
-  var epData = INDEX.find(function(e) { return e.ep === epNum; });
+  var epData = EPISODE_CACHE[epNum];
   var epMeta = EPISODES.find(function(e) { return e.ep === epNum; });
   if (!epData) return;
 
@@ -1271,7 +1308,7 @@ function showFullTranscript(epNum) {
     '<div class="transcript-body">';
 
   // ── 注释匹配：在全文中定位 keyword，映射回 segment ───────────────────
-  var epNotes = (NOTES_BY_EP[epNum] || []).slice().sort(function(a, b) { return a.start - b.start; });
+  var epNotes = epData.notes.slice().sort(function(a, b) { return a.start - b.start; });
   window._currentNotes = [];
 
   // 构建全文和偏移表
@@ -1487,7 +1524,6 @@ function showFullTranscript(epNum) {
     });
   });
 
-  updateUrl();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1572,14 +1608,13 @@ function closeNotesPopup() {
 }
 
 // ── 搜索 ──────────────────────────────────────────────────────────────
-function doSearch(raw, epFilter) {
+function doSearch(raw, epFilter, searchScope) {
   currentView = 'search';
   var queryParts = raw.split(/\s+/).filter(Boolean);
   var matchTokens = queryParts;
 
   var t0 = performance.now();
   var epResults = [];
-  var searchScope = epFilter ? INDEX.filter(function(ep) { return ep.ep === epFilter; }) : INDEX;
 
   for (var i = 0; i < searchScope.length; i++) {
     var ep = searchScope[i];
@@ -1606,7 +1641,6 @@ function doSearch(raw, epFilter) {
   if (epResults.length === 0) {
     statusEl.innerHTML = '<a href="#" onclick="event.preventDefault();backToList()">&#8592; 返回列表</a>　未找到包含 <b>「'+escapeHtml(raw)+'」</b> 的内容。';
     document.getElementById('results').innerHTML = '<div class="empty"><span class="big">&#128269;</span>没有找到相关内容<br>试试换个关键词，或拆分成更短的词组</div>';
-    updateUrl();
     return;
   }
 
@@ -1614,7 +1648,6 @@ function doSearch(raw, epFilter) {
   statusEl.innerHTML = '<a href="#" onclick="event.preventDefault();backToList()">&#8592; 返回列表</a>　找到 <b>'+epResults.length+'</b> 期节目，共 <b>'+totalHits+'</b> 个匹配片段、<b>'+totalOccurrences+'</b> 次关键词出现'+scopeInfo+'，用时 '+elapsed+'s';
 
   renderResults(epResults, matchTokens);
-  updateUrl();
 }
 
 // ── 渲染搜索结果 ──────────────────────────────────────────────────────
@@ -1702,33 +1735,46 @@ function renderSearchDistribution(container, epResults, matchTokens) {
 }
 
 // ── URL 同步 ──────────────────────────────────────────────────────────
-function updateUrl(options) {
-  options = options || {};
-  var includeQuery = options.includeQuery !== false;
+function updateUrl(push) {
   var url = new URL(window.location);
   var q = document.getElementById('q').value.trim();
   var ep = document.getElementById('ep-select').value;
-  if (includeQuery && q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+  if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
   if (ep) url.searchParams.set('ep', ep); else url.searchParams.delete('ep');
-  history.replaceState(null, '', url);
+  if (url.href === window.location.href) return;
+  if (push) history.pushState(null, '', url); else history.replaceState(null, '', url);
+}
+
+function applyUrlParams() {
+  var params = new URLSearchParams(window.location.search);
+  var select = document.getElementById('ep-select');
+  select.value = params.get('ep') || '';
+  if (select.selectedIndex < 0) select.value = '';
+  document.getElementById('q').value = params.get('q') || '';
 }
 
 function handleMainInput() {
   if (currentView !== 'list' || document.getElementById('ep-select').value) return;
   listFilter = document.getElementById('q').value.trim();
   renderTimeline();
-  updateUrl({ includeQuery: false });
 }
 
 // ── 事件绑定 ──────────────────────────────────────────────────────────
-document.getElementById('btn-search').addEventListener('click', doAction);
+document.getElementById('btn-search').addEventListener('click', function() { doAction(true); });
 document.getElementById('q').addEventListener('input', handleMainInput);
 document.getElementById('q').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') doAction();
+  if (e.key === 'Enter') doAction(true);
 });
 document.getElementById('ep-select').addEventListener('change', function() {
   listFilter = '';
-  doAction();
+  doAction(true);
+});
+window.addEventListener('popstate', function() {
+  exitZen();
+  closeNotesPopup();
+  applyUrlParams();
+  listFilter = '';
+  doAction(false);
 });
 
 // 注释 popup：点击外部关闭、ESC 关闭
@@ -1745,22 +1791,10 @@ document.addEventListener('keydown', function(e) {
 
 // ── 启动 ──────────────────────────────────────────────────────────────
 loadData().then(function() {
-  var params = new URLSearchParams(window.location.search);
-
-  var epParam = params.get('ep');
-  if (epParam) {
-    var epNum = parseInt(epParam, 10);
-    if (epNum >= 1 && epNum <= 200) {
-      document.getElementById('ep-select').value = epNum;
-    }
-  }
-
-  var q = params.get('q');
-  if (q) {
-    document.getElementById('q').value = q;
-  }
-
-  doAction();
+  applyUrlParams();
+  doAction(false);
+}, function() {
+  document.getElementById('loading').textContent = '数据加载失败，请检查网络后刷新。';
 });
 </script>
 <script src="reader-report.js"></script>

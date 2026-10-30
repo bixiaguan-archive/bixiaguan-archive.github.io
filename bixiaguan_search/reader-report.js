@@ -67,7 +67,7 @@
   }
 
   function episodeData(ep) {
-    return (window.INDEX || []).find(function(item) { return item.ep === ep; });
+    return window.EPISODE_CACHE[ep];
   }
 
   function targetFromSelection() {

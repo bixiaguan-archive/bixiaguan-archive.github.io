@@ -1,19 +1,19 @@
 #!/opt/homebrew/bin/python3.12
 """
-解析所有 SRT 文件，生成搜索索引 search_index.json
-每条记录包含：epNum, title, youtubeId, segments（含时间戳+文本）
+解析所有 SRT 文件，生成：
+- search_index.json：全部期的 {ep, title, ytId, segments}，供全文检索
+- ep/<期号>.json：单期 segments + 该期勘误与附注，供全文浏览
 """
-import json, re
+import json, re, shutil
 from pathlib import Path
 
 TRANSCRIPTS_DIR = Path(__file__).parent / "bixiaguan_transcripts"
-OUTPUT = Path(__file__).parent / "bixiaguan_search" / "search_index.json"
-OUTPUT.parent.mkdir(exist_ok=True)
+SITE_DIR = Path(__file__).parent / "bixiaguan_search"
+OUTPUT = SITE_DIR / "search_index.json"
+EP_DIR = SITE_DIR / "ep"
 
 # ── Notes 读取（从结构化的 JSON 文件）─────────
 NOTES_JSON = TRANSCRIPTS_DIR / "notes" / "annotations.json"
-
-NOTES_OUT = Path(__file__).parent / "bixiaguan_search" / "notes.json"
 
 def _time_to_sec(t):
     """hh:mm:ss(.fff|,fff|:ff) -> int seconds"""
@@ -24,7 +24,6 @@ def _time_to_sec(t):
     return h*3600 + m*60 + s
 
 _all_notes_pre = []
-keywords_by_ep = {}
 if NOTES_JSON.exists():
     notes_data = json.loads(NOTES_JSON.read_text(encoding="utf-8"))
     # 遍历 annotations（附注）
@@ -59,13 +58,6 @@ if NOTES_JSON.exists():
             "status": "fact-error",
             "anchor": e.get("anchor", ""),
         })
-    # 构建 keywords_by_ep
-    for _n in _all_notes_pre:
-        kw = _n.get("keyword", "")
-        if kw:
-            kw_clean = kw.replace("《", "").replace("》", "")
-            if kw_clean:
-                keywords_by_ep.setdefault(_n["ep"], []).append(kw_clean)
 
 # YouTube ID 映射
 YOUTUBE_IDS = {
@@ -103,11 +95,11 @@ def srt_time_to_seconds(t):
     s, ms = s.split(",")
     return int(h)*3600 + int(m)*60 + int(s) + int(ms)/1000
 
-def parse_srt(path, keywords=None):
+def parse_srt(path):
     """解析 SRT，返回 [{start, end, text}, ...]，每条约合并4个字幕块。
 
     合并逻辑：达到约50字或句末标点时断开，配对符号（《》""（）「」）未闭合时推迟断开。
-    keyword 参数保留兼容但不影响合并——跨段 keyword 由前端处理。
+    跨段 keyword 由前端处理。
     """
     MAX_BUF = 300
     text = path.read_text(encoding="utf-8")
@@ -176,7 +168,7 @@ for srt_path in srt_files:
     ep_num = int(m.group(1))
     title  = m.group(2)
     yt_id  = YOUTUBE_IDS.get(ep_num, "")
-    segments = parse_srt(srt_path, keywords=keywords_by_ep.get(ep_num, []))
+    segments = parse_srt(srt_path)
     episodes.append({
         "ep": ep_num,
         "title": title,
@@ -185,14 +177,21 @@ for srt_path in srt_files:
     })
     print(f"  ep{ep_num:03d} {title}  ({len(segments)} 段)")
 
-OUTPUT.write_text(json.dumps(episodes, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+def write_json(path, data):
+    path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+
+write_json(OUTPUT, episodes)
 size_mb = OUTPUT.stat().st_size / 1024 / 1024
 print(f"\n✅ 索引已生成: {OUTPUT}  ({size_mb:.1f} MB, {len(episodes)} 期)")
 
-# ── 生成注释索引 notes.json ───────────────────────────────────────────
+# ── 单期文件 ep/<期号>.json：转录 + 该期注释 ─────────────────────────
+notes_by_ep = {}
+for n in _all_notes_pre:
+    notes_by_ep.setdefault(n["ep"], []).append(n)
+shutil.rmtree(EP_DIR, ignore_errors=True)
+EP_DIR.mkdir()
+for ep in episodes:
+    write_json(EP_DIR / f"{ep['ep']}.json", {**ep, "notes": notes_by_ep.get(ep["ep"], [])})
 errata_count = sum(1 for n in _all_notes_pre if n["type"] == "errata")
 annot_count = sum(1 for n in _all_notes_pre if n["type"] == "annotation")
-print(f"  勘误: {errata_count} 条（展开后）")
-print(f"  附注: {annot_count} 条（展开后）")
-NOTES_OUT.write_text(json.dumps(_all_notes_pre, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
-print(f"✅ 注释已生成: {NOTES_OUT}  ({len(_all_notes_pre)} 条)")
+print(f"✅ 单期文件已生成: {EP_DIR}/  （勘误 {errata_count} 条，附注 {annot_count} 条）")
