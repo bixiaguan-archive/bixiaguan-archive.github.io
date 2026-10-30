@@ -1,11 +1,13 @@
-"""按 GitHub Pages 部署结构起本地站点，用本机 Chrome 检查用户可见行为。
+"""起本地站点（即 GitHub Pages 部署的 bixiaguan_search/），用本机 Chrome 检查用户可见行为。
 
 先运行 `python3 build_index.py` 生成数据。
 """
 import functools
 import http.server
+import re
 import threading
 from pathlib import Path
+from urllib.parse import quote
 
 import pytest
 from playwright.sync_api import expect, sync_playwright
@@ -14,21 +16,17 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "bixiaguan_search"
 
 
-class DeployLayoutHandler(http.server.SimpleHTTPRequestHandler):
-    """与 deploy.yml 一致：站点根是 bixiaguan_search/，访古地图复制到根下。"""
+MAP = "/ancient-buildings-map.html"
 
-    def translate_path(self, path):
-        if path.split("?")[0] == "/ancient-buildings-map.html":
-            return str(ROOT / "ancient-buildings-map.html")
-        return super().translate_path(path)
 
+class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
 
 @pytest.fixture(scope="module")
 def base_url():
-    handler = functools.partial(DeployLayoutHandler, directory=str(SITE))
+    handler = functools.partial(QuietHandler, directory=str(SITE))
     server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     yield f"http://127.0.0.1:{server.server_port}"
@@ -74,6 +72,14 @@ def test_episode_page_shows_transcript_with_notes(page, base_url):
     expect(page.locator("#note-popup-content .note-item").first).to_be_visible()
 
 
+def test_time_link_scrolls_transcript_to_that_moment(page, base_url):
+    page.goto(base_url + "/?ep=5&t=600")
+    seg = page.locator(".transcript-seg.seek")
+    expect(seg).to_be_in_viewport()
+    minutes, seconds = map(int, seg.locator(".ts").inner_text().split(":"))
+    assert 540 <= minutes * 60 + seconds <= 600
+
+
 def test_full_text_search_highlights_hits(page, base_url):
     page.goto(base_url + "/")
     page.fill("#q", "照夜白")
@@ -93,7 +99,7 @@ def test_back_button_returns_from_transcript_to_list(page, base_url):
 
 @pytest.mark.parametrize("path, ready", [
     ("/?ep=87", ".transcript-seg"),
-    ("/ancient-buildings-map.html", "#list tbody tr"),
+    (MAP, ".place-item"),
 ])
 def test_phone_width_has_no_horizontal_scroll(browser, base_url, path, ready):
     ctx = browser.new_context(viewport={"width": 375, "height": 812})
@@ -104,19 +110,56 @@ def test_phone_width_has_no_horizontal_scroll(browser, base_url, path, ready):
     ctx.close()
 
 
-def test_map_episode_link_opens_that_episode(page, base_url):
-    page.goto(base_url + "/ancient-buildings-map.html")
-    row = page.locator("#list tbody tr").filter(has_text="#").first
-    row.click()
-    link = page.locator(".leaflet-popup a", has_text="期").first
-    expect(link).to_be_visible()
+def test_map_search_opens_place_with_links_into_transcript(page, base_url):
+    page.goto(base_url + MAP)
+    expect(page.locator(".place-item").first).to_be_visible()
+    assert page.locator(".place-item").count() > 200
+    page.fill("#map-search", "佛光寺")
+    page.locator(".place-item", has_text="佛光寺").first.click()
+    expect(page.locator("#detail h2")).to_have_text("佛光寺")
+    expect(page.locator("#detail .facts a[href^='https://www.wikidata.org/wiki/Q']")).to_be_visible()
+    moment = page.locator("#detail a.ep-moment").first
+    assert re.fullmatch(r"index\.html\?ep=\d+&t=\d+", moment.get_attribute("href"))
     with page.context.expect_page() as new_page_info:
-        link.click()
-    episode = new_page_info.value
-    expect(episode.locator(".transcript-view")).to_be_visible()
+        moment.click()
+    expect(new_page_info.value.locator(".transcript-seg.seek")).to_be_in_viewport()
+
+
+def test_map_place_link_is_shareable_and_back_closes_it(page, base_url):
+    page.goto(base_url + MAP)
+    page.goto(base_url + MAP + "?place=" + quote("佛光寺"))
+    expect(page.locator("#detail h2")).to_have_text("佛光寺")
+    page.locator(".place-item").first.wait_for(state="attached")
+    page.locator("#detail .back").click()
+    expect(page.locator(".place-item").first).to_be_visible()
+    page.locator(".place-item").nth(3).click()
+    expect(page.locator("#detail")).to_be_visible()
+    page.go_back()
+    expect(page.locator("#detail")).to_be_hidden()
+
+
+def test_map_era_filter_narrows_places(page, base_url):
+    page.goto(base_url + MAP)
+    expect(page.locator(".place-item").first).to_be_visible()
+    total = page.locator(".place-item").count()
+    page.locator('.band-chip[data-band="tang"]').click()
+    bands = page.locator(".place-item").evaluate_all("els => els.map(e => e.dataset.band)")
+    assert 0 < len(bands) < total
+    assert set(bands) == {"tang"}
+
+
+def test_map_route_draws_path_and_lists_stops(page, base_url):
+    page.goto(base_url + MAP)
+    page.locator('.tab[data-tab="routes"]').click()
+    assert page.locator(".route-item").count() >= 20
+    expect(page.locator(".route-group").first).to_have_text("山西")
+    expect(page.locator(".route-group", has_text="海外")).to_be_visible()
+    page.locator(".route-item").first.click()
+    assert page.locator("#detail .stop").count() >= 3
+    expect(page.locator(".leaflet-overlay-pane path").first).to_be_attached()
 
 
 def test_map_links_back_to_home(page, base_url):
-    page.goto(base_url + "/ancient-buildings-map.html")
+    page.goto(base_url + MAP)
     page.locator("nav a", has_text="首页").click()
     expect(page.locator(".ep-item")).to_have_count(102)

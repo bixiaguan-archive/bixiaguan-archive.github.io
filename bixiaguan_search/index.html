@@ -553,6 +553,11 @@
     color: var(--ink2);
     flex: 1;
   }
+  .transcript-seg.seek {
+    background: var(--hit-bg);
+    box-shadow: inset 3px 0 0 var(--accent);
+    padding-left: 10px;
+  }
 
   /* 注释徽章（勘误 + 附注） */
   .note-keyword {
@@ -964,6 +969,7 @@ var renderToken = 0;           // 异步加载返回时，丢弃已被后续操�
 var listOrder = 'asc';
 var listFilter = '';
 var currentView = 'list';
+var seekSec = null;            // ?t= 指定的秒数：浏览全文时定位到该时刻所在段落
 
 function fetchJson(url) {
   return fetch(url).then(function(r) {
@@ -1025,6 +1031,7 @@ function doAction(push) {
   var epFilter = epVal ? parseInt(epVal, 10) : null;
 
   if (!EPISODES) return;
+  if (push) seekSec = null;
   updateUrl(push);
   var token = ++renderToken;
 
@@ -1524,7 +1531,15 @@ function showFullTranscript(epNum) {
     });
   });
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  var seekIdx = -1;
+  for (var k = 0; seekSec !== null && k < segs.length && segs[k].start <= seekSec; k++) seekIdx = k;
+  if (seekIdx >= 0) {
+    var seekEl = container.querySelectorAll('.transcript-seg')[seekIdx];
+    seekEl.classList.add('seek');
+    seekEl.scrollIntoView({ block: 'center' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 // ── 注释 popup（行内定位）─────────────────────────────────────────────
@@ -1741,6 +1756,7 @@ function updateUrl(push) {
   var ep = document.getElementById('ep-select').value;
   if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
   if (ep) url.searchParams.set('ep', ep); else url.searchParams.delete('ep');
+  if (seekSec !== null && ep && !q) url.searchParams.set('t', seekSec); else url.searchParams.delete('t');
   if (url.href === window.location.href) return;
   if (push) history.pushState(null, '', url); else history.replaceState(null, '', url);
 }
@@ -1751,6 +1767,8 @@ function applyUrlParams() {
   select.value = params.get('ep') || '';
   if (select.selectedIndex < 0) select.value = '';
   document.getElementById('q').value = params.get('q') || '';
+  var t = parseInt(params.get('t'), 10);
+  seekSec = t >= 0 ? t : null;
 }
 
 function handleMainInput() {

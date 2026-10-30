@@ -3,6 +3,7 @@
 解析所有 SRT 文件，生成：
 - search_index.json：全部期的 {ep, title, ytId, segments}，供全文检索
 - ep/<期号>.json：单期 segments + 该期勘误与附注，供全文浏览
+- map.json：访古地图的地点与路线，合并注释里的简介、期数与时间点
 """
 import json, re, shutil
 from pathlib import Path
@@ -14,6 +15,7 @@ EP_DIR = SITE_DIR / "ep"
 
 # ── Notes 读取（从结构化的 JSON 文件）─────────
 NOTES_JSON = TRANSCRIPTS_DIR / "notes" / "annotations.json"
+MAP_DIR = TRANSCRIPTS_DIR / "map"
 
 def _time_to_sec(t):
     """hh:mm:ss(.fff|,fff|:ff) -> int seconds"""
@@ -24,40 +26,39 @@ def _time_to_sec(t):
     return h*3600 + m*60 + s
 
 _all_notes_pre = []
-if NOTES_JSON.exists():
-    notes_data = json.loads(NOTES_JSON.read_text(encoding="utf-8"))
-    # 遍历 annotations（附注）
-    for a in notes_data.get("annotations", []):
-        for ep_entry in a.get("episodes", []):
-            _all_notes_pre.append({
-                "type": "annotation",
-                "ep": ep_entry["ep"],
-                "subtitle": str(ep_entry.get("subtitle", "")),
-                "time": ep_entry.get("timecode", "00:00:00"),
-                "start": _time_to_sec(ep_entry.get("timecode", "00:00:00")),
-                "label": a.get("label", ""),
-                "keyword": a.get("keyword", ""),
-                "explanation": a.get("explanation", ""),
-                "source": a.get("source", ""),
-                "note": ep_entry.get("note", ""),
-                "anchor": ep_entry.get("anchor", ""),
-            })
-    # 遍历 errata（勘误）
-    for e in notes_data.get("errata", []):
+notes_data = json.loads(NOTES_JSON.read_text(encoding="utf-8"))
+# 遍历 annotations（附注）
+for a in notes_data.get("annotations", []):
+    for ep_entry in a.get("episodes", []):
         _all_notes_pre.append({
-            "type": "errata",
-            "ep": e["ep"],
-            "subtitle": str(e.get("subtitle", "")),
-            "time": e.get("timecode", "00:00:00"),
-            "start": _time_to_sec(e.get("timecode", "00:00:00")),
-            "label": e.get("label", ""),
-            "keyword": e.get("keyword", ""),
-            "original": e.get("original", ""),
-            "correct": e.get("correct", ""),
-            "source": e.get("source", ""),
-            "status": "fact-error",
-            "anchor": e.get("anchor", ""),
+            "type": "annotation",
+            "ep": ep_entry["ep"],
+            "subtitle": str(ep_entry.get("subtitle", "")),
+            "time": ep_entry.get("timecode", "00:00:00"),
+            "start": _time_to_sec(ep_entry.get("timecode", "00:00:00")),
+            "label": a.get("label", ""),
+            "keyword": a.get("keyword", ""),
+            "explanation": a.get("explanation", ""),
+            "source": a.get("source", ""),
+            "note": ep_entry.get("note", ""),
+            "anchor": ep_entry.get("anchor", ""),
         })
+# 遍历 errata（勘误）
+for e in notes_data.get("errata", []):
+    _all_notes_pre.append({
+        "type": "errata",
+        "ep": e["ep"],
+        "subtitle": str(e.get("subtitle", "")),
+        "time": e.get("timecode", "00:00:00"),
+        "start": _time_to_sec(e.get("timecode", "00:00:00")),
+        "label": e.get("label", ""),
+        "keyword": e.get("keyword", ""),
+        "original": e.get("original", ""),
+        "correct": e.get("correct", ""),
+        "source": e.get("source", ""),
+        "status": "fact-error",
+        "anchor": e.get("anchor", ""),
+    })
 
 # YouTube ID 映射
 YOUTUBE_IDS = {
@@ -195,3 +196,43 @@ for ep in episodes:
 errata_count = sum(1 for n in _all_notes_pre if n["type"] == "errata")
 annot_count = sum(1 for n in _all_notes_pre if n["type"] == "annotation")
 print(f"✅ 单期文件已生成: {EP_DIR}/  （勘误 {errata_count} 条，附注 {annot_count} 条）")
+
+# ── 访古地图 map.json：人工维护的地点与路线 + 注释里的简介、期数与时间点 ──
+annotations_by_keyword = {a["keyword"]: a for a in notes_data["annotations"]}
+episode_titles = {ep["ep"]: ep["title"] for ep in episodes}
+places = json.loads((MAP_DIR / "places.json").read_text(encoding="utf-8"))
+routes = json.loads((MAP_DIR / "routes.json").read_text(encoding="utf-8"))
+map_errors = []
+map_places = []
+for p in places:
+    moments = {}
+    for ref in p["annotations"]:
+        keyword, eps = (ref, None) if isinstance(ref, str) else (ref["keyword"], set(ref["eps"]))
+        if keyword not in annotations_by_keyword:
+            map_errors.append(f"{p['name']}：注释词条不存在「{keyword}」")
+            continue
+        for e in annotations_by_keyword[keyword]["episodes"]:
+            if e["ep"] not in episode_titles:
+                map_errors.append(f"{p['name']}：注释「{keyword}」引用了不存在的第 {e['ep']} 期")
+            if eps is None or e["ep"] in eps:
+                moments.setdefault((e["ep"], _time_to_sec(e.get("timecode", "00:00:00"))), e.get("note", ""))
+    if not moments:
+        map_errors.append(f"{p['name']}：没有关联到任何一期")
+        continue
+    first = p["annotations"][0]
+    primary = annotations_by_keyword[first if isinstance(first, str) else first["keyword"]]
+    map_places.append({
+        **{k: p[k] for k in ("name", "aliases", "loc", "era", "band", "type", "lost", "lat", "lng", "coordSource")},
+        "desc": primary["explanation"],
+        "source": primary["source"],
+        "episodes": [{"ep": ep, "t": t, "note": note} for (ep, t), note in sorted(moments.items())],
+    })
+place_names = {p["name"] for p in map_places}
+for r in routes:
+    for stop in r["stops"]:
+        if stop not in place_names:
+            map_errors.append(f"路线「{r['name']}」的站点不在地点表里：{stop}")
+if map_errors:
+    raise SystemExit("❌ 访古地图数据有误：\n" + "\n".join(map_errors))
+write_json(SITE_DIR / "map.json", {"places": map_places, "routes": routes, "titles": episode_titles})
+print(f"✅ 访古地图已生成: {SITE_DIR / 'map.json'}  （{len(map_places)} 处地点，{len(routes)} 条路线）")

@@ -1,6 +1,7 @@
 # Generated data (built by CI: build_index.py)
 bixiaguan_search/search_index.json
 bixiaguan_search/ep/
+bixiaguan_search/map.json
 
 # macOS
 .DS_Store
