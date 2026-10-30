@@ -159,6 +159,32 @@ def test_map_route_draws_path_and_lists_stops(page, base_url):
     expect(page.locator(".leaflet-overlay-pane path").first).to_be_attached()
 
 
+def test_map_place_lists_routes_through_it(page, base_url):
+    page.goto(base_url + MAP + "?place=" + quote("佛光寺"))
+    route = page.locator("#detail .route-item", has_text="唐五代木构")
+    expect(route).to_be_visible()
+    route.click()
+    expect(page.locator("#detail h2")).to_have_text(re.compile("^唐五代木构"))
+
+
+def test_map_custom_route_orders_picked_places_nearest_first(page, base_url):
+    page.goto(base_url + MAP)
+    for name in ["晋祠", "故宫", "平遥古城", "隆兴寺"]:
+        page.fill("#map-search", name)
+        page.locator(".place-item").filter(has=page.locator(".nm", has_text=re.compile(f"^{name}$"))).click()
+        page.locator("#detail .pick-toggle").click()
+        page.locator("#detail .back").click()
+    page.locator('.tab[data-tab="custom"]').click()
+    order = ["故宫", "隆兴寺", "晋祠", "平遥古城"]
+    names = page.locator("#view-custom .stop .nm").all_inner_texts()
+    assert names in (order, order[::-1])
+    expect(page.locator(".leaflet-overlay-pane path").first).to_be_attached()
+    page.reload()
+    assert page.locator("#view-custom .stop .nm").all_inner_texts() == names
+    page.locator("#view-custom .unpick").first.click()
+    expect(page.locator("#view-custom .stop")).to_have_count(3)
+
+
 def test_map_links_back_to_home(page, base_url):
     page.goto(base_url + MAP)
     page.locator("nav a", has_text="首页").click()

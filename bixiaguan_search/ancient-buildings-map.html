@@ -274,6 +274,45 @@
   }
   .stop .nm { font-size: .92rem; }
   .stop .sub { font-size: .75rem; color: var(--ink3); }
+  .in-place .route-item { padding: 10px 0 10px 12px; }
+  .pick-toggle {
+    margin: 12px 0 0;
+    padding: 4px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    background: #fff;
+    color: var(--accent);
+    font: inherit;
+    font-size: .8rem;
+    cursor: pointer;
+  }
+  .pick-toggle.on { background: var(--accent); color: #fff; }
+
+  /* ── 自选路线 ─────────────────────────────────────────── */
+  .custom-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--line2);
+    font-size: .8rem;
+    color: var(--ink3);
+  }
+  .custom-head b { color: var(--ink); font-weight: 600; }
+  .custom-head .linkish { margin-left: auto; }
+  .custom-stops { padding: 0 18px; }
+  .unpick {
+    align-self: center;
+    margin-left: auto;
+    padding: 0 4px;
+    border: 0;
+    background: none;
+    color: var(--ink3);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .unpick:hover { color: var(--accent); }
+  .custom-tip { margin: 0; padding: 12px 18px 24px; font-size: .78rem; line-height: 1.8; color: var(--ink3); }
 
   /* ── 地图标记 ─────────────────────────────────────────── */
   .mk {
@@ -404,6 +443,7 @@
       <div class="tabs" role="tablist">
         <button class="tab active" data-tab="places" role="tab">地点</button>
         <button class="tab" data-tab="routes" role="tab">路线</button>
+        <button class="tab" data-tab="custom" role="tab">自选路线</button>
       </div>
     </div>
     <section class="view" id="view-places">
@@ -422,6 +462,7 @@
     <section class="view" id="view-routes" hidden>
       <ul class="route-list" id="route-list"></ul>
     </section>
+    <section class="view" id="view-custom" hidden></section>
     <section class="view detail" id="detail" hidden></section>
   </aside>
 </div>
@@ -521,6 +562,7 @@ var PLACE_BY_NAME = {};
 var filters = { bands: {}, types: {}, q: '', inView: false };
 var currentTab = 'places';
 var selected = null;          // 当前选中的地点
+var picks = [];               // 自选路线里的地点，按加入顺序
 var routeLayer = null;
 var chinaBounds = null;
 
@@ -649,6 +691,7 @@ function showView(name) {
   document.getElementById('panel').dataset.view = name;
   document.getElementById('view-places').hidden = name !== 'places';
   document.getElementById('view-routes').hidden = name !== 'routes';
+  document.getElementById('view-custom').hidden = name !== 'custom';
   document.getElementById('detail').hidden = name !== 'detail';
   if (name !== 'detail') {
     document.querySelectorAll('.tab').forEach(function(t) { t.classList.toggle('active', t.dataset.tab === name); });
@@ -701,7 +744,7 @@ function showPlace(p, push) {
   setUrl({ place: p.name }, push);
 
   var b = BAND[p.band];
-  var html = '<button class="back">&#8592; 返回' + (currentTab === 'routes' ? '路线' : '列表') + '</button>' +
+  var html = '<button class="back">&#8592; 返回' + { places: '列表', routes: '路线', custom: '自选路线' }[currentTab] + '</button>' +
     '<div class="detail-body">' +
       '<h2>' + escapeHtml(p.name) + '</h2>' +
       (p.aliases.length ? '<div class="aka">又名 ' + p.aliases.map(escapeHtml).join('、') + '</div>' : '') +
@@ -712,8 +755,10 @@ function showPlace(p, push) {
       '</div>' +
       '<div class="facts"><span>年代</span>' + escapeHtml(p.era) + '<br><span>位置</span>' + escapeHtml(p.loc) +
         '<br><span>坐标</span>' + coordSourceHtml(p.coordSource) + '</div>' +
+      '<button class="pick-toggle' + (picks.indexOf(p) >= 0 ? ' on' : '') + '">' + pickLabel(p) + '</button>' +
       '<p class="desc">' + linkify(p.desc) + '</p>' +
       (p.source ? '<div class="src">依据：' + linkify(p.source) + '</div>' : '') +
+      routesThroughHtml(p) +
       '<div class="sec-title">节目里讲到 · ' + p._eps.length + ' 期</div>' +
       p._eps.map(function(e) {
         return '<div class="ep-row">' +
@@ -733,6 +778,19 @@ function showPlace(p, push) {
   showView('detail');
   openPanel(true);
   flyToPlace(p, 10);
+}
+
+function routesThroughHtml(p) {
+  var through = [];
+  ROUTES.forEach(function(r, i) {
+    var n = r.stops.indexOf(p.name);
+    if (n >= 0) through.push('<li class="route-item" data-r="' + i + '" style="--c:' + r.color + '">' +
+      '<h3>' + escapeHtml(r.name) + '</h3>' +
+      '<div class="meta">第 ' + (n + 1) + ' 站，共 ' + r.stops.length + ' 站 · ' + escapeHtml(r.days) + '</div>' +
+    '</li>');
+  });
+  if (!through.length) return '';
+  return '<div class="sec-title">收入路线 · ' + through.length + ' 条</div><ul class="route-list in-place">' + through.join('') + '</ul>';
 }
 
 function nearbyHtml(p) {
@@ -802,11 +860,116 @@ function showRoute(i, push) {
     : { padding: [30, 30] });
 }
 
+// ── 自选路线 ──────────────────────────────────────────────────────────
+var PICK_COLOR = '#c44';
+
+// 就近原则、不走回头路：从每个地点出发各走一遍「下一站去最近的」，
+// 再把会走回头路的一段反转（2-opt），直到没有可缩短的，取总路程最短的一条
+function planRoute(ps) {
+  var n = ps.length;
+  if (n < 3) return ps.slice();
+  var d = ps.map(function(p) { return ps.map(function(q) { return distanceKm(p, q); }); });
+  var best = null, bestLen = Infinity;
+  for (var s = 0; s < n; s++) {
+    var order = [s], left = [];
+    for (var k = 0; k < n; k++) if (k !== s) left.push(k);
+    while (left.length) {
+      var row = d[order[order.length - 1]];
+      left.sort(function(a, b) { return row[a] - row[b]; });
+      order.push(left.shift());
+    }
+    for (var improved = true; improved;) {
+      improved = false;
+      for (var i = 0; i < n - 1; i++) {
+        for (var j = i + 1; j < n; j++) {
+          var before = (i > 0 ? d[order[i - 1]][order[i]] : 0) + (j < n - 1 ? d[order[j]][order[j + 1]] : 0);
+          var after = (i > 0 ? d[order[i - 1]][order[j]] : 0) + (j < n - 1 ? d[order[i]][order[j + 1]] : 0);
+          if (after < before - 1e-9) {
+            order = order.slice(0, i).concat(order.slice(i, j + 1).reverse(), order.slice(j + 1));
+            improved = true;
+          }
+        }
+      }
+    }
+    var len = 0;
+    for (var m = 1; m < n; m++) len += d[order[m - 1]][order[m]];
+    if (len < bestLen) { best = order; bestLen = len; }
+  }
+  return best.map(function(k) { return ps[k]; });
+}
+
+function pickLabel(p) {
+  return picks.indexOf(p) >= 0 ? '✓ 已加入自选路线，点此移出' : '＋ 加入自选路线';
+}
+
+function tabUrl() {
+  return currentTab === 'custom' && picks.length ? { pick: picks.map(function(p) { return p.name; }).join('|') } : {};
+}
+
+function renderPickCount() {
+  document.querySelector('.tab[data-tab="custom"]').textContent = '自选路线' + (picks.length ? ' · ' + picks.length : '');
+}
+
+function togglePick(p) {
+  var i = picks.indexOf(p);
+  if (i >= 0) picks.splice(i, 1); else picks.push(p);
+  renderPickCount();
+  if (currentTab === 'custom' && document.getElementById('detail').hidden) {
+    setUrl(tabUrl(), false);
+    showCustom();
+  }
+}
+
+function showCustom() {
+  clearRoute();
+  var el = document.getElementById('view-custom');
+  if (!picks.length) {
+    el.innerHTML = '<p class="empty">在地图上点地点，就会加入自选路线<br>也可以在地点详情里点「加入自选路线」</p>';
+    return;
+  }
+  var stops = planRoute(picks);
+  var legs = stops.map(function(p, n) { return n ? distanceKm(stops[n - 1], p) : 0; });
+  var total = legs.reduce(function(a, b) { return a + b; }, 0);
+  el.innerHTML =
+    '<div class="custom-head"><span><b>' + stops.length + '</b> 处 · 直线约 <b>' + Math.round(total) + '</b> 公里</span>' +
+      '<button class="linkish" id="clear-picks">清空</button></div>' +
+    '<ol class="stops custom-stops">' + stops.map(function(p, n) {
+      return '<li class="stop" data-i="' + p._i + '" style="--c:' + PICK_COLOR + '">' +
+        '<span class="no">' + (n + 1) + '</span>' +
+        '<span><span class="nm">' + escapeHtml(p.name) + '</span><br><span class="sub">' + escapeHtml(p.loc) +
+          (n ? ' · 距上一站 ' + Math.round(legs[n]) + ' 公里' : ' · 起点') + '</span></span>' +
+        '<button class="unpick" data-i="' + p._i + '" aria-label="移出自选路线" title="移出">×</button>' +
+      '</li>';
+    }).join('') + '</ol>' +
+    '<p class="custom-tip">按就近原则排序、不走回头路，距离为直线距离。在地图上继续点地点可加入，点编号可移出。</p>';
+
+  routeLayer = L.layerGroup().addTo(map);
+  if (stops.length > 1) {
+    L.polyline(stops.map(function(p) { return p._ll; }), { color: PICK_COLOR, weight: 3, opacity: .8, dashArray: '6 6' }).addTo(routeLayer);
+  }
+  stops.forEach(function(p, n) {
+    L.marker(p._ll, {
+      icon: L.divIcon({ className: '', html: '<div class="mk-num" style="--c:' + PICK_COLOR + '">' + (n + 1) + '</div>', iconSize: [22, 22], iconAnchor: [11, 11] }),
+      zIndexOffset: 2000
+    }).bindTooltip(p.name, { direction: 'top', offset: [0, -10], className: 'tip' })
+      .on('click', function() { togglePick(p); })
+      .addTo(routeLayer);
+  });
+}
+
+function fitPicks() {
+  if (!picks.length) return;
+  map.fitBounds(L.latLngBounds(picks.map(function(p) { return p._ll; })), isPhone()
+    ? { paddingTopLeft: [30, 30], paddingBottomRight: [30, document.getElementById('panel').offsetHeight + 30], maxZoom: 9 }
+    : { padding: [40, 40], maxZoom: 9 });
+}
+
 function closeDetail(push) {
   setSelectedMarker(null);
   clearRoute();
-  setUrl({}, push);
+  setUrl(tabUrl(), push);
   showView(currentTab);
+  if (currentTab === 'custom') showCustom();
 }
 
 // ── URL 路由 ──────────────────────────────────────────────────────────
@@ -814,6 +977,16 @@ function applyUrl() {
   var params = new URLSearchParams(window.location.search);
   var place = PLACE_BY_NAME[params.get('place')];
   var route = parseInt(params.get('route'), 10);
+  var pick = params.get('pick');
+  if (pick) {
+    picks = [];
+    pick.split('|').forEach(function(name) {
+      var p = PLACE_BY_NAME[name];
+      if (p && picks.indexOf(p) < 0) picks.push(p);
+    });
+    renderPickCount();
+    currentTab = 'custom';
+  }
   if (place) {
     showPlace(place, false);
   } else if (route >= 1 && route <= ROUTES.length) {
@@ -821,6 +994,7 @@ function applyUrl() {
     showRoute(route - 1, false);
   } else {
     closeDetail(false);
+    if (pick) fitPicks();
   }
 }
 
@@ -829,12 +1003,22 @@ document.querySelector('.tabs').addEventListener('click', function(e) {
   var tab = e.target.closest('.tab');
   if (!tab) return;
   currentTab = tab.dataset.tab;
-  if (!document.getElementById('detail').hidden) closeDetail(true);
-  showView(currentTab);
+  closeDetail(!document.getElementById('detail').hidden);
+  if (currentTab === 'custom') fitPicks();
   openPanel(true);
 });
 
 document.getElementById('panel').addEventListener('click', function(e) {
+  var unpick = e.target.closest('.unpick');
+  if (unpick) { togglePick(PLACES[+unpick.dataset.i]); return; }
+  if (e.target.closest('#clear-picks')) { picks.slice().forEach(togglePick); return; }
+  var toggle = e.target.closest('.pick-toggle');
+  if (toggle) {
+    togglePick(selected);
+    toggle.classList.toggle('on', picks.indexOf(selected) >= 0);
+    toggle.textContent = pickLabel(selected);
+    return;
+  }
   var item = e.target.closest('.place-item, .stop');
   if (item) { showPlace(PLACES[+item.dataset.i], true); return; }
   var route = e.target.closest('.route-item');
@@ -904,7 +1088,11 @@ fetch('map.json')
       });
       p._marker = L.marker(p._ll, { icon: markerIcon(p), title: p.name, keyboard: false })
         .bindTooltip(p.name, { direction: 'top', offset: [0, -8], className: 'tip' })
-        .on('click', function() { showPlace(p, true); });
+        .on('click', function() {
+          // 自选路线页里点地图上的地点是加入或移出，其他时候是打开详情
+          if (currentTab === 'custom' && document.getElementById('detail').hidden) togglePick(p);
+          else showPlace(p, true);
+        });
       PLACE_BY_NAME[p.name] = p;
       regions[region(p)] = true;
       if (inChina(p)) china.push(p._ll);
