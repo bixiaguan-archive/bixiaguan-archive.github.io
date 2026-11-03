@@ -255,6 +255,23 @@ def pinyin_key(text):
     text = text.lstrip("《〈「『“\"'（(【[ ")
     return "".join(lazy_pinyin(text)).lower()
 
+def label_core(label):
+    return re.sub(r"[（(][^）)]*[）)]", "", re.sub(r"^本期[：:]", "", label)).strip()
+
+by_keyword = {a["keyword"] for a in notes_data["annotations"]}
+seen_labels, dup_errors = {}, []
+for a in notes_data["annotations"]:
+    core = label_core(a["label"])
+    if not core:
+        continue
+    if core != a["keyword"] and core in by_keyword:
+        dup_errors.append(f"「{a['keyword']}」的标签就是另一词条「{core}」")
+    if core in seen_labels:
+        dup_errors.append(f"「{a['keyword']}」与「{seen_labels[core]}」标签相同：{core}")
+    seen_labels.setdefault(core, a["keyword"])
+if dup_errors:
+    raise SystemExit("❌ 词条重复，请合并：\n" + "\n".join(dup_errors))
+
 terms, term_details = [], {}
 for a in sorted(notes_data["annotations"], key=lambda a: pinyin_key(a["keyword"])):
     key = pinyin_key(a["keyword"])
