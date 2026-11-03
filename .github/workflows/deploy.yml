@@ -5,6 +5,7 @@ on:
     paths:
       - 'bixiaguan_transcripts/**'
       - 'build_index.py'
+      - '.github/workflows/deploy.yml'
       - 'bixiaguan_search/**'
     branches:
       - main
@@ -38,6 +39,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Install build dependencies
+        run: pip install pypinyin
 
       - name: Rebuild search index
         run: python build_index.py

@@ -17,6 +17,8 @@ SITE = ROOT / "bixiaguan_search"
 
 
 MAP = "/ancient-buildings-map.html"
+TERMS = "/terms.html"
+ERRATA = "/errata.html"
 
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
@@ -34,11 +36,17 @@ def base_url():
 
 
 @pytest.fixture(scope="module")
-def browser():
+def playwright():
     with sync_playwright() as p:
-        b = p.chromium.launch(channel="chrome")
-        yield b
-        b.close()
+        yield p
+
+
+# 每个测试单独起浏览器：本机 Chrome 连着跑约 30 秒后会自行断开
+@pytest.fixture
+def browser(playwright):
+    b = playwright.chromium.launch(channel="chrome")
+    yield b
+    b.close()
 
 
 @pytest.fixture
@@ -88,6 +96,22 @@ def test_full_text_search_highlights_hits(page, base_url):
     expect(page.locator("#status")).to_contain_text("找到")
 
 
+def test_search_box_focus_starts_downloading_the_index(page, base_url):
+    page.goto(base_url + "/")
+    expect(page.locator(".ep-item")).to_have_count(102)
+    with page.expect_request(lambda r: r.url.endswith("/search_index.json"), timeout=5000):
+        page.focus("#q")
+
+
+def test_home_list_shows_errata_count_linking_to_errata_page(page, base_url):
+    page.goto(base_url + "/")
+    badge = page.locator(".ep-item", has_text="EP088").locator("a.ep-errata")
+    expect(badge).to_have_text(re.compile(r"^勘误 \d+$"))
+    badge.click()
+    expect(page).to_have_url(re.compile(r"errata\.html#ep88$"))
+    expect(page.locator("#ep88")).to_be_in_viewport()
+
+
 def test_back_button_returns_from_transcript_to_list(page, base_url):
     page.goto(base_url + "/")
     page.locator(".browse-link").first.click()
@@ -100,6 +124,8 @@ def test_back_button_returns_from_transcript_to_list(page, base_url):
 @pytest.mark.parametrize("path, ready", [
     ("/?ep=87", ".transcript-seg"),
     (MAP, ".place-item"),
+    (TERMS, ".term"),
+    (ERRATA, ".erratum"),
 ])
 def test_phone_width_has_no_horizontal_scroll(browser, base_url, path, ready):
     ctx = browser.new_context(viewport={"width": 375, "height": 812})
@@ -202,3 +228,66 @@ def test_map_links_back_to_home(page, base_url):
     page.goto(base_url + MAP)
     page.locator("nav a", has_text="首页").click()
     expect(page.locator(".ep-item")).to_have_count(102)
+
+
+def test_term_index_groups_by_pinyin_and_links_into_transcript(page, base_url):
+    page.goto(base_url + TERMS)
+    assert page.locator(".term").count() > 3000
+    page.locator(".letters a", has_text="L").click()
+    expect(page.locator("#letter-L")).to_be_in_viewport()
+    page.fill("#term-filter", "梁思成")
+    term = page.locator(".term", has=page.locator(".kw", has_text=re.compile("^梁思成$")))
+    expect(term.locator(".ep-count")).to_have_text(re.compile(r"^\d{2} 期$"))
+    moment = term.locator("a.moment").first
+    assert re.fullmatch(r"index\.html\?ep=\d+&t=\d+", moment.get_attribute("href"))
+    moment.click()
+    expect(page.locator(".transcript-seg.seek")).to_be_in_viewport()
+
+
+def test_term_index_sorts_by_episode_count_and_can_show_places_only(page, base_url):
+    page.goto(base_url + TERMS + "?sort=count")
+    counts = page.locator(".term .ep-count").evaluate_all("els => els.slice(0, 30).map(e => parseInt(e.textContent))")
+    assert counts == sorted(counts, reverse=True) and counts[0] >= 20
+    total = page.locator(".term").count()
+    page.locator("#places-only").check()
+    places = page.locator(".term:visible").count()
+    assert 500 < places < total
+    expect(page.locator(".term", has=page.locator(".kw", has_text=re.compile("^佛光寺$")))).to_be_visible()
+
+
+def test_errata_page_groups_by_episode_and_filters(page, base_url):
+    page.goto(base_url + ERRATA)
+    assert page.locator(".erratum").count() > 350
+    page.fill("#errata-filter", "崇庆寺")
+    shown = page.locator(".erratum:visible")
+    expect(shown).to_have_count(1)
+    expect(page.locator(".ep-group:visible h2")).to_contain_text("EP088")
+    link = shown.locator("a.moment")
+    assert re.fullmatch(r"index\.html\?ep=88&t=\d+", link.get_attribute("href"))
+
+
+def test_static_episode_page_reads_without_javascript(browser, base_url):
+    ctx = browser.new_context(java_script_enabled=False)
+    pg = ctx.new_page()
+    pg.goto(base_url + "/episode/88.html")
+    expect(pg.locator("h1")).to_contain_text("罗汉排行榜之长清灵岩寺")
+    assert pg.locator(".seg").count() > 100
+    expect(pg.locator(".errata li", has_text="崇庆寺")).to_be_visible()
+    expect(pg.locator('a[href="../index.html?ep=88"]').first).to_be_visible()
+    ctx.close()
+
+
+def test_sitemap_lists_every_page_for_search_engines(page, base_url):
+    sitemap = page.request.get(base_url + "/sitemap.xml").text()
+    pages = re.findall(r"<loc>https://bixiaguan-archive\.github\.io/([^<]*)</loc>", sitemap)
+    assert {f"episode/{n}.html" for n in range(1, 103)} <= set(pages)
+    assert {"", "terms.html", "errata.html", "cast.html", "ancient-buildings-map.html"} <= set(pages)
+    robots = page.request.get(base_url + "/robots.txt").text()
+    assert "Sitemap: https://bixiaguan-archive.github.io/sitemap.xml" in robots
+
+
+@pytest.mark.parametrize("path", ["/", "/cast.html", MAP, ERRATA])
+def test_every_page_nav_reaches_term_index(page, base_url, path):
+    page.goto(base_url + path)
+    page.locator("nav a", has_text="索引").click()
+    expect(page.locator(".term").first).to_be_visible()

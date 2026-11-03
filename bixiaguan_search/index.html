@@ -855,6 +855,8 @@
 
 <nav>
   <a href="index.html" class="active">首页</a>
+  <a href="terms.html">索引</a>
+  <a href="errata.html">勘误</a>
   <a href="cast.html">登场人物</a>
   <a href="ancient-buildings-map.html">访古地图</a>
 </nav>
@@ -963,6 +965,7 @@ function openPlayer(ytId, startSec) {
 
 // ── 数据 & 状态 ──────────────────────────────────────────────────────
 var EPISODES = null;           // 节目元数据，首屏唯一需要的数据
+var ERRATA_COUNTS = {};        // 每期勘误条数（counts.json），列表里显示
 var EPISODE_CACHE = {};        // {epNum: {ep, title, ytId, segments, notes}}，浏览全文时按期加载
 var searchIndexPromise = null; // 全部转录，第一次跨期检索时才下载
 var renderToken = 0;           // 异步加载返回时，丢弃已被后续操作取代的渲染
@@ -988,7 +991,12 @@ function loadEpisode(epNum) {
 
 function loadSearchIndex() {
   if (!searchIndexPromise) {
-    searchIndexPromise = fetchJson('search_index.json').catch(function(err) {
+    // 每段存为 [起始秒, 文本]，载入后还原成与单期数据相同的 {start, text}
+    searchIndexPromise = fetchJson('search_index.json').then(function(eps) {
+      return eps.map(function(e) {
+        return { ep: e.ep, title: e.title, ytId: e.ytId, segments: e.s.map(function(x) { return { start: x[0], text: x[1] }; }) };
+      });
+    }).catch(function(err) {
       searchIndexPromise = null;
       throw err;
     });
@@ -1006,7 +1014,9 @@ function showLoadError() {
 }
 
 async function loadData() {
-  EPISODES = await fetchJson('episodes.json');
+  var loaded = await Promise.all([fetchJson('episodes.json'), fetchJson('counts.json')]);
+  EPISODES = loaded[0];
+  ERRATA_COUNTS = loaded[1];
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('status').style.display = 'block';
@@ -1226,6 +1236,7 @@ function renderTimeline() {
         '<a class="ep-link" href="https://www.youtube.com/watch?v='+ep.ytId+'" target="_blank">&#9654; YouTube</a>' +
         '<a class="ep-link browse-link" data-ep="'+ep.ep+'">&#128214; 浏览全文</a>' +
         '<a class="ep-link search-link" data-ep="'+ep.ep+'">&#128269; 搜索文本</a>' +
+        (ERRATA_COUNTS[ep.ep] ? '<a class="ep-link ep-errata" href="errata.html#ep'+ep.ep+'">勘误 '+ERRATA_COUNTS[ep.ep]+'</a>' : '') +
       '</div>';
 
     currentGroupEl.appendChild(item);
@@ -1805,6 +1816,11 @@ document.addEventListener('click', function(e) {
 });
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeNotesPopup();
+});
+
+// 点进搜索框就开始下载全文索引，按下检索时多半已下载完
+document.getElementById('q').addEventListener('focus', function() {
+  loadSearchIndex().catch(function() {});
 });
 
 // ── 启动 ──────────────────────────────────────────────────────────────

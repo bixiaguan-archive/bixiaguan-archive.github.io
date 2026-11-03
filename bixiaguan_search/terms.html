@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壁下观 · 词条索引</title>
+<meta name="description" content="艺术史播客《壁下观》全部注释词条：人物、古建筑、遗址、文献，按拼音索引，每条列出讲到它的各期与时间点。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif; background: #faf8f5; color: #2c2c2c; min-height: 100vh; }
+.header { text-align: center; padding: 2.5rem 1rem 1.5rem; border-bottom: 1px solid #e8e2da; }
+.header h1 { font-size: 1.8rem; font-weight: 400; letter-spacing: .15em; color: #3a3a3a; }
+.header .subtitle { font-size: .9rem; color: #888; margin-top: .5rem; }
+nav { text-align: center; padding: 1rem; border-bottom: 1px solid #e8e2da; background: #fdfcfa; }
+nav a { color: #666; text-decoration: none; margin: 0 1rem; font-size: .9rem; transition: color .2s; }
+nav a:hover, nav a.active { color: #c44; }
+.container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+.toolbar { position: sticky; top: 0; z-index: 2; background: #faf8f5; padding: .8rem 0; border-bottom: 1px solid #ece8e2; }
+.controls { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; }
+#term-filter { flex: 1 1 14rem; min-width: 0; padding: .5rem .8rem; border: 1px solid #ddd5ca; border-radius: 4px; font: inherit; font-size: .95rem; background: #fff; }
+.controls label { font-size: .88rem; color: #666; cursor: pointer; white-space: nowrap; }
+.sort { font-size: .88rem; color: #666; white-space: nowrap; }
+.sort a { font-size: .88rem; color: #888; text-decoration: none; margin-left: .6rem; }
+.sort a.active { color: #c44; font-weight: 600; }
+.count { font-size: .82rem; color: #999; }
+.letters { display: flex; flex-wrap: wrap; gap: .15rem; margin-top: .6rem; }
+.letters a { min-width: 1.7rem; text-align: center; padding: .1rem .2rem; font-size: .85rem; color: #666; text-decoration: none; border-radius: 3px; }
+.letters a:hover { background: #c44; color: #fff; }
+
+.group { margin-top: 1.5rem; scroll-margin-top: 9rem; }
+.group h2 { font-size: 1.2rem; font-weight: 600; color: #c44; border-bottom: 1px solid #e8e2da; padding-bottom: .3rem; margin-bottom: .4rem; }
+.term { padding: .55rem 0; border-bottom: 1px dashed #ece8e2; }
+.term-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; cursor: pointer; }
+.kw { font-weight: 600; }
+.lbl { color: #888; font-size: .88rem; }
+.ep-count { font-size: .75rem; background: #ece8e2; color: #777; padding: .05rem .45rem; border-radius: 10px; }
+.place-tag { font-size: .72rem; color: #4a7a5a; border: 1px solid #b9d3c0; padding: 0 .35rem; border-radius: 3px; }
+.term-head:hover .kw { color: #c44; }
+.moments { margin-top: .3rem; display: flex; flex-wrap: wrap; gap: .2rem .8rem; font-size: .82rem; }
+.moment { color: #a33; text-decoration: none; white-space: nowrap; }
+.moment:hover { text-decoration: underline; }
+.detail { margin-top: .5rem; font-size: .9rem; line-height: 1.8; color: #444; overflow-wrap: anywhere; }
+.detail .src { font-size: .8rem; color: #999; margin-top: .3rem; }
+.detail .note { font-size: .85rem; color: #666; margin-top: .25rem; }
+.detail .note b { color: #a33; font-weight: 400; }
+.empty { text-align: center; color: #999; padding: 3rem 0; }
+@media (max-width: 600px) { nav a { margin: 0 .45rem; } .container { padding: 1rem; } .toolbar { position: static; } .group { scroll-margin-top: 0; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>壁下观</h1>
+  <div class="subtitle">词条索引 · 节目里讲到的人、地方与文献</div>
+</div>
+
+<nav>
+<a href="index.html">首页</a>
+<a href="terms.html" class="active">索引</a>
+<a href="errata.html">勘误</a>
+<a href="cast.html">登场人物</a>
+<a href="ancient-buildings-map.html">访古地图</a>
+</nav>
+
+<div class="container">
+  <div class="toolbar">
+    <div class="controls">
+      <input id="term-filter" type="search" placeholder="输入词条筛选…" autocomplete="off" spellcheck="false">
+      <label><input type="checkbox" id="places-only"> 只看地点</label>
+      <span class="sort">排序<a href="?sort=pinyin" data-sort="pinyin">拼音</a><a href="?sort=count" data-sort="count">出现期数</a></span>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="letters" id="letters"></div>
+  </div>
+  <div id="list"><div class="empty">加载中…</div></div>
+</div>
+
+<script>
+var TERMS = [], DETAILS = {}, TITLES = {};
+var params = new URLSearchParams(location.search);
+var sortMode = params.get('sort') === 'count' ? 'count' : 'pinyin';
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function(c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; });
+}
+function clock(sec) {
+  var h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60;
+  return (h ? h + ':' : '') + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+function epCount(t) {
+  var eps = {};
+  t.m.forEach(function(m) { eps[m[0]] = 1; });
+  return Object.keys(eps).length;
+}
+function letterFile(L) { return 'terms/' + (L === '#' ? '_' : L) + '.json'; }
+
+function termHtml(t, i) {
+  var moments = t.m.map(function(m) {
+    return '<a class="moment" href="index.html?ep=' + m[0] + '&t=' + m[1] + '" title="' + esc(TITLES[m[0]] || '') + '">EP' + String(m[0]).padStart(3, '0') + ' ' + clock(m[1]) + '</a>';
+  }).join('');
+  return '<div class="term" data-i="' + i + '"' + (t.p ? ' data-place' : '') + '>' +
+    '<div class="term-head"><span class="kw">' + esc(t.k) + '</span>' +
+    (t.l && t.l !== t.k ? '<span class="lbl">' + esc(t.l) + '</span>' : '') +
+    '<span class="ep-count">' + t.n + ' 期</span>' + (t.p ? '<span class="place-tag">地点</span>' : '') + '</div>' +
+    '<div class="moments">' + moments + '</div></div>';
+}
+
+function render() {
+  var list = document.getElementById('list'), letters = document.getElementById('letters');
+  document.querySelectorAll('.sort a').forEach(function(a) { a.classList.toggle('active', a.dataset.sort === sortMode); });
+  if (sortMode === 'count') {
+    var order = TERMS.map(function(t, i) { return i; }).sort(function(a, b) { return TERMS[b].n - TERMS[a].n || a - b; });
+    letters.style.display = 'none';
+    list.innerHTML = '<section class="group">' + order.map(function(i) { return termHtml(TERMS[i], i); }).join('') + '</section>';
+  } else {
+    var html = '', seen = [], current = null;
+    TERMS.forEach(function(t, i) {
+      if (t.L !== current) {
+        if (current !== null) html += '</section>';
+        current = t.L;
+        seen.push(current);
+        html += '<section class="group" id="letter-' + (current === '#' ? '_' : current) + '"><h2>' + current + '</h2>';
+      }
+      html += termHtml(t, i);
+    });
+    list.innerHTML = html + '</section>';
+    letters.innerHTML = seen.map(function(L) { return '<a href="#letter-' + (L === '#' ? '_' : L) + '">' + L + '</a>'; }).join('');
+  }
+  applyFilter();
+}
+
+function applyFilter() {
+  var q = document.getElementById('term-filter').value.trim().toLowerCase();
+  var placesOnly = document.getElementById('places-only').checked;
+  var shown = 0;
+  document.querySelectorAll('.term').forEach(function(el) {
+    var t = TERMS[el.dataset.i];
+    var ok = (!placesOnly || t.p) && (!q || t.k.toLowerCase().includes(q) || t.l.toLowerCase().includes(q));
+    el.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  });
+  document.querySelectorAll('.group').forEach(function(g) {
+    g.style.display = g.querySelector('.term:not([style*="none"])') ? '' : 'none';
+  });
+  document.getElementById('count').textContent = shown + ' / ' + TERMS.length + ' 条';
+}
+
+function loadDetails(L) {
+  if (!DETAILS[L]) DETAILS[L] = fetch(letterFile(L)).then(function(r) { return r.json(); });
+  return DETAILS[L];
+}
+
+document.getElementById('list').addEventListener('click', function(e) {
+  var head = e.target.closest('.term-head');
+  if (!head) return;
+  var el = head.parentNode, t = TERMS[el.dataset.i], open = el.querySelector('.detail');
+  if (open) { open.remove(); return; }
+  loadDetails(t.L).then(function(details) {
+    var d = details[t.k];
+    var notes = t.m.map(function(m, j) {
+      return d[2][j] ? '<div class="note"><b>EP' + String(m[0]).padStart(3, '0') + '</b> ' + esc(d[2][j]) + '</div>' : '';
+    }).join('');
+    el.insertAdjacentHTML('beforeend', '<div class="detail">' + esc(d[0]) + notes + (d[1] ? '<div class="src">出处：' + esc(d[1]) + '</div>' : '') + '</div>');
+  });
+});
+document.getElementById('term-filter').addEventListener('input', applyFilter);
+document.getElementById('places-only').addEventListener('change', applyFilter);
+
+fetch('terms.json').then(function(r) { return r.json(); }).then(function(data) {
+  TERMS = data.terms;
+  TERMS.forEach(function(t) { t.n = epCount(t); });
+  TITLES = data.titles;
+  if (params.get('q')) document.getElementById('term-filter').value = params.get('q');
+  render();
+  if (location.hash) {
+    var target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
+  }
+}, function() {
+  document.getElementById('list').innerHTML = '<div class="empty">数据加载失败，请检查网络后刷新。</div>';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壁下观 · 勘误总表</title>
+<meta name="description" content="艺术史播客《壁下观》全部勘误：主播口误与事实错误，按期汇总，附正确说法与出处。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif; background: #faf8f5; color: #2c2c2c; min-height: 100vh; }
+.header { text-align: center; padding: 2.5rem 1rem 1.5rem; border-bottom: 1px solid #e8e2da; }
+.header h1 { font-size: 1.8rem; font-weight: 400; letter-spacing: .15em; color: #3a3a3a; }
+.header .subtitle { font-size: .9rem; color: #888; margin-top: .5rem; }
+nav { text-align: center; padding: 1rem; border-bottom: 1px solid #e8e2da; background: #fdfcfa; }
+nav a { color: #666; text-decoration: none; margin: 0 1rem; font-size: .9rem; transition: color .2s; }
+nav a:hover, nav a.active { color: #c44; }
+.container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+.toolbar { position: sticky; top: 0; z-index: 2; background: #faf8f5; padding: .8rem 0; border-bottom: 1px solid #ece8e2; display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; }
+#errata-filter { flex: 1 1 14rem; min-width: 0; padding: .5rem .8rem; border: 1px solid #ddd5ca; border-radius: 4px; font: inherit; font-size: .95rem; background: #fff; }
+.count { font-size: .82rem; color: #999; }
+
+.ep-group { margin-top: 1.6rem; scroll-margin-top: 5rem; }
+.ep-group h2 { font-size: 1.05rem; font-weight: 600; border-bottom: 1px solid #e8e2da; padding-bottom: .3rem; }
+.ep-group h2 a { color: inherit; text-decoration: none; }
+.ep-group h2 a:hover { color: #c44; }
+.ep-group h2 .num { color: #c44; margin-right: .5rem; }
+.erratum { padding: .7rem 0; border-bottom: 1px dashed #ece8e2; line-height: 1.8; overflow-wrap: anywhere; }
+.erratum .head { display: flex; flex-wrap: wrap; gap: .2rem .7rem; align-items: baseline; }
+.erratum .lbl { font-weight: 600; }
+.moment { color: #a33; font-size: .82rem; text-decoration: none; font-family: monospace; }
+.moment:hover { text-decoration: underline; }
+.orig { color: #888; font-size: .88rem; margin-top: .2rem; }
+.orig::before { content: '原话：'; }
+.correct { font-size: .93rem; margin-top: .2rem; }
+.src { font-size: .8rem; color: #999; margin-top: .2rem; }
+.src::before { content: '出处：'; }
+.empty { text-align: center; color: #999; padding: 3rem 0; }
+@media (max-width: 600px) { nav a { margin: 0 .45rem; } .container { padding: 1rem; } .toolbar { position: static; } .ep-group { scroll-margin-top: 0; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>壁下观</h1>
+  <div class="subtitle">勘误总表 · 主播口误与事实错误</div>
+</div>
+
+<nav>
+<a href="index.html">首页</a>
+<a href="terms.html">索引</a>
+<a href="errata.html" class="active">勘误</a>
+<a href="cast.html">登场人物</a>
+<a href="ancient-buildings-map.html">访古地图</a>
+</nav>
+
+<div class="container">
+  <div class="toolbar">
+    <input id="errata-filter" type="search" placeholder="输入关键词筛选勘误…" autocomplete="off" spellcheck="false">
+    <span class="count" id="count"></span>
+  </div>
+  <div id="list"><div class="empty">加载中…</div></div>
+</div>
+
+<script>
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function(c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; });
+}
+function clock(sec) {
+  var h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60;
+  return (h ? h + ':' : '') + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+function applyFilter() {
+  var q = document.getElementById('errata-filter').value.trim().toLowerCase();
+  var shown = 0, total = 0;
+  document.querySelectorAll('.erratum').forEach(function(el) {
+    var ok = !q || el.textContent.toLowerCase().includes(q);
+    el.style.display = ok ? '' : 'none';
+    total++;
+    if (ok) shown++;
+  });
+  document.querySelectorAll('.ep-group').forEach(function(g) {
+    g.style.display = g.querySelector('.erratum:not([style*="none"])') ? '' : 'none';
+  });
+  document.getElementById('count').textContent = shown + ' / ' + total + ' 条';
+}
+
+fetch('errata.json').then(function(r) { return r.json(); }).then(function(data) {
+  var html = '', current = null;
+  data.errata.forEach(function(e) {
+    if (e.ep !== current) {
+      if (current !== null) html += '</section>';
+      current = e.ep;
+      html += '<section class="ep-group" id="ep' + e.ep + '"><h2><a href="index.html?ep=' + e.ep + '"><span class="num">EP' + String(e.ep).padStart(3, '0') + '</span>' + esc(data.titles[e.ep] || '') + '</a></h2>';
+    }
+    html += '<div class="erratum"><div class="head"><span class="lbl">' + esc(e.l) + '</span>' +
+      '<a class="moment" href="index.html?ep=' + e.ep + '&t=' + e.t + '">' + clock(e.t) + '</a></div>' +
+      (e.o ? '<div class="orig">' + esc(e.o) + '</div>' : '') +
+      '<div class="correct">' + esc(e.c) + '</div>' +
+      (e.s ? '<div class="src">' + esc(e.s) + '</div>' : '') + '</div>';
+  });
+  document.getElementById('list').innerHTML = html + '</section>';
+  applyFilter();
+  if (location.hash) {
+    var target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
+  }
+}, function() {
+  document.getElementById('list').innerHTML = '<div class="empty">数据加载失败，请检查网络后刷新。</div>';
+});
+document.getElementById('errata-filter').addEventListener('input', applyFilter);
+</script>
+</body>
+</html>

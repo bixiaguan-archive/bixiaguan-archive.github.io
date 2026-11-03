@@ -4,9 +4,13 @@
 - search_index.json：全部期的 {ep, title, ytId, segments}，供全文检索
 - ep/<期号>.json：单期 segments + 该期勘误与附注，供全文浏览
 - map.json：访古地图的地点与路线，合并注释里的简介、期数与时间点
+- terms.json + terms/<首字母>.json / errata.json / counts.json：词条索引、勘误总表、首页每期勘误数
+- episode/<期号>.html、sitemap.xml、robots.txt：供搜索引擎收录的单期静态页与站点地图
 """
-import json, re, shutil
+import html, json, re, shutil
 from pathlib import Path
+
+from pypinyin import lazy_pinyin
 
 TRANSCRIPTS_DIR = Path(__file__).parent / "bixiaguan_transcripts"
 SITE_DIR = Path(__file__).parent / "bixiaguan_search"
@@ -181,7 +185,10 @@ for srt_path in srt_files:
 def write_json(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
 
-write_json(OUTPUT, episodes)
+write_json(OUTPUT, [
+    {"ep": e["ep"], "title": e["title"], "ytId": e["ytId"], "s": [[int(seg["start"]), seg["text"]] for seg in e["segments"]]}
+    for e in episodes
+])
 size_mb = OUTPUT.stat().st_size / 1024 / 1024
 print(f"\n✅ 索引已生成: {OUTPUT}  ({size_mb:.1f} MB, {len(episodes)} 期)")
 
@@ -239,3 +246,119 @@ if map_errors:
     raise SystemExit("❌ 访古地图数据有误：\n" + "\n".join(map_errors))
 write_json(SITE_DIR / "map.json", {"places": map_places, "routes": routes, "titles": episode_titles})
 print(f"✅ 访古地图已生成: {SITE_DIR / 'map.json'}  （{len(map_places)} 处地点，{len(routes)} 条路线）")
+
+# ── 词条索引：terms.json 是列表（词条、首字母、是否地点、各期时间点），
+#    terms/<首字母>.json 是展开时才加载的简介、出处与各期备注；被访古地图引用的词条标为地点
+place_keywords = {ref if isinstance(ref, str) else ref["keyword"] for p in places for ref in p["annotations"]}
+
+def pinyin_key(text):
+    text = text.lstrip("《〈「『“\"'（(【[ ")
+    return "".join(lazy_pinyin(text)).lower()
+
+terms, term_details = [], {}
+for a in sorted(notes_data["annotations"], key=lambda a: pinyin_key(a["keyword"])):
+    key = pinyin_key(a["keyword"])
+    letter = key[0].upper() if key[:1].isascii() and key[:1].isalpha() else "#"
+    moments = sorted({(e["ep"], _time_to_sec(e.get("timecode", "00:00:00"))): e.get("note", "") for e in a["episodes"]}.items())
+    terms.append({"k": a["keyword"], "l": a["label"], "L": letter, "p": a["keyword"] in place_keywords,
+                  "m": [[ep, sec] for (ep, sec), _ in moments]})
+    term_details.setdefault(letter, {})[a["keyword"]] = [a["explanation"], a["source"], [note for _, note in moments]]
+write_json(SITE_DIR / "terms.json", {"titles": episode_titles, "terms": terms})
+TERMS_DIR = SITE_DIR / "terms"
+shutil.rmtree(TERMS_DIR, ignore_errors=True)
+TERMS_DIR.mkdir()
+for letter, details in term_details.items():
+    write_json(TERMS_DIR / f"{'_' if letter == '#' else letter}.json", details)
+print(f"✅ 词条索引已生成: {SITE_DIR / 'terms.json'}  （{len(terms)} 条，其中地点 {sum(t['p'] for t in terms)} 条）")
+
+# ── 勘误总表 errata.json 与首页每期勘误数 counts.json ──────────────────
+errata = sorted(
+    ({"ep": e["ep"], "t": _time_to_sec(e.get("timecode", "00:00:00")), "l": e["label"],
+      "o": e.get("original", ""), "c": e.get("correct", ""), "s": e.get("source", "")}
+     for e in notes_data["errata"]),
+    key=lambda e: (e["ep"], e["t"]))
+write_json(SITE_DIR / "errata.json", {"titles": episode_titles, "errata": errata})
+counts = {}
+for e in errata:
+    counts[e["ep"]] = counts.get(e["ep"], 0) + 1
+write_json(SITE_DIR / "counts.json", counts)
+print(f"✅ 勘误总表已生成: {SITE_DIR / 'errata.json'}  （{len(errata)} 条）")
+
+# ── 单期静态页 episode/<期号>.html + sitemap.xml + robots.txt ──────────────
+SITE_URL = "https://bixiaguan-archive.github.io/"
+STATIC_DIR = SITE_DIR / "episode"
+meta = {m["ep"]: m for m in json.loads((SITE_DIR / "episodes.json").read_text(encoding="utf-8"))}
+esc = html.escape
+
+def clock(sec):
+    sec = int(sec)
+    return f"{sec // 3600}:{sec // 60 % 60:02d}:{sec % 60:02d}" if sec >= 3600 else f"{sec // 60:02d}:{sec % 60:02d}"
+
+STATIC_PAGE = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EP{n:03d} {title} · 壁下观</title>
+<meta name="description" content="{summary}">
+<style>
+body {{ font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif; background: #faf8f5; color: #2c2c2c; margin: 0; line-height: 1.8; }}
+nav {{ text-align: center; padding: 1rem; border-bottom: 1px solid #e8e2da; background: #fdfcfa; }}
+nav a {{ color: #666; text-decoration: none; margin: 0 .8rem; font-size: .9rem; }}
+nav a:hover {{ color: #c44; }}
+main {{ max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 3rem; overflow-wrap: anywhere; }}
+h1 {{ font-size: 1.5rem; font-weight: 600; }}
+h2 {{ font-size: 1.1rem; margin-top: 2rem; border-bottom: 1px solid #e8e2da; }}
+.meta, .pager {{ color: #888; font-size: .9rem; }}
+.desc {{ white-space: pre-line; }}
+a {{ color: #a33; }}
+.seg a {{ color: #999; font-size: .8rem; margin-right: .5rem; text-decoration: none; font-family: monospace; }}
+.errata li {{ margin-bottom: .6rem; }}
+</style>
+</head>
+<body>
+<nav><a href="../index.html">首页</a><a href="../terms.html">索引</a><a href="../errata.html">勘误</a><a href="../cast.html">登场人物</a><a href="../ancient-buildings-map.html">访古地图</a></nav>
+<main>
+<h1>EP{n:03d} {title}</h1>
+<p class="meta">{date}{cast} · <a href="../index.html?ep={n}">交互式全文浏览</a> · <a href="https://www.youtube.com/watch?v={yt}">YouTube</a></p>
+<p class="desc">{desc}</p>
+{errata}<h2>全文</h2>
+{segments}
+<p class="pager">{pager}</p>
+</main>
+</body>
+</html>
+"""
+
+shutil.rmtree(STATIC_DIR, ignore_errors=True)
+STATIC_DIR.mkdir()
+errata_by_ep = {}
+for e in errata:
+    errata_by_ep.setdefault(e["ep"], []).append(e)
+ep_nums = [e["ep"] for e in episodes]
+for i, ep in enumerate(episodes):
+    n, m = ep["ep"], meta[ep["ep"]]
+    desc = "\n".join(l for l in m["description"].split("\n") if "listennotes.com" not in l).strip()
+    err = errata_by_ep.get(n, [])
+    err_html = ("<section class=\"errata\"><h2>勘误</h2><ul>" + "".join(
+        f"<li><a href=\"../index.html?ep={n}&amp;t={e['t']}\">{clock(e['t'])}</a> <b>{esc(e['l'])}</b>：{esc(e['c'])}</li>" for e in err)
+        + "</ul></section>\n") if err else ""
+    pager = []
+    if i > 0:
+        pager.append(f"<a href=\"{ep_nums[i - 1]}.html\">← 上一期</a>")
+    if i + 1 < len(ep_nums):
+        pager.append(f"<a href=\"{ep_nums[i + 1]}.html\">下一期 →</a>")
+    (STATIC_DIR / f"{n}.html").write_text(STATIC_PAGE.format(
+        n=n, title=esc(ep["title"]), yt=ep["ytId"], date=esc(m["date"]),
+        summary=esc(re.sub(r"\s+", " ", desc)[:150]), desc=esc(desc),
+        cast=(" · " + "、".join(esc(c["name"]) for c in m["cast"])) if m["cast"] else "",
+        errata=err_html, pager=" · ".join(pager),
+        segments="\n".join(f"<p class=\"seg\"><a href=\"../index.html?ep={n}&amp;t={int(s['start'])}\">{clock(s['start'])}</a>{esc(s['text'])}</p>" for s in ep["segments"]),
+    ), encoding="utf-8")
+
+pages = ["", "terms.html", "errata.html", "cast.html", "ancient-buildings-map.html"] + [f"episode/{n}.html" for n in ep_nums]
+(SITE_DIR / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + "".join(f"<url><loc>{SITE_URL}{p}</loc></url>\n" for p in pages) + "</urlset>\n", encoding="utf-8")
+(SITE_DIR / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+print(f"✅ 单期静态页已生成: {STATIC_DIR}/  （{len(episodes)} 页），sitemap.xml 共 {len(pages)} 个地址")

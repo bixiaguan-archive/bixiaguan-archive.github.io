@@ -2,6 +2,13 @@
 bixiaguan_search/search_index.json
 bixiaguan_search/ep/
 bixiaguan_search/map.json
+bixiaguan_search/terms.json
+bixiaguan_search/terms/
+bixiaguan_search/errata.json
+bixiaguan_search/counts.json
+bixiaguan_search/episode/
+bixiaguan_search/sitemap.xml
+bixiaguan_search/robots.txt
 
 # macOS
 .DS_Store
