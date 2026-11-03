@@ -248,7 +248,8 @@ write_json(SITE_DIR / "map.json", {"places": map_places, "routes": routes, "titl
 print(f"✅ 访古地图已生成: {SITE_DIR / 'map.json'}  （{len(map_places)} 处地点，{len(routes)} 条路线）")
 
 # ── 词条索引：terms.json 是列表（词条、首字母、是否地点、各期时间点），
-#    terms/<首字母>.json 是展开时才加载的简介、出处与各期备注；被访古地图引用的词条标为地点
+#    terms/<首字母>.json 是展开时才加载的简介、出处与各期备注；被访古地图引用的词条标为地点；
+#    topic 条只是节目话题，留在单期页面，不进索引
 place_keywords = {ref if isinstance(ref, str) else ref["keyword"] for p in places for ref in p["annotations"]}
 
 def pinyin_key(text):
@@ -273,7 +274,7 @@ if dup_errors:
     raise SystemExit("❌ 词条重复，请合并：\n" + "\n".join(dup_errors))
 
 terms, term_details = [], {}
-for a in sorted(notes_data["annotations"], key=lambda a: pinyin_key(a["keyword"])):
+for a in sorted((a for a in notes_data["annotations"] if not a.get("topic")), key=lambda a: pinyin_key(a["keyword"])):
     key = pinyin_key(a["keyword"])
     letter = key[0].upper() if key[:1].isascii() and key[:1].isalpha() else "#"
     moments = sorted({(e["ep"], _time_to_sec(e.get("timecode", "00:00:00"))): e.get("note", "") for e in a["episodes"]}.items())

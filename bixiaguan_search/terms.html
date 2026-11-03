@@ -43,10 +43,11 @@ nav a:hover, nav a.active { color: #c44; }
 .moments { margin-top: .3rem; display: flex; flex-wrap: wrap; gap: .2rem .8rem; font-size: .82rem; }
 .moment { color: #a33; text-decoration: none; white-space: nowrap; }
 .moment:hover { text-decoration: underline; }
-.detail { margin-top: .5rem; font-size: .9rem; line-height: 1.8; color: #444; overflow-wrap: anywhere; }
-.detail .src { font-size: .8rem; color: #999; margin-top: .3rem; }
-.detail .note { font-size: .85rem; color: #666; margin-top: .25rem; }
-.detail .note b { color: #a33; font-weight: 400; }
+.detail { margin-top: .5rem; line-height: 1.8; overflow-wrap: anywhere; }
+.detail .summary { font-size: .95rem; color: #2c2c2c; padding-left: .7rem; border-left: 2px solid #d9b8b0; margin-bottom: .4rem; }
+.detail .src { font-size: .78rem; color: #999; }
+.detail .note { font-size: .85rem; color: #6a6a6a; margin-top: .3rem; }
+.detail .note b { display: inline-block; background: #f4e4df; color: #a33; font-weight: 400; font-size: .74rem; line-height: 1.6; padding: 0 .55rem; border-radius: 999px; margin-right: .4rem; }
 .empty { text-align: center; color: #999; padding: 3rem 0; }
 @media (max-width: 600px) { nav a { margin: 0 .45rem; } .container { padding: 1rem; } .toolbar { position: static; } .group { scroll-margin-top: 0; } }
 </style>
@@ -164,7 +165,7 @@ document.getElementById('list').addEventListener('click', function(e) {
     var notes = t.m.map(function(m, j) {
       return d[2][j] ? '<div class="note"><b>EP' + String(m[0]).padStart(3, '0') + '</b> ' + esc(d[2][j]) + '</div>' : '';
     }).join('');
-    el.insertAdjacentHTML('beforeend', '<div class="detail">' + esc(d[0]) + notes + (d[1] ? '<div class="src">出处：' + esc(d[1]) + '</div>' : '') + '</div>');
+    el.insertAdjacentHTML('beforeend', '<div class="detail"><div class="summary">' + esc(d[0]) + (d[1] ? '<div class="src">出处：' + esc(d[1]) + '</div>' : '') + '</div>' + notes + '</div>');
   });
 });
 document.getElementById('term-filter').addEventListener('input', applyFilter);

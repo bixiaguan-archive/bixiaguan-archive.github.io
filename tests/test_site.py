@@ -4,6 +4,7 @@
 """
 import functools
 import http.server
+import json
 import re
 import threading
 from pathlib import Path
@@ -244,6 +245,17 @@ def test_term_index_groups_by_pinyin_and_links_into_transcript(page, base_url):
     expect(page.locator(".transcript-seg.seek")).to_be_in_viewport()
 
 
+def test_expanded_term_marks_each_episode_note(page, base_url):
+    page.goto(base_url + TERMS)
+    page.fill("#term-filter", "阿旃陀")
+    term = page.locator(".term", has=page.locator(".kw", has_text=re.compile("^阿旃陀石窟$")))
+    term.locator(".term-head").click()
+    expect(term.locator(".detail")).to_contain_text("马哈拉施特拉")
+    tag = term.locator(".detail .note b").first
+    expect(tag).to_have_text("EP008")
+    assert tag.evaluate("e => getComputedStyle(e).backgroundColor") != "rgba(0, 0, 0, 0)"
+
+
 def test_term_index_sorts_by_episode_count_and_can_show_places_only(page, base_url):
     page.goto(base_url + TERMS + "?sort=count")
     counts = page.locator(".term .ep-count").evaluate_all("els => els.slice(0, 30).map(e => parseInt(e.textContent))")
@@ -253,6 +265,16 @@ def test_term_index_sorts_by_episode_count_and_can_show_places_only(page, base_u
     places = page.locator(".term:visible").count()
     assert 500 < places < total
     expect(page.locator(".term", has=page.locator(".kw", has_text=re.compile("^佛光寺$")))).to_be_visible()
+
+
+def test_topic_notes_stay_on_episode_pages_but_not_in_term_index(page, base_url):
+    annotations = json.loads((ROOT / "bixiaguan_transcripts/notes/annotations.json").read_text())["annotations"]
+    topic = next(a for a in annotations if a.get("topic"))
+    page.goto(base_url + TERMS)
+    expect(page.locator(".term").first).to_be_visible()
+    assert page.locator(".term .kw", has_text=re.compile("^" + re.escape(topic["keyword"]) + "$")).count() == 0
+    ep = topic["episodes"][0]["ep"]
+    assert topic["keyword"] in page.request.get(f"{base_url}/ep/{ep}.json").text()
 
 
 def test_errata_page_groups_by_episode_and_filters(page, base_url):
