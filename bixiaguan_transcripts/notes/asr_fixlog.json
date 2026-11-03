@@ -15900,7 +15900,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 969,
+  "subtitle": 967,
   "timecode": "00:51:56,263",
   "find": "壁下观 at ipn点li",
   "replace": "壁下观@ipn.li",
@@ -15918,7 +15918,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 972,
+  "subtitle": 970,
   "timecode": "00:52:04,423",
   "find": "member点壁下观点com",
   "replace": "bixiaguan.com/member",
@@ -15936,7 +15936,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 963,
+  "subtitle": 961,
   "timecode": "00:51:40,085",
   "find": "壁下观点com",
   "replace": "bixiaguan.com",
@@ -22159,7 +22159,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 386,
+  "subtitle": 385,
   "timecode": "00:21:24,110",
   "find": "国光寺",
   "replace": "佛光寺",
@@ -22209,7 +22209,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 615,
+  "subtitle": 614,
   "timecode": "00:33:01,612",
   "find": "斗立马斗",
   "replace": "利玛窦",
@@ -22219,7 +22219,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 697,
+  "subtitle": 696,
   "timecode": "00:37:08,758",
   "find": "连瓣儿",
   "replace": "莲瓣儿",
@@ -22239,7 +22239,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 873,
+  "subtitle": 872,
   "timecode": "00:46:41,525",
   "find": "毛将\\n\\n87400:46:45,006 --> 00:46:48,046",
   "replace": "毛将",
@@ -25747,7 +25747,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 975,
+  "subtitle": 973,
   "timecode": "00:52:13,463",
   "find": "影像和无次元",
   "replace": "硬影像和无次元",
@@ -25757,7 +25757,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 670,
+  "subtitle": 669,
   "timecode": "00:35:43,303",
   "find": "宝中心",
   "replace": "文保中心",
@@ -25767,7 +25767,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 718,
+  "subtitle": 717,
   "timecode": "00:38:28,622",
   "find": "这个。老师",
   "replace": "这个老师",
@@ -26777,7 +26777,7 @@
  },
  {
   "ep": 95,
-  "subtitle": 976,
+  "subtitle": 974,
   "timecode": "00:52:16,503",
   "find": "影像和无次元",
   "replace": "硬影像和无次元",
@@ -26804,5 +26804,5155 @@
   "kind": "term",
   "evidence": "佛教美术术语作「思惟菩萨」（半跏思惟），全库 ep022、ep097 亦作「思惟」，本期两处误作「思维」。",
   "at": "2026-10-06T15:37:22"
+ },
+ {
+  "ep": 1,
+  "subtitle": 31,
+  "timecode": "00:01:42,720",
+  "find": "您是从是",
+  "replace": "您是从事",
+  "kind": "asr",
+  "evidence": "「从事……设计」；「从是」为误听。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 306,
+  "timecode": "00:16:27,297",
+  "find": "都getrey弗里",
+  "replace": "都盖蒂、弗里尔",
+  "kind": "asr",
+  "evidence": "Getty（盖蒂）、Freer（弗里尔）两家博物馆。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 352,
+  "timecode": "00:18:48,346",
+  "find": "说的那个：，其实",
+  "replace": "说的那个，其实",
+  "kind": "punct",
+  "evidence": "冒号后多出逗号。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 409,
+  "timecode": "00:21:54,901",
+  "find": "损失；，但是",
+  "replace": "损失；但是",
+  "kind": "punct",
+  "evidence": "分号后多出逗号。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 450,
+  "timecode": "00:24:06,044",
+  "find": "这样：，就",
+  "replace": "这样，就",
+  "kind": "punct",
+  "evidence": "冒号后多出逗号。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 459,
+  "timecode": "00:24:35,323",
+  "find": "加送",
+  "replace": "夹带",
+  "kind": "asr",
+  "evidence": "与「偷盗、私带」并列，指夹带出宫。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 543,
+  "timecode": "00:29:11,849",
+  "find": "李敬信、李道训",
+  "replace": "李思训、李昭道",
+  "kind": "asr",
+  "evidence": "唐代画家李思训、李昭道父子。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 672,
+  "timecode": "00:35:43,362",
+  "find": "鉴鉴赏能能力",
+  "replace": "鉴赏能力",
+  "kind": "asr",
+  "evidence": "叠字。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 676,
+  "timecode": "00:35:58,428",
+  "find": "方文呢",
+  "replace": "方闻呢",
+  "kind": "asr",
+  "evidence": "方闻（Wen Fong）。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 681,
+  "timecode": "00:36:15,453",
+  "find": "Alliot 家族很有名，叫 Giambattista Alliot",
+  "replace": "Elliott 家族很有名，叫 John B. Elliott",
+  "kind": "asr",
+  "evidence": "John B. Elliott 为方闻普林斯顿 1951 届同学，下文亦作「艾略特家族」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 697,
+  "timecode": "00:37:04,847",
+  "find": "十五十一件",
+  "replace": "五十一件",
+  "kind": "asr",
+  "evidence": "上文「每一期大概展出了大概五十一件」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 727,
+  "timecode": "00:38:46,612",
+  "find": "流传有趣",
+  "replace": "流传有序",
+  "kind": "asr",
+  "evidence": "下文「流传有序的一个收藏记录」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 843,
+  "timecode": "00:44:42,470",
+  "find": "四观",
+  "replace": "寺观",
+  "kind": "asr",
+  "evidence": "上下文讲寺观壁画。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 857,
+  "timecode": "00:45:28,580",
+  "find": "维合",
+  "replace": "围合",
+  "kind": "asr",
+  "evidence": "建筑空间「围合」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 870,
+  "timecode": "00:46:08,646",
+  "find": "顾洛甫，才和这个John Elliot才",
+  "replace": "顾洛阜，才和这个John B. Elliott才",
+  "kind": "asr",
+  "evidence": "藏家名统一作顾洛阜；Elliott 全名 John B. Elliott。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 876,
+  "timecode": "00:46:26,086",
+  "find": "是顾洛夫呢",
+  "replace": "是顾洛阜呢",
+  "kind": "asr",
+  "evidence": "同一人，全篇多作「顾洛阜」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 883,
+  "timecode": "00:46:51,421",
+  "find": "他顾洛夫这个人",
+  "replace": "他顾洛阜这个人",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 894,
+  "timecode": "00:47:22,064",
+  "find": "跟他最早书上收上本书",
+  "replace": "跟他最早收善本书",
+  "kind": "asr",
+  "evidence": "上下文讲西方善本书（rare books）收藏。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 940,
+  "timecode": "00:49:37,345",
+  "find": "我们记错的话",
+  "replace": "我没记错的话",
+  "kind": "asr",
+  "evidence": "固定说法「没记错的话」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": 709,
+  "timecode": "00:37:47,304",
+  "find": "注入",
+  "replace": "著录",
+  "kind": "asr",
+  "evidence": "「在《石渠宝笈》著录过」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 100,
+  "timecode": "00:05:29,007",
+  "find": "我觉得辽北齐",
+  "replace": "我觉得聊北齐",
+  "kind": "asr",
+  "evidence": "「聊北齐」被误听为「辽北齐」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 129,
+  "timecode": "00:07:18,681",
+  "find": "从五百五十年到五百五百五十七、五百七十七年",
+  "replace": "从五百五十年到五百七十七年",
+  "kind": "asr",
+  "evidence": "北齐 550—577 年；「五百五百五十七」为误听重复。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 244,
+  "timecode": "00:13:32,709",
+  "find": "姓何，姓何他就也不是个汉室。他这个何不是那个人口何啊，他是那个和平的何",
+  "replace": "姓和，姓和他就也不是个汉室。他这个和不是那个人口何啊，他是那个和平的和",
+  "kind": "asr",
+  "evidence": "和士开姓「和」，非「何」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 530,
+  "timecode": "00:28:54,752",
+  "find": "明慧大师塔",
+  "replace": "明惠大师塔",
+  "kind": "asr",
+  "evidence": "山西平顺明惠大师塔。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 658,
+  "timecode": "00:35:10,968",
+  "find": "河南的临林州",
+  "replace": "河南的林州",
+  "kind": "asr",
+  "evidence": "修定寺塔在河南林州。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 707,
+  "timecode": "00:37:41,132",
+  "find": "在这个二二十年代",
+  "replace": "在这个二十年代",
+  "kind": "asr",
+  "evidence": "指 1920 年代。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 1011,
+  "timecode": "00:53:35,387",
+  "find": "五年代开始",
+  "replace": "五十年代开始",
+  "kind": "asr",
+  "evidence": "上文「四九年以后」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 1143,
+  "timecode": "01:00:30,774",
+  "find": "为什么是“朝”？“朝”这个人",
+  "replace": "为什么是“曹”？“曹”这个人",
+  "kind": "asr",
+  "evidence": "曹衣出水指曹仲达。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 1147,
+  "timecode": "01:00:41,923",
+  "find": "只有朝乌人",
+  "replace": "曹国人",
+  "kind": "asr",
+  "evidence": "曹仲达为昭武九姓曹国人。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 1425,
+  "timecode": "01:14:16,228",
+  "find": "有账几高",
+  "replace": "有一丈几尺高",
+  "kind": "asr",
+  "evidence": "《洛阳伽蓝记》永宁寺条记佛像高度。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 245,
+  "timecode": "00:13:35,269",
+  "find": "何，姓何他就也不是个汉室。他这个何",
+  "replace": "和，姓和他就也不是个汉室。他这个和",
+  "kind": "asr",
+  "evidence": "和士开姓「和」，非「何」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 2,
+  "subtitle": 246,
+  "timecode": "00:13:38,069",
+  "find": "他是那个和平的何",
+  "replace": "他是那个和平的和",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1485,
+  "timecode": "01:16:23,496",
+  "find": "又主高恒",
+  "replace": "幼主高恒",
+  "kind": "asr",
+  "evidence": "北齐末帝高恒称「幼主」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1537,
+  "timecode": "01:18:56,648",
+  "find": "那两扇木门",
+  "replace": "那两扇墓门",
+  "kind": "asr",
+  "evidence": "上下文讲徐显秀墓门及其浮雕。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1544,
+  "timecode": "01:19:19,528",
+  "find": "胡说八牙",
+  "replace": "胡说八道",
+  "kind": "asr",
+  "evidence": "成语「胡说八道」。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1554,
+  "timecode": "01:19:52,990",
+  "find": "知险项目",
+  "replace": "徐显秀项目",
+  "kind": "asr",
+  "evidence": "上下文指徐显秀墓发掘报告。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1555,
+  "timecode": "01:19:57,790",
+  "find": "考古报发掘报告",
+  "replace": "考古发掘报告",
+  "kind": "asr",
+  "evidence": "衍字。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 3,
+  "subtitle": 1131,
+  "timecode": "00:58:49,740",
+  "find": "野门的人物",
+  "replace": "倚门的人物",
+  "kind": "asr",
+  "evidence": "望楼门半开、侍女倚门的图像。",
+  "at": "2026-11-02T08:11:44"
+ },
+ {
+  "ep": 1,
+  "subtitle": "1029",
+  "timecode": "00:54:08,700",
+  "find": "那个时候七十年",
+  "replace": "那个时候七十年代",
+  "kind": "asr",
+  "evidence": "口误补字。",
+  "at": "2026-11-02T08:11:56"
+ },
+ {
+  "ep": 1,
+  "subtitle": "1066",
+  "timecode": "00:55:57,000",
+  "find": "我就拿出来一家族旧",
+  "replace": "我就拿出来一家族旧藏",
+  "kind": "asr",
+  "evidence": "「家族旧藏」。",
+  "at": "2026-11-02T08:11:56"
+ },
+ {
+  "ep": 4,
+  "subtitle": 53,
+  "timecode": "00:02:41,860",
+  "find": "同志家兄弟",
+  "replace": "同志加兄弟",
+  "kind": "asr",
+  "evidence": "「同志加兄弟」为熟语。",
+  "at": "2026-11-02T08:31:22"
+ },
+ {
+  "ep": 4,
+  "subtitle": 153,
+  "timecode": "00:07:35,883",
+  "find": "也没争成",
+  "replace": "也没征成",
+  "kind": "asr",
+  "evidence": "上下文「隋炀帝征高丽」。",
+  "at": "2026-11-02T08:31:22"
+ },
+ {
+  "ep": 4,
+  "subtitle": 805,
+  "timecode": "00:38:50,009",
+  "find": "那个黄使用的一个种类",
+  "replace": "那个皇室使用的一个种类",
+  "kind": "asr",
+  "evidence": "上文「秘色就是皇室用的这个颜色」。",
+  "at": "2026-11-02T08:31:22"
+ },
+ {
+  "ep": 4,
+  "subtitle": 1147,
+  "timecode": "00:55:23,998",
+  "find": "别人的子和车",
+  "replace": "别人的紫河车",
+  "kind": "asr",
+  "evidence": "紫河车即胎盘，上文「汉人这个就叫紫河车」。",
+  "at": "2026-11-02T08:31:22"
+ },
+ {
+  "ep": 4,
+  "subtitle": 1193,
+  "timecode": "00:57:31,645",
+  "find": "黄明朝鲜",
+  "replace": "皇明朝鲜",
+  "kind": "asr",
+  "evidence": "朝鲜文献常用「皇明」纪年。",
+  "at": "2026-11-02T08:31:22"
+ },
+ {
+  "ep": 5,
+  "subtitle": 91,
+  "timecode": "00:04:44,967",
+  "find": "更VEG了",
+  "replace": "更vague了",
+  "kind": "asr",
+  "evidence": "上下文「营造一个环境…更vague」。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 114,
+  "timecode": "00:05:57,804",
+  "find": "空间的维合",
+  "replace": "空间的围合",
+  "kind": "asr",
+  "evidence": "建筑术语「围合」。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 606,
+  "timecode": "00:29:23,911",
+  "find": "天台庵啊",
+  "replace": "天坛啊",
+  "kind": "asr",
+  "evidence": "伯施曼在北京测绘天坛；下文「禁院」亦指天坛等。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 787,
+  "timecode": "00:38:04,755",
+  "find": "这个天台庵啊",
+  "replace": "这个天坛啊",
+  "kind": "asr",
+  "evidence": "伊东忠太 1900 年随占领军进入北京天坛等禁地。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1173,
+  "timecode": "00:56:47,145",
+  "find": "理理智社会",
+  "replace": "礼制社会",
+  "kind": "asr",
+  "evidence": "上下文「君君臣臣、父父子子」的礼制。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1563,
+  "timecode": "01:16:06,801",
+  "find": "没实力考察",
+  "replace": "没实地考察",
+  "kind": "asr",
+  "evidence": "上文「都没实地考察过」。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1980,
+  "timecode": "01:35:57,906",
+  "find": "看到一点圣殿",
+  "replace": "看到一点圣母殿",
+  "kind": "asr",
+  "evidence": "晋祠圣母殿，在难老泉照片背景中。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1473,
+  "timecode": "01:11:45,234",
+  "find": "美丽新照",
+  "replace": "美丽兴照",
+  "kind": "asr",
+  "evidence": "太原「美丽兴照相馆」，1925 年受常盘大定委托拍摄佛光寺。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1487,
+  "timecode": "01:12:23,907",
+  "find": "美丽新照相馆",
+  "replace": "美丽兴照相馆",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 5,
+  "subtitle": 1517,
+  "timecode": "01:13:51,844",
+  "find": "美日新照相馆",
+  "replace": "美丽兴照相馆",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T08:33:08"
+ },
+ {
+  "ep": 6,
+  "subtitle": 977,
+  "timecode": "00:51:27,607",
+  "find": "第一个黄金就是",
+  "replace": "第一个黄金周就是",
+  "kind": "asr",
+  "evidence": "上下文「近七八天十天的长假」。",
+  "at": "2026-11-02T08:36:49"
+ },
+ {
+  "ep": 6,
+  "subtitle": 1177,
+  "timecode": "01:01:32,890",
+  "find": "新东南",
+  "replace": "晋东南",
+  "kind": "asr",
+  "evidence": "全篇讲晋东南。",
+  "at": "2026-11-02T08:36:49"
+ },
+ {
+  "ep": 6,
+  "subtitle": 1843,
+  "timecode": "01:34:28,840",
+  "find": "就跟附件一个",
+  "replace": "就跟复建一个",
+  "kind": "asr",
+  "evidence": "上下文「跟复建没什么区别」。",
+  "at": "2026-11-02T08:36:49"
+ },
+ {
+  "ep": 7,
+  "subtitle": 1308,
+  "timecode": "01:05:13,042",
+  "find": "少少的多了",
+  "replace": "少得多了",
+  "kind": "asr",
+  "evidence": "「少得多了」。",
+  "at": "2026-11-02T08:38:10"
+ },
+ {
+  "ep": 7,
+  "subtitle": 1290,
+  "timecode": "01:04:22,167",
+  "find": "周周里",
+  "replace": "州里",
+  "kind": "asr",
+  "evidence": "上下文指美国的州。",
+  "at": "2026-11-02T08:38:10"
+ },
+ {
+  "ep": 7,
+  "subtitle": 1291,
+  "timecode": "01:04:24,407",
+  "find": "某一个周",
+  "replace": "某一个州",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T08:38:10"
+ },
+ {
+  "ep": 8,
+  "subtitle": 240,
+  "timecode": "00:12:57,573",
+  "find": "风吹日雨晒雨打",
+  "replace": "风吹日晒雨打",
+  "kind": "asr",
+  "evidence": "「风吹日晒雨打」。",
+  "at": "2026-11-02T08:38:48"
+ },
+ {
+  "ep": 8,
+  "subtitle": 306,
+  "timecode": "00:16:38,793",
+  "find": "打挡光灯",
+  "replace": "打闪光灯",
+  "kind": "asr",
+  "evidence": "洞窟摄影规定：不得使用闪光灯。",
+  "at": "2026-11-02T08:38:48"
+ },
+ {
+  "ep": 8,
+  "subtitle": 467,
+  "timecode": "00:28:07,880",
+  "find": "卡拉卡拉",
+  "replace": "卡尔拉",
+  "kind": "asr",
+  "evidence": "印度卡尔拉石窟（Karla）。",
+  "at": "2026-11-02T08:38:48"
+ },
+ {
+  "ep": 9,
+  "subtitle": 38,
+  "timecode": "00:02:07,589",
+  "find": "在Archa以前",
+  "replace": "在Orchha以前",
+  "kind": "asr",
+  "evidence": "印度奥恰（Orchha）。",
+  "at": "2026-11-02T08:39:25"
+ },
+ {
+  "ep": 9,
+  "subtitle": 497,
+  "timecode": "00:25:21,451",
+  "find": "从一康开始",
+  "replace": "从一开始",
+  "kind": "asr",
+  "evidence": "上下文「从一开始就是这两种」。",
+  "at": "2026-11-02T08:39:25"
+ },
+ {
+  "ep": 9,
+  "subtitle": 962,
+  "timecode": "00:47:58,353",
+  "find": "残这个比较少",
+  "replace": "禅这个比较少",
+  "kind": "asr",
+  "evidence": "上下文讲禅窟。",
+  "at": "2026-11-02T08:39:25"
+ },
+ {
+  "ep": 11,
+  "subtitle": 409,
+  "timecode": "00:19:45,695",
+  "find": "被裸裸到了",
+  "replace": "被掳掠到了",
+  "kind": "asr",
+  "evidence": "鸠摩罗什被苻坚部将掳至凉州。",
+  "at": "2026-11-02T08:41:05"
+ },
+ {
+  "ep": 11,
+  "subtitle": 762,
+  "timecode": "00:36:31,460",
+  "find": "广昌寺",
+  "replace": "广胜寺",
+  "kind": "asr",
+  "evidence": "上期讲的是广胜寺。",
+  "at": "2026-11-02T08:41:05"
+ },
+ {
+  "ep": 11,
+  "subtitle": 791,
+  "timecode": "00:37:54,225",
+  "find": "博兹克里克",
+  "replace": "柏孜克里克",
+  "kind": "asr",
+  "evidence": "吐鲁番柏孜克里克石窟。",
+  "at": "2026-11-02T08:41:05"
+ },
+ {
+  "ep": 12,
+  "subtitle": 11,
+  "timecode": "00:00:31,333",
+  "find": "一对德国鬼子",
+  "replace": "一堆德国鬼子",
+  "kind": "asr",
+  "evidence": "「一堆」被误听为「一对」。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 12,
+  "subtitle": 262,
+  "timecode": "00:13:23,151",
+  "find": "科泽尔",
+  "replace": "克孜尔",
+  "kind": "asr",
+  "evidence": "克孜尔石窟。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 12,
+  "subtitle": 284,
+  "timecode": "00:14:34,511",
+  "find": "第十十五窟",
+  "replace": "第十五窟",
+  "kind": "asr",
+  "evidence": "衍字。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 12,
+  "subtitle": 332,
+  "timecode": "00:16:51,478",
+  "find": "朱德，我不知道",
+  "replace": "竹子，我不知道",
+  "kind": "asr",
+  "evidence": "此处对竹子说话。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 12,
+  "subtitle": 362,
+  "timecode": "00:18:17,487",
+  "find": "八米羊",
+  "replace": "巴米扬",
+  "kind": "asr",
+  "evidence": "阿富汗巴米扬大佛。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 12,
+  "subtitle": 264,
+  "timecode": "00:13:29,071",
+  "find": "木扎特河",
+  "replace": "木扎提河",
+  "kind": "asr",
+  "evidence": "库车木扎提河，与全篇他处一致。",
+  "at": "2026-11-02T08:41:54"
+ },
+ {
+  "ep": 13,
+  "subtitle": 204,
+  "timecode": "00:11:39,521",
+  "find": "一个旗就是济南的济",
+  "replace": "一个齐就是济南的济",
+  "kind": "asr",
+  "evidence": "「济」为三点水加「齐」。",
+  "at": "2026-11-02T08:43:03"
+ },
+ {
+  "ep": 13,
+  "subtitle": 519,
+  "timecode": "00:27:58,263",
+  "find": "调调书袋",
+  "replace": "掉掉书袋",
+  "kind": "asr",
+  "evidence": "成语「掉书袋」。",
+  "at": "2026-11-02T08:43:03"
+ },
+ {
+  "ep": 13,
+  "subtitle": 461,
+  "timecode": "00:24:58,586",
+  "find": "满城就有一个小城堡",
+  "replace": "碗城就有一个小城堡",
+  "kind": "asr",
+  "evidence": "上下文讲碗子城。",
+  "at": "2026-11-02T08:43:03"
+ },
+ {
+  "ep": 14,
+  "subtitle": 554,
+  "timecode": "00:29:04,651",
+  "find": "采取一个手势",
+  "replace": "采取一个守势",
+  "kind": "asr",
+  "evidence": "上下文「对外采取守势」。",
+  "at": "2026-11-02T08:59:41"
+ },
+ {
+  "ep": 14,
+  "subtitle": 601,
+  "timecode": "00:31:35,713",
+  "find": "这三观",
+  "replace": "这三关",
+  "kind": "asr",
+  "evidence": "上文讲紫荆关、倒马关等三关。",
+  "at": "2026-11-02T08:59:41"
+ },
+ {
+  "ep": 14,
+  "subtitle": 811,
+  "timecode": "00:42:26,090",
+  "find": "旧时期时代",
+  "replace": "旧石器时代",
+  "kind": "asr",
+  "evidence": "「旧石器时代」。",
+  "at": "2026-11-02T08:59:41"
+ },
+ {
+  "ep": 14,
+  "subtitle": 45,
+  "timecode": "00:02:30,422",
+  "find": "人民美人民出版社",
+  "replace": "人民出版社",
+  "kind": "asr",
+  "evidence": "叠字。",
+  "at": "2026-11-02T08:59:41"
+ },
+ {
+  "ep": 14,
+  "subtitle": 559,
+  "timecode": "00:29:17,691",
+  "find": "作为军宅人士",
+  "replace": "作为军事人士",
+  "kind": "asr",
+  "evidence": "上下文讲军事战略。",
+  "at": "2026-11-02T08:59:41"
+ },
+ {
+  "ep": 15,
+  "subtitle": 427,
+  "timecode": "00:22:40,304",
+  "find": "陈冰河",
+  "replace": "陈彬龢",
+  "kind": "asr",
+  "evidence": "南开学校教务长陈彬龢，后附逆；非「陈冰河」。",
+  "at": "2026-11-02T09:01:07"
+ },
+ {
+  "ep": 15,
+  "subtitle": 738,
+  "timecode": "00:37:48,664",
+  "find": "一九二二五年",
+  "replace": "一九二五年",
+  "kind": "asr",
+  "evidence": "中山陵设计竞赛为 1925 年。",
+  "at": "2026-11-02T09:01:07"
+ },
+ {
+  "ep": 15,
+  "subtitle": 753,
+  "timecode": "00:38:32,501",
+  "find": "姓华",
+  "replace": "姓滑",
+  "kind": "asr",
+  "evidence": "留法雕塑家滑田友，参与保圣寺罗汉修复。",
+  "at": "2026-11-02T09:01:07"
+ },
+ {
+  "ep": 15,
+  "subtitle": 1640,
+  "timecode": "01:21:56,448",
+  "find": "每每周四",
+  "replace": "每周四",
+  "kind": "asr",
+  "evidence": "叠字。",
+  "at": "2026-11-02T09:01:07"
+ },
+ {
+  "ep": 15,
+  "subtitle": 436,
+  "timecode": "00:23:05,509",
+  "find": "陈冰河",
+  "replace": "陈彬龢",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:01:16"
+ },
+ {
+  "ep": 15,
+  "subtitle": 467,
+  "timecode": "00:24:39,890",
+  "find": "陈冰河",
+  "replace": "陈彬龢",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:01:16"
+ },
+ {
+  "ep": 15,
+  "subtitle": 490,
+  "timecode": "00:25:50,479",
+  "find": "陈冰河",
+  "replace": "陈彬龢",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:01:16"
+ },
+ {
+  "ep": 15,
+  "subtitle": 1229,
+  "timecode": "01:01:36,947",
+  "find": "姓华",
+  "replace": "姓滑",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:01:16"
+ },
+ {
+  "ep": 16,
+  "subtitle": 132,
+  "timecode": "00:06:49,392",
+  "find": "资格去分善",
+  "replace": "资格去封禅",
+  "kind": "asr",
+  "evidence": "上下文讲封禅。",
+  "at": "2026-11-02T09:02:03"
+ },
+ {
+  "ep": 16,
+  "subtitle": 443,
+  "timecode": "00:22:36,531",
+  "find": "二里沟",
+  "replace": "二里岗",
+  "kind": "asr",
+  "evidence": "郑州二里岗遗址。",
+  "at": "2026-11-02T09:02:03"
+ },
+ {
+  "ep": 16,
+  "subtitle": 809,
+  "timecode": "00:40:44,388",
+  "find": "那个观现在可能观城",
+  "replace": "那个关现在可能关城",
+  "kind": "asr",
+  "evidence": "轘辕关关城。",
+  "at": "2026-11-02T09:02:03"
+ },
+ {
+  "ep": 16,
+  "subtitle": 834,
+  "timecode": "00:41:56,457",
+  "find": "生前太子碑",
+  "replace": "升仙太子碑",
+  "kind": "asr",
+  "evidence": "武则天《升仙太子碑》。",
+  "at": "2026-11-02T09:02:03"
+ },
+ {
+  "ep": 16,
+  "subtitle": 1306,
+  "timecode": "01:06:13,519",
+  "find": "凡在五月里面",
+  "replace": "凡在五岳里面",
+  "kind": "asr",
+  "evidence": "上句讲五岳。",
+  "at": "2026-11-02T09:02:03"
+ },
+ {
+  "ep": 17,
+  "subtitle": 920,
+  "timecode": "00:47:08,649",
+  "find": "John Rock",
+  "replace": "Joseph Rock",
+  "kind": "asr",
+  "evidence": "纳西学之父约瑟夫·洛克（Joseph Rock）。",
+  "at": "2026-11-02T09:02:41"
+ },
+ {
+  "ep": 18,
+  "subtitle": 23,
+  "timecode": "00:01:16,336",
+  "find": "昆山中",
+  "replace": "昆三中",
+  "kind": "asr",
+  "evidence": "来信提到昆明第三中学。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 18,
+  "subtitle": 29,
+  "timecode": "00:01:39,189",
+  "find": "高颐语文课",
+  "replace": "高一语文课",
+  "kind": "asr",
+  "evidence": "「高一」被误听为「高颐」。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 18,
+  "subtitle": 33,
+  "timecode": "00:01:52,515",
+  "find": "高颐要结束时",
+  "replace": "高一要结束时",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 18,
+  "subtitle": 247,
+  "timecode": "00:13:52,900",
+  "find": "走失",
+  "replace": "走兽",
+  "kind": "asr",
+  "evidence": "高颐阙前石兽。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 18,
+  "subtitle": 906,
+  "timecode": "00:48:19,467",
+  "find": "庐山",
+  "replace": "芦山",
+  "kind": "asr",
+  "evidence": "四川雅安芦山县青龙寺，非江西庐山。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 18,
+  "subtitle": 909,
+  "timecode": "00:48:32,592",
+  "find": "庐山",
+  "replace": "芦山",
+  "kind": "asr",
+  "evidence": "四川雅安芦山县青龙寺，非江西庐山。",
+  "at": "2026-11-02T09:03:26"
+ },
+ {
+  "ep": 19,
+  "subtitle": 59,
+  "timecode": "00:03:24,217",
+  "find": "五五五周",
+  "replace": "武周",
+  "kind": "asr",
+  "evidence": "唐中宗神龙年间，武周结束、大唐恢复。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 19,
+  "subtitle": 642,
+  "timecode": "00:32:37,203",
+  "find": "平谷报国寺",
+  "replace": "平武报恩寺",
+  "kind": "asr",
+  "evidence": "四川平武报恩寺转轮藏。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 19,
+  "subtitle": 743,
+  "timecode": "00:37:31,094",
+  "find": "只有这一个世界",
+  "replace": "只有这一个实例",
+  "kind": "asr",
+  "evidence": "上下文「宋代建筑只有这一个实例」。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 19,
+  "subtitle": 967,
+  "timecode": "00:48:34,009",
+  "find": "营造学院",
+  "replace": "营造学社",
+  "kind": "asr",
+  "evidence": "中国营造学社。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 19,
+  "subtitle": 1176,
+  "timecode": "00:58:52,264",
+  "find": "杨和楼",
+  "replace": "阳和楼",
+  "kind": "asr",
+  "evidence": "正定阳和楼。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 19,
+  "subtitle": 1416,
+  "timecode": "01:10:21,067",
+  "find": "耿耿市长",
+  "replace": "耿市长",
+  "kind": "asr",
+  "evidence": "大同市长耿彦波。",
+  "at": "2026-11-02T09:04:36"
+ },
+ {
+  "ep": 20,
+  "subtitle": 412,
+  "timecode": "00:20:54,887",
+  "find": "家铸",
+  "replace": "夹纻",
+  "kind": "asr",
+  "evidence": "脱胎漆器源于夹纻工艺。",
+  "at": "2026-11-02T09:05:26"
+ },
+ {
+  "ep": 21,
+  "subtitle": 38,
+  "timecode": "00:02:16,764",
+  "find": "无门画派",
+  "replace": "吴门画派",
+  "kind": "asr",
+  "evidence": "吴门画派。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 21,
+  "subtitle": 77,
+  "timecode": "00:04:39,183",
+  "find": "给个给个food",
+  "replace": "给个给个foot",
+  "kind": "asr",
+  "evidence": "footnote（脚注）。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 21,
+  "subtitle": 199,
+  "timecode": "00:10:49,287",
+  "find": "私利跟私人",
+  "replace": "私立跟私人",
+  "kind": "asr",
+  "evidence": "上下文区分「私立」与「私人」。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 21,
+  "subtitle": 232,
+  "timecode": "00:12:26,777",
+  "find": "挺周立的",
+  "replace": "挺州立的",
+  "kind": "asr",
+  "evidence": "弗吉尼亚州立博物馆。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 21,
+  "subtitle": 805,
+  "timecode": "00:40:24,464",
+  "find": "卢青斋",
+  "replace": "卢芹斋",
+  "kind": "asr",
+  "evidence": "古董商卢芹斋。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 21,
+  "subtitle": 1204,
+  "timecode": "00:59:56,636",
+  "find": "宫檐壁",
+  "replace": "拱眼壁",
+  "kind": "asr",
+  "evidence": "古建筑术语「拱眼壁」。",
+  "at": "2026-11-02T09:06:58"
+ },
+ {
+  "ep": 22,
+  "subtitle": 78,
+  "timecode": "00:04:51,132",
+  "find": "古梁经",
+  "replace": "古兰经",
+  "kind": "asr",
+  "evidence": "《古兰经》。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 126,
+  "timecode": "00:07:38,616",
+  "find": "阴阳和和力",
+  "replace": "阴阳合历",
+  "kind": "asr",
+  "evidence": "中国传统历法为阴阳合历。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 126,
+  "timecode": "00:07:38,616",
+  "find": "阳力部分",
+  "replace": "阳历部分",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 223,
+  "timecode": "00:13:12,315",
+  "find": "林章",
+  "replace": "临漳",
+  "kind": "asr",
+  "evidence": "河北临漳。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 663,
+  "timecode": "00:35:18,458",
+  "find": "徐徐阳",
+  "replace": "曲阳",
+  "kind": "asr",
+  "evidence": "叠字。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 697,
+  "timecode": "00:37:12,411",
+  "find": "曲梁",
+  "replace": "曲阳",
+  "kind": "asr",
+  "evidence": "上下文讲曲阳造像。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 735,
+  "timecode": "00:39:10,318",
+  "find": "灵兽",
+  "replace": "灵寿",
+  "kind": "asr",
+  "evidence": "河北灵寿幽居寺。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 969,
+  "timecode": "00:51:22,639",
+  "find": "秀德寺",
+  "replace": "修德寺",
+  "kind": "asr",
+  "evidence": "曲阳修德寺。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 1026,
+  "timecode": "00:54:13,844",
+  "find": "箭头罗",
+  "replace": "犍陀罗",
+  "kind": "asr",
+  "evidence": "犍陀罗。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 1226,
+  "timecode": "01:03:57,431",
+  "find": "佩言之子",
+  "replace": "片言只字",
+  "kind": "asr",
+  "evidence": "「片言只字」。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 22,
+  "subtitle": 240,
+  "timecode": "00:14:09,773",
+  "find": "许愿风格",
+  "replace": "曲阳风格",
+  "kind": "asr",
+  "evidence": "上下文与曲阳风格相区别。",
+  "at": "2026-11-02T09:09:45"
+ },
+ {
+  "ep": 23,
+  "subtitle": 164,
+  "timecode": "00:08:45,921",
+  "find": "养老令公",
+  "replace": "杨老令公",
+  "kind": "asr",
+  "evidence": "杨家将杨老令公（杨业）。",
+  "at": "2026-11-02T09:10:23"
+ },
+ {
+  "ep": 23,
+  "subtitle": 853,
+  "timecode": "00:44:31,748",
+  "find": "七步作",
+  "replace": "七铺作",
+  "kind": "asr",
+  "evidence": "斗拱术语「七铺作」。",
+  "at": "2026-11-02T09:10:23"
+ },
+ {
+  "ep": 23,
+  "subtitle": 1497,
+  "timecode": "01:18:35,226",
+  "find": "林海",
+  "replace": "凌海",
+  "kind": "asr",
+  "evidence": "辽宁凌海市辽墓。",
+  "at": "2026-11-02T09:10:23"
+ },
+ {
+  "ep": 24,
+  "subtitle": 26,
+  "timecode": "00:01:24,854",
+  "find": "陛下观",
+  "replace": "壁下观",
+  "kind": "asr",
+  "evidence": "节目名《壁下观》。",
+  "at": "2026-11-02T09:11:11"
+ },
+ {
+  "ep": 24,
+  "subtitle": 559,
+  "timecode": "00:28:26,430",
+  "find": "兵大筹集",
+  "replace": "宾大筹集",
+  "kind": "asr",
+  "evidence": "宾夕法尼亚大学。",
+  "at": "2026-11-02T09:11:11"
+ },
+ {
+  "ep": 24,
+  "subtitle": 459,
+  "timecode": "00:23:12,786",
+  "find": "园厅",
+  "replace": "圆厅",
+  "kind": "asr",
+  "evidence": "Chinese Rotunda 圆厅。",
+  "at": "2026-11-02T09:11:11"
+ },
+ {
+  "ep": 25,
+  "subtitle": 318,
+  "timecode": "00:16:44,071",
+  "find": "谷森老师",
+  "replace": "古村老师",
+  "kind": "asr",
+  "evidence": "主播古村。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 25,
+  "subtitle": 327,
+  "timecode": "00:17:16,132",
+  "find": "再编",
+  "replace": "续编",
+  "kind": "asr",
+  "evidence": "《石渠宝笈》分初编、续编、三编。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 25,
+  "subtitle": 354,
+  "timecode": "00:18:41,593",
+  "find": "济寄畅园",
+  "replace": "寄畅园",
+  "kind": "asr",
+  "evidence": "无锡寄畅园。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 25,
+  "subtitle": 503,
+  "timecode": "00:26:09,135",
+  "find": "文源狮子林",
+  "replace": "文园狮子林",
+  "kind": "asr",
+  "evidence": "承德避暑山庄文园狮子林。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 25,
+  "subtitle": 636,
+  "timecode": "00:33:03,366",
+  "find": "常书",
+  "replace": "藏书",
+  "kind": "asr",
+  "evidence": "上下文讲藏书楼。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 25,
+  "subtitle": 739,
+  "timecode": "00:38:36,483",
+  "find": "RQ式",
+  "replace": "阿Q式",
+  "kind": "asr",
+  "evidence": "阿Q式精神胜利法。",
+  "at": "2026-11-02T09:12:24"
+ },
+ {
+  "ep": 26,
+  "subtitle": 74,
+  "timecode": "00:03:57,197",
+  "find": "贾军老师",
+  "replace": "贾珺老师",
+  "kind": "asr",
+  "evidence": "清华大学建筑史学者贾珺。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 26,
+  "subtitle": 99,
+  "timecode": "00:05:14,333",
+  "find": "八四八",
+  "replace": "八思巴",
+  "kind": "asr",
+  "evidence": "八思巴为国师。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 26,
+  "subtitle": 239,
+  "timecode": "00:12:41,451",
+  "find": "古歌王国",
+  "replace": "古格王国",
+  "kind": "asr",
+  "evidence": "阿里古格王国。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 26,
+  "subtitle": 387,
+  "timecode": "00:20:02,210",
+  "find": "干丹寺",
+  "replace": "甘丹寺",
+  "kind": "asr",
+  "evidence": "格鲁派甘丹寺。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 26,
+  "subtitle": 405,
+  "timecode": "00:20:51,372",
+  "find": "邢素芝",
+  "replace": "邢肃芝",
+  "kind": "asr",
+  "evidence": "《雪域求法记》口述者邢肃芝。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 26,
+  "subtitle": 408,
+  "timecode": "00:20:58,892",
+  "find": "邢素芝",
+  "replace": "邢肃芝",
+  "kind": "asr",
+  "evidence": "《雪域求法记》口述者邢肃芝。",
+  "at": "2026-11-02T09:13:30"
+ },
+ {
+  "ep": 27,
+  "subtitle": 309,
+  "timecode": "00:15:28,556",
+  "find": "张世明",
+  "replace": "张石铭",
+  "kind": "asr",
+  "evidence": "南浔张石铭。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 487,
+  "timecode": "00:24:27,695",
+  "find": "Louver",
+  "replace": "Louvre",
+  "kind": "asr",
+  "evidence": "卢浮宫 Louvre。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 488,
+  "timecode": "00:24:31,897",
+  "find": "Louver",
+  "replace": "Louvre",
+  "kind": "asr",
+  "evidence": "卢浮宫 Louvre。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 489,
+  "timecode": "00:24:35,257",
+  "find": "Louver",
+  "replace": "Louvre",
+  "kind": "asr",
+  "evidence": "卢浮宫 Louvre。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1076,
+  "timecode": "00:53:13,884",
+  "find": "四观壁画",
+  "replace": "寺观壁画",
+  "kind": "asr",
+  "evidence": "寺观壁画。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1082,
+  "timecode": "00:53:33,194",
+  "find": "四观壁画",
+  "replace": "寺观壁画",
+  "kind": "asr",
+  "evidence": "寺观壁画。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 715,
+  "timecode": "00:35:59,182",
+  "find": "经南",
+  "replace": "晋南",
+  "kind": "asr",
+  "evidence": "晋南元代壁画。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1142,
+  "timecode": "00:56:40,908",
+  "find": "经南",
+  "replace": "晋南",
+  "kind": "asr",
+  "evidence": "晋南元代壁画。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1466,
+  "timecode": "01:11:46,104",
+  "find": "塞努基",
+  "replace": "塞努奇",
+  "kind": "asr",
+  "evidence": "巴黎塞努奇博物馆（Musée Cernuschi）。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1601,
+  "timecode": "01:18:03,413",
+  "find": "慈恩寺壁画",
+  "replace": "慈胜寺壁画",
+  "kind": "asr",
+  "evidence": "温县慈胜寺壁画。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 27,
+  "subtitle": 1903,
+  "timecode": "01:32:39,032",
+  "find": "这批仪器",
+  "replace": "这批彝器",
+  "kind": "asr",
+  "evidence": "青铜彝器。",
+  "at": "2026-11-02T09:14:41"
+ },
+ {
+  "ep": 28,
+  "subtitle": 629,
+  "timecode": "00:29:26,377",
+  "find": "微妙微肖",
+  "replace": "惟妙惟肖",
+  "kind": "asr",
+  "evidence": "成语「惟妙惟肖」。",
+  "at": "2026-11-02T09:15:52"
+ },
+ {
+  "ep": 28,
+  "subtitle": 630,
+  "timecode": "00:29:29,017",
+  "find": "微妙微肖",
+  "replace": "惟妙惟肖",
+  "kind": "asr",
+  "evidence": "成语「惟妙惟肖」。",
+  "at": "2026-11-02T09:15:52"
+ },
+ {
+  "ep": 28,
+  "subtitle": 419,
+  "timecode": "00:19:50,467",
+  "find": "徐霞老师",
+  "replace": "瞿侠老师",
+  "kind": "asr",
+  "evidence": "主播瞿侠。",
+  "at": "2026-11-02T09:15:52"
+ },
+ {
+  "ep": 28,
+  "subtitle": 870,
+  "timecode": "00:40:09,699",
+  "find": "Murcielago",
+  "replace": "Merzbow",
+  "kind": "asr",
+  "evidence": "日本噪音艺术家 Merzbow。",
+  "at": "2026-11-02T09:15:52"
+ },
+ {
+  "ep": 29,
+  "subtitle": 878,
+  "timecode": "00:44:38,363",
+  "find": "胆囊可贵",
+  "replace": "难能可贵",
+  "kind": "asr",
+  "evidence": "成语「难能可贵」。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 891,
+  "timecode": "00:45:17,019",
+  "find": "知化寺",
+  "replace": "智化寺",
+  "kind": "asr",
+  "evidence": "智化寺。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 899,
+  "timecode": "00:45:41,691",
+  "find": "藏店",
+  "replace": "藏殿",
+  "kind": "asr",
+  "evidence": "智化寺藏殿。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 900,
+  "timecode": "00:45:46,301",
+  "find": "藏店",
+  "replace": "藏殿",
+  "kind": "asr",
+  "evidence": "智化寺藏殿。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 1012,
+  "timecode": "00:51:29,589",
+  "find": "复联",
+  "replace": "覆莲",
+  "kind": "asr",
+  "evidence": "莲瓣「覆莲」。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 1035,
+  "timecode": "00:52:43,454",
+  "find": "转个葬",
+  "replace": "转轮藏",
+  "kind": "asr",
+  "evidence": "转轮藏。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 29,
+  "subtitle": 1748,
+  "timecode": "01:29:03,626",
+  "find": "制化殿",
+  "replace": "智化殿",
+  "kind": "asr",
+  "evidence": "智化殿。",
+  "at": "2026-11-02T09:17:01"
+ },
+ {
+  "ep": 30,
+  "subtitle": 1244,
+  "timecode": "01:03:36,452",
+  "find": "法兰门哥",
+  "replace": "弗拉门戈",
+  "kind": "asr",
+  "evidence": "Flamenco，前文作弗拉门戈。",
+  "at": "2026-11-02T09:56:31"
+ },
+ {
+  "ep": 31,
+  "subtitle": 618,
+  "timecode": "00:31:35,729",
+  "find": "中都秀",
+  "replace": "忠都秀",
+  "kind": "asr",
+  "evidence": "壁画「大行散乐忠都秀在此作场」。",
+  "at": "2026-11-02T09:57:30"
+ },
+ {
+  "ep": 32,
+  "subtitle": 1118,
+  "timecode": "01:01:28,990",
+  "find": "拜月形的板",
+  "replace": "半月形的板",
+  "kind": "asr",
+  "evidence": "拜垫前的半月形木板。",
+  "at": "2026-11-02T09:58:20"
+ },
+ {
+  "ep": 33,
+  "subtitle": 48,
+  "timecode": "00:02:46,393",
+  "find": "王世伟",
+  "replace": "王时伟",
+  "kind": "asr",
+  "evidence": "故宫古建部王时伟。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 373,
+  "timecode": "00:19:41,893",
+  "find": "王世伟",
+  "replace": "王时伟",
+  "kind": "asr",
+  "evidence": "故宫古建部王时伟。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 515,
+  "timecode": "00:27:00,984",
+  "find": "王世伟",
+  "replace": "王时伟",
+  "kind": "asr",
+  "evidence": "故宫古建部王时伟。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 951,
+  "timecode": "00:49:37,800",
+  "find": "王石卫",
+  "replace": "王时伟",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 115,
+  "timecode": "00:06:15,688",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 120,
+  "timecode": "00:06:35,143",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 121,
+  "timecode": "00:06:38,103",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1074,
+  "timecode": "00:56:13,640",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1075,
+  "timecode": "00:56:15,880",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1632,
+  "timecode": "01:25:16,658",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 125,
+  "timecode": "00:06:51,388",
+  "find": "白利安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 770,
+  "timecode": "00:40:13,319",
+  "find": "袁洪奇",
+  "replace": "苑洪琪",
+  "kind": "asr",
+  "evidence": "故宫苑洪琪。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1262,
+  "timecode": "01:05:22,439",
+  "find": "文化店",
+  "replace": "文华殿",
+  "kind": "asr",
+  "evidence": "文华殿。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1263,
+  "timecode": "01:05:25,639",
+  "find": "文化店",
+  "replace": "文华殿",
+  "kind": "asr",
+  "evidence": "文华殿。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1308,
+  "timecode": "01:07:36,131",
+  "find": "弗朗格",
+  "replace": "符望阁",
+  "kind": "asr",
+  "evidence": "符望阁。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1406,
+  "timecode": "01:13:02,993",
+  "find": "弗朗格",
+  "replace": "符望阁",
+  "kind": "asr",
+  "evidence": "符望阁。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1407,
+  "timecode": "01:13:06,193",
+  "find": "弗朗格",
+  "replace": "符望阁",
+  "kind": "asr",
+  "evidence": "符望阁。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1413,
+  "timecode": "01:13:26,827",
+  "find": "杨德华",
+  "replace": "杨泽华",
+  "kind": "asr",
+  "evidence": "故宫修复师杨泽华。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 33,
+  "subtitle": 1549,
+  "timecode": "01:20:53,139",
+  "find": "山西堂",
+  "replace": "三希堂",
+  "kind": "asr",
+  "evidence": "养心殿三希堂。",
+  "at": "2026-11-02T09:59:02"
+ },
+ {
+  "ep": 34,
+  "subtitle": 914,
+  "timecode": "00:43:26,249",
+  "find": "刻楼版",
+  "replace": "珂罗版",
+  "kind": "asr",
+  "evidence": "珂罗版图录，后文即作珂罗版。",
+  "at": "2026-11-02T10:00:08"
+ },
+ {
+  "ep": 34,
+  "subtitle": 943,
+  "timecode": "00:44:50,203",
+  "find": "严严历本",
+  "replace": "阎立本",
+  "kind": "asr",
+  "evidence": "阎立本。",
+  "at": "2026-11-02T10:00:08"
+ },
+ {
+  "ep": 34,
+  "subtitle": 705,
+  "timecode": "00:33:52,018",
+  "find": "荆处士",
+  "replace": "金处士",
+  "kind": "asr",
+  "evidence": "南宋明州画家金处士，《狮王图》。",
+  "at": "2026-11-02T10:00:08"
+ },
+ {
+  "ep": 35,
+  "subtitle": 543,
+  "timecode": "00:25:17,400",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 889,
+  "timecode": "00:40:57,915",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 998,
+  "timecode": "00:46:25,390",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1025,
+  "timecode": "00:47:40,694",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1048,
+  "timecode": "00:48:51,742",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1050,
+  "timecode": "00:48:56,302",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1072,
+  "timecode": "00:49:52,406",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1073,
+  "timecode": "00:49:55,526",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1074,
+  "timecode": "00:49:57,846",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1082,
+  "timecode": "00:50:20,609",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1087,
+  "timecode": "00:50:35,649",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1147,
+  "timecode": "00:53:22,781",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1213,
+  "timecode": "00:56:37,671",
+  "find": "白灵安",
+  "replace": "白铃安",
+  "kind": "asr",
+  "evidence": "Nancy Berliner 中文名白铃安。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 1357,
+  "timecode": "01:03:22,818",
+  "find": "菲德罗斯",
+  "replace": "费诺罗萨",
+  "kind": "asr",
+  "evidence": "费诺罗萨。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 35,
+  "subtitle": 964,
+  "timecode": "00:44:42,252",
+  "find": "宁茂始始",
+  "replace": "宁懋石室",
+  "kind": "asr",
+  "evidence": "宁懋石室。",
+  "at": "2026-11-02T10:00:47"
+ },
+ {
+  "ep": 36,
+  "subtitle": 1555,
+  "timecode": "01:15:52,053",
+  "find": "孙敬波",
+  "replace": "孙景波",
+  "kind": "asr",
+  "evidence": "中央美院孙景波。",
+  "at": "2026-11-02T10:10:50"
+ },
+ {
+  "ep": 37,
+  "subtitle": 940,
+  "timecode": "00:47:58,944",
+  "find": "静水楼台",
+  "replace": "近水楼台",
+  "kind": "asr",
+  "evidence": "成语「近水楼台先得月」。",
+  "at": "2026-11-02T10:11:31"
+ },
+ {
+  "ep": 38,
+  "subtitle": 399,
+  "timecode": "00:19:49,341",
+  "find": "新庄的这个大云院",
+  "replace": "荆庄的这个大云院",
+  "kind": "asr",
+  "evidence": "浑源荆庄大云寺。",
+  "at": "2026-11-02T10:12:20"
+ },
+ {
+  "ep": 41,
+  "subtitle": 42,
+  "timecode": "00:02:28,270",
+  "find": "蒙卫就在外边",
+  "replace": "门卫就在外边",
+  "kind": "asr",
+  "evidence": "博物馆门卫。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 905,
+  "timecode": "00:45:07,977",
+  "find": "常磐大定",
+  "replace": "常盘大定",
+  "kind": "asr",
+  "evidence": "日本学者常盘大定。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1112,
+  "timecode": "00:55:21,996",
+  "find": "迦蓝殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1122,
+  "timecode": "00:55:50,655",
+  "find": "迦蓝殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1163,
+  "timecode": "00:57:50,468",
+  "find": "迦蓝殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1166,
+  "timecode": "00:57:57,748",
+  "find": "迦蓝殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1115,
+  "timecode": "00:55:30,843",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1148,
+  "timecode": "00:57:06,917",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1149,
+  "timecode": "00:57:09,157",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1150,
+  "timecode": "00:57:13,424",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1153,
+  "timecode": "00:57:22,384",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1162,
+  "timecode": "00:57:47,811",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1169,
+  "timecode": "00:58:05,820",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 41,
+  "subtitle": 1174,
+  "timecode": "00:58:18,620",
+  "find": "迦兰殿",
+  "replace": "伽蓝殿",
+  "kind": "asr",
+  "evidence": "伽蓝殿。",
+  "at": "2026-11-02T10:33:53"
+ },
+ {
+  "ep": 42,
+  "subtitle": 85,
+  "timecode": "00:05:30,397",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 42,
+  "subtitle": 86,
+  "timecode": "00:05:34,389",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 42,
+  "subtitle": 170,
+  "timecode": "00:10:27,378",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 42,
+  "subtitle": 306,
+  "timecode": "00:18:41,959",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 42,
+  "subtitle": 357,
+  "timecode": "00:21:51,772",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 42,
+  "subtitle": 596,
+  "timecode": "00:35:52,739",
+  "find": "硬硬影像",
+  "replace": "硬影像",
+  "kind": "asr",
+  "evidence": "节目名《硬影像》。",
+  "at": "2026-11-02T10:34:37"
+ },
+ {
+  "ep": 44,
+  "subtitle": 1052,
+  "timecode": "00:55:35,128",
+  "find": "润云安",
+  "replace": "润云庵",
+  "kind": "asr",
+  "evidence": "圣水院旧址润云庵。",
+  "at": "2026-11-02T10:35:53"
+ },
+ {
+  "ep": 44,
+  "subtitle": 1024,
+  "timecode": "00:54:04,135",
+  "find": "纯纯七王墓",
+  "replace": "醇亲王墓",
+  "kind": "asr",
+  "evidence": "醇亲王墓（七王坟）。",
+  "at": "2026-11-02T10:35:53"
+ },
+ {
+  "ep": 45,
+  "subtitle": 1815,
+  "timecode": "01:36:19,926",
+  "find": "西平石经",
+  "replace": "熹平石经",
+  "kind": "asr",
+  "evidence": "东汉熹平石经。",
+  "at": "2026-11-02T10:40:46"
+ },
+ {
+  "ep": 46,
+  "subtitle": 932,
+  "timecode": "00:46:00,263",
+  "find": "金钟寺",
+  "replace": "金洞寺",
+  "kind": "asr",
+  "evidence": "忻州金洞寺，北宋木构。",
+  "at": "2026-11-02T10:41:28"
+ },
+ {
+  "ep": 46,
+  "subtitle": 933,
+  "timecode": "00:46:03,618",
+  "find": "金钟寺",
+  "replace": "金洞寺",
+  "kind": "asr",
+  "evidence": "忻州金洞寺，北宋木构。",
+  "at": "2026-11-02T10:41:28"
+ },
+ {
+  "ep": 48,
+  "subtitle": 1178,
+  "timecode": "00:59:36,003",
+  "find": "京城大街",
+  "replace": "金城大街",
+  "kind": "asr",
+  "evidence": "韩城金城大街。",
+  "at": "2026-11-02T10:42:36"
+ },
+ {
+  "ep": 49,
+  "subtitle": 1305,
+  "timecode": "01:04:59,464",
+  "find": "五三五四年",
+  "replace": "五三、五四年",
+  "kind": "asr",
+  "evidence": "1953、1954 年万佛寺发掘。",
+  "at": "2026-11-02T10:43:23"
+ },
+ {
+  "ep": 50,
+  "subtitle": 1259,
+  "timecode": "01:00:22,169",
+  "find": "Y C A",
+  "replace": "YMCA",
+  "kind": "asr",
+  "evidence": "基督教青年会 YMCA。",
+  "at": "2026-11-02T10:44:02"
+ },
+ {
+  "ep": 50,
+  "subtitle": 1147,
+  "timecode": "00:55:12,528",
+  "find": "trust的",
+  "replace": "truss的",
+  "kind": "asr",
+  "evidence": "英文 truss（桁架）。",
+  "at": "2026-11-02T10:44:02"
+ },
+ {
+  "ep": 53,
+  "subtitle": 1165,
+  "timecode": "00:56:57,895",
+  "find": "埃纳克",
+  "replace": "艾纳克",
+  "kind": "asr",
+  "evidence": "阿富汗艾纳克（Mes Aynak）铜矿遗址。",
+  "at": "2026-11-02T11:05:20"
+ },
+ {
+  "ep": 53,
+  "subtitle": 688,
+  "timecode": "00:34:24,164",
+  "find": "陕子洞",
+  "replace": "睒子洞",
+  "kind": "asr",
+  "evidence": "易县八佛洼睒子洞。",
+  "at": "2026-11-02T11:05:20"
+ },
+ {
+  "ep": 53,
+  "subtitle": 688,
+  "timecode": "00:34:24,164",
+  "find": "巴佛万",
+  "replace": "八佛洼",
+  "kind": "asr",
+  "evidence": "易县八佛洼。",
+  "at": "2026-11-02T11:05:20"
+ },
+ {
+  "ep": 53,
+  "subtitle": 697,
+  "timecode": "00:34:48,903",
+  "find": "培尔辛斯基",
+  "replace": "贝尔契斯基",
+  "kind": "asr",
+  "evidence": "德国古董商贝尔契斯基（Perzyński）。",
+  "at": "2026-11-02T11:05:20"
+ },
+ {
+  "ep": 53,
+  "subtitle": 468,
+  "timecode": "00:23:44,752",
+  "find": "艾尔丰",
+  "replace": "艾克",
+  "kind": "asr",
+  "evidence": "与戴密微合著泉州双塔的艾克（Gustav Ecke）。",
+  "at": "2026-11-02T11:05:20"
+ },
+ {
+  "ep": 56,
+  "subtitle": 2037,
+  "timecode": "01:39:40,781",
+  "find": "凯穆尔",
+  "replace": "凯末尔",
+  "kind": "asr",
+  "evidence": "土耳其国父凯末尔。",
+  "at": "2026-11-02T11:23:27"
+ },
+ {
+  "ep": 56,
+  "subtitle": 1014,
+  "timecode": "00:50:07,636",
+  "find": "Canudos",
+  "replace": "Cnidos",
+  "kind": "asr",
+  "evidence": "小亚古城克尼多斯 Cnidos。",
+  "at": "2026-11-02T11:23:27"
+ },
+ {
+  "ep": 56,
+  "subtitle": 1017,
+  "timecode": "00:50:19,683",
+  "find": "Conidos",
+  "replace": "Cnidos",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T11:23:27"
+ },
+ {
+  "ep": 57,
+  "subtitle": 1946,
+  "timecode": "01:35:31,598",
+  "find": "那你说Miss",
+  "replace": "那你说Mies van der",
+  "kind": "asr",
+  "evidence": "建筑师 Mies van der Rohe。",
+  "at": "2026-11-02T11:24:47"
+ },
+ {
+  "ep": 57,
+  "subtitle": 1947,
+  "timecode": "01:35:35,872",
+  "find": "Vanderbilt也后来",
+  "replace": "Rohe也后来",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T11:24:47"
+ },
+ {
+  "ep": 58,
+  "subtitle": 852,
+  "timecode": "00:45:36,971",
+  "find": "张玉环",
+  "replace": "张驭寰",
+  "kind": "asr",
+  "evidence": "古建专家张驭寰。",
+  "at": "2026-11-02T11:26:10"
+ },
+ {
+  "ep": 58,
+  "subtitle": 1052,
+  "timecode": "00:55:48,585",
+  "find": "张玉环",
+  "replace": "张驭寰",
+  "kind": "asr",
+  "evidence": "古建专家张驭寰。",
+  "at": "2026-11-02T11:26:10"
+ },
+ {
+  "ep": 60,
+  "subtitle": 475,
+  "timecode": "00:24:04,057",
+  "find": "南巡他的那个崛起",
+  "replace": "南浔他的那个崛起",
+  "kind": "asr",
+  "evidence": "南浔古镇。",
+  "at": "2026-11-02T11:27:36"
+ },
+ {
+  "ep": 62,
+  "subtitle": 1005,
+  "timecode": "00:48:04,624",
+  "find": "利益是要有个有",
+  "replace": "立意是要有个有",
+  "kind": "asr",
+  "evidence": "上下文谈设计「立意」。",
+  "at": "2026-11-02T11:49:29"
+ },
+ {
+  "ep": 62,
+  "subtitle": 1016,
+  "timecode": "00:48:34,485",
+  "find": "这是利益上的一个问题",
+  "replace": "这是立意上的一个问题",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T11:49:29"
+ },
+ {
+  "ep": 62,
+  "subtitle": 1071,
+  "timecode": "00:51:07,434",
+  "find": "我觉得还跟利益有关系",
+  "replace": "我觉得还跟立意有关系",
+  "kind": "asr",
+  "evidence": "同上。",
+  "at": "2026-11-02T11:49:29"
+ },
+ {
+  "ep": 64,
+  "subtitle": 1001,
+  "timecode": "00:48:16,612",
+  "find": "莱森后来法国人还通缉他",
+  "replace": "李雪曼后来法国人还通缉他",
+  "kind": "asr",
+  "evidence": "上下文指李雪曼在法国购画未出口。",
+  "at": "2026-11-02T13:35:17"
+ },
+ {
+  "ep": 67,
+  "subtitle": 311,
+  "timecode": "00:14:50,364",
+  "find": "，另外一个就是阿里安，",
+  "replace": "，另外一个就是阿里亚，",
+  "kind": "asr",
+  "evidence": "巴克特里亚、阿里亚(Aria)、阿拉霍西亚为阿富汗古代三大地理区；此处讲地区而非史家阿里安",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 445,
+  "timecode": "00:20:48,395",
+  "find": "他要把整个阿基米",
+  "replace": "他要把整个阿契美",
+  "kind": "asr",
+  "evidence": "阿契美尼德王朝",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 503,
+  "timecode": "00:23:29,867",
+  "find": "就是亚历史记",
+  "replace": "就是亚历山大记",
+  "kind": "asr",
+  "evidence": "上下文为亚历山大在巴克特里亚筑城、留兵",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 577,
+  "timecode": "00:26:49,478",
+  "find": "这个在巴特巴特克",
+  "replace": "这个在巴克特",
+  "kind": "asr",
+  "evidence": "叠字误识，巴克特里亚",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 363,
+  "timecode": "00:17:08,605",
+  "find": "滑龙舟",
+  "replace": "划龙舟",
+  "kind": "asr",
+  "evidence": "撒马尔罕壁画唐中宗武则天划龙舟",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 400,
+  "timecode": "00:18:50,858",
+  "find": "开波山口",
+  "replace": "伯尔山口",
+  "kind": "asr",
+  "evidence": "开伯尔山口 Khyber Pass",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 440,
+  "timecode": "00:20:35,502",
+  "find": "阿亚亚里山大东征",
+  "replace": "亚历山大东征",
+  "kind": "asr",
+  "evidence": "叠字误识",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 67,
+  "subtitle": 285,
+  "timecode": "00:13:35,731",
+  "find": "这么一。调瓦罕走廊啊",
+  "replace": "这么一条瓦罕走廊啊",
+  "kind": "asr",
+  "evidence": "量词『条』误作『调』",
+  "at": "2026-11-02T14:03:10"
+ },
+ {
+  "ep": 68,
+  "subtitle": 129,
+  "timecode": "00:06:23,956",
+  "find": "达尔夫金丘吧",
+  "replace": "达尔弗津丘吧",
+  "kind": "asr",
+  "evidence": "Dalverzin Tepe，乌兹别克斯坦达尔弗津丘遗址",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 371,
+  "timecode": "00:17:38,947",
+  "find": "官，就是他们的身份认定",
+  "replace": "冠，就是他们的身份认定",
+  "kind": "asr",
+  "evidence": "上下文讲埃及式王冠",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 693,
+  "timecode": "00:33:00,240",
+  "find": "什么叫席巴尔干遗",
+  "replace": "什么叫西巴尔甘遗",
+  "kind": "asr",
+  "evidence": "Shibarghan 西巴尔甘（旧译席巴尔甘）",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 695,
+  "timecode": "00:33:06,160",
+  "find": "为席巴尔干是他旁边",
+  "replace": "为西巴尔甘是他旁边",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 1062,
+  "timecode": "00:51:06,975",
+  "find": "些亚剪呢做成这样，有些亚剪做成那",
+  "replace": "些雅典娜做成这样，有些雅典娜做成那",
+  "kind": "asr",
+  "evidence": "上下文为戒指上的雅典娜像",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 1379,
+  "timecode": "01:06:27,634",
+  "find": "学者去研究这个俄",
+  "replace": "学者去研究鄂尔多斯",
+  "kind": "asr",
+  "evidence": "鄂尔多斯青铜器",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 68,
+  "subtitle": 1380,
+  "timecode": "01:06:30,034",
+  "find": "罗斯青铜器的时候",
+  "replace": "青铜器的时候",
+  "kind": "asr",
+  "evidence": "承接上句，鄂尔多斯青铜器",
+  "at": "2026-11-02T14:05:44"
+ },
+ {
+  "ep": 69,
+  "subtitle": 332,
+  "timecode": "00:17:31,542",
+  "find": "亨利·莫",
+  "replace": "亨利·墨",
+  "kind": "asr",
+  "evidence": "统一作亨利·墨菲 Henry Murphy",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 478,
+  "timecode": "00:24:52,237",
+  "find": "最早在北上海的那个圣约翰大学",
+  "replace": "最早在上海的那个圣约翰大学",
+  "kind": "asr",
+  "evidence": "圣约翰大学在上海，『北』为衍字",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 594,
+  "timecode": "00:30:20,178",
+  "find": "经过弘扬以后，其实这个真正非常可",
+  "replace": "经过洪杨以后，其实这个真正非常可",
+  "kind": "asr",
+  "evidence": "上文『洪杨之乱』，太平天国兵燹",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 1201,
+  "timecode": "00:59:40,858",
+  "find": "什么中型井中长",
+  "replace": "什么钟形，警钟",
+  "kind": "asr",
+  "evidence": "下文谈中山陵平面如警钟",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 1202,
+  "timecode": "00:59:43,978",
+  "find": "明，这个其实，在吕彦直当初设计的时",
+  "replace": "形，这个其实，在吕彦直当初设计的时",
+  "kind": "asr",
+  "evidence": "承接『警钟形』",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 1246,
+  "timecode": "01:01:50,166",
+  "find": "这个机器星",
+  "replace": "这个矶崎新",
+  "kind": "asr",
+  "evidence": "大同大剧院由矶崎新与上海现代设计集团设计",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 1247,
+  "timecode": "01:01:54,089",
+  "find": "座的这个这个东西",
+  "replace": "做的这个这个东西",
+  "kind": "asr",
+  "evidence": "承接『矶崎新做』",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 69,
+  "subtitle": 1391,
+  "timecode": "01:08:32,117",
+  "find": "就环读南京以后",
+  "replace": "就还都南京以后",
+  "kind": "asr",
+  "evidence": "1946年国民政府还都南京；童寯《江南园林志》成书背景",
+  "at": "2026-11-02T16:45:18"
+ },
+ {
+  "ep": 70,
+  "subtitle": 188,
+  "timecode": "00:09:56,519",
+  "find": "这个这个府呃府平那个那条线",
+  "replace": "这个这个阜呃阜平那个那条线",
+  "kind": "asr",
+  "evidence": "河北阜平，真定—五台一线",
+  "at": "2026-11-02T16:46:07"
+ },
+ {
+  "ep": 70,
+  "subtitle": 226,
+  "timecode": "00:11:46,152",
+  "find": "个海陆呃海呃海陆殿的那块碑",
+  "replace": "个水陆呃水呃水陆殿的那块碑",
+  "kind": "asr",
+  "evidence": "上文作『水陆殿』",
+  "at": "2026-11-02T16:46:07"
+ },
+ {
+  "ep": 70,
+  "subtitle": 498,
+  "timecode": "00:25:04,000",
+  "find": "是那个玲，就是灵毛的。对。",
+  "replace": "是那个翎，就是羽毛的翎。对。",
+  "kind": "asr",
+  "evidence": "国博学者李翎，释『翎』为羽毛之翎",
+  "at": "2026-11-02T16:46:07"
+ },
+ {
+  "ep": 70,
+  "subtitle": 1794,
+  "timecode": "01:26:49,251",
+  "find": "更应该这个大书特殊",
+  "replace": "更应该这个大书特书",
+  "kind": "asr",
+  "evidence": "成语『大书特书』",
+  "at": "2026-11-02T16:46:07"
+ },
+ {
+  "ep": 70,
+  "subtitle": 1837,
+  "timecode": "01:28:50,134",
+  "find": "叫斯科罗维尼",
+  "replace": "叫斯克罗维尼",
+  "kind": "asr",
+  "evidence": "帕多瓦 Scrovegni 礼拜堂",
+  "at": "2026-11-02T16:46:07"
+ },
+ {
+  "ep": 71,
+  "subtitle": 161,
+  "timecode": "00:08:11,876",
+  "find": "呃，公主服饰另外，它",
+  "replace": "呃，公主府是另外，它",
+  "kind": "asr",
+  "evidence": "上下文列举公主府、贝子府、贝勒府",
+  "at": "2026-11-02T17:43:46"
+ },
+ {
+  "ep": 71,
+  "subtitle": 335,
+  "timecode": "00:17:05,984",
+  "find": "平北富。OK，对，这个我估计",
+  "replace": "贫北富。OK，对，这个我估计",
+  "kind": "asr",
+  "evidence": "上句『南贫北富』",
+  "at": "2026-11-02T17:43:46"
+ },
+ {
+  "ep": 71,
+  "subtitle": 621,
+  "timecode": "00:32:04,748",
+  "find": "什么那个五龙图啊什么的",
+  "replace": "什么那个六龙图啊什么的",
+  "kind": "asr",
+  "evidence": "陈容《六龙图》，下文亦作『六龙图』",
+  "at": "2026-11-02T17:43:46"
+ },
+ {
+  "ep": 72,
+  "subtitle": 48,
+  "timecode": "00:02:28,387",
+  "find": "什么吕大忠、吕大器一系",
+  "replace": "什么吕大忠、吕大防一系",
+  "kind": "asr",
+  "evidence": "蓝田吕氏：吕大忠、吕大防、吕大钧、吕大临",
+  "at": "2026-11-02T17:44:42"
+ },
+ {
+  "ep": 72,
+  "subtitle": 616,
+  "timecode": "00:31:54,735",
+  "find": "就是顾",
+  "replace": "就是固",
+  "kind": "asr",
+  "evidence": "宁夏固原，李贤墓出鎏金银壶",
+  "at": "2026-11-02T17:44:42"
+ },
+ {
+  "ep": 72,
+  "subtitle": 617,
+  "timecode": "00:31:58,575",
+  "find": "源出了那个，就是那个波斯银的那个",
+  "replace": "原出了那个，就是那个波斯银的那个",
+  "kind": "asr",
+  "evidence": "承上『固原』",
+  "at": "2026-11-02T17:44:42"
+ },
+ {
+  "ep": 72,
+  "subtitle": 1431,
+  "timecode": "01:14:06,491",
+  "find": "就是说洛阳是神经，对吧？整个唐",
+  "replace": "就是说洛阳是神京，对吧？整个唐",
+  "kind": "asr",
+  "evidence": "『神经』为『神京』同音误识（洛阳为神京）",
+  "at": "2026-11-02T17:44:42"
+ },
+ {
+  "ep": 72,
+  "subtitle": 1038,
+  "timecode": "00:54:20,521",
+  "find": "克里夫兰对，进门那",
+  "replace": "克利夫兰对，进门那",
+  "kind": "asr",
+  "evidence": "统一作克利夫兰",
+  "at": "2026-11-02T17:44:42"
+ },
+ {
+  "ep": 73,
+  "subtitle": 55,
+  "timecode": "00:03:01,328",
+  "find": "我觉得 Korea 也好，学的这",
+  "replace": "我觉得 career 也好，学的这",
+  "kind": "asr",
+  "evidence": "上下文谈诞琦的学业与职业经历",
+  "at": "2026-11-02T17:54:53"
+ },
+ {
+  "ep": 73,
+  "subtitle": 465,
+  "timecode": "00:24:57,924",
+  "find": "他是方闻和巴特利两个",
+  "replace": "他是方闻和巴格利两个",
+  "kind": "asr",
+  "evidence": "许杰师从方闻、Robert Bagley 巴格利、余英时",
+  "at": "2026-11-02T17:55:19"
+ },
+ {
+  "ep": 76,
+  "subtitle": 343,
+  "timecode": "00:17:13,388",
+  "find": "的那个李县的大堡子山",
+  "replace": "的那个礼县的大堡子山",
+  "kind": "asr",
+  "evidence": "甘肃礼县大堡子山秦公墓地",
+  "at": "2026-11-02T18:16:40"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1502,
+  "timecode": "01:13:10,798",
+  "find": "又迁回那个李县那里",
+  "replace": "又迁回那个礼县那里",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-02T18:16:40"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1623,
+  "timecode": "01:18:51,095",
+  "find": "而且这也是以前李林",
+  "replace": "而且这也是以前李零",
+  "kind": "asr",
+  "evidence": "李零论『中国』概念",
+  "at": "2026-11-02T18:16:40"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1466,
+  "timecode": "01:17:50,670",
+  "find": "完了后来去了什么太云寺啊",
+  "replace": "完了后来去了什么泰云寺啊",
+  "kind": "asr",
+  "evidence": "洪洞泰云寺（金代）",
+  "at": "2026-11-02T18:31:47"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1523,
+  "timecode": "01:20:40,336",
+  "find": "言所说，尽勒名山",
+  "replace": "音所说，尽勒名山",
+  "kind": "asr",
+  "evidence": "北响堂唐邕刻经碑：『一音所说，尽勒名山』",
+  "at": "2026-11-02T18:31:47"
+ },
+ {
+  "ep": 82,
+  "subtitle": 997,
+  "timecode": "00:52:24,899",
+  "find": "药学殿",
+  "replace": "药师殿",
+  "kind": "asr",
+  "evidence": "雍和宫「四学殿」为讲经殿、密宗殿、时轮殿、药师殿（官方导览图作 Medicine Hall）",
+  "at": "2026-11-02T18:39:04"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1000,
+  "timecode": "00:52:35,539",
+  "find": "药学殿",
+  "replace": "药师殿",
+  "kind": "asr",
+  "evidence": "雍和宫「四学殿」为讲经殿、密宗殿、时轮殿、药师殿（官方导览图作 Medicine Hall）",
+  "at": "2026-11-02T18:39:04"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1001,
+  "timecode": "00:52:39,522",
+  "find": "药学殿",
+  "replace": "药师殿",
+  "kind": "asr",
+  "evidence": "雍和宫「四学殿」为讲经殿、密宗殿、时轮殿、药师殿（官方导览图作 Medicine Hall）",
+  "at": "2026-11-02T18:39:04"
+ },
+ {
+  "ep": 87,
+  "subtitle": 343,
+  "timecode": "00:17:53,884",
+  "find": "藏在故宫的那个《卢坤绘景图》里面",
+  "replace": "藏在故宫的那个《胪欢荟景图》里面",
+  "kind": "asr",
+  "evidence": "故宫藏《胪欢荟景图》册，绘乾隆为崇庆皇太后七旬庆典，其中有万寿寺场面",
+  "at": "2026-11-02T20:16:21"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1146,
+  "timecode": "00:54:21,574",
+  "find": "拈叶音、舔舐音、呃插入音，还有射精音",
+  "replace": "粘液音、舔舐音、呃插入音，还有射精音",
+  "kind": "asr",
+  "evidence": "永田守弘《官能小説の奥義》オノマトペ四分类：舐め音／粘液音／挿入音／射精音",
+  "at": "2026-11-02T23:54:20"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1161,
+  "timecode": "00:55:23,043",
+  "find": "《拈叶吟》。呃，《拈叶吟》，我相",
+  "replace": "《粘液音》。呃，《粘液音》，我相",
+  "kind": "asr",
+  "evidence": "同上，粘液音（nen'eki-on）被误识为『拈叶』",
+  "at": "2026-11-02T23:54:20"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1164,
+  "timecode": "00:55:32,403",
+  "find": "以下是《拈叶吟》。不啾不啾",
+  "replace": "以下是《粘液音》。不啾不啾",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-02T23:54:20"
+ },
+ {
+  "ep": 97,
+  "subtitle": 131,
+  "timecode": "00:06:54,815",
+  "find": "周亦之",
+  "replace": "中一直",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「我们的旅行中一直和蘑菇保持着微信沟通」；周亦之 zhōu yì zhī 与 中一直 zhōng yī zhí 近音误识",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 97,
+  "subtitle": 608,
+  "timecode": "00:30:10,634",
+  "find": "最最ador",
+  "replace": "最最adore",
+  "kind": "asr",
+  "evidence": "用户听录音确认：英文为 adore，ador 系截断；指圣德太子的两位高僧慧慈（高句丽）、慧聪（百济）",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 97,
+  "subtitle": 1058,
+  "timecode": "00:51:55,486",
+  "find": "个那个无无极",
+  "replace": "个那个屋脊",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「那个那个屋脊」；无极 wújí 与 屋脊 wūjǐ 近音，且上下文讲明治维修加桁架托屋顶",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 117,
+  "timecode": "00:05:51,113",
+  "find": "这个北京那边",
+  "replace": "这个Virginia那边",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为 in Virginia；北京系误识（宾州西南距弗吉尼亚不远，符合「比较近」）",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 71,
+  "timecode": "00:03:39,012",
+  "find": "用的剑",
+  "replace": "用的建",
+  "kind": "asr",
+  "evidence": "用户听录音确认：主播想说「建筑」，只说出了第一个「建」字；剑 jiàn 与 建 jiàn 同音",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 70,
+  "timecode": "00:03:32,522",
+  "find": "历史上最物的most",
+  "replace": "历史上most",
+  "kind": "asr",
+  "evidence": "用户听录音确认：「最物的」为另一位主播误说的「最伟」残字，应删除三字，保留英文 most famous",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 764,
+  "timecode": "00:38:48,304",
+  "find": "就是楼",
+  "replace": "就是流",
+  "kind": "asr",
+  "evidence": "用户听录音确认：主播想说「流水别墅」，只说出一个「流」字；楼 lóu 与 流 liú 近音",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 920,
+  "timecode": "00:46:29,071",
+  "find": "我觉得就是非他们自己是非",
+  "replace": "我觉得就是他们自己是非常专业的。",
+  "kind": "asr",
+  "evidence": "用户听录音确认：璟璐原话为「我觉得就是他们自己是非常专业的」；旧的「对」属古村插话",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 921,
+  "timecode": "00:46:31,631",
+  "find": "常对，这点",
+  "replace": "对，这点",
+  "kind": "asr",
+  "evidence": "承上条：删去误识的「常」，保留古村的「对，这点我觉得也是非常不容易的」",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1089,
+  "timecode": "00:55:03,594",
+  "find": "江森W X对对，江森W",
+  "replace": "江森Wax对对，江森",
+  "kind": "term",
+  "evidence": "用户确认：两处「江森」均指 Johnson Wax（约翰逊制蜡公司），W X 为字母化误记",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1090,
+  "timecode": "00:55:07,793",
+  "find": "X博物馆也在那个",
+  "replace": "Wax博物馆也在那个",
+  "kind": "term",
+  "evidence": "承上条，同上",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1145,
+  "timecode": "00:57:43,970",
+  "find": "给人改。嗯",
+  "replace": "给人改图。嗯",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「还到耶鲁去给人改图」",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1147,
+  "timecode": "00:57:50,312",
+  "find": "这个古建筑肯定爱听",
+  "replace": "古村老师肯定爱听",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「古村老师肯定爱听」（指主播古村）",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1243,
+  "timecode": "01:02:53,927",
+  "find": "的壁和影",
+  "replace": "，很封闭",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「一个 gallery 分得很割裂，很封闭」",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1379,
+  "timecode": "01:09:41,456",
+  "find": "有机会。芝",
+  "replace": "有机会。制",
+  "kind": "asr",
+  "evidence": "用户听录音确认：应为「制蜡公司」，与上文约翰逊制蜡公司同一家；芝 zhī 与 制 zhì 近音",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1380,
+  "timecode": "01:09:44,256",
+  "find": "拉公司那个江森",
+  "replace": "蜡公司那个江森",
+  "kind": "asr",
+  "evidence": "承上条，拼成「制蜡公司那个江森」",
+  "at": "2026-11-03T09:56:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1089,
+  "timecode": "00:55:03,594",
+  "find": "江森Wax对对，江森",
+  "replace": "Johnson Wax对对，Johnson",
+  "kind": "term",
+  "evidence": "用户确认原话为英文 Johnson Wax；江森系 ASR 音译（江森又易与江森自控 Johnson Controls 混淆）",
+  "at": "2026-11-03T10:44:36"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1380,
+  "timecode": "01:09:44,256",
+  "find": "那个江森",
+  "replace": "那个Johnson",
+  "kind": "term",
+  "evidence": "同上：结尾两处「制蜡公司那个江森」原话为 Johnson",
+  "at": "2026-11-03T10:44:36"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1089,
+  "timecode": "00:55:03,594",
+  "find": "对对，Johnson",
+  "replace": "对对，Johnson Wax",
+  "kind": "term",
+  "evidence": "把第二个 Johnson Wax 完整落在同一字幕块内，避免跨块拼成 JohnsonWax",
+  "at": "2026-11-03T10:44:51"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1090,
+  "timecode": "00:55:07,793",
+  "find": "Wax博物馆也在那个",
+  "replace": "博物馆也在那个",
+  "kind": "term",
+  "evidence": "承上：Wax 已并入上一块",
+  "at": "2026-11-03T10:44:51"
+ },
+ {
+  "ep": 101,
+  "subtitle": 511,
+  "timecode": "00:24:43,373",
+  "find": "都是理好了",
+  "replace": "都是犁好了",
+  "kind": "asr",
+  "evidence": "上下文「平地上都是__好了，一垄一垄地，有点像这个大海里的波涛一样」只能指犁地；犁 lí 与 理 lǐ 同音近调，属同音误识",
+  "at": "2026-11-03T10:50:44"
+ },
+ {
+  "ep": 101,
+  "subtitle": 505,
+  "timecode": "00:24:26,961",
+  "find": "叫做浮船",
+  "replace": "叫做福船",
+  "kind": "asr",
+  "evidence": "用户听录音确认：当地称「福船」，取「福音」的「福」；浮 fú / 福 fú 同音",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 506,
+  "timecode": "00:24:30,013",
+  "find": "音的是，就管它叫船啊",
+  "replace": "音的福，就管它叫船啊",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「福音的福」，主播在解释字",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 507,
+  "timecode": "00:24:32,893",
+  "find": "音。那确实是",
+  "replace": "船。那确实是",
+  "kind": "asr",
+  "evidence": "承上：此处应为「就常叫叫福船」",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1050,
+  "timecode": "00:51:24,533",
+  "find": "在意大利行业有一个",
+  "replace": "在意大利好像有一个",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「在意大利好像有一个什么名字」",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1137,
+  "timecode": "00:55:43,421",
+  "find": "古根氏古根？那",
+  "replace": "古根，是古根海姆？那",
+  "kind": "asr",
+  "evidence": "用户听录音确认：古村原话为「还是什么古根，是古根海姆？」",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1202,
+  "timecode": "00:58:45,903",
+  "find": "曾经都是不曾经了",
+  "replace": "曾经都是，不是曾经啦",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「曾经都是，不是曾经啦」",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1375,
+  "timecode": "01:06:53,215",
+  "find": "。这个背景不对，因为因为开战了嘛",
+  "replace": "。这个背景不知道。对，因为因为开战了嘛",
+  "kind": "asr",
+  "evidence": "用户听录音确认：瞿侠「这个背景不知道」，页边接「对，因为开战了嘛」",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1615,
+  "timecode": "01:17:58,980",
+  "find": "不可以倒礼记",
+  "replace": "不可以道里计",
+  "kind": "asr",
+  "evidence": "用户听录音确认：成语「不可以道里计」（差距无法用里程计算）；道里计 dào lǐ jì 与 倒礼记 完全同音",
+  "at": "2026-11-03T11:10:08"
+ },
+ {
+  "ep": 102,
+  "subtitle": 573,
+  "timecode": "00:38:03,533",
+  "find": "我是美",
+  "replace": "我是梅",
+  "kind": "asr",
+  "evidence": "茶人嘉宾在本台其他期（ep092/ep099）与附注中均作「梅梅」；美/梅同音 méi，此处应为「我是梅梅」",
+  "at": "2026-11-03T11:13:42"
+ },
+ {
+  "ep": 102,
+  "subtitle": 574,
+  "timecode": "00:38:08,333",
+  "find": "美。时间过得",
+  "replace": "梅。时间过得",
+  "kind": "asr",
+  "evidence": "承上：拼成「我是梅梅。」",
+  "at": "2026-11-03T11:13:42"
+ },
+ {
+  "ep": 102,
+  "subtitle": 819,
+  "timecode": "00:52:41,775",
+  "find": "黄景路",
+  "replace": "黄璟璐",
+  "kind": "asr",
+  "evidence": "同一嘉宾在 ep100 及本台多处作「璟璐」；景路 jǐnglù 与 璟璐 同音",
+  "at": "2026-11-03T11:13:42"
+ },
+ {
+  "ep": 102,
+  "subtitle": 950,
+  "timecode": "01:00:53,205",
+  "find": "辛宇",
+  "replace": "新宇",
+  "kind": "asr",
+  "evidence": "摄影师胡新宇，全库 46 处作「新宇」（ep042 等），仅此一处作「辛宇」；xīn yǔ 同音",
+  "at": "2026-11-03T11:13:42"
+ },
+ {
+  "ep": 102,
+  "subtitle": 147,
+  "timecode": "00:11:25,661",
+  "find": "的大江游主播亚芳",
+  "replace": "的打酱油主播亚芳",
+  "kind": "asr",
+  "evidence": "用户听录音确认：亚芳自称「打酱油」主播；大江游 dàjiāngyóu 与 打酱油 dǎjiàngyóu 近音误识",
+  "at": "2026-11-03T11:19:55"
+ },
+ {
+  "ep": 102,
+  "subtitle": 672,
+  "timecode": "00:43:32,667",
+  "find": "一个山塘",
+  "replace": "一个三岔",
+  "kind": "asr",
+  "evidence": "用户听录音确认：原话为「更早的一个三岔路口往右转」；与块 673「路口往右转」拼合",
+  "at": "2026-11-03T11:19:55"
+ },
+ {
+  "ep": 102,
+  "subtitle": 1028,
+  "timecode": "01:06:13,557",
+  "find": "重续九九年之谊",
+  "replace": "重续九年之谊",
+  "kind": "asr",
+  "evidence": "用户听录音确认：多出一个「九」字，原话为「重续九年之谊」",
+  "at": "2026-11-03T11:19:55"
+ },
+ {
+  "ep": 92,
+  "subtitle": 1041,
+  "timecode": "00:56:46,198",
+  "find": "观察的所能看到",
+  "replace": "观茶的所能看到",
+  "kind": "asr",
+  "evidence": "系列名'壁下观茶'，同句'在武夷山壁下观茶'；察/茶近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 437,
+  "timecode": "00:21:11,210",
+  "find": "想到都是元素啊",
+  "replace": "想到都是原宿啊",
+  "kind": "asr",
+  "evidence": "上下文谈东京时尚、时尚杂志，原宿/元素近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 150,
+  "timecode": "00:07:33,655",
+  "find": "什么叫听话",
+  "replace": "什么叫听画",
+  "kind": "asr",
+  "evidence": "上下文引四王绘画'一样值得听'，讲'听画'之说；画/话近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 505,
+  "timecode": "00:24:53,310",
+  "find": "你说爆炸声啊",
+  "replace": "你说报站声啊",
+  "kind": "asr",
+  "evidence": "上下文谈影视里作生活化场景背景的声音，报站/爆炸近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 140,
+  "timecode": "00:07:04,761",
+  "find": "这个技",
+  "replace": "这个记",
+  "kind": "asr",
+  "evidence": "讲故事的记述者，跨块词'记述者'被切为'技/术者'，同音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 141,
+  "timecode": "00:07:08,295",
+  "find": "术者就说",
+  "replace": "述者就说",
+  "kind": "asr",
+  "evidence": "同上，跨块",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1326,
+  "timecode": "01:04:10,858",
+  "find": "为什么要知道",
+  "replace": "为什么要制造",
+  "kind": "asr",
+  "evidence": "同句'这种噪音是刻意的吗'，制造/知道近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 94,
+  "subtitle": 988,
+  "timecode": "00:48:32,565",
+  "find": "当地的那个屋可能",
+  "replace": "当地的那个巫可能",
+  "kind": "asr",
+  "evidence": "上下文谈四川当地民间信仰，巫/屋同音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 94,
+  "subtitle": 1440,
+  "timecode": "01:10:21,939",
+  "find": "《影像》",
+  "replace": "《硬影像》",
+  "kind": "asr",
+  "evidence": "IPN节目名《硬影像》，其余81期片尾均作硬影像",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 96,
+  "subtitle": 284,
+  "timecode": "00:15:07,095",
+  "find": "三号又有四名？又有四名",
+  "replace": "山号又有寺名？又有寺名",
+  "kind": "asr",
+  "evidence": "日本寺院有山号与寺名，下文'寺名''山名'；三号/山号、四名/寺名同音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 96,
+  "subtitle": 439,
+  "timecode": "00:23:14,492",
+  "find": "四名，它也有三名了",
+  "replace": "寺名，它也有山名了",
+  "kind": "asr",
+  "evidence": "同上，山号寺名",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 96,
+  "subtitle": 44,
+  "timecode": "00:02:26,138",
+  "find": "产品啊，这建筑",
+  "replace": "藏品啊，这建筑",
+  "kind": "asr",
+  "evidence": "东京国立博物馆藏品与建筑并举，藏品/产品近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 106,
+  "timecode": "00:05:44,298",
+  "find": "只吧，应该不能",
+  "replace": "支吧，应该不能",
+  "kind": "asr",
+  "evidence": "谈建筑体系分支，同段'这两支''华夏这一支'，支/只同音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 108,
+  "timecode": "00:05:49,658",
+  "find": "来另外一只",
+  "replace": "来另外一支",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 110,
+  "timecode": "00:05:55,178",
+  "find": "不是同一只",
+  "replace": "不是同一支",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 1192,
+  "timecode": "00:58:07,032",
+  "find": "一比一比一",
+  "replace": "一笔一笔一",
+  "kind": "asr",
+  "evidence": "谈寺院财物逐项记录，一笔一笔/一比一比近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 1193,
+  "timecode": "00:58:09,672",
+  "find": "比的。现在",
+  "replace": "笔的。现在",
+  "kind": "asr",
+  "evidence": "同上，跨块",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 97,
+  "subtitle": 724,
+  "timecode": "00:35:46,705",
+  "find": "纯流的双塔",
+  "replace": "存留的双塔",
+  "kind": "asr",
+  "evidence": "谈现存双塔实例，存留/纯流近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 98,
+  "subtitle": 484,
+  "timecode": "00:23:48,043",
+  "find": "很重要的行道",
+  "replace": "很重要的陉道",
+  "kind": "asr",
+  "evidence": "太行八陉之滏口陉，同句'滏口陉'；陉/行同音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 98,
+  "subtitle": 488,
+  "timecode": "00:24:01,876",
+  "find": "重要的这个行道",
+  "replace": "重要的这个陉道",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 98,
+  "subtitle": 609,
+  "timecode": "00:30:11,023",
+  "find": "这个习新社",
+  "replace": "这个洗心社",
+  "kind": "asr",
+  "evidence": "阎锡山在山西各县设洗心社（布里斯托大学历史照片档案LP01-61等），文庙常作社址；洗心/习新近音",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 99,
+  "subtitle": 1364,
+  "timecode": "01:18:22,921",
+  "find": "《影像》",
+  "replace": "《硬影像》",
+  "kind": "asr",
+  "evidence": "IPN节目名《硬影像》，其余81期片尾均作硬影像",
+  "at": "2026-11-03T02:13:46"
+ },
+ {
+  "ep": 75,
+  "subtitle": 514,
+  "timecode": "00:27:43,857",
+  "find": "目的案例，呃，就是阿富汗",
+  "replace": "目的安利，呃，就是阿富汗",
+  "kind": "asr",
+  "evidence": "①读音：案例 ànlì / 安利 ānlì 仅声调差；②语篇：「受到我们这个节目的安利」才成句（会员因节目推荐专程从武汉来京看阿富汗展），「受到……的案例」不通；本期 996、1247 两处同一用语均作「安利」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 75,
+  "subtitle": 1282,
+  "timecode": "01:07:29,384",
+  "find": "《影像和无次元》",
+  "replace": "《硬影像》和《無次元》",
+  "kind": "asr",
+  "evidence": "①内部一致性：ep060–077 片尾节目单均作《硬影像》《無次元》（IPN 旗下节目）；②tools/uncertain.md ep075 1275—1283 行记为「已改（《硬影像》和《無次元》）」，但当前 SRT 仍是「《影像和无次元》」，属漏改；「硬」被吞音",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1032,
+  "timecode": "00:49:54,615",
+  "find": "所以那件立",
+  "replace": "所以那件力",
+  "kind": "asr",
+  "evidence": "①读音：立式 lìshì / 力士 lìshì 完全同音；②语篇与内部一致性：上文 972—976 说第二厅中心放的是 Strong Man「力士俑」，此句「那件力士俑能占一个厅的中心位置」即指它；本期其余各处均作「力士俑」（附注「力士俑（Strong Man）」）。与 1033 条合为一处跨块改动",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1033,
+  "timecode": "00:49:58,872",
+  "find": "式俑能占一个厅",
+  "replace": "士俑能占一个厅",
+  "kind": "asr",
+  "evidence": "同 1032 条（跨块拆分的后半）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1186,
+  "timecode": "00:57:16,693",
+  "find": "稍微示威了一点了",
+  "replace": "稍微式微了一点了",
+  "kind": "asr",
+  "evidence": "①读音：示威 shìwēi / 式微 shìwēi 完全同音；②语篇：「青铜器到了汉代已经稍微式微了一点了……但玉器汉代绝对是大宗」，「示威」不通；全库 ep009、ep061 同义处均作「式微」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 1433,
+  "timecode": "01:09:51,764",
+  "find": "这个黄水流域",
+  "replace": "这个湟水流域",
+  "kind": "asr",
+  "evidence": "①读音：黄/湟 huáng 同音；②专名：氐羌早期迁徙「从青海湟水流域经天水入川」，青海境内的是湟水（黄河支流），「青海这个黄水流域」不成专名；全库 ep058 作「湟水」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 2028,
+  "timecode": "01:38:12,831",
+  "find": "你我不知道右边你同",
+  "replace": "你我不知道页边你同",
+  "kind": "asr",
+  "evidence": "①读音：右边 yòubiān / 页边 yèbiān 仅韵母一位之差；②语篇与内部一致性：本期主播为页边、古村、瞿侠，此处是在问页边是否同意（下句「这个我会有点犹豫」即页边作答，与他前文对「美好中华」立意的保留意见一致），「右边」无所指",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 76,
+  "subtitle": 29,
+  "timecode": "00:01:17,801",
+  "find": "网站“壁下观”点com访问",
+  "replace": "网站bixiaguan.com访问",
+  "kind": "asr",
+  "evidence": "①内部一致性：本期第 5—6、142—143 块与 ep075/077 片头片尾的「壁下观点com」均已统一改作 bixiaguan.com（uncertain.md ep075、ep077 记录）；②读音：「bixiaguan 点 com」被识成「壁下观点com」，引号为识别附带",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 77,
+  "timecode": "00:04:36,053",
+  "find": "的一根老船子了",
+  "replace": "的一根老椽子了",
+  "kind": "asr",
+  "evidence": "①读音：船/椽 chuán 同音；②语篇：上句「我们这个六椽栿」（附注：古建爱好者群名），称老成员为「一根老椽子」是顺着群名的比喻，「老船子」不成词；80 块「传子」同理",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 80,
+  "timecode": "00:04:46,562",
+  "find": "学，传子吧，一起",
+  "replace": "学，椽子吧，一起",
+  "kind": "asr",
+  "evidence": "①读音：传/椽 chuán 同音；②语篇：紧承 77 块「六椽栿的一根老椽子」，「另外两位同学，椽子吧」即同属六椽栿的成员",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 122,
+  "timecode": "00:06:56,915",
+  "find": "两位先生的这个文子里",
+  "replace": "两位先生的这个文字里",
+  "kind": "asr",
+  "evidence": "①读音：文子 wénzi / 文字 wénzì 仅声调差；②语篇：指梁林《预查纪略》的文字，本期 260「两位先生的文字也能看出来」同一说法；「文子」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 246,
+  "timecode": "00:13:44,599",
+  "find": "只有我们去世十年前",
+  "replace": "只有我们去是十年前",
+  "kind": "asr",
+  "evidence": "①读音：世/是 shì 同音；②语篇：「虽然我们去是十年前，离他们去避暑时隔了七十三年」，主播健在，「去世」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 563,
+  "timecode": "00:30:52,976",
+  "find": "看到这块注",
+  "replace": "看到这块著",
+  "kind": "asr",
+  "evidence": "①读音：注入 zhùrù / 著录 zhùlù 仅声母 r/l 之差；②旁证：顾炎武《金石文字记》著录大相村崇胜寺北朝碑（本期附注「顾炎武《金石文字记》」），即「顾炎武著录过的一块碑」，「注入过的碑」不通。与 564 条为跨块拆分",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 564,
+  "timecode": "00:30:55,856",
+  "find": "入注入过的一块碑",
+  "replace": "录著录过的一块碑",
+  "kind": "asr",
+  "evidence": "同 563 条（跨块后半，含口语重复「著录著录」）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 752,
+  "timecode": "00:41:11,058",
+  "find": "我们去找乌屯村。那这个找乌",
+  "replace": "我们去找吴屯村。那这个找吴",
+  "kind": "asr",
+  "evidence": "①读音：乌/吴 wū 同音；②内部一致性：本期 717—718、826 及纪略原文均作「吴屯村」，主播 768—769 还特别说明「吴就是那口天吴」；附注「吴屯村东岳庙」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 756,
+  "timecode": "00:41:23,058",
+  "find": "方并不叫乌屯，他写的乌屯是",
+  "replace": "方并不叫吴屯，他写的吴屯是",
+  "kind": "asr",
+  "evidence": "同 752 条：梁林写作「吴屯」（769「吴就是那口天吴」），当地实为「梧桐」；乌/吴同音。块尾「铁」与 757「湖」的乱码不动",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1016,
+  "timecode": "00:54:51,277",
+  "find": "个对重岩歇山的",
+  "replace": "个对重檐歇山的",
+  "kind": "asr",
+  "evidence": "①读音：岩/檐 yán 同音；②语篇与内部一致性：古建术语「重檐歇山」，本期 1183「重檐歇山的这个主殿」、1114「看起来像是重檐」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1046,
+  "timecode": "00:56:33,030",
+  "find": "个寻性的这个",
+  "replace": "个荀姓的这个",
+  "kind": "asr",
+  "evidence": "①读音：寻性 xúnxìng / 荀姓 xúnxìng 完全同音；②内部一致性：上文 1035—1037 连说三次「李诠庄的荀姓人家」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1422,
+  "timecode": "01:15:29,773",
+  "find": "个在霍山的南路",
+  "replace": "个在霍山的南麓",
+  "kind": "asr",
+  "evidence": "①读音：路/麓 lù 同音；②外部：广胜寺位于洪洞霍山南麓（国保简介「霍山南麓」），与下句「一个在霍山的当中」（兴唐寺）对举",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 77,
+  "subtitle": 1535,
+  "timecode": "01:21:18,409",
+  "find": "就说，《记略》里面",
+  "replace": "就说，《纪略》里面",
+  "kind": "asr",
+  "evidence": "①读音：记/纪 jì 同音；②内部一致性：书名《晋汾古建筑预查纪略》，本期 55、83、280、1433、1492 均作「纪略」（附注「晋汾古建筑预查纪略」）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 78,
+  "subtitle": 70,
+  "timecode": "00:04:00,379",
+  "find": "北缘，天山的南路，就",
+  "replace": "北缘，天山的南麓，就",
+  "kind": "asr",
+  "evidence": "①读音：路/麓 lù 同音；②地理：古龟兹（克孜尔、库木吐拉等）位于「塔里木盆地北缘、天山南麓」，与上句「北缘」对举，是地理志常用表述；「天山的南路」不通（不是指道路）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 78,
+  "subtitle": 1547,
+  "timecode": "01:24:00,111",
+  "find": "怪物、一影像和无次元",
+  "replace": "怪物、硬影像和无次元",
+  "kind": "asr",
+  "evidence": "①读音：一 yī / 硬 yìng 韵近（吞鼻音）；②内部一致性：IPN 片尾节目单固定为《硬影像》《無次元》，ep060—077、081、084 均作「硬影像」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 281,
+  "timecode": "00:14:03,712",
+  "find": "其实下都，因",
+  "replace": "其实夏都，因",
+  "kind": "asr",
+  "evidence": "①读音：下/夏 xià 同音；②语篇与外部：紧接「因为他那好多人在西安待着，夏天热，跑到那儿去避暑」；元安西王「夏居开城，冬处长安」，开城（固原）为其夏季驻地（开城安西王府遗址，第五批国保）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 289,
+  "timecode": "00:14:23,915",
+  "find": "安西王的这个下都",
+  "replace": "安西王的这个夏都",
+  "kind": "asr",
+  "evidence": "同 281 条：安西王夏驻开城，冬驻长安；下/夏同音",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 338,
+  "timecode": "00:16:45,795",
+  "find": "就是六盘山的南路发源的",
+  "replace": "就是六盘山的南麓发源的",
+  "kind": "asr",
+  "evidence": "①读音：路/麓 lù 同音；②语篇：「发源」须接山麓，泾河发源于宁夏泾源县六盘山麓（老龙潭），与 359「六盘山北麓发源的清水河」对举；「南路发源」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 359,
+  "timecode": "00:17:48,055",
+  "find": "盘山北路发源的这个清水河",
+  "replace": "盘山北麓发源的这个清水河",
+  "kind": "asr",
+  "evidence": "①读音：路/麓同音；②地理：清水河发源于固原原州区开城一带六盘山北端山麓，北流入黄河，与 338 条对举",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 968,
+  "timecode": "00:46:37,877",
+  "find": "是都是都是皇帝的后裔，皇帝的后裔",
+  "replace": "是都是都是黄帝的后裔，黄帝的后裔",
+  "kind": "asr",
+  "evidence": "①读音：皇帝/黄帝 huángdì 同音；②语篇与史实：上句「少数民族……牵强附会把自己说成是祖先」，北朝诸族墓志攀附的是「黄帝之后」（如拓跋氏自称黄帝之后，《魏书·序纪》），「皇帝的后裔」不合文义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 79,
+  "subtitle": 1618,
+  "timecode": "01:18:36,834",
+  "find": "尚怪物、影像和无次元",
+  "replace": "尚怪物、硬影像和无次元",
+  "kind": "asr",
+  "evidence": "①内部一致性：IPN 片尾节目单固定为《硬影像》《無次元》（ep060—077、081、084）；②「硬」被吞音，读音上为缺一音节的误识",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 326,
+  "timecode": "00:15:46,476",
+  "find": "石窟的那段大象嘛",
+  "replace": "石窟的那段大像嘛",
+  "kind": "asr",
+  "evidence": "①读音：象/像 xiàng 同音；②语篇：下文说「他的袈裟……像贴在身上的一件毛衣」「号称严格依照犍陀罗风格」，所指是云冈佛教大像（石窟主尊），不是动物「大象」；石窟语境通用「大像」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 328,
+  "timecode": "00:15:52,316",
+  "find": "这个这尊大象",
+  "replace": "这个这尊大像",
+  "kind": "asr",
+  "evidence": "同 326 条：量词「尊」+ 袈裟描写，所指为佛像；象/像同音",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 640,
+  "timecode": "00:30:21,577",
+  "find": "其实可以白pass他的研",
+  "replace": "其实可以bypass他的研",
+  "kind": "asr",
+  "evidence": "①读音：英文 bypass /ˈbaɪpæs/ 被识成「白pass」；②语篇：下句「所以这就是为什么我们现在特别是中国学者，其实不一定要看喜龙仁的这个」，即可以绕过（bypass）他的研究",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 900,
+  "timecode": "00:42:47,618",
+  "find": "都是弗利尔给他签的线",
+  "replace": "都是弗利尔给他牵的线",
+  "kind": "asr",
+  "evidence": "①读音：签/牵 qiān 同音；②内部一致性：本期 1009—1010「卡尔贝克就帮他牵线」、1050「卡尔贝克在那儿牵线」，「签线」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 994,
+  "timecode": "00:47:12,260",
+  "find": "尔还有兰登·华尔纳给他签了一些线",
+  "replace": "尔还有兰登·华尔纳给他牵了一些线",
+  "kind": "asr",
+  "evidence": "同 900 条：签/牵同音，「牵线」为固定搭配，本期其他两处均作「牵线」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 80,
+  "subtitle": 1650,
+  "timecode": "01:17:52,799",
+  "find": "《影像无次元》",
+  "replace": "《硬影像》、《無次元》",
+  "kind": "asr",
+  "evidence": "①内部一致性：IPN 片尾节目单为两个节目《硬影像》《無次元》（ep060—077、081、084）；②此处「硬」被吞音、两名连成一个书名号，属识别与断词错误",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 81,
+  "subtitle": 304,
+  "timecode": "00:16:34,770",
+  "find": "正那就是China",
+  "replace": "震那就是China",
+  "kind": "asr",
+  "evidence": "上一块刚说「国家大震那」，此处复述同一名词后接「就是China」；zhèn/zhèng 近音；经文原作「大振那」（菩提流志译《文殊师利法宝藏陀罗尼经》），「正那」无义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 81,
+  "subtitle": 583,
+  "timecode": "00:31:33,733",
+  "find": "我想那个住处",
+  "replace": "我想那个柱础",
+  "kind": "asr",
+  "evidence": "576–580 连续讨论金阁寺唐代柱础与佛光寺柱础的比较，此句说柱础配不上文献里的美轮美奂；zhù chǔ/zhù chù 近音；「住处」于语境不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 81,
+  "subtitle": 725,
+  "timecode": "00:38:52,788",
+  "find": "很中间的这个力量",
+  "replace": "很中坚的这个力量",
+  "kind": "asr",
+  "evidence": "同音 zhōngjiān；「中坚力量」为固定搭配，说五台山在弘扬华严信仰上起中坚作用；「中间的力量」不成话",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 81,
+  "subtitle": 1343,
+  "timecode": "01:12:55,487",
+  "find": "不光是去仿",
+  "replace": "不光是去访",
+  "kind": "asr",
+  "evidence": "同音 fǎng；下块接「古」，即「访古」，与本期 71 块「这个访古穿来穿去」及节目常用语一致；去五台山不是「仿古」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 170,
+  "timecode": "00:09:06,282",
+  "find": "大米勒的这个像",
+  "replace": "大弥勒的这个像",
+  "kind": "asr",
+  "evidence": "同音 mílè；指万福阁所供白檀木弥勒大像（后文 1545–1546「站立着的弥勒佛」）；「米勒」为错字",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 208,
+  "timecode": "00:11:05,866",
+  "find": "就是那个禅树的禅",
+  "replace": "就是那个阐述的阐",
+  "kind": "asr",
+  "evidence": "说话人正在解释「阐福寺」的「阐」字，紧接「啊，阐福寺对」；chǎnshù/chánshù 近音；「禅树的禅」不能说明阐字",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 335,
+  "timecode": "00:17:34,559",
+  "find": "宫是是南园的？呃，对对对对，南园这边",
+  "replace": "宫是是南苑的？呃，对对对对，南苑这边",
+  "kind": "asr",
+  "evidence": "旧宫镇属大兴区南苑地区（南海子），德寿寺即在南苑旧宫；nányuàn/nányuán 近音；北京无「南园」这一地区名",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 565,
+  "timecode": "00:29:29,747",
+  "find": "他现现在主轴不用这个",
+  "replace": "他现现在煮粥不用这个",
+  "kind": "asr",
+  "evidence": "前文 561–563 讲这口八吨铜锅是乾隆时煮腊八粥的大粥锅；zhǔzhōu/zhǔzhóu 近音；「主轴」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 893,
+  "timecode": "00:46:43,176",
+  "find": "上有第十天啊",
+  "replace": "上有帝释天啊",
+  "kind": "asr",
+  "evidence": "讲须弥山模型从水面、四大部洲往上，须弥山顶即帝释天（忉利天）所居；dìshìtiān/dìshítiān 近音；佛教宇宙观中没有「第十天」这一层的说法（欲界六天）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1225,
+  "timecode": "01:05:00,833",
+  "find": "都被钱给买满了",
+  "replace": "都被钱给埋满了",
+  "kind": "asr",
+  "evidence": "说功德箱般的洗三盆里被投满钱；mái/mǎi 近音；「买满」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1334,
+  "timecode": "01:10:56,030",
+  "find": "就是人皮骨啊",
+  "replace": "就是人皮鼓啊",
+  "kind": "asr",
+  "evidence": "同音 gǔ；1337 说话人自己说「并不是人皮鼓」，1339–1340「类似于鼓状的这么一种法器」，可见此处为「人皮鼓」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1345,
+  "timecode": "01:11:35,649",
+  "find": "少女的颈骨",
+  "replace": "少女的胫骨",
+  "kind": "asr",
+  "evidence": "同音 jìnggǔ；藏传法器「胫骨号（罡洞）」以人腿胫骨制成，与嘎巴拉碗、颅骨鼓并列陈于班禅楼；「颈骨」不制法器",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1475,
+  "timecode": "01:18:37,293",
+  "find": "有一个地方叫黄木厂",
+  "replace": "有一个地方叫皇木厂",
+  "kind": "asr",
+  "evidence": "同音 huáng；通州张家湾皇木厂村，明代存放经运河运京的皇家建筑木料（皇木）之处，与说话人所述「从通州运河运到…堆在那儿」完全吻合",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1479,
+  "timecode": "01:18:49,702",
+  "find": "运到黄木厂",
+  "replace": "运到皇木厂",
+  "kind": "asr",
+  "evidence": "同上",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1482,
+  "timecode": "01:18:57,702",
+  "find": "说那黄木",
+  "replace": "说那皇木",
+  "kind": "asr",
+  "evidence": "同上（下块接「厂还有」）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1727,
+  "timecode": "01:32:22,888",
+  "find": "行通讯",
+  "replace": "行通信",
+  "kind": "asr",
+  "evidence": "IPN 节目名为《流行通信》，全库结尾节目表除本期与 ep089 外均作「流行通信」；xìn/xùn 近音（上块末字「流」）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1727,
+  "timecode": "01:32:22,888",
+  "find": "一影像和无次元",
+  "replace": "硬影像和无次元",
+  "kind": "asr",
+  "evidence": "IPN 节目名《硬影像》，全库结尾节目表一致；yìng/yī 近音",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 381,
+  "timecode": "00:18:48,602",
+  "find": "挤出祁山",
+  "replace": "几出祁山",
+  "kind": "asr",
+  "evidence": "同音 jǐchū；369 刚说「诸葛亮六出祁山」，此处问他为何绕到天水「几出祁山」；「挤出祁山」无义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 567,
+  "timecode": "00:28:15,528",
+  "find": "这个这个这个思路这儿的",
+  "replace": "这个这个这个丝路这儿的",
+  "kind": "asr",
+  "evidence": "同音 sīlù；上文说麦积崖面栈道开窟形式与克孜尔、西域相似，「受到丝路这儿的影响」；本期 53 块即讲天水为丝路东段南道重镇",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 982,
+  "timecode": "00:48:26,492",
+  "find": "主尊和这两个四",
+  "replace": "主尊和这两个思",
+  "kind": "asr",
+  "evidence": "971 已述两小龛「一个是交脚，一个是思惟像」，此处复述「两个思惟、一个交脚」；sīwéi/sìwèi 近音；与下块合为「思惟」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 983,
+  "timecode": "00:48:28,652",
+  "find": "位一个交脚",
+  "replace": "惟一个交脚",
+  "kind": "asr",
+  "evidence": "同上条，「思惟」的后一字",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 1371,
+  "timecode": "01:07:51,382",
+  "find": "那个皇皇府什么的",
+  "replace": "那个皇皇甫什么的",
+  "kind": "asr",
+  "evidence": "同音 huángfǔ；指 1330–1334 所讲皇甫公窟及皇甫度家族（胡太后舅氏），「皇府」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 83,
+  "subtitle": 1529,
+  "timecode": "01:15:43,203",
+  "find": "我忘了是本身故",
+  "replace": "我忘了是本生故",
+  "kind": "asr",
+  "evidence": "同块前半刚说「还是本生故事」，此处是复述同一术语；běnshēng/běnshēn 近音",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 84,
+  "subtitle": 528,
+  "timecode": "00:27:37,785",
+  "find": "因为篆文是成盘嘛",
+  "replace": "因为撰文是陈槃嘛",
+  "kind": "asr",
+  "evidence": "①读音：篆/撰同音 zhuàn，成盘 chéng pán / 陈槃 chén pán 仅前后鼻音之差；②外部检索：新华网《中国李庄：一座长江千年古镇的抗战、文脉与风骨》（2025-05-15）、翠屏区政府栗峰山庄页均载《留别李庄栗峰碑铭》由陈槃撰文、劳榦书丹、董作宾篆额；③语篇：下句另说「题额……是董作宾先生写的」，可见前句讲的是撰文者而非篆书",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 238,
+  "timecode": "00:12:07,011",
+  "find": "是颜值卓卓的，我操",
+  "replace": "是言之凿凿的，我操",
+  "kind": "asr",
+  "evidence": "①读音：颜值卓卓 yán zhí zhuó zhuó / 言之凿凿 yán zhī záo záo，前两字同音（调异），后二字平翘舌混淆加韵近；②语篇：前文说某学者发微博称善化寺有「二十四天王」，此句是说他说得十分肯定，「言之凿凿」义合，「颜值卓卓」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 257,
+  "timecode": "00:13:01,427",
+  "find": "呃杰P Morgan啦",
+  "replace": "呃J. P. Morgan啦",
+  "kind": "asr",
+  "evidence": "①读音：「杰」即字母 J 的音译；②外部：J. P. Morgan（约翰·皮尔庞特·摩根）为美国大收藏家，与下文洛克菲勒、温索普同列「富二代收藏家」；③英文名其余部分即 P Morgan，可见是 ASR 把首字母转成了汉字",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 457,
+  "timecode": "00:22:37,469",
+  "find": "史密森尼谈迪",
+  "replace": "史密森尼谈deal",
+  "kind": "asr",
+  "evidence": "①读音：英文 deal 口语读作「迪有/迪奥」两音节，ASR 拆成「迪」「有」；②语篇：说的是 1906 年弗利尔与史密森尼谈捐赠协议；③内部一致性：本期 877 主播自己说「当时就有这么个Deal」。本条与 458 一条成对，须一起改",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 458,
+  "timecode": "00:22:41,149",
+  "find": "有的时候，他还没怎么收藏中国艺术",
+  "replace": "的时候，他还没怎么收藏中国艺术",
+  "kind": "asr",
+  "evidence": "同 457：「迪|有」是 deal 被拆到两块，上一块改作 deal 后此处「有」为残音，删去（与 457 一条成对）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 459,
+  "timecode": "00:22:43,629",
+  "find": "至这个迪友谈下来以后",
+  "replace": "至这个deal谈下来以后",
+  "kind": "asr",
+  "evidence": "①读音：迪友 dí yǒu ≈ deal；②语篇：「这个 deal 谈下来以后，他知道他过世以后要把藏品打包给联邦政府」，正是 1906 年的捐赠协议；③内部一致：877「这么个Deal」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 726,
+  "timecode": "00:35:30,407",
+  "find": "什么这个，隋",
+  "replace": "什么这个，睢",
+  "kind": "asr",
+  "evidence": "①读音：隋 suí / 睢 suī 同音（调异），唐 táng / 阳 yáng 同韵；②外部检索：弗利尔藏北宋《睢阳五老图》中王涣像（F1948.10）与冯平像，其余在大都会、耶鲁；世上并无「隋唐五老」作品。与 727 一条成对（跨块拆分）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 727,
+  "timecode": "00:35:33,902",
+  "find": "唐五老啊",
+  "replace": "阳五老啊",
+  "kind": "asr",
+  "evidence": "同 726：「睢阳五老」跨块，此处改「唐」为「阳」（弗利尔 F1948.10 王涣像，属《睢阳五老图》）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 784,
+  "timecode": "00:38:20,036",
+  "find": "描述落水之神一样",
+  "replace": "描述洛水之神一样",
+  "kind": "asr",
+  "evidence": "①读音：落/洛同音 luò；②语篇：上句说的是《洛神赋图》所据文本，《洛神赋》写的正是洛水之神宓妃",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 815,
+  "timecode": "00:39:45,224",
+  "find": "这个康特莱这",
+  "replace": "这个contract这",
+  "kind": "asr",
+  "evidence": "①读音：康特莱 kāng tè lái ≈ contract；②语篇：下一块紧接「个契约上就是写好的」，是主播先说英文再自注中文「契约」；本期主播多处中英夹杂（deal、settle、catalog）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 85,
+  "subtitle": 1779,
+  "timecode": "01:26:41,447",
+  "find": "《一影像》",
+  "replace": "《硬影像》",
+  "kind": "asr",
+  "evidence": "①读音：一 yī / 硬 yìng 仅韵母差；②内部一致性：IPN 旗下节目名为《硬影像》，全库 81 个文件片尾均作「硬影像」（ep084 同一片尾即作《硬影像》）；按：ep078、ep082 也各有一处「一影像」，不在本次范围，建议一并处理",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 86,
+  "subtitle": 691,
+  "timecode": "00:36:10,989",
+  "find": "了找这个工匠来这个故宫估料",
+  "replace": "了找这个工匠来这个估工估料",
+  "kind": "asr",
+  "evidence": "①读音：故宫 gù gōng / 估工 gū gōng 仅声调之差；②语篇与行话：营造做法「估工估料」是指估算工时与用料，前文刚说测绘完图纸、回北京找工匠，下文接「时间很紧……合同只有八个月」，讲的正是估工料、备构件，与故宫无关",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 86,
+  "subtitle": 1061,
+  "timecode": "00:55:25,997",
+  "find": "以后再聊这个这个明显的",
+  "replace": "以后再聊这个这个明轩的",
+  "kind": "asr",
+  "evidence": "①读音：显 xiǎn / 轩 xuān 声母相同、仅介音之差；②语篇：上文 1048 起一直在讲大都会「明轩」，此处说「先挖个坑，以后再聊这个明轩」；③内部一致：ep089 即专讲明轩，附注有「明轩」词条",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 145,
+  "timecode": "00:07:52,689",
+  "find": "那个轮罗伞盖花罐鱼肠的",
+  "replace": "那个轮螺伞盖花罐鱼长的",
+  "kind": "asr",
+  "evidence": "①读音：罗/螺 luó、肠/长 cháng 同音；②外部：藏传佛教八吉祥通行口诀即「轮、螺、伞、盖、花、罐、鱼、长（盘长）」，「轮罗」「鱼肠」不成名目；③语篇：下文 656 般般亦说须弥座刻「吉祥八宝」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 215,
+  "timecode": "00:11:20,739",
+  "find": "就留的是明代的住处",
+  "replace": "就留的是明代的柱础",
+  "kind": "asr",
+  "evidence": "①读音：住处 zhù chù / 柱础 zhù chǔ 仅调异；②语篇与外部：说的是居庸关云台顶上「什么房子也没有了」，只剩明代泰安寺建筑的柱础（云台顶现存柱础），「住处」于义不合",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 510,
+  "timecode": "00:26:16,736",
+  "find": "梵僧的木塔",
+  "replace": "梵僧的墓塔",
+  "kind": "asr",
+  "evidence": "①读音：木/墓同音 mù；②语篇与外部：说的是五台山圆照寺室利沙的金刚宝座式舍利塔，上文 236—237 刚说室利沙「在那儿圆寂，然后在那儿埋骨」，该塔为砖石塔而非木塔",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 527,
+  "timecode": "00:27:17,482",
+  "find": "堂的方塔，对吧？对，就四个堂的方塔",
+  "replace": "唐的方塔，对吧？对，就四个唐的方塔",
+  "kind": "asr",
+  "evidence": "①读音：堂/唐同音 táng；②内部一致：上一块 526 主播刚说「有四个唐塔」；③外部：房山云居寺北塔（辽）四隅各有一座唐代小石塔（景云、太极、开元年间）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 538,
+  "timecode": "00:27:51,656",
+  "find": "上是从建的",
+  "replace": "上是重建的",
+  "kind": "asr",
+  "evidence": "①读音：从 cóng / 重 chóng 平翘舌之差；②语篇：下句「并不是最原初原本的那个」，说的是菩提伽耶大塔现状为后世重建",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 541,
+  "timecode": "00:28:01,309",
+  "find": "就是四方孔为中",
+  "replace": "就是四方拱卫中",
+  "kind": "asr",
+  "evidence": "①读音：孔为 kǒng wéi / 拱卫 gǒng wèi 声母 k/g、声调之差；②内部一致：同期 581 主播总结作「四周拱卫中央」；「四方孔为中央」不成义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 546,
+  "timecode": "00:28:17,469",
+  "find": "石样。就是它",
+  "replace": "式样。就是它",
+  "kind": "asr",
+  "evidence": "①读音：石/式 shí/shì 仅调异；②语篇：说的是印度并没有完全这种「一大四小」的塔的式样，「石样」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 589,
+  "timecode": "00:30:23,063",
+  "find": "比如说在思路上",
+  "replace": "比如说在丝路上",
+  "kind": "asr",
+  "evidence": "①读音：思/丝同音 sī；②语篇：上文 569—570 刚举吐鲁番交河故城的唐代金刚宝座塔，即丝绸之路沿线",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 659,
+  "timecode": "00:33:57,477",
+  "find": "十八纹，然后巨大的那个仰莲覆莲",
+  "replace": "思巴文，然后巨大的那个仰莲覆莲",
+  "kind": "asr",
+  "evidence": "①读音：八十八纹 bā shí bā wén / 八思巴文 bā sī bā wén，sh/s 平翘舌混淆；②内部一致：本期 99—100、122 般般反复说「八思巴用八思巴文写的吉祥海赞」。658 块末「吉祥海赞八」不动，与此条合为「八思巴文」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 795,
+  "timecode": "00:41:03,407",
+  "find": "它的融",
+  "replace": "它的荣",
+  "kind": "asr",
+  "evidence": "①读音：融/荣同音 róng；②语篇：说两棵银杏树「荣枯的时间总是不太一样」，下块 796 接「枯的时间」，合为「荣枯」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 861,
+  "timecode": "00:44:29,970",
+  "find": "后照楼一样",
+  "replace": "后罩楼一样",
+  "kind": "asr",
+  "evidence": "①读音：照/罩同音 zhào；②语篇与行话：说展厅建在塔后一圈，形如四合院最后一进的「后罩楼」，「后照楼」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1005,
+  "timecode": "00:51:48,736",
+  "find": "社科馆的一些",
+  "replace": "石刻馆的一些",
+  "kind": "asr",
+  "evidence": "①读音：社科 shè kē / 石刻 shí kè 声母同、韵近调异；②语篇：说的是本馆（北京石刻艺术博物馆）专家认为这个华表装错了，与社科院无关",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1071,
+  "timecode": "00:55:11,213",
+  "find": "那个一刀。",
+  "replace": "那个仪刀。",
+  "kind": "asr",
+  "evidence": "①读音：一 yī / 仪 yí 仅调异；②语篇与外部：明代以前武翁仲多拄仪刀（仪仗用刀），「手持那个一刀」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1114,
+  "timecode": "00:57:31,255",
+  "find": "这个木志藻井",
+  "replace": "这个木质藻井",
+  "kind": "asr",
+  "evidence": "①读音：志/质同音 zhì；②语篇：与「石刻博物馆的隆福寺碑」对举，说隆福寺遗留的木质藻井（今存北京古代建筑博物馆）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1220,
+  "timecode": "01:03:22,437",
+  "find": "可以进展听了",
+  "replace": "可以进展厅了",
+  "kind": "asr",
+  "evidence": "①读音：听/厅同音 tīng；②语篇：下文 1235「然后我们就可以进展厅了」，同一意思的说法",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1221,
+  "timecode": "01:03:25,477",
+  "find": "我刚才把石壁鞋呀",
+  "replace": "我刚才把石辟邪呀",
+  "kind": "asr",
+  "evidence": "①读音：壁/辟 bì、鞋/邪 xié 同音；②内部一致：上文 884—885 刚讲过乾隆仿南朝石刻的「辟邪」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1307,
+  "timecode": "01:08:02,498",
+  "find": "实他是已经简约了汉代制度的",
+  "replace": "实他是已经僭越了汉代制度的",
+  "kind": "asr",
+  "evidence": "①读音：简约 jiǎn yuē / 僭越 jiàn yuè 仅声调之差；②语篇：说书佐是小吏，墓前却有神道、石阙、石柱，超出其身份，下文专家推测是「父以子贵」破例——正是「僭越」；附注「秦君神道石刻」亦称其规格远超身份",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1314,
+  "timecode": "01:08:21,693",
+  "find": "比较贱乐嘛",
+  "replace": "比较僭越嘛",
+  "kind": "asr",
+  "evidence": "①读音：贱/僭同音 jiàn，乐可读 yuè，与「越」同音；②语篇：复述般般上文所说「僭越汉代制度」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1397,
+  "timecode": "01:12:51,645",
+  "find": "这个祠仪位类",
+  "replace": "这个祠仪卫类",
+  "kind": "asr",
+  "evidence": "①读音：位/卫同音 wèi；②语篇：说汉代石人用于祠庙殿堂作仪仗守卫（下块「守卫」）、坟垄两边作仪卫，「仪位」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1398,
+  "timecode": "01:12:54,765",
+  "find": "一个守位的",
+  "replace": "一个守卫的",
+  "kind": "asr",
+  "evidence": "①读音：位/卫同音 wèi；②语篇：石人在祠庙前作守卫、仪仗，「守位」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1400,
+  "timecode": "01:13:00,365",
+  "find": "个坟垄仪位类",
+  "replace": "个坟垄仪卫类",
+  "kind": "asr",
+  "evidence": "同 1397：「仪卫」同音误作「仪位」，与 1397 成对",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1455,
+  "timecode": "01:16:05,885",
+  "find": "这个瘦的这个背部",
+  "replace": "这个兽的这个背部",
+  "kind": "asr",
+  "evidence": "①读音：瘦/兽同音 shòu；②语篇：说的是史思明墓前石兽背部有一条长辫子",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1530,
+  "timecode": "01:20:04,275",
+  "find": "室的是不假",
+  "replace": "时的是不假",
+  "kind": "asr",
+  "evidence": "①读音：室/时 shì/shí 仅调异；②语篇：上块 1529 末「北魏太和」，合为「北魏太和时的是不假」，附注「北魏太和造像」即此像",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1583,
+  "timecode": "01:22:50,551",
+  "find": "那些大象龛",
+  "replace": "那些大像龛",
+  "kind": "asr",
+  "evidence": "①读音：象/像同音 xiàng；②语篇与术语：与巴米扬并举，指克孜尔一带大立佛的「大像龛（大像窟）」，与大象无关",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1619,
+  "timecode": "01:24:49,950",
+  "find": "就是我们在京东南看的",
+  "replace": "就是我们在晋东南看的",
+  "kind": "asr",
+  "evidence": "①读音：京 jīng / 晋 jìn 仅前后鼻音与声调之差；②内部一致：本期 706「山西那个晋东南崇庆寺」、998「山西晋东南」；莲花化生、凤穿牡丹石门框正是晋东南寺庙和金墓常见做法",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1658,
+  "timecode": "01:27:03,066",
+  "find": "到底是“胡门”还是",
+  "replace": "到底是“壶门”还是",
+  "kind": "asr",
+  "evidence": "①读音：胡/壶同音 hú；②外部：学界争论的是须弥座、龛口那种曲线门形该写「壸（kǔn）门」还是「壶（hú）门」，「胡门」不是这个争议的写法",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 201,
+  "timecode": "00:10:22,153",
+  "find": "我也我和谷松",
+  "replace": "我也我和古村",
+  "kind": "asr",
+  "evidence": "①读音：谷松 gǔ sōng / 古村 gǔ cūn，首字同音、次字 s/c 近音；②内部一致：说话人是瞿侠，下文 389—390 古村自己说「我跟那个瞿侠那时候去，大家都十几年前了」、772—774 古村说二零零三年与瞿侠同去，正是同一次；本节目主播无「谷松」其人",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 269,
+  "timecode": "00:13:52,512",
+  "find": "就是大成的那个中观唯识",
+  "replace": "就是大乘的那个中观唯识",
+  "kind": "asr",
+  "evidence": "①读音：成/乘同音 chéng；②语篇与外部：中观、唯识是大乘佛教两大派，「大成」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 353,
+  "timecode": "00:17:58,939",
+  "find": "强烈这个安案",
+  "replace": "强烈这个安安",
+  "kind": "asr",
+  "evidence": "①读音：安案例 ān àn lì ≈ 安安利（口吃重复的「安利」，网络用语「强烈推荐」）；②语篇：下文接「大家去看一下神宝寺的这个四方佛」，正是推荐。与 354 一条成对（跨块）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 354,
+  "timecode": "00:18:02,219",
+  "find": "例，大家去看一下",
+  "replace": "利，大家去看一下",
+  "kind": "asr",
+  "evidence": "同 353：「安利」的「利」被误作「例」（lì 同音），与上一块成对",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 479,
+  "timecode": "00:24:26,579",
+  "find": "经相都毁掉",
+  "replace": "经像都毁掉",
+  "kind": "asr",
+  "evidence": "①读音：相/像同音 xiàng；②内部一致：同一段 491 页边说「甚至连经像都不需要了」；「经像」指经卷与佛像",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 628,
+  "timecode": "00:31:36,576",
+  "find": "是不是石覆的，它是空腹泥塑",
+  "replace": "是不是实腹的，它是空腹泥塑",
+  "kind": "asr",
+  "evidence": "①读音：石覆/实腹同音 shí fù；②语篇：与紧接的「空腹泥塑」对举，下文 842 亦说与「实心的那个泥塑还不太一样」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 739,
+  "timecode": "00:37:18,536",
+  "find": "是这个注入了这个灵岩寺",
+  "replace": "是这个著录了这个灵岩寺",
+  "kind": "asr",
+  "evidence": "①读音：注入 zhù rù / 著录 zhù lù，仅 r/l 之差；②语篇：说日本学者在《支那佛教史迹》里收录了灵岩寺，「注入」于义不合。与 741 同改",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 741,
+  "timecode": "00:37:24,056",
+  "find": "都都注入过",
+  "replace": "都都著录过",
+  "kind": "asr",
+  "evidence": "同 739：「著录」误作「注入」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 1041,
+  "timecode": "00:52:24,629",
+  "find": "么平凡。可能在衣衣纹的",
+  "replace": "么频繁。可能在衣衣纹的",
+  "kind": "asr",
+  "evidence": "①读音：平凡 píng fán / 频繁 pín fán，仅前后鼻音之差；②语篇：上句说崇庆寺「后世装的这个情况，就是不像那个灵岩寺这么」——说的是重装次数多寡",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 1043,
+  "timecode": "00:52:31,589",
+  "find": "就是他当时元素的一个风格",
+  "replace": "就是他当时原塑的一个风格",
+  "kind": "asr",
+  "evidence": "①读音：元素/原塑同音 yuán sù；②语篇：说崇庆寺重装较少，在衣纹、表情上更多保留宋代当时原塑的风格",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 427,
+  "timecode": "00:21:44,996",
+  "find": "这个这个木塔呀，就是和尚塔",
+  "replace": "这个这个墓塔呀，就是和尚塔",
+  "kind": "asr",
+  "evidence": "①读音：木/墓同音 mù；②语篇：紧接「就是和尚塔，基本上都是禅师的塔」——即塔林中的墓塔；灵岩寺塔林均为石塔（1140—1145），并无木塔",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 1140,
+  "timecode": "00:57:19,812",
+  "find": "木塔，嗯，对，呃，而且还都是石质的",
+  "replace": "墓塔，嗯，对，呃，而且还都是石质的",
+  "kind": "asr",
+  "evidence": "①读音：木/墓同音 mù；②语篇：说的是塔林里的小型墓塔，紧接就说「而且还都是石质的石质塔」，自相矛盾的「木塔」不成立",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 913,
+  "timecode": "00:45:59,936",
+  "find": "那个那个台或者原来的那个塑的",
+  "replace": "那个那个胎或者原来的那个塑的",
+  "kind": "asr",
+  "evidence": "①读音：台 tái / 胎 tāi 仅调异；②内部一致：本期 835—836、850 讲泥塑的「空胎」「它那个胎露出来了」，此处说剥开后世敷泥后里面才是原来的胎",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 372,
+  "timecode": "00:19:25,482",
+  "find": "呃跳跃期间啊",
+  "replace": "呃跳跃其间啊",
+  "kind": "asr",
+  "evidence": "①读音：期间/其间同音 qí jiān；②语篇：说小老虎在殿春簃院子里跳跃，「其间」指这个院子之中，「期间」指时段，于义不合",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 389,
+  "timecode": "00:20:13,739",
+  "find": "这殿春簃址其中一小部分",
+  "replace": "这殿春簃只其中一小部分",
+  "kind": "asr",
+  "evidence": "①读音：址/只同音 zhǐ；②语篇：说网师园很大，殿春簃只是其中一小部分，下文接「还有中边东边还有一大路的建筑」；「殿春簃址」不成义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 495,
+  "timecode": "00:25:48,566",
+  "find": "是他的这个画师嘛",
+  "replace": "是他的这个画室嘛",
+  "kind": "asr",
+  "evidence": "①读音：画师 huà shī / 画室 huà shì 仅调异；②内部一致：本期 311 古村说「殿春簃是他们的画室嘛」；此句主语是殿春簃，不可能是「画师」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 499,
+  "timecode": "00:26:01,707",
+  "find": "个附属地区啊",
+  "replace": "个富庶地区啊",
+  "kind": "asr",
+  "evidence": "①读音：附属 fù shǔ / 富庶 fù shù 仅调异；②语篇：说苏州是文化富庶之地，所以流传着很多前人墨宝，「文化的附属地区」不通",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 982,
+  "timecode": "00:49:19,591",
+  "find": "也有一个叫“原著性质”",
+  "replace": "也有一个叫“援助性质”",
+  "kind": "asr",
+  "evidence": "①读音：原著/援助同音 yuán zhù；②语篇：上句「当时不计成本」，说这项工程带有援助（援外）性质，下文 1147 也说园林作为「出口项目或者援外工程」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 1315,
+  "timecode": "01:05:38,027",
+  "find": "get idea 啊。原有",
+  "replace": "get idea 啊。园有",
+  "kind": "asr",
+  "evidence": "①读音：原/园同音 yuán；②原文：瞿侠朗读的是陈从周《说园》开篇「园有静观、动观之分」，下文 1324 等句均与原文相符",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 1324,
+  "timecode": "01:06:13,924",
+  "find": "有庭中迎风",
+  "replace": "有亭中迎风",
+  "kind": "asr",
+  "evidence": "①读音：庭/亭同音 tíng；②原文：《说园》作「有亭中待月迎风」（瞿侠念时语序作「迎风待月」，语序照录不改），网师园月到风来亭即此意",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 89,
+  "subtitle": 1359,
+  "timecode": "01:08:16,255",
+  "find": "《流行通讯》",
+  "replace": "《流行通信》",
+  "kind": "asr",
+  "evidence": "①读音：讯 xùn / 信 xìn 仅韵母之差；②内部一致：IPN 旗下节目名为《流行通信》，全库片尾只有本期一处作「流行通讯」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 90,
+  "subtitle": 36,
+  "timecode": "00:01:54,313",
+  "find": "五年前于敦煌的他初见",
+  "replace": "五年前与敦煌的他初见",
+  "kind": "asr",
+  "evidence": "①读音：于 yú / 与 yǔ 仅调异；②语篇：朗读天降大任来信，「与敦煌的他初见时那般」，下句「跟他相见的跋山涉水」对举，是与某人/某物相见，「于敦煌的他初见」不成句",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 90,
+  "subtitle": 55,
+  "timecode": "00:03:08,057",
+  "find": "只愿你在这一",
+  "replace": "只愿你在这异",
+  "kind": "asr",
+  "evidence": "①读音：一 yī / 异 yì 仅调异，与下块 56「国他乡」连读为「这异国他乡」；②语篇：信中说见你一面要「远渡重洋」，对象身处海外，「异国他乡的一方净土」是固定说法，「这一国他乡」不成词",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 106,
+  "timecode": "00:05:19,952",
+  "find": "就金主基建他们",
+  "replace": "就金属器件他们",
+  "kind": "asr",
+  "evidence": "①读音：金主基建 jīn zhǔ jī jiàn / 金属器件 jīn shǔ qì jiàn，zh/sh、j/q 混读；②语篇：上块 105 刚说「金属器件」，此处讲金属器物修复师自己的训练，「金主基建」不成义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 529,
+  "timecode": "00:26:45,920",
+  "find": "国传统书画作家里面",
+  "replace": "国传统书画作假里面",
+  "kind": "asr",
+  "evidence": "①读音：作家 zuò jiā / 作假 zuò jiǎ 仅调异；②语篇：正在讲维米尔伪作在旧画上加画，古村接话说中国书画作伪里也有这种做法，「书画作家」不合",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 869,
+  "timecode": "00:43:23,466",
+  "find": "然后这个比例我",
+  "replace": "然后这个比喻我",
+  "kind": "asr",
+  "evidence": "①读音：比例 bǐ lì / 比喻 bǐ yù 近音；②语篇：上文古村把修复师比作医生，夏安接着说「这个比喻我觉得挺」，并延伸「也不是每个病人都能治得好」，与「比例」无关",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 964,
+  "timecode": "00:48:12,496",
+  "find": "做一些实例的一些保护",
+  "replace": "做一些实地的一些保护",
+  "kind": "asr",
+  "evidence": "①读音：实例 shí lì / 实地 shí dì 近音；②内部一致：本期 910 说盖蒂「还做了很多实地的和中国……」，此处讲埃及皇后谷现场项目，与下文「自己本身也会有一个实验室」对举",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 1332,
+  "timecode": "01:07:16,127",
+  "find": "为现在这个观可能",
+  "replace": "为现在这个冠可能",
+  "kind": "asr",
+  "evidence": "①读音：观/冠同音 guān；②语篇：讲观音像「头部」，下文「说可能会大一些」，指头冠不是原配；「观」不成义",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 1333,
+  "timecode": "01:07:17,967",
+  "find": "观了。对，说可能",
+  "replace": "冠了。对，说可能",
+  "kind": "asr",
+  "evidence": "同 1332，跨块拆分：「原来那个冠了」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 1354,
+  "timecode": "01:08:18,628",
+  "find": "尖呢是看不见的",
+  "replace": "间呢是看不见的",
+  "kind": "asr",
+  "evidence": "①读音：额尖/额间同音 é jiān；②内部一致：本期 1348–1350 说「白毫那个地方，就是额头」，1457、1521 均作「额间的那个宝珠/宝石」",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 91,
+  "subtitle": 1564,
+  "timecode": "01:19:04,896",
+  "find": "微信公共号",
+  "replace": "微信公众号",
+  "kind": "asr",
+  "evidence": "①读音：公共 gōng gòng / 公众 gōng zhòng 近音；②内部一致：各期片尾固定话术均为「微信公众号」（如 ep089 1350）",
+  "at": "2026-11-03T02:30:17"
+ },
+ {
+  "ep": 88,
+  "subtitle": 1410,
+  "timecode": "01:10:32,232",
+  "find": "《影像和无次元》",
+  "replace": "《硬影像》和《无次元》",
+  "kind": "asr",
+  "evidence": "IPN 节目名《硬影像》《无次元》为两档节目；全库片尾 81 期作硬影像，「硬」被吞音、两名误连成一个书名号",
+  "at": "2026-11-03T02:32:17"
+ },
+ {
+  "ep": 38,
+  "subtitle": 1318,
+  "timecode": "01:05:17,138",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 78,
+  "subtitle": 1547,
+  "timecode": "01:24:00,111",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 79,
+  "subtitle": 1618,
+  "timecode": "01:18:36,834",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 81,
+  "subtitle": 1488,
+  "timecode": "01:20:28,896",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 82,
+  "subtitle": 1727,
+  "timecode": "01:32:22,888",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 83,
+  "subtitle": 1587,
+  "timecode": "01:18:37,126",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 84,
+  "subtitle": 1317,
+  "timecode": "01:07:33,012",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 85,
+  "subtitle": 1779,
+  "timecode": "01:26:41,447",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 86,
+  "subtitle": 1170,
+  "timecode": "01:00:49,317",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 87,
+  "subtitle": 1859,
+  "timecode": "01:37:46,348",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 88,
+  "subtitle": 1410,
+  "timecode": "01:10:32,232",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 89,
+  "subtitle": 1360,
+  "timecode": "01:08:21,055",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 90,
+  "subtitle": 1304,
+  "timecode": "01:07:58,420",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 93,
+  "subtitle": 1858,
+  "timecode": "01:29:04,090",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 94,
+  "subtitle": 1440,
+  "timecode": "01:10:21,939",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 95,
+  "subtitle": 974,
+  "timecode": "00:52:16,503",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 96,
+  "subtitle": 1291,
+  "timecode": "01:06:51,393",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 97,
+  "subtitle": 1536,
+  "timecode": "01:14:23,955",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 98,
+  "subtitle": 1633,
+  "timecode": "01:20:35,823",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 99,
+  "subtitle": 1364,
+  "timecode": "01:18:22,921",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 100,
+  "subtitle": 1396,
+  "timecode": "01:10:39,941",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
+ },
+ {
+  "ep": 101,
+  "subtitle": 1689,
+  "timecode": "01:21:20,487",
+  "find": "无次元",
+  "replace": "無次元",
+  "kind": "term",
+  "evidence": "IPN 节目名统一作《無次元》（官方写法，全库多数片尾已用此形）",
+  "at": "2026-11-03T02:37:58"
  }
 ]
