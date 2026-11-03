@@ -228,6 +228,8 @@ for p in places:
         continue
     first = p["annotations"][0]
     primary = annotations_by_keyword[first if isinstance(first, str) else first["keyword"]]
+    if primary.get("topic"):
+        map_errors.append(f"{p['name']}：第一条注释「{primary['keyword']}」是话题条，简介须取该地点自己的词条")
     map_places.append({
         **{k: p[k] for k in ("name", "aliases", "loc", "era", "band", "type", "lost", "lat", "lng", "coordSource")},
         "desc": primary["explanation"],
