@@ -2106,12 +2106,7 @@
   "lng": 116.33994,
   "coordSource": "wikidata:Q22083356",
   "annotations": [
-   {
-    "keyword": "天宁寺",
-    "eps": [
-     44
-    ]
-   }
+   "北京天宁寺塔"
   ]
  },
  {
@@ -2640,12 +2635,7 @@
   "lng": 110.93296,
   "coordSource": "wikidata:Q17029119",
   "annotations": [
-   {
-    "keyword": "法王庙",
-    "eps": [
-     31
-    ]
-   }
+   "南阳法王庙"
   ]
  },
  {
@@ -3953,8 +3943,7 @@
   "lng": 91.13222,
   "coordSource": "wikidata:Q735914",
   "annotations": [
-   "大昭寺",
-   "吐蕃王朝"
+   "大昭寺"
   ]
  },
  {
@@ -4197,12 +4186,7 @@
   "lng": 119.65428,
   "coordSource": "wikidata:Q10939361",
   "annotations": [
-   {
-    "keyword": "天宁寺",
-    "eps": [
-     10
-    ]
-   }
+   "金华天宁寺"
   ]
  },
  {
@@ -8704,6 +8688,7 @@
   "lng": 111.27222,
   "coordSource": "wikidata:Q11137504",
   "annotations": [
+   "汾城古建筑群",
    "汾城城隍庙戏台"
   ]
  },
